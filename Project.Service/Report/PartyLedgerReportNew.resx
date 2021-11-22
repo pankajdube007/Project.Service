@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="xrLabel34.Text" xml:space="preserve">
+    <value>                      Given below is the details of your Accounts as standing in my/our Books of Accounts for the above mention period. Kindly return 3 copies stating your I.T. Permanent A/C No., duly signed and sealed, in confirmation of the same. Please note that if no reply is received from you within a fortnight, it will be assumed that you have accepted the balance shown below.</value>
+  </data>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InBhcnR5bGVkZ2VycHJpbnROZXciPjxGaWVsZCBOYW1lPSJzbG5vIiBUeXBlPSJJbnQ2NCIgLz48RmllbGQgTmFtZT0idHlwZW9mcGFydHkiIFR5cGU9IkludDY0IiAvPjxGaWVsZCBOYW1lPSJwYXJ0eWlkIiBUeXBlPSJJbnQ2NCIgLz48RmllbGQgTmFtZT0iQ3JlZGl0IiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkRlYml0IiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9ImJhbG5jZSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJjYXRpZCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9Im5hcnJhdGlvbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJkb2NubyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJkb2NkYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iZGViaXRwYXJ0aWN1bGFyIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNyZWRpdHBhcnRpY3VsYXIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZGViaXRkYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iY3JlZGl0ZGF0ZSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9ImFkZGxpbmUxIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik1vZHVsZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQQ2F0ZWdvcnkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUGFydHlOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImRpdmlzaW9ubm0iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0ibG9jbm0iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iY2luIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
+  </data>
+  <data name="$this.ScriptsSource" xml:space="preserve">
+    <value>public double totalCredits1 = 0.00;
+public double totaldebits1 = 0.00;
+public double finalCredits = 0.00;
+public double finalDebits = 0.00;
+public double final = 0.00;
+public double finaldiffdebt=0.00;
+public double finaldiffCr=0.00;
+private void xrLabel30_SummaryReset(object sender, System.EventArgs e) {
+totalCredits1 = 0.00;
+}
+
+private void xrLabel30_SummaryRowChanged(object sender, System.EventArgs e) {
+totalCredits1 += Convert.ToDouble(GetCurrentColumnValue("Credit"));
+}
+
+private void xrLabel30_SummaryGetResult(object sender, DevExpress.XtraReports.UI.SummaryGetResultEventArgs e) {
+if (totalCredits1 == 0)
+            totalCredits1 = 0.00;
+	         e.Result = totalCredits1;
+	        e.Handled = true;
+}
+
+private void xrLabel7_SummaryReset(object sender, System.EventArgs e) {
+totaldebits1 = 0.00;
+
+}
+
+private void xrLabel7_SummaryRowChanged(object sender, System.EventArgs e) {
+totaldebits1 += Convert.ToDouble(GetCurrentColumnValue("Debit"));
+
+}
+
+private void xrLabel7_SummaryGetResult(object sender, DevExpress.XtraReports.UI.SummaryGetResultEventArgs e) {
+if (totaldebits1 == 0)
+            totaldebits1 = 0.00;	  
+        e.Result = totaldebits1;
+	        e.Handled = true;
+
+}
+
+
+
+private void xrLabel29_SummaryGetResult(object sender, DevExpress.XtraReports.UI.SummaryGetResultEventArgs e) {
+ e.Result = final;
+ e.Handled = true;
+}
+private void xrLabel29_SummaryReset(object sender, System.EventArgs e) {
+ 	
+
+}
+private void xrLabel29_SummaryCalculated(object sender, DevExpress.XtraReports.UI.TextFormatEventArgs e) {
+
+
+}
+
+private void xrLabel29_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+if(finalDebits&gt;finalCredits)
+{
+final = finalDebits;
+}
+else
+{
+final = finalCredits;
+}
+
+}
+
+private void xrLabel7_AfterPrint(object sender, System.EventArgs e) {
+ finalDebits =totaldebits1;
+ }
+
+private void xrLabel30_AfterPrint(object sender, System.EventArgs e) {
+ finalCredits=totalCredits1;
+}
+
+private void xrLabel31_SummaryGetResult(object sender, DevExpress.XtraReports.UI.SummaryGetResultEventArgs e) {
+  if(finaldiffdebt!=0.00)
+{
+e.Result = finaldiffdebt;
+ e.Handled = true;
+
+}
+else
+{
+ e.Result = "";
+ e.Handled = true;
+
+}
+
+}
+
+private void xrLabel31_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+ finaldiffdebt =final-finalDebits;
+}
+
+private void xrLabel32_SummaryGetResult(object sender, DevExpress.XtraReports.UI.SummaryGetResultEventArgs e) {
+  if(finaldiffCr!=0.00)
+{
+
+e.Result = finaldiffCr;
+ e.Handled = true;
+
+}
+else
+{
+ e.Result = "";
+ e.Handled = true;
+
+}
+
+}
+
+
+private void xrLabel32_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+finaldiffCr =final-finalCredits;
+
+}
+</value>
+  </data>
+</root>
