@@ -21,7 +21,7 @@ namespace Project.Service.Models
         public string lat { get; set; }
         [Required]
         public string lan { get; set; }
-        [Required]
+    
         public string address { get; set; }
         [Required]
         public string Ip { get; set; }

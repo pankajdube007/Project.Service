@@ -28,6 +28,12 @@ namespace Project.Service.Models
         
         public string Search { get; set; }
 
+       
+        public string Cin { get; set; }
+
+        [Required]
+        public int Hierarchy { get; set; }
+
 
     }
 

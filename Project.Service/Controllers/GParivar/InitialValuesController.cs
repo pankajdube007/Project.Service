@@ -36,15 +36,24 @@ namespace Project.Service
                     versionCode = data.Rows[0]["versionCode"].ToString(),
                     versionNumber = data.Rows[0]["versionNumber"].ToString(),
                     iosVersion = data.Rows[0]["iosVersion"].ToString(),
+
+
                     forceUpdate = Convert.ToBoolean(data.Rows[0]["forceUpdate"]),
                     forceLogout = Convert.ToBoolean(data.Rows[0]["forceLogout"]),
                     NewFeature = Convert.ToBoolean(data.Rows[0]["NewFeature"]),
                     AndroidVisible = Convert.ToBoolean(data.Rows[0]["AndroidVisible"]),
                     iosvisible = Convert.ToBoolean(data.Rows[0]["iosvisible"]),
                     AlertMessage = data.Rows[0]["AlertMessage"].ToString(),
+
+
+
                     divisionLastUpdated = "12/19/2019",
                     enquiryLastUpdated = "09/20/2018",
+
+
                     BaseApi = WebConfigurationManager.AppSettings["ApiUrl"].ToString(),
+
+
                     ValidateUserDealer = "ValidateUserDealer",
                     ValidateCIN = "ValidateCIN",
                     VerifyOTP = "VerifyOTP",
@@ -174,6 +183,12 @@ namespace Project.Service
                     getBannerImages = "getBannerImages",
                     getinvoicepod = "getinvoicepod",
                     addpod = "addpod",
+                    ledgersignview = "manch/ledger-sign-view",
+                    ledgersignviewreport = "manch/ledger-sign-viewreport",
+                    makepayloadtosign = "manch/make-payload-to-sign",
+                    NewYearScheme = "getNewYearScheme",
+                    DeactivateDealerBank = "DeactivateDealerBank",
+                    DeactivateDealerBankHistory = "DeactivateDealerBankHistory",
 
                    
                 });

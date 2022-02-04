@@ -29,6 +29,9 @@ namespace Project.Service.Models
     {
         public string itemName { get; set; }
         public string ItemId { get; set; }
+        public string HeadID { get; set; }
+        public string QRCODE { get; set; }
+        public string QrSlno { get; set; }
         public List<Problem> problem { get; set; }
     
     }

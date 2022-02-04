@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
 
                     string data1;
 
-                    string val = g2.reterive_val("fancomboadd '" + ula.CIN + "','" + ula.noofcombo + "','" + ula.Catids + "','" + ula.Qty + "','"+ula.totalReward + "'");
+                    string val = g2.reterive_val("fancomboadd '" + ula.CIN + "','" + ula.noofcombo + "','" + ula.Catids + "','" + ula.Qty + "','"+ula.totalReward + "','"+ ula.isasiatourselect + "'");
 
                     if (val == "1")
                     {

@@ -123,6 +123,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Goldmedal\Downloads\Project\Project\Project.Service\bin\DevExpress.XtraReports.v18.1.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="itext.barcodes, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.barcodes.dll</HintPath>
     </Reference>
@@ -193,6 +196,7 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Renci.SshNet, Version=2016.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.0.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -221,6 +225,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -291,7 +296,7 @@
     <Compile Include="App_Start\FileUpload\IsFileSizeAllowedArgs.cs" />
     <Compile Include="App_Start\FileUpload\IsMimeTypeAllowedArgs.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\BannerImgController.cs" />
+    <Compile Include="Controllers\GParivar\BannerImgController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDealerDeviceController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDeviceLogoutController.cs" />
     <Compile Include="Controllers\GParivar\AddPartyChannelFinanceController.cs" />
@@ -307,9 +312,14 @@
     <Compile Include="Controllers\GParivar\ApprovalPendingUsersCountDaywiseController.cs" />
     <Compile Include="Controllers\GParivar\ApprovalPendingUsersDetailsController.cs" />
     <Compile Include="Controllers\GParivar\AppthirdpartypaymentController.cs" />
+    <Compile Include="Controllers\GParivar\FreepayBankDeactivationController.cs" />
+    <Compile Include="Controllers\GParivar\FreepayBankDeactiveHistoryController.cs" />
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
+    <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GQC\ItemListForProblemController.cs" />
     <Compile Include="Controllers\GQC\ItemProblemMapController.cs" />
+    <Compile Include="Controllers\GQC\ItemProblemVendorMappingController.cs" />
+    <Compile Include="Controllers\GQC\ProblemListAssignToVendorController.cs" />
     <Compile Include="Controllers\GQC\ProblemListForItemController.cs" />
     <Compile Include="Controllers\GQC\QrScanController.cs" />
     <Compile Include="Controllers\GStar\ActiveDeviceLogoutExecutiveController.cs" />
@@ -341,6 +351,14 @@
     <Compile Include="Controllers\GStar\ExecutiveWisePodInvoiceListController.cs" />
     <Compile Include="Controllers\GStar\ExecWiseFavItemController.cs" />
     <Compile Include="Controllers\GStar\ExecWisePartyWiseItemQtyController.cs" />
+    <Compile Include="Controllers\GStar\GetDealerContactExecutiveNewController.cs" />
+    <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
+    <Compile Include="Controllers\GStar\MediaListController.cs" />
+    <Compile Include="Controllers\GStar\NewArrivalDetailsController.cs" />
+    <Compile Include="Controllers\GStar\NewArrivalListDataController.cs" />
+    <Compile Include="Controllers\GStar\PresentCopyController.cs" />
+    <Compile Include="Controllers\GStar\ShowRoomDetailsController.cs" />
+    <Compile Include="Controllers\GStar\ShowRoomListController.cs" />
     <Compile Include="Controllers\hrm\AttendenceSyncController.cs" />
     <Compile Include="Controllers\Management\AgentWisePartySecureAmtController.cs" />
     <Compile Include="Controllers\Management\AgentWiseSecureAmtController.cs" />
@@ -371,6 +389,11 @@
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockDetailsController.cs" />
     <Compile Include="Controllers\Management\BlockedPartyController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
+    <Compile Include="Controllers\Management\GetExecutiveWiseNewYearBonazaController.cs" />
+    <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
+    <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
+    <Compile Include="Controllers\Management\SignUpController.cs" />
+    <Compile Include="Controllers\Management\TodayDivisionwiseSaleController.cs" />
     <Compile Include="Controllers\Vendor\CancelVendorPaymentController.cs" />
     <Compile Include="Controllers\GParivar\CashBackCountDataCategorywiseController.cs" />
     <Compile Include="Controllers\GParivar\CashBackCountDataDivisionwiseController.cs" />
@@ -611,7 +634,6 @@
     <Compile Include="Controllers\GParivar\ThirdPartyAgingController.cs" />
     <Compile Include="Controllers\GParivar\ThirdPartyPurOrderStatusController.cs" />
     <Compile Include="Controllers\GParivar\TodayBranchwiseSaleController.cs" />
-    <Compile Include="Controllers\GParivar\TodayDivisionwiseSaleController.cs" />
     <Compile Include="Controllers\GParivar\TodayPartyWiseController.cs" />
     <Compile Include="Controllers\GParivar\TodayPartywisesaleController.cs" />
     <Compile Include="Controllers\GParivar\TodaySaleController.cs" />
@@ -634,6 +656,8 @@
     <Compile Include="Controllers\GParivar\usermasterController.cs" />
     <Compile Include="Controllers\GParivar\UserstatewisecountController.cs" />
     <Compile Include="Controllers\Login\ValidateManufacturingUserController.cs" />
+    <Compile Include="Controllers\Vendor\ItemListForVendorController.cs" />
+    <Compile Include="Controllers\Vendor\ProblemListAllAssignToVendorController.cs" />
     <Compile Include="Controllers\Vendor\ValidateVendorPaymentController.cs" />
     <Compile Include="Controllers\Vendor\VendorBankDetailsController.cs" />
     <Compile Include="Controllers\Vendor\vendorhighestpurchaseitemwiseController.cs" />
@@ -652,6 +676,7 @@
     <Compile Include="Controllers\Vendor\vendorpurchaseordrpendingsummaryController.cs" />
     <Compile Include="Controllers\Vendor\vendorpurchasependingorderController.cs" />
     <Compile Include="Controllers\Vendor\VendorPurOrderAllController.cs" />
+    <Compile Include="Controllers\Vendor\VendorRemarkUpdateController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalependingorderController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalependingorderpowiseController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalepndingsummaryController.cs" />
@@ -662,10 +687,14 @@
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />
     <Compile Include="Models\GParivar\AddPod.cs" />
+    <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
+    <Compile Include="Models\GParivar\NewYearScheme.cs" />
     <Compile Include="Models\GParivar\RequestPartyChannelFinance.cs" />
     <Compile Include="Models\GQC\ItemListForProblem.cs" />
     <Compile Include="Models\GQC\ItemProblemMap.cs" />
+    <Compile Include="Models\GQC\ItemProblemVendorMapping.cs" />
+    <Compile Include="Models\GQC\ProblemListAssignToVendor.cs" />
     <Compile Include="Models\GQC\ProblemListForItem.cs" />
     <Compile Include="Models\GQC\QrScan.cs" />
     <Compile Include="Models\GStar\ActiveDeviceLogoutExecutive.cs" />
@@ -712,10 +741,24 @@
     <Compile Include="Models\Branding\BrandingGetLastJobOfDesigner.cs" />
     <Compile Include="Models\GParivar\BranshWiseNonMovementStock.cs" />
     <Compile Include="Models\GParivar\BranshWiseNonMovementStockDetails.cs" />
+    <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
+    <Compile Include="Models\GStar\MediaDetails.cs" />
+    <Compile Include="Models\GStar\MediaList.cs" />
+    <Compile Include="Models\GStar\NewArrivalDetails.cs" />
+    <Compile Include="Models\GStar\NewArrivalListData.cs" />
+    <Compile Include="Models\GStar\PresentCopy.cs" />
+    <Compile Include="Models\GStar\ShowRoomDetails.cs" />
+    <Compile Include="Models\GStar\ShowRoomList.cs" />
+    <Compile Include="Models\GStar\StockAvailibility.cs" />
     <Compile Include="Models\hrm\AttendenceSync.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
+    <Compile Include="Models\Management\GetExecutiveWiseNewYearBonaza.cs" />
+    <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
+    <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
+    <Compile Include="Models\Management\SignUp.cs" />
+    <Compile Include="Models\Management\TodayDivisionwiseSale.cs" />
     <Compile Include="Models\Vendor\Appvendorsalependingorder.cs" />
     <Compile Include="Models\Vendor\CancelVendorPayment.cs" />
     <Compile Include="Models\GParivar\CashBackCountDataCategorywiseFor.cs" />
@@ -1019,6 +1062,8 @@
     <Compile Include="Models\GParivar\ListofItemVisitor.cs" />
     <Compile Include="Models\GParivar\ListOfPartWiseSecureAmt.cs" />
     <Compile Include="Models\GParivar\ListofState.cs" />
+    <Compile Include="Models\Vendor\ItemListVendor.cs" />
+    <Compile Include="Models\Vendor\ListAllAssignToVendor.cs" />
     <Compile Include="Models\Vendor\ListofVendorAdress.cs" />
     <Compile Include="Models\Vendor\ListofVendorInvoiceHead.cs" />
     <Compile Include="Models\Vendor\ListofVendorNotification.cs" />
@@ -1155,7 +1200,6 @@
     <Compile Include="Models\GParivar\StateWisePointChild.cs" />
     <Compile Include="Models\GParivar\StatewiseSaleCompare.cs" />
     <Compile Include="Models\GParivar\StatewiseSaleComparechild.cs" />
-    <Compile Include="Models\GParivar\StockAvailibility.cs" />
     <Compile Include="Models\GParivar\StockBalance.cs" />
     <Compile Include="Models\GParivar\SubCategory.cs" />
     <Compile Include="Models\GParivar\SubCatList.cs" />
@@ -1171,7 +1215,6 @@
     <Compile Include="Models\GParivar\ThirdPartyAging.cs" />
     <Compile Include="Models\GParivar\ThirdPartyPurOrderStatus.cs" />
     <Compile Include="Models\GParivar\TodayBranchwiseSale.cs" />
-    <Compile Include="Models\GParivar\TodayDivisionwiseSale.cs" />
     <Compile Include="Models\GParivar\TodayPartyWisePayment.cs" />
     <Compile Include="Models\GParivar\TodaypartywiseSale.cs" />
     <Compile Include="Models\GParivar\TodayPayment.cs" />
@@ -1226,6 +1269,7 @@
     <Compile Include="Models\Vendor\vendorpurchaseordrpendingsummary.cs" />
     <Compile Include="Models\Vendor\vendorpurchasependingorder.cs" />
     <Compile Include="Models\Vendor\VendorPurOrderAll.cs" />
+    <Compile Include="Models\Vendor\VendorRemarkUpdate.cs" />
     <Compile Include="Models\Vendor\vendorsalependingorderpowise.cs" />
     <Compile Include="Models\Vendor\vendorsalepndingsummary.cs" />
     <Compile Include="Models\GParivar\VerifyOTP.cs" />

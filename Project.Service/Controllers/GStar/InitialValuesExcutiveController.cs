@@ -19,7 +19,7 @@ namespace Project.Service.Controllers
         [Route("api/getInitialValueExcutive")]
         public HttpResponseMessage GetDetails()
         {
-            //DataConection g1 = new DataConection();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
 
             try
@@ -29,16 +29,22 @@ namespace Project.Service.Controllers
                 List<InitialValueExs> alldcr = new List<InitialValueExs>();
                 List<InitialValueEx> alldcr1 = new List<InitialValueEx>();
 
+                var data = g1.return_dt("dbo.InitialApiExe");
+
                 alldcr1.Add(new InitialValueEx
                 {
-                    versionCode = "23",
-                    versionNumber = "1.1.4",
-                    iosVersion = "1.0",
+                    versionCode = data.Rows[0]["versionCode"].ToString(),
+                    versionNumber = data.Rows[0]["versionNumber"].ToString(),
+                    iosVersion = data.Rows[0]["iosVersion"].ToString(),
 
                     divisionLastUpdated = "08/13/2019",
                     dealerByExecutiveLastUpdated = "04/08/2020",
                     enquiryLastUpdated = "08/13/2019",
+
+
                     BaseApi = WebConfigurationManager.AppSettings["ApiUrl"].ToString(),
+
+
                     InitialValueExcutive = "getInitialValueExcutive",
                     ValidateUserDealer = "ValidateUserDealer",
                     ValidateCIN = "ValidateCIN",
@@ -168,11 +174,11 @@ namespace Project.Service.Controllers
                     getitemlistforvisitor = "getitemlistforvisitor",
                     getlistofvisitorenquiry = "getlistofvisitorenquiry",
 
-                    forceUpdate = true,
-                    enableNetLanding = true,
-                    showAnnouncements=true,
-                    showMenu = true,
-                    showWorldcup=true
+                    forceUpdate = Convert.ToBoolean(data.Rows[0]["forceUpdate"]),
+                    enableNetLanding = Convert.ToBoolean(data.Rows[0]["enableNetLanding"]),
+                    showAnnouncements= Convert.ToBoolean(data.Rows[0]["showAnnouncements"]),
+                    showMenu = Convert.ToBoolean(data.Rows[0]["showMenu"]),
+                    showWorldcup= Convert.ToBoolean(data.Rows[0]["showWorldcup"])
                 });
 
                 // g1.close_connection();

@@ -34,6 +34,8 @@ namespace Project.Service.Controllers
                         {
                             alldcr1.Add(new StockAvailibilityEx
                             {
+                                Branch= Convert.ToString(dr["locnm"].ToString()),
+                                AvailableStock = Convert.ToString(dr["totalqty"].ToString()),
                                 stock = Convert.ToString(dr["stock"].ToString()),
                             });
                         }

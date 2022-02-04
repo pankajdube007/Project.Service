@@ -22,6 +22,13 @@ namespace Project.Service.Models
         [Required]
         public string ToDate { get; set; }
 
+        
+        public string Cin { get; set; }
+
+        [Required]
+        public int Hierarchy { get; set; }
+
+
 
     }
 

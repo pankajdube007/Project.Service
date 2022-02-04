@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
                 try     
                 {
                
-                   var dr3 = g2.return_dt("EwayCancelDetails " + ula.slno);
+                   var dr3 = g2.return_dt("EwayCancelDetails " + ula.slno +","+ ula.type);
                     if (dr3.Rows.Count>0)
                     {
 
@@ -103,7 +103,7 @@ namespace Project.Service.Controllers
                                 
                                 if (Convert.ToInt32(_output.Status) == 1)
                                 {
-                                var dr1 = g2.return_dr("EwayInvoicecancel " + ula.slno + "," + ula.userid );
+                                var dr1 = g2.return_dr("EwayInvoicecancel " + ula.slno + "," + ula.userid +","+ula.type);
                                 if (dr1.HasRows)
                                     {
                                         g2.close_connection();

@@ -18,6 +18,7 @@ namespace Project.Service.Models
         [Required] public string transdocno { get; set; }
         [Required] public string transdocdate { get; set; }
         [Required] public string transmode { get; set; }
+        [Required] public int type { get; set; }
     }
 
     public class EwayBillGeneratePart2body

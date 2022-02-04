@@ -100,7 +100,7 @@ namespace Project.Service.Controllers
 
                                 if (_output.success = true && _output.message == "E-Way Bill is cancelled successfully")
                                 {
-                                    var dr1 = g2.return_dr("Ewaybillcancel " + ula.slno + ",'" + dr3.Rows[0]["EWayBillno"].ToString() + "','" + ula.userid + "'");
+                                    var dr1 = g2.return_dr("Ewaybillcancel " + ula.slno + ",'" + dr3.Rows[0]["EWayBillno"].ToString() + "','" + ula.userid + "',"+ula.type);
                                     if (dr1.HasRows)
                                     {
                                         g2.close_connection();

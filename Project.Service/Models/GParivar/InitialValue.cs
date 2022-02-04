@@ -154,5 +154,11 @@ namespace Project.Service.Models
         public string getBannerImages { get; set; }
         public string getinvoicepod { get; set; }
         public string addpod { get; set; }
+        public string ledgersignview { get; set; }
+        public string ledgersignviewreport { get; set; }
+        public string makepayloadtosign { get; set; }
+        public string NewYearScheme { get; set; }
+        public string DeactivateDealerBank { get; set; }
+        public string DeactivateDealerBankHistory { get; set; }
     }
 }

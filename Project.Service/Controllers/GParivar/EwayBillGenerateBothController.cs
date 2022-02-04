@@ -39,7 +39,7 @@ namespace Project.Service.Controllers
 
                     if (key != "")
                     {
-                        var dr3 = g2.return_dt("EwayBillDatabySlno " + ula.slno);
+                        var dr3 = g2.return_dt("EwayBillDatabySlno " + ula.slno +","+ula.type);
 
 
                         if (dr3.Rows.Count > 0)
@@ -81,7 +81,7 @@ namespace Project.Service.Controllers
 
                                 if (!String.IsNullOrEmpty(ula.vehicleNo) && !String.IsNullOrEmpty(ula.vehicleType) && distance != 0)
                                 {
-                                    var dr4 = g2.return_dr("EwayBillDataChildbySlno " + ula.slno);
+                                    var dr4 = g2.return_dr("EwayBillDataChildbySlno " + ula.slno+"," + ula.type);
                                     while (dr4.Read())
                                     {
                                         child.Add(new EwayBillGenerateItemList
@@ -206,7 +206,7 @@ namespace Project.Service.Controllers
                                     }
 
 
-                                    var dr5 = g2.return_dt("EwayBillGenerateHeader " + ula.slno + ",1" );
+                                    var dr5 = g2.return_dt("EwayBillGenerateHeader " + ula.slno + ","+ula.type );
                                     if (dr5.Rows.Count > 0)
                                     {
 
@@ -259,7 +259,7 @@ namespace Project.Service.Controllers
 
 
                                                 var dr6 = g2.return_dr("EwayBillupdatebyAPIBoth " + ula.slno + ",'"
-                                    + _output.result.ewayBillNo + "'," + ula.userid+",'"+ula.vehicleNo+"','"+ula.drivername+"','"+ula.driverlicence+"',"+ula.logno
+                                    + _output.result.ewayBillNo + "'," + ula.userid+",'"+ula.vehicleNo+"','"+ula.drivername+"','"+ula.driverlicence+"',"+ula.logno+","+ula.type
 
                                     );
                                                 if (dr6.HasRows)

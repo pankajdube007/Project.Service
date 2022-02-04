@@ -33,7 +33,7 @@ namespace Project.Service.Controllers
                     List<GetPodInvoiceList> alldcr = new List<GetPodInvoiceList>();
                     List<PodInvoiceList> alldcr1 = new List<PodInvoiceList>();
 
-                    var dr = g2.return_dr("execwisepodtlist'" + ula.ExId + "','" + ula.FromDate + "','" + ula.ToDate + "','" + ula.Type + "','" + ula.Search + "'");
+                    var dr = g2.return_dr("execwisepodtlist'" + ula.ExId + "','" + ula.FromDate + "','" + ula.ToDate + "','" + ula.Type + "','" + ula.Search + "','" + ula.Cin + "','" + ula.Hierarchy + "'");
 
                     if (dr.HasRows)
                     {

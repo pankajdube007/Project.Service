@@ -44,7 +44,7 @@ namespace Project.Service.Controllers
                         body.TransDocDate = ula.transdocdate;
                         body.TransMode = ula.transmode;
 
-                        var dr5 = g2.return_dt("EwayBillCheck '" + ula.ewaybillno+"'");
+                        var dr5 = g2.return_dt("EwayBillCheck '" + ula.ewaybillno+"',"+ula.type);
                         if (dr5.Rows.Count > 0)
                         {
 

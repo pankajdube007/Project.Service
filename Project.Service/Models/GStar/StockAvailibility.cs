@@ -28,6 +28,8 @@ namespace Project.Service.Models
 
     public class StockAvailibilityEx
     {
+        public string Branch { get; set; }
+        public string AvailableStock { get; set; }
         public string stock { get; set; }
     }
 }

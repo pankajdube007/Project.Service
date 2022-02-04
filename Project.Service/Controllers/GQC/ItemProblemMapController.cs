@@ -36,7 +36,7 @@ namespace Project.Service.Controllers
 
                     List<ItemProblemMaps> alldcr = new List<ItemProblemMaps>();
                     List<ItemProblemMap> alldcr1 = new List<ItemProblemMap>();
-                    var dr = g2.return_dt("MapItemWithProblem '" + ula.QrCode + "','" + ula.remark + "','" + ula.ProblemDetails.ToString() + "','" + barcode + "','" + Convert.ToInt32(qrtype) + "','" + qrslno + "'");
+                    var dr = g2.return_dt("MapItemWithProblem '" + ula.QrCode + "',"+ula.itemid+",'" + ula.remark + "','" + ula.ProblemDetails.ToString() + "','" + barcode + "'," + Convert.ToInt32(qrtype) + ",'" + qrslno + "'");
                     g2.close_connection();
 
                     if (dr.Rows.Count > 0)
@@ -52,7 +52,24 @@ namespace Project.Service.Controllers
                             alldcr.Add(new ItemProblemMaps
                             {
                                 result = true,
-                                message = "",
+                                message = "Item Not Matched",
+                                servertime = DateTime.Now.ToString(),
+                                data = alldcr1,
+                            });
+                            data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+                            response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                            return response;
+                        }
+
+                        if (Convert.ToInt32(dr.Rows[0]["typee"]) == 2)
+                        {
+                            alldcr.Add(new ItemProblemMaps
+                            {
+                                result = true,
+                                message = "Qr Allready Mapped With Problem",
                                 servertime = DateTime.Now.ToString(),
                                 data = alldcr1,
                             });
@@ -65,12 +82,14 @@ namespace Project.Service.Controllers
                         }
 
 
+
+
                         else
                         {
                             alldcr.Add(new ItemProblemMaps
                             {
-                                result = false,
-                                message = "",
+                                result = true,
+                                message = "Item Mapped With Problem",
                                 servertime = DateTime.Now.ToString(),
                                 data = alldcr1,
                             });

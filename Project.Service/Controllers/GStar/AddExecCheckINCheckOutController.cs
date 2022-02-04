@@ -64,6 +64,15 @@ namespace Project.Service.Controllers
                                 CheckOutLong = dr.Rows[0]["checkoutlan"].ToString(),                                        
                                 orgid ="0",
                                 orgcat = "0",
+                                orgCate = dr.Rows[0]["orgCate"].ToString(),
+                                orgName = dr.Rows[0]["orgName"].ToString(),
+                                orgId = dr.Rows[0]["orgId"].ToString(),
+                                orgCatId = dr.Rows[0]["orgCatId"].ToString(),
+                                checkInTime = dr.Rows[0]["checkintime"].ToString(),
+                                checkOutTime = dr.Rows[0]["checkouttime"].ToString(),
+                                slno = dr.Rows[0]["slno"].ToString(),
+                                distnce = dr.Rows[0]["distnce"].ToString(),
+
                             });
 
                             g2.close_connection();

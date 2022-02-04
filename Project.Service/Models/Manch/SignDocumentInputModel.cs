@@ -77,5 +77,83 @@ namespace Project.Service.Models.Manch
         public List<ManchResponseToClientApp> data { get; set; }
     }
 
+
+
+    // Esign ledger
+
+    public class SignLedgerInputModel
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid CIN")]
+        public string CIN { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid From date")]
+        public string FromDate { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid To date")]
+        public string ToDate { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid ClientSecret")]
+        public string ClientSecret { get; set; }
+    }
+
+
+    public class SignLedgerOutputModelLINK
+    {
+        
+        public string link { get; set; }
+        public string amount { get; set; }
+    }
+
+
+    public class SignLedgerOutputModel
+    {
+        public bool result { get; set; }
+        public string message { get; set; }
+        public string servertime { get; set; }
+        public List<SignLedgerOutputModelLINK> data { get; set; }
+    }
+
+
+    //esign ledger report
+
+
+    public class SignLedgerReportInputModel
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid CIN")]
+        public string CIN { get; set; }
+
    
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid ClientSecret")]
+        public string ClientSecret { get; set; }
+    }
+
+    public class SignLedgerReportOutputModel
+    {
+        public bool result { get; set; }
+        public string message { get; set; }
+        public string servertime { get; set; }
+        public List<SignLedgerReportData> data { get; set; }
+    }
+
+    public class SignLedgerReportData
+    {
+        public List<SignLedgerReport> signdata { get; set; }
+        public List<SignLedgerstatus> status { get; set; }
+    }
+
+
+        public class SignLedgerReport
+    {
+        public string year { get; set; }
+        public string quater { get; set; }
+        public string amount { get; set; }
+        public string link { get; set; }
+
+    }
+
+    public class SignLedgerstatus
+    {
+        public bool Isactive { get; set; }
+
+    }
 }

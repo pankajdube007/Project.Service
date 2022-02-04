@@ -42,6 +42,185 @@ namespace Project.Service.Controllers.eSign
             _returnUrl = ConfigurationManager.AppSettings["Manch.ReturnUrl"];
         }
 
+
+        [HttpPost]
+        [ValidateModel]
+        [Route("api/manch/ledger-sign-view")]
+        public HttpResponseMessage LederSignViewDocument(SignLedgerInputModel signLedgerInputModel)
+        {
+            string data1 = string.Empty;
+            var g1 = new DataConnectionTrans();
+            var cm = new Common();
+            if (DateTime.TryParse(signLedgerInputModel.FromDate, out DateTime fromDate)
+                && DateTime.TryParse(signLedgerInputModel.ToDate, out DateTime toDate))
+            {
+                // TODO: Any further validation
+                try
+                {
+                    var dt = g1.return_dt("getSaleLedgerBalance_Esign '"+ signLedgerInputModel.CIN+"','"+ signLedgerInputModel.ToDate+"'");
+
+                    List<SignLedgerOutputModelLINK> alldcr = new List<SignLedgerOutputModelLINK>();
+                    List<SignLedgerOutputModel> result = new List<SignLedgerOutputModel>();
+
+
+                    alldcr.Add(new SignLedgerOutputModelLINK
+                    { 
+                        link="",
+                        amount=dt.Rows[0]["balance"].ToString()
+                    });
+
+                    
+                    result.Add(new SignLedgerOutputModel
+                    {
+                        result = true,
+                        message = string.Empty,
+                        servertime = DateTime.Now.ToString(),
+                        data = alldcr,
+                    });
+
+
+                    data1 = JsonConvert.SerializeObject(result, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+                    response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
+
+                    return response;
+                }
+            }
+
+            HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+            response1.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8,
+                "application/json");
+
+            return response1;
+        }
+
+        [HttpPost]
+        [ValidateModel]
+        [Route("api/manch/ledger-sign-viewreport")]
+        public HttpResponseMessage SignViewReportDocument(SignLedgerReportInputModel signLedgerReportInputModel)
+        {
+            string data1 = string.Empty;
+            var cm = new Common();
+            var g1 = new DataConnectionTrans();
+            if (signLedgerReportInputModel.CIN!="")
+            {
+                // TODO: Any further validation
+                try
+                {
+
+                    List<SignLedgerReportOutputModel> alldcr = new List<SignLedgerReportOutputModel>();
+                    List<SignLedgerReport> alldcr1 = new List<SignLedgerReport>();
+                    List<SignLedgerstatus> status = new List<SignLedgerstatus>();
+                    List<SignLedgerReportData> data = new List<SignLedgerReportData>();
+                    List<SignLedgerReportOutputModel> result = new List<SignLedgerReportOutputModel>();
+
+
+                    var dr = g1.return_dt("esignledgerreport '" + signLedgerReportInputModel.CIN+"'");
+
+
+                    bool isactive = false;
+
+                    if (String.IsNullOrEmpty(dr.Rows[0]["stat"].ToString()))
+                    {
+                        isactive = false;
+                    }
+                    else
+                    {
+                        isactive = Convert.ToBoolean(dr.Rows[0]["stat"]);
+                    }
+
+
+                    status.Add(new SignLedgerstatus
+                    {
+                        Isactive = isactive
+                    });
+
+
+
+
+                    if (dr.Rows.Count>0)
+
+                    {
+
+                        status.Add(new SignLedgerstatus
+                        {
+                            Isactive= Convert.ToBoolean(dr.Rows[0]["stat"])
+                        });
+
+
+
+                        for (int i = 0; i < dr.Rows.Count; i++)
+                       
+                        {
+                            alldcr1.Add(new SignLedgerReport
+                            {
+                                year=dr.Rows[i]["year"].ToString(),
+                                quater= dr.Rows[i]["quater"].ToString(),
+                                amount= dr.Rows[i]["amount"].ToString(),
+                                link= dr.Rows[i]["link"].ToString(),
+
+                            });
+
+                        }
+
+                        data.Add(new SignLedgerReportData
+                        {
+                            signdata=alldcr1,
+                            status=status
+                        });
+
+                        result.Add(new SignLedgerReportOutputModel
+                        {
+                            result = true,
+                            message = string.Empty,
+                            servertime = DateTime.Now.ToString(),
+                            data = data,
+                        });
+
+
+                        data1 = JsonConvert.SerializeObject(result, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+                        response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                        return response;
+
+                    }
+                    else
+                    {
+                        HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.OK);
+                        response2.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8,
+                            "application/json");
+
+                        return response2;
+                    }
+
+                
+                }
+                catch (Exception ex)
+                {
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
+
+                    return response;
+                }
+            }
+
+            HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+            response1.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8,
+                "application/json");
+
+            return response1;
+        }
+
         [HttpPost]
         [ValidateModel]
         [Route("api/manch/make-payload-to-sign")]

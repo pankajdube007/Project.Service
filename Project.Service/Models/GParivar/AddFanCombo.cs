@@ -20,6 +20,8 @@ namespace Project.Service.Models
         public string Qty { get; set; }
         [Required]
         public string totalReward  { get; set; }
+        [Required]
+        public string isasiatourselect { get; set; }
 
     }
 

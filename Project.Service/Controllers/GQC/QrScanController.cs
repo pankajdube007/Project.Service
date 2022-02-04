@@ -39,7 +39,7 @@ namespace Project.Service.Controllers
                     List<data1> item = new List<data1>();
                     List<Item> prolemlist = new List<Item>();
                     List<Problem> Problem = new List<Problem>();
-                    var dr = g1.return_dt("QRSCANE'" + ula.QrCode + "','" + barcode + "','" + Convert.ToInt32(type) + "','" + slno + "'");
+                    var dr = g1.return_dt("QRSCANENew'" + ula.QrCode + "','" + barcode + "','" + Convert.ToInt32(type) + "','" + slno + "'");
                     if (dr.Rows.Count > 0)
                     {
                         if (Convert.ToInt32(dr.Rows[0]["RES"]) == 0)
@@ -81,6 +81,24 @@ namespace Project.Service.Controllers
                             return response;
                         }
 
+                        else if (Convert.ToInt32(dr.Rows[0]["RES"]) == 3)
+                        {
+                            alldcr.Add(new QrScans
+                            {
+                                result = false,
+                                message = "Qr Allready Scanned",
+                                servertime = DateTime.Now.ToString(),
+                                data = item,
+                            });
+                            data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+                            response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                            return response;
+                        }
+
+
                         // qr and  item found
                         else
                         {
@@ -100,6 +118,9 @@ namespace Project.Service.Controllers
                                 problem = Problem,
                                 itemName = Convert.ToString(dr.Rows[0]["itemname"]),
                                 ItemId = Convert.ToString(dr.Rows[0]["itemid"]),
+                                HeadID = Convert.ToString(dr.Rows[0]["HeadID"]),
+                                QRCODE = Convert.ToString(dr.Rows[0]["QRCODE"]),
+                                QrSlno = Convert.ToString(dr.Rows[0]["QrSlno"]),
                             });
 
                             item.Add(new data1

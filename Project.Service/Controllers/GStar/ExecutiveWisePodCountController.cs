@@ -33,7 +33,7 @@ namespace Project.Service.Controllers
                     List<GetPodCount> alldcr = new List<GetPodCount>();
                     List<PodCountData> alldcr1 = new List<PodCountData>();
 
-                    var dr = g2.return_dr("execwisepodtcount'" + ula.ExId + "','" + ula.FromDate + "','" + ula.ToDate + "'");
+                    var dr = g2.return_dr("execwisepodtcount'" + ula.ExId + "','" + ula.FromDate + "','" + ula.ToDate + "','" + ula.Cin + "','" + ula.Hierarchy + "'");
 
                     if (dr.HasRows)
                     {

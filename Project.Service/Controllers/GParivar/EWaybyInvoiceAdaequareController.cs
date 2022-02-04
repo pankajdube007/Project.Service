@@ -275,10 +275,10 @@ namespace Project.Service.Controllers
             {
                 output = "Not a valid Transport Date";
             }
-            else if (string.IsNullOrEmpty(dr3.Rows[0]["VehNo"].ToString()))
-            {
-                output = "Not a valid Vehical No.";
-            }
+            //else if (string.IsNullOrEmpty(dr3.Rows[0]["VehNo"].ToString()))
+            //{
+            //    output = "Not a valid Vehical No.";
+           // }
             else if (string.IsNullOrEmpty(dr3.Rows[0]["ExpShipAddr1"].ToString()))
             {
                 output = "Not a valid shipping Address";

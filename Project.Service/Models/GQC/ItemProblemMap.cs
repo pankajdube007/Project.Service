@@ -9,6 +9,8 @@ namespace Project.Service.Models
         [Required]
         public string QrCode { get; set; }
         [Required]
+        public string itemid { get; set; }
+        [Required]
         public string ClientSecret { get; set; }
         [Required]
         public object ProblemDetails { get; set; }

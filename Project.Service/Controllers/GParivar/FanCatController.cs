@@ -69,6 +69,7 @@ namespace Project.Service.Controllers
                                     viewScheme = string.IsNullOrEmpty(dr1["scheme"].ToString().Trim(',')) ? "" : (baseurl + "fancomboscheme/" + dr1["scheme"].ToString().Trim(',')),
                                     isactive = Convert.ToString(dr1["isactive"]),
                                     isbranchactive = Convert.ToString(dr1["isbranchactive"]),
+                                    isasiatourselect=Convert.ToString(dr1["isasiatourselect"]),
                                     msg = Convert.ToString(dr1["msg"]),
                                 });
                             }

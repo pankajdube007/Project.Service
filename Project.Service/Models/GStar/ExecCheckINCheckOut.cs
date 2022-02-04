@@ -60,6 +60,16 @@ namespace Project.Service.Models
         public string CheckOutLong { get; set; }
         public string orgid { get; set; }
         public string orgcat { get; set; }
+
+        public string orgCate { get; set; }
+        public string orgName { get; set; } 
+        public string orgId { get; set; } 
+        public string orgCatId { get; set; }
+        public string checkInTime { get; set; } 
+        public string checkOutTime { get; set; } 
+        public string slno { get; set; }
+        public string distnce { get; set; }
+
     }
 
     //public class ExecCheckINCheckOut

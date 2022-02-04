@@ -34,6 +34,7 @@ namespace Project.Service.Models
         public string viewScheme { get; set; }
         public string isactive { get; set; }
         public string isbranchactive { get; set; }
+        public string  isasiatourselect { get; set; }
         public string msg { get; set; }
     }
 

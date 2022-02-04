@@ -9,40 +9,44 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
+
 namespace Project.Service.Controllers
 {
-    public class TodayDivisionwiseSaleController : ApiController
+    public class ShowRoomListController : ApiController
     {
+
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetTodaySaleDivisionwise")]
-        public HttpResponseMessage GetDetails(ListofTodayDivisionwiseSale ula)
+        [Route("api/getShowRoomList")]
+        public HttpResponseMessage GetDetails(ShowRoomList ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
-            //if (ula.Category == "Management")
-            //{
+
+            if (ula.ExId != 0)
+            {
                 try
                 {
                     string data1;
 
-                    List<TodayDivisionwiseSales> alldcr = new List<TodayDivisionwiseSales>();
-                    List<TodayDivisionwiseSale> alldcr1 = new List<TodayDivisionwiseSale>();
-
-                    var dr = g1.return_dr("TodayInvoiceReportManagementdivisionwsise '" + ula.fromdate+"','"+ula.todate+ "','" + ula.CIN + "','" + ula.Category + "'");
+                    List<ShowRoomAppLists> alldcr = new List<ShowRoomAppLists>();
+                    List<ShowRoomAppList> alldcr1 = new List<ShowRoomAppList>();
+                    var dr = g1.return_dr("showroomlistapp '" + ula.ExId + "'");
 
                     if (dr.HasRows)
                     {
+
                         while (dr.Read())
                         {
-                            alldcr1.Add(new TodayDivisionwiseSale
+                            alldcr1.Add(new ShowRoomAppList
                             {
-                                divisionnm = Convert.ToString(dr["divisionnm"].ToString()),
-                                amount = Convert.ToString(dr["saleamt"].ToString()),
+                                Slno = Convert.ToInt32(dr["SlNo"]),
+                                ShowRoomName = dr["Name"].ToString(),
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new TodayDivisionwiseSales
+                        alldcr.Add(new ShowRoomAppLists
                         {
                             result = true,
                             message = string.Empty,
@@ -60,7 +64,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -68,18 +72,18 @@ namespace Project.Service.Controllers
                 catch (Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
 
                     return response;
                 }
-            //}
-            //else
-            //{
-            //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-            //    response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
+            }
+            else
+            {
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+                response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
 
-            //    return response;
-            //}
+                return response;
+            }
         }
     }
 }

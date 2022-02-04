@@ -27,21 +27,21 @@ namespace Project.Service.Controllers
                     string data1;
                     List<FanComboLists> alldcr = new List<FanComboLists>();
                     List<FanComboList> alldcr1 = new List<FanComboList>();
-                    var dr = g1.return_dr("fancombolist '" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("FanComboListApp '" + ula.CIN + "','" + ula.Category + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
                             alldcr1.Add(new FanComboList
                             {
-                                HomeBranch = Convert.ToString(dr["HomeBranch"].ToString()),
-                                noofcombo = Convert.ToString(dr["noofcombo"].ToString()),
-                                slno = Convert.ToString(dr["slno"].ToString()),
-                                displaynmwitharea = Convert.ToString(dr["displaynmwitharea"].ToString()),
-                                salesexname = Convert.ToString(dr["salesexname"].ToString()),
-                                partycontactno = Convert.ToString(dr["partycontactno"].ToString()),
-                                execcontactno = Convert.ToString(dr["execcontactno"].ToString()),
-                                bookingdate = Convert.ToString(dr["bookingdate"].ToString()),
+                                HomeBranch = dr["HomeBranch"].ToString(),
+                                noofcombo =dr["noofcombo"].ToString(),
+                                slno =dr["slno"].ToString(),
+                                displaynmwitharea = dr["displaynmwitharea"].ToString(),
+                                salesexname = dr["salesexname"].ToString(),
+                                partycontactno = dr["partycontactno"].ToString(),
+                                execcontactno = dr["execcontactno"].ToString(),
+                                bookingdate = dr["bookingdate"].ToString(),
 
 
                             });

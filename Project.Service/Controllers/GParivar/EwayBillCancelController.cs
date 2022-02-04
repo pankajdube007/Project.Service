@@ -40,7 +40,7 @@ namespace Project.Service.Controllers
                             cancelRmrk = "Cencel by production"
                         });
 
-                        var dr5 = g2.return_dt("EwayBillGenerateHeader " + ula.slno + ",1");
+                        var dr5 = g2.return_dt("EwayBillGenerateHeader " + ula.slno + ","+ula.type);
                         if (dr5.Rows.Count > 0)
                         {
 
@@ -92,7 +92,7 @@ namespace Project.Service.Controllers
                                
                                 if (_output.success = true && _output.message == "E-Way Bill is cancelled successfully")
                                 {
-                                    var dr1 = g2.return_dr("Ewaybillcancel " + ula.slno + ",'" + ula.ewaybillno + "','" + ula.userid + "'");
+                                    var dr1 = g2.return_dr("Ewaybillcancel " + ula.slno + ",'" + ula.ewaybillno + "','" + ula.userid + "',"+ula.type);
                                     if (dr1.HasRows)
                                     {
                                         g2.close_connection();

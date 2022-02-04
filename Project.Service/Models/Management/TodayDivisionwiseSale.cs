@@ -39,6 +39,8 @@ namespace Project.Service.Models
 {
         public string divisionnm { get; set; }
         public string amount { get; set; }
+        public int divisionid { get; set; }
+        
 
     }
 }

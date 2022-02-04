@@ -11,6 +11,7 @@ namespace Project.Service.Models
         [Required] public int userid { get; set; }
         [Required] public string ClientSecret { get; set; }
         [Required] public int slno { get; set; }
+       [Required] public int type { get; set; }
     }
 
 
@@ -98,5 +99,6 @@ namespace Project.Service.Models
         public string drivername { get; set; }
         public string driverlicence { get; set; }
         public string logno { get; set; }
+        public int type { get; set; }
     }
 }

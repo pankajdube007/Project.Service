@@ -12,6 +12,7 @@ namespace Project.Service.Models
         [Required] public string ClientSecret { get; set; }
         [Required] public int slno { get; set; }
         [Required] public string ewaybillno { get; set; }
+        [Required] public int type { get; set; }
     }
 
     public class EwayBillCancel
