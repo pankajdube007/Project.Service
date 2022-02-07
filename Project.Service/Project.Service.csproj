@@ -296,6 +296,7 @@
     <Compile Include="App_Start\FileUpload\IsFileSizeAllowedArgs.cs" />
     <Compile Include="App_Start\FileUpload\IsMimeTypeAllowedArgs.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\General\WhatsappController.cs" />
     <Compile Include="Controllers\GParivar\BannerImgController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDealerDeviceController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDeviceLogoutController.cs" />
@@ -684,6 +685,7 @@
     <Compile Include="Controllers\GParivar\VisitorCatListController.cs" />
     <Compile Include="Controllers\GParivar\VisitorController.cs" />
     <Compile Include="Controllers\GParivar\VisitorDivisionController.cs" />
+    <Compile Include="Models\General\Whatsapp.cs" />
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />
     <Compile Include="Models\GParivar\AddPod.cs" />
