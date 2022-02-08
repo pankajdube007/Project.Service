@@ -89,7 +89,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "Please contact to concern person to activate online payment!!!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
