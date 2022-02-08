@@ -33,7 +33,10 @@ namespace Project.Service.Models
 
         public int IsTimeMismatch { get; set; }
 
-        public decimal distance { get; set; }
+        public decimal Distance { get; set; }
+
+
+        public string Address { get; set; }
 
     }
 }

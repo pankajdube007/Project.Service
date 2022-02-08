@@ -22,7 +22,7 @@ namespace Project.Service.Controllers
                 try
                 {
                     DateTime presentdates = DateTime.Now;
-                    int row = g2.ExecDB("exec AppExecutiveAttendancecopy " + pa.ExId + ",2,'" + pa.Present + "','" + pa.Remark + "','" + presentdates + "','" + pa.IP + "','" + pa.Lat + "','" + pa.Long + "','" + pa.DeviceId + "'," + pa.Type + ",'" + pa.time + "','" + Convert.ToBoolean(pa.IsTimeMismatch) + "','" + pa.distance + "'");
+                    int row = g2.ExecDB("exec AppExecutiveAttendancecopy " + pa.ExId + ",2,'" + pa.Present + "','" + pa.Remark + "','" + presentdates + "','" + pa.IP + "','" + pa.Lat + "','" + pa.Long + "','" + pa.DeviceId + "'," + pa.Type + ",'" + pa.time + "','" + Convert.ToBoolean(pa.IsTimeMismatch) + "','" + pa.Distance + "','" + pa.Address + "'");
                     g2.close_connection();
 
                     if (row > 0)
