@@ -353,6 +353,7 @@
     <Compile Include="Controllers\GStar\ExecWiseFavItemController.cs" />
     <Compile Include="Controllers\GStar\ExecWisePartyWiseItemQtyController.cs" />
     <Compile Include="Controllers\GStar\GetDealerContactExecutiveNewController.cs" />
+    <Compile Include="Controllers\GStar\GetExecutiveWiseNewYearBonazaController.cs" />
     <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
     <Compile Include="Controllers\GStar\MediaListController.cs" />
     <Compile Include="Controllers\GStar\NewArrivalDetailsController.cs" />
@@ -390,7 +391,6 @@
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockDetailsController.cs" />
     <Compile Include="Controllers\Management\BlockedPartyController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
-    <Compile Include="Controllers\Management\GetExecutiveWiseNewYearBonazaController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
     <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
     <Compile Include="Controllers\Management\SignUpController.cs" />
@@ -746,6 +746,7 @@
     <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
+    <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
     <Compile Include="Models\GStar\MediaDetails.cs" />
     <Compile Include="Models\GStar\MediaList.cs" />
     <Compile Include="Models\GStar\NewArrivalDetails.cs" />
@@ -756,7 +757,6 @@
     <Compile Include="Models\GStar\StockAvailibility.cs" />
     <Compile Include="Models\hrm\AttendenceSync.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
-    <Compile Include="Models\Management\GetExecutiveWiseNewYearBonaza.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
     <Compile Include="Models\Management\SignUp.cs" />

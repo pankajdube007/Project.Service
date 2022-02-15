@@ -59,6 +59,8 @@ namespace Project.Service
                                 CartoonQty = dr["cartonqty"].ToString(),
                                 BoxQty = dr["boxqty"].ToString(),
                                 Unitnm = dr["unitnm"].ToString(),
+                                Stock = dr["stock"].ToString(),
+                                Pending = dr["pending"].ToString(),
                             });
                         }
                         g1.close_connection();

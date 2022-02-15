@@ -48,5 +48,7 @@ namespace Project.Service.Models
         public string CartoonQty { get; set; }
         public string BoxQty { get; set; }
         public string Unitnm { get; set; }
+        public string Stock { get; set; }
+        public string Pending { get; set; }
     }
 }

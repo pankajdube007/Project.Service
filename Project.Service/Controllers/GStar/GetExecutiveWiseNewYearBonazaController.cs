@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
                     List<ExecutiveWiseNewYearBonaza> alldcr = new List<ExecutiveWiseNewYearBonaza>();
                     List<ExecutiveWiseNewYearBonazas> alldcr1 = new List<ExecutiveWiseNewYearBonazas>();
                     List<ExecutiveWiseNewYearBonazaFinal> YearBonaza = new List<ExecutiveWiseNewYearBonazaFinal>();
-                    var dr = g1.return_dt("execwiseNewYearbonanzaSchemeWeb " + ula.ExId + "," + ula.index + "," + ula.Count);
+                    var dr = g1.return_dt("execwiseNewYearbonanzaSchemeWeb " + ula.ExId + "," + ula.index + "," + ula.Count + "," + ula.CIN);
                     bool more = false;
                     if (dr.Rows.Count > 0)
                     {

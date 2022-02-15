@@ -21,6 +21,9 @@ namespace Project.Service.Models
 
         [Required]
         public int Count { get; set; }
+
+        [Required]
+        public string CIN { get; set; }
     }
 
     public class ExecutiveWiseNewYearBonaza
