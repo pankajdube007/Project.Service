@@ -9,13 +9,13 @@ namespace Project.Service.Models.Manch.Status
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid CIN")]
         public string CIN { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid From date")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid RequestId")]
         public string RequestId { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid To date")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid StatusCode")]
         public string StatusCode { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid To date")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide a valid StatusMessage")]
         public string StatusMessage { get; set; }
     }
 

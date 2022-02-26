@@ -57,16 +57,28 @@ namespace Project.Service.Controllers.eSign
                 // TODO: Any further validation
                 try
                 {
-                    var dt = g1.return_dt("getSaleLedgerBalance_Esign '"+ signLedgerInputModel.CIN+"','"+ signLedgerInputModel.ToDate+"'");
+                    var dt = g1.return_dt("getSaleLedgerBalance_Esign '"+ signLedgerInputModel.CIN + "','"+ signLedgerInputModel.FromDate+"','"+ signLedgerInputModel.ToDate+"'");
 
                     List<SignLedgerOutputModelLINK> alldcr = new List<SignLedgerOutputModelLINK>();
                     List<SignLedgerOutputModel> result = new List<SignLedgerOutputModel>();
 
 
+                    string amount = "0";
+                    string link = "";
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        amount = dt.Rows[0]["balance"].ToString();
+                        link = dt.Rows[0]["link"].ToString();
+
+                    }
+
+
+
                     alldcr.Add(new SignLedgerOutputModelLINK
                     { 
-                        link="",
-                        amount=dt.Rows[0]["balance"].ToString()
+                        link= link,
+                        amount= amount
                     });
 
                     
@@ -125,17 +137,14 @@ namespace Project.Service.Controllers.eSign
 
                     var dr = g1.return_dt("esignledgerreport '" + signLedgerReportInputModel.CIN+"'");
 
+                    var dr1 = g1.return_dt("esignledgerActive '" + signLedgerReportInputModel.CIN + "'");
+
+
 
                     bool isactive = false;
 
-                    if (String.IsNullOrEmpty(dr.Rows[0]["stat"].ToString()))
-                    {
-                        isactive = false;
-                    }
-                    else
-                    {
-                        isactive = Convert.ToBoolean(dr.Rows[0]["stat"]);
-                    }
+                    if (dr1.Rows.Count > 0)
+                    { isactive = true; }
 
 
                     status.Add(new SignLedgerstatus
@@ -145,17 +154,10 @@ namespace Project.Service.Controllers.eSign
 
 
 
-
                     if (dr.Rows.Count>0)
 
                     {
-
-                        status.Add(new SignLedgerstatus
-                        {
-                            Isactive= Convert.ToBoolean(dr.Rows[0]["stat"])
-                        });
-
-
+                      
 
                         for (int i = 0; i < dr.Rows.Count; i++)
                        
@@ -196,11 +198,30 @@ namespace Project.Service.Controllers.eSign
                     }
                     else
                     {
-                        HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.OK);
-                        response2.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8,
-                            "application/json");
 
-                        return response2;
+                     
+                        data.Add(new SignLedgerReportData
+                        {
+                            signdata = alldcr1,
+                            status = status
+                        });
+
+
+                        result.Add(new SignLedgerReportOutputModel
+                        {
+                            result = true,
+                            message = string.Empty,
+                            servertime = DateTime.Now.ToString(),
+                            data = data,
+                        });
+
+
+                        data1 = JsonConvert.SerializeObject(result, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
+                        response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                        return response;
                     }
 
                 
@@ -397,6 +418,7 @@ namespace Project.Service.Controllers.eSign
                             {
                                 using (var stream = response.Content.ReadAsStreamAsync().Result)
                                 {
+                                   // var stream1 = response.Content.ReadAsStreamAsync().Result;
                                     if (response.IsSuccessStatusCode)
                                     {
                                         var manchTransactionResponse =
@@ -416,16 +438,20 @@ namespace Project.Service.Controllers.eSign
                                                 client1.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                                                 //using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{manchTransactionResponse.data.documents[0].documentStorageId}/content").Result)
-                                                using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/ content").Result)
-                                                {
-                                                    //TODO: Upload to blob
-                                                    var BLOB_DIRECTORY_NAME =
-                           $"{string.Format(FILE_DIRECTORY_NAME, statusAckInputModel.CIN, DateTime.Now.ToString("dd-mm-yyyy"))}/signed";
+
+                                                if (client1.GetAsync($"{_baseUrl}/api/documents/{documentId}/content").Result.IsSuccessStatusCode)
+                                                 {
+                                                    // var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result;
+                                                    using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result)
+                                                    {
+                                                        //TODO: Upload to blob
+                                                        var BLOB_DIRECTORY_NAME =
+                                                        $"{string.Format(FILE_DIRECTORY_NAME, statusAckInputModel.CIN, DateTime.Now.ToString("dd-mm-yyyy"))}/signed";
 
                                                     var _goldMedia = new GoldMedia();
                                                     Dictionary<bool, string> retStr;
 
-                                                    retStr = _goldMedia.GoldMediaUpload(manchTransactionResponse.data.documents[0].documentType, BLOB_DIRECTORY_NAME, string.Empty, ms,
+                                                    retStr = _goldMedia.GoldMediaUpload(manchTransactionResponse.data.documents[0].documentType + DateTime.Now.ToString("HHmmss"), BLOB_DIRECTORY_NAME, string.Empty, ms,
                                                         "application/pdf", false);
                                                     if (retStr.Keys.FirstOrDefault())
                                                     {
@@ -469,22 +495,63 @@ namespace Project.Service.Controllers.eSign
 
                                                         return response2;
                                                     }
+                                                        else
+                                                        {
+                                                            HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+                                                            response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"), Encoding.UTF8, "application/json");
+
+                                                            return response;
+                                                        }
+                                                    }
                                                 }
+
+                                                else
+                                                {
+                                                    HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+                                                    response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"), Encoding.UTF8, "application/json");
+
+                                                    return response4;
+                                                }
+
                                             }
+                                        }
+
+                                        else
+                                        {
+                                            HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+                                            response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!" ), Encoding.UTF8, "application/json");
+
+                                            return response4;
                                         }
                                     }
 
-                                    var content = StreamToStringAsync(stream).Result;
-                                    var statusCode = response.StatusCode;
+                                    else
+                                    {
+                                        HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+                                        response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"+ response.IsSuccessStatusCode.ToString()), Encoding.UTF8, "application/json");
 
-                                    HttpResponseMessage response3 = Request.CreateResponse(HttpStatusCode.OK);
-                                    response3.Content = new StringContent(cm.StatusTime(false, $"Status Code:{statusCode}  Content:{content}"), Encoding.UTF8, "application/json");
+                                        return response4;
+                                    }
 
-                                    return response3;
+                                    //// var content = StreamToStringAsync(response.Content.ReadAsStreamAsync().Result).Result;
+                                    //var statusCode = response.StatusCode;
+
+                                    //HttpResponseMessage response3 = Request.CreateResponse(HttpStatusCode.OK);
+                                    //response3.Content = new StringContent(cm.StatusTime(false, $"Status Code:{statusCode}"), Encoding.UTF8, "application/json");
+
+                                    //return response3;
                                 }
                             }
                         }
                         //
+                        
+                    }
+                    else
+                    {
+                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Not a Valid Transaction!!!!!" ), Encoding.UTF8, "application/json");
+
+                        return response;
                     }
                 }
                 catch (Exception ex)
@@ -502,10 +569,10 @@ namespace Project.Service.Controllers.eSign
 
                 return response;
             }
-            HttpResponseMessage response5 = Request.CreateResponse(HttpStatusCode.OK);
-            response5.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
+            //HttpResponseMessage response5 = Request.CreateResponse(HttpStatusCode.OK);
+            //response5.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
 
-            return response5;
+            //return response5;
         }
 
         private static string GetFilePath(string virtualPath)

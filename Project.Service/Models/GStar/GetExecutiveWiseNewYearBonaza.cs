@@ -22,7 +22,7 @@ namespace Project.Service.Models
         [Required]
         public int Count { get; set; }
 
-        [Required]
+       
         public string CIN { get; set; }
     }
 
@@ -47,16 +47,16 @@ namespace Project.Service.Models
         public string areanm { get; set; }
         public string cin { get; set; }
         public string salesexname { get; set; }
-        public decimal WD { get; set; }
-        public decimal WDPOINTS { get; set; }
-        public decimal LI { get; set; }
-        public decimal LIPOINTS { get; set; }
-        public decimal mcb { get; set; }
-        public decimal mcbPOINTS { get; set; }
-        public decimal WC { get; set; }
-        public decimal WCPOINTS { get; set; }
-        public decimal TotalSale { get; set; }
-        public decimal TotalPOINTS { get; set; }
+        public string WD { get; set; }
+        public string WDPOINTS { get; set; }
+        public string LI { get; set; }
+        public string LIPOINTS { get; set; }
+        public string mcb { get; set; }
+        public string mcbPOINTS { get; set; }
+        public string WC { get; set; }
+        public string WCPOINTS { get; set; }
+        public string TotalSale { get; set; }
+        public string TotalPOINTS { get; set; }
         public string CurrentSlab { get; set; }
         public string nextSlab { get; set; }
 

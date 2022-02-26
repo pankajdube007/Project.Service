@@ -28,7 +28,9 @@ namespace Project.Service.Controllers
                     List<ExecutiveWiseNewYearBonaza> alldcr = new List<ExecutiveWiseNewYearBonaza>();
                     List<ExecutiveWiseNewYearBonazas> alldcr1 = new List<ExecutiveWiseNewYearBonazas>();
                     List<ExecutiveWiseNewYearBonazaFinal> YearBonaza = new List<ExecutiveWiseNewYearBonazaFinal>();
-                    var dr = g1.return_dt("execwiseNewYearbonanzaSchemeWeb " + ula.ExId + "," + ula.index + "," + ula.Count + "," + ula.CIN);
+                    var dr = g1.return_dt("execwiseNewYearbonanzaSchemeWeb " + ula.ExId + "," + ula.index + "," + ula.Count + ",'" + ula.CIN + "'");
+
+
                     bool more = false;
                     if (dr.Rows.Count > 0)
                     {
@@ -50,16 +52,16 @@ namespace Project.Service.Controllers
                                 areanm = Convert.ToString(dr.Rows[i]["areanm"].ToString()),
                                 cin = Convert.ToString(dr.Rows[i]["cin"].ToString()),
                                 salesexname = dr.Rows[i]["salesexname"].ToString(),
-                                WD = Convert.ToDecimal(dr.Rows[i]["WD"]),
-                                WDPOINTS = Convert.ToDecimal(dr.Rows[i]["WDPOINTS"]),
-                                LI = Convert.ToDecimal(dr.Rows[i]["LI"]),
-                                LIPOINTS = Convert.ToDecimal(dr.Rows[i]["LIPOINTS"]),
-                                mcb = Convert.ToDecimal(dr.Rows[i]["mcb"]),
-                                mcbPOINTS = Convert.ToDecimal(dr.Rows[i]["mcbPOINTS"]),
-                                WC = Convert.ToDecimal(dr.Rows[i]["WC"]),
-                                WCPOINTS = Convert.ToDecimal(dr.Rows[i]["WCPOINTS"]),
-                                TotalSale = Convert.ToDecimal(dr.Rows[i]["TotalSale"]),
-                                TotalPOINTS = Convert.ToDecimal(dr.Rows[i]["TotalPOINTS"]),
+                                WD = Convert.ToString(dr.Rows[i]["WD"]),
+                                WDPOINTS = Convert.ToString(dr.Rows[i]["WDPOINTS"]),
+                                LI = Convert.ToString(dr.Rows[i]["LI"]),
+                                LIPOINTS = Convert.ToString(dr.Rows[i]["LIPOINTS"]),
+                                mcb = Convert.ToString(dr.Rows[i]["mcb"]),
+                                mcbPOINTS = Convert.ToString(dr.Rows[i]["mcbPOINTS"]),
+                                WC = Convert.ToString(dr.Rows[i]["WC"]),
+                                WCPOINTS = Convert.ToString(dr.Rows[i]["WCPOINTS"]),
+                                TotalSale = Convert.ToString(dr.Rows[i]["TotalSale"]),
+                                TotalPOINTS = Convert.ToString(dr.Rows[i]["TotalPOINTS"]),
                                 CurrentSlab = dr.Rows[i]["CurrentSlab"].ToString(),
                                 nextSlab = dr.Rows[i]["nextSlab"].ToString(),
                             });

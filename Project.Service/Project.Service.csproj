@@ -336,6 +336,8 @@
     <Compile Include="Controllers\GParivar\AddLatLonOrganationController.cs" />
     <Compile Include="Controllers\GParivar\AddsalereturnrequestitemController.cs" />
     <Compile Include="Controllers\GParivar\AddVisitorController.cs" />
+    <Compile Include="Controllers\GStar\AppExecutiveEnquiryListController.cs" />
+    <Compile Include="Controllers\GStar\AppExecutiveEnquiryResponseController.cs" />
     <Compile Include="Controllers\GStar\ExecAttendanceController.cs" />
     <Compile Include="Controllers\GStar\ExecCheckInOutListController.cs" />
     <Compile Include="Controllers\GStar\ExecFanComboDetailsController.cs" />
@@ -730,6 +732,8 @@
     <Compile Include="Models\GParivar\BranchwiseAttCount.cs" />
     <Compile Include="Models\GParivar\Branchwiseattdetails.cs" />
     <Compile Include="Models\GParivar\BranchWiseComboCount.cs" />
+    <Compile Include="Models\GStar\AppExecutiveEnquiryResponse.cs" />
+    <Compile Include="Models\GStar\AppExecutivrEnquiryList.cs" />
     <Compile Include="Models\GStar\BranchWiseExecWiseDivWiseTarget.cs" />
     <Compile Include="Models\GStar\BranchWiseExeSaleAndCost.cs" />
     <Compile Include="Models\GStar\BranchWiseExpense.cs" />
