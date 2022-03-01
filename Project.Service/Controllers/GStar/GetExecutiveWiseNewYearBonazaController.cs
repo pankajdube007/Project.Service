@@ -47,8 +47,8 @@ namespace Project.Service.Controllers
                         {
                             alldcr1.Add(new ExecutiveWiseNewYearBonazas
                             {
-                                Party = dr.Rows[i]["Party"].ToString(),
-                                mobile = dr.Rows[i]["mobile"].ToString(),
+                                Party = Convert.ToString(dr.Rows[i]["Party"].ToString()),
+                                mobile = Convert.ToString(dr.Rows[i]["mobile"].ToString()),
                                 areanm = Convert.ToString(dr.Rows[i]["areanm"].ToString()),
                                 cin = Convert.ToString(dr.Rows[i]["cin"].ToString()),
                                 salesexname = dr.Rows[i]["salesexname"].ToString(),

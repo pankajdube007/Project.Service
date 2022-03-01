@@ -189,8 +189,9 @@ namespace Project.Service
                     NewYearScheme = "getNewYearScheme",
                     DeactivateDealerBank = "DeactivateDealerBank",
                     DeactivateDealerBankHistory = "DeactivateDealerBankHistory",
-
-                   
+                    ExecutiveWiseNewYearBonaza = "getExecutiveWiseNewYearBonaza",
+                    verifysigndocument = "verify-sign-document",
+                    ValidateVendorPayment = "ValidateVendorPayment"
                 });
 
                 // g1.close_connection();

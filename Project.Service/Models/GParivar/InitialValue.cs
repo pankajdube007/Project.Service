@@ -160,5 +160,8 @@ namespace Project.Service.Models
         public string NewYearScheme { get; set; }
         public string DeactivateDealerBank { get; set; }
         public string DeactivateDealerBankHistory { get; set; }
+        public string ExecutiveWiseNewYearBonaza { get; set; }
+        public string verifysigndocument { get; set; }
+        public string ValidateVendorPayment { get; set; }
     }
 }

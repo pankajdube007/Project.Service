@@ -508,7 +508,7 @@ namespace Project.Service.Controllers.eSign
                                                 else
                                                 {
                                                     HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
-                                                    response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"), Encoding.UTF8, "application/json");
+                                                    response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong or duplicate Request!!!!!"), Encoding.UTF8, "application/json");
 
                                                     return response4;
                                                 }
