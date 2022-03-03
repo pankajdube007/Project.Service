@@ -395,6 +395,7 @@
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
     <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
+    <Compile Include="Controllers\Management\SalesOrderPartyStatusController.cs" />
     <Compile Include="Controllers\Management\SignUpController.cs" />
     <Compile Include="Controllers\Management\TodayDivisionwiseSaleController.cs" />
     <Compile Include="Controllers\Vendor\CancelVendorPaymentController.cs" />
@@ -763,6 +764,7 @@
     <Compile Include="Models\Management\ChangePassword.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
+    <Compile Include="Models\Management\SalesOrderPartyStatus.cs" />
     <Compile Include="Models\Management\SignUp.cs" />
     <Compile Include="Models\Management\TodayDivisionwiseSale.cs" />
     <Compile Include="Models\Vendor\Appvendorsalependingorder.cs" />
