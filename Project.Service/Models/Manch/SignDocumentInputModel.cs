@@ -102,6 +102,7 @@ namespace Project.Service.Models.Manch
         
         public string link { get; set; }
         public string amount { get; set; }
+        public bool IsExists { get; set; }
     }
 
 

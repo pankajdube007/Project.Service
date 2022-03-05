@@ -63,13 +63,15 @@ namespace Project.Service.Controllers.eSign
                     List<SignLedgerOutputModel> result = new List<SignLedgerOutputModel>();
 
 
-                    string amount = "0";
-                    string link = "";
+                    string _amount = "0";
+                    string _link = "";
+                    bool _isExist = false;
 
                     if (dt.Rows.Count > 0)
                     {
-                        amount = dt.Rows[0]["balance"].ToString();
-                        link = dt.Rows[0]["link"].ToString();
+                        _amount = dt.Rows[0]["balance"].ToString();
+                        _link = dt.Rows[0]["link"].ToString();
+                        _isExist = Convert.ToBoolean(dt.Rows[0]["Isexist"]);
 
                     }
 
@@ -77,8 +79,9 @@ namespace Project.Service.Controllers.eSign
 
                     alldcr.Add(new SignLedgerOutputModelLINK
                     { 
-                        link= link,
-                        amount= amount
+                        link= _link,
+                        amount= _amount,
+                        IsExists = _isExist
                     });
 
                     

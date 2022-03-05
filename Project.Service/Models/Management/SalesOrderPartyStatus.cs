@@ -44,7 +44,7 @@ namespace Project.Service.Models
         public string Total { get; set; }
         public string Url { get; set; }
         public string Uniquekey { get; set; }
-        
+        public string Status { get; set; }
 
     }
 }

@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
 
                     List<ListSalesOrderPartyStatuss> alldcr = new List<ListSalesOrderPartyStatuss>();
                     List<ListSalesOrderPartyStatus> alldcr1 = new List<ListSalesOrderPartyStatus>();
-                   
+
                     var dr = g1.return_dr("saleOrderSelectAllBranchApp '" + ula.CIN + "','" + ula.DivID + "','" + ula.Category + "','" + ula.Fromdate + "','" + ula.Todate + "'");
                     string baseurl = _goldMedia.MapPathToPublicUrl(string.Empty);
                     if (dr.HasRows)
@@ -40,7 +40,7 @@ namespace Project.Service.Controllers
                             alldcr1.Add(new ListSalesOrderPartyStatus
                             {
                                 Slno = Convert.ToInt32(dr["slno"].ToString()),
-                                PartyID= Convert.ToInt32(dr["partyid"].ToString()),
+                                PartyID = Convert.ToInt32(dr["partyid"].ToString()),
                                 PONO = Convert.ToString(dr["ponum"].ToString()),
                                 PoDate = Convert.ToString(dr["podttime"].ToString()),
                                 PoStatus = Convert.ToString(dr["postatus"].ToString()),
@@ -48,8 +48,9 @@ namespace Project.Service.Controllers
                                 Branch = Convert.ToString(dr["Branch"].ToString()),
                                 Total = Convert.ToString(dr["finalamt"].ToString()),
                                 Uniquekey = Convert.ToString(dr["uniquekey"].ToString()),
-                                Url = WebConfigurationManager.AppSettings["ErpUrl"].ToString() + "salesorder-print.aspx?id=" + Convert.ToString(dr["slno"].ToString() + "&uniquekey=" + Convert.ToString(dr["uniquekey"].ToString()))
-                   
+                                Status = Convert.ToString(dr["status1"].ToString()),
+                                Url = WebConfigurationManager.AppSettings["ErpUrl"].ToString() + "salesorder-print.aspx?id=" + Convert.ToString(dr["slno"].ToString() + "&uniquekey=" + Convert.ToString(dr["uniquekey"].ToString()) + "&brnchname=" + Convert.ToString(dr["Branchid"].ToString()))
+
 
 
                             });
