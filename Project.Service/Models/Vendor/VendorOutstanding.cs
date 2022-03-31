@@ -42,6 +42,7 @@ namespace Project.Service.Models
         public string InvoiceDate { get; set; }
         public string DivisionName { get; set; }
         public string InvoiceAmt { get; set; }
+        public string outstadingamtAmt { get; set; }
         public string Payamt { get; set; }
         public string DueDays { get; set; }
         public string percent { get; set; }
@@ -51,6 +52,7 @@ namespace Project.Service.Models
     {
         public string totalinvoiceamt { get; set; }
         public string totalpayamt { get; set; }
+        public string totaloutstanding { get; set; }
     }
 
     }

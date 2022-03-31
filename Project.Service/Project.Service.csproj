@@ -313,10 +313,12 @@
     <Compile Include="Controllers\GParivar\ApprovalPendingUsersCountDaywiseController.cs" />
     <Compile Include="Controllers\GParivar\ApprovalPendingUsersDetailsController.cs" />
     <Compile Include="Controllers\GParivar\AppthirdpartypaymentController.cs" />
+    <Compile Include="Controllers\GParivar\BonanzaPriceListController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactivationController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactiveHistoryController.cs" />
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
+    <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
     <Compile Include="Controllers\GQC\ItemListForProblemController.cs" />
     <Compile Include="Controllers\GQC\ItemProblemMapController.cs" />
     <Compile Include="Controllers\GQC\ItemProblemVendorMappingController.cs" />
@@ -392,7 +394,9 @@
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockController.cs" />
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockDetailsController.cs" />
     <Compile Include="Controllers\Management\BlockedPartyController.cs" />
+    <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
+    <Compile Include="Controllers\Management\ItemCostingController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
     <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
     <Compile Include="Controllers\Management\SalesOrderPartyStatusController.cs" />
@@ -692,9 +696,11 @@
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />
     <Compile Include="Models\GParivar\AddPod.cs" />
+    <Compile Include="Models\GParivar\BonanzaPriceList.cs" />
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
+    <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />
     <Compile Include="Models\GParivar\RequestPartyChannelFinance.cs" />
     <Compile Include="Models\GQC\ItemListForProblem.cs" />
     <Compile Include="Models\GQC\ItemProblemMap.cs" />
@@ -761,7 +767,9 @@
     <Compile Include="Models\GStar\ShowRoomList.cs" />
     <Compile Include="Models\GStar\StockAvailibility.cs" />
     <Compile Include="Models\hrm\AttendenceSync.cs" />
+    <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
+    <Compile Include="Models\Management\ItemCosting.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
     <Compile Include="Models\Management\SalesOrderPartyStatus.cs" />

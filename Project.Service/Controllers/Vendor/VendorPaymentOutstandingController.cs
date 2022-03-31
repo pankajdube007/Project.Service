@@ -46,6 +46,7 @@ namespace Project.Service.Controllers
                                 InvoiceDate = Convert.ToString(dr.Rows[i]["invoicedate"].ToString()),
                                 DivisionName = Convert.ToString(dr.Rows[i]["divisionnm"].ToString()),                                
                                 InvoiceAmt = Convert.ToString(dr.Rows[i]["finalamount"].ToString()),
+                                outstadingamtAmt = Convert.ToString(dr.Rows[i]["outstandingamt"].ToString()),
                                 Payamt = Convert.ToString(dr.Rows[i]["payamount"].ToString()),
                                 DueDays = Convert.ToString(dr.Rows[i]["duedays"].ToString()),                               
                                 percent = Convert.ToString(dr.Rows[i]["interestrate"].ToString()),
@@ -59,6 +60,7 @@ namespace Project.Service.Controllers
                         {
                             totalinvoiceamt = Math.Round(Convert.ToDecimal(dr.Compute("SUM(finalamount)", string.Empty))).ToString(),
                             totalpayamt = Math.Round(Convert.ToDecimal(dr.Compute("SUM(payamount)", string.Empty))).ToString(),
+                            totaloutstanding = Math.Round(Convert.ToDecimal(dr.Compute("SUM(outstandingamt)", string.Empty))).ToString(),
                         });
 
 
