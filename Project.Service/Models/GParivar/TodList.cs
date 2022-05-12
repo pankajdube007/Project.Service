@@ -120,5 +120,9 @@ namespace Project.Service.Models
 
 
         public bool isAccept { get; set; }
+        public bool termAccept { get; set; }
+        public bool showTerm { get; set; }
+        public string terms { get; set; }
+        
     }
 }

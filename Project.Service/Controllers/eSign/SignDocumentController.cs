@@ -396,6 +396,7 @@ namespace Project.Service.Controllers.eSign
         {
             var g1 = new DataConnectionTrans();
             var cm = new Common();
+            var errorlog = "";
             if (statusAckInputModel.CIN != "")
             {
                 try
@@ -407,6 +408,7 @@ namespace Project.Service.Controllers.eSign
                     {
                         var transactionId = ledgerTable.Rows[0]["TransactionId"].ToString();
                         var documentId = ledgerTable.Rows[0]["DocumentId"].ToString();
+                        var documentLink = ledgerTable.Rows[0]["DocumentLink"].ToString();
                         //GET transaction status
 
                         var token = GenerateHMACSHA256(statusAckInputModel.RequestId);
@@ -417,13 +419,18 @@ namespace Project.Service.Controllers.eSign
                             client.DefaultRequestHeaders.Add("REQUEST-ID", statusAckInputModel.RequestId);
                             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                     
+
                             using (var response = client.GetAsync($"{_baseUrl}/api/transactions/{transactionId}/status").Result)
                             {
+                              
                                 using (var stream = response.Content.ReadAsStreamAsync().Result)
                                 {
-                                   // var stream1 = response.Content.ReadAsStreamAsync().Result;
+                                    
                                     if (response.IsSuccessStatusCode)
                                     {
+                                    
+
                                         var manchTransactionResponse =
                                             DeserializeJsonFromStream<TransactionStatus>(stream);
 
@@ -432,6 +439,7 @@ namespace Project.Service.Controllers.eSign
                                         {
                                             var token1 = GenerateHMACSHA256(statusAckInputModel.RequestId);
 
+                                   
                                             //Download and save document
                                             using (var client1 = new HttpClient())
                                             {
@@ -442,11 +450,18 @@ namespace Project.Service.Controllers.eSign
 
                                                 //using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{manchTransactionResponse.data.documents[0].documentStorageId}/content").Result)
 
+
+
                                                 if (client1.GetAsync($"{_baseUrl}/api/documents/{documentId}/content").Result.IsSuccessStatusCode)
                                                  {
                                                     // var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result;
+                                                  //  var ms2 = client1.GetStreamAsync($"{documentLink}/sign-url").Result
+
                                                     using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result)
                                                     {
+                                                        var ttt = DeserializeJsonFromStream<eSigned>(client1.GetAsync($"{documentLink}/sign-url").Result.Content.ReadAsStreamAsync().Result);
+
+                                                        var saveoutput = g1.return_dt($"exec updatePartyLedgerInfoForSignOutput '{statusAckInputModel.CIN}','{statusAckInputModel.RequestId}','{ttt.requestId+","+ttt.responseCode + "," + ttt.data.signedurl}'");
                                                         //TODO: Upload to blob
                                                         var BLOB_DIRECTORY_NAME =
                                                         $"{string.Format(FILE_DIRECTORY_NAME, statusAckInputModel.CIN, DateTime.Now.ToString("dd-mm-yyyy"))}/signed";
@@ -460,15 +475,20 @@ namespace Project.Service.Controllers.eSign
                                                     {
                                                         var filename = _goldMedia.MapPathToPublicUrl(retStr.Values.FirstOrDefault());
 
-                                                        var result = g1.ExecDB(
+       
+
+
+
+
+                                                            var result = g1.ExecDB(
                                                         $"exec UpdateStatusPartyLedgerInfoForSign '{statusAckInputModel.RequestId}'," +
                                                         $"'{manchTransactionResponse.data.transactionState}'," +
                                                         $"'{manchTransactionResponse.data.documents[0].documentURL}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].commonName}'" +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].title}'" +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].yob}'" +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].gender}'" +
-                                                        $"'{manchTransactionResponse.data.documents[0].signed}'" +
+                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].commonName}'," +
+                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].title}'," +
+                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].yob}'," +
+                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].gender}'," +
+                                                        $"'{manchTransactionResponse.data.documents[0].signed}'," +
                                                         $"'{filename}'");
 
                                                         //Send the document link to app as response

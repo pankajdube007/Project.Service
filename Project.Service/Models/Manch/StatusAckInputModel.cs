@@ -58,4 +58,16 @@ namespace Project.Service.Models.Manch.Status
         public string message { get; set; }
         public Data data { get; set; }
     }
+
+    public class eSigned
+    {
+        public string requestId { get; set; }
+        public string responseCode { get; set; }
+        public string message { get; set; }
+        public Data1 data { get; set; }
+    }
+    public class Data1
+    {
+        public string signedurl { get; set; }
+    }
 }

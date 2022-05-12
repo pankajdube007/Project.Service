@@ -365,6 +365,8 @@
     <Compile Include="Controllers\GStar\PresentCopyController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomDetailsController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomListController.cs" />
+    <Compile Include="Controllers\GStar\VehicleListController.cs" />
+    <Compile Include="Controllers\GStar\VehicleMstController.cs" />
     <Compile Include="Controllers\hrm\AttendenceSyncController.cs" />
     <Compile Include="Controllers\Management\AgentWisePartySecureAmtController.cs" />
     <Compile Include="Controllers\Management\AgentWiseSecureAmtController.cs" />
@@ -397,6 +399,7 @@
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
+    <Compile Include="Controllers\Management\PartyFianYearWiseDivSaleController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
     <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
     <Compile Include="Controllers\Management\SalesOrderPartyStatusController.cs" />
@@ -666,6 +669,8 @@
     <Compile Include="Controllers\Login\ValidateManufacturingUserController.cs" />
     <Compile Include="Controllers\Vendor\ItemListForVendorController.cs" />
     <Compile Include="Controllers\Vendor\ProblemListAllAssignToVendorController.cs" />
+    <Compile Include="Controllers\Vendor\PurchaseCreditNoteController.cs" />
+    <Compile Include="Controllers\Vendor\PurchaseDebitNoteController.cs" />
     <Compile Include="Controllers\Vendor\ValidateVendorPaymentController.cs" />
     <Compile Include="Controllers\Vendor\VendorBankDetailsController.cs" />
     <Compile Include="Controllers\Vendor\vendorhighestpurchaseitemwiseController.cs" />
@@ -766,10 +771,13 @@
     <Compile Include="Models\GStar\ShowRoomDetails.cs" />
     <Compile Include="Models\GStar\ShowRoomList.cs" />
     <Compile Include="Models\GStar\StockAvailibility.cs" />
+    <Compile Include="Models\GStar\VehicleList.cs" />
+    <Compile Include="Models\GStar\VehicleMst.cs" />
     <Compile Include="Models\hrm\AttendenceSync.cs" />
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
     <Compile Include="Models\Management\ItemCosting.cs" />
+    <Compile Include="Models\Management\PartyFinYearWiseDivSale.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
     <Compile Include="Models\Management\SalesOrderPartyStatus.cs" />
@@ -1268,6 +1276,8 @@
     <Compile Include="Models\Login\ValidateVendorPayment.cs" />
     <Compile Include="Models\Login\ValidationOther.cs" />
     <Compile Include="Models\GParivar\ValidAttribute.cs" />
+    <Compile Include="Models\Vendor\PurchaseCreditNote.cs" />
+    <Compile Include="Models\Vendor\purchasedebitnote.cs" />
     <Compile Include="Models\Vendor\VendorBankDetails.cs" />
     <Compile Include="Models\Vendor\vendorhighestpurchaseitemwise.cs" />
     <Compile Include="Models\Vendor\vendorHighestPurchasePoWise.cs" />

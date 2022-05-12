@@ -132,8 +132,8 @@ namespace Project.Service.Controllers
                 catch (Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    // response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
-                    response.Content = new StringContent(cm.StatusTime(false, "Kindly checkin/checkout using same device, that used for Punch In!!!!!!!!"), Encoding.UTF8, "application/json");
+                     response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                   // response.Content = new StringContent(cm.StatusTime(false, "Kindly checkin/checkout using same device, that used for Punch In!!!!!!!!"), Encoding.UTF8, "application/json");
 
                     return response;
                 }

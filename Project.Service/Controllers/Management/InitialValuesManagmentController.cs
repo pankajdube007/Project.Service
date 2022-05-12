@@ -19,7 +19,7 @@ namespace Project.Service.Controllers
         [Route("api/getInitialValueManagement")]
         public HttpResponseMessage GetDetails()
         {
-            //DataConection g1 = new DataConection();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
 
             try
@@ -29,11 +29,16 @@ namespace Project.Service.Controllers
                 List<InitialValuesMs> alldcr = new List<InitialValuesMs>();
                 List<InitialValuesM> alldcr1 = new List<InitialValuesM>();
 
+                var data = g1.return_dt("dbo.InitialApiManagement");
+
                 alldcr1.Add(new InitialValuesM
                 {
-                    versionCode = "1",
-                    versionNumber = "1.0.0",
-                    iosVersion = "1.7",
+                    versionCode = data.Rows[0]["versionCode"].ToString(),
+                    versionNumber = data.Rows[0]["versionNumber"].ToString(),
+                    iosVersion = data.Rows[0]["iosVersion"].ToString(),
+
+                    forceUpdate = Convert.ToBoolean(data.Rows[0]["forceUpdate"]),
+
                     divisionLastUpdated = "02/18/2019",
                     enquiryLastUpdated = "02/18/2019",
                     BaseApi = WebConfigurationManager.AppSettings["ApiUrl"].ToString(),
@@ -229,7 +234,7 @@ namespace Project.Service.Controllers
                     directDealerSpinAmountConfirmation= "DirectDealerSpinAmountConfirmation",
                     subcatimgdivwise= "getsubcatimgdivwise",
                     
-                    forceUpdate = true
+                  
                 });
 
                 // g1.close_connection();

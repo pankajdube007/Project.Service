@@ -28,5 +28,7 @@ namespace Project.Service.Models
 
    
         public int IsTimeMismatch { get; set; }
+
+        public string img { get; set; }
     }
 }

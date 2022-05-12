@@ -138,7 +138,10 @@ namespace Project.Service.Controllers
 
 
 
-                                isAccept = Convert.ToBoolean(dr["isAccept"])
+                                isAccept = Convert.ToBoolean(dr["isAccept"]),
+                                termAccept = Convert.ToBoolean(dr["termAccept"]),
+                                showTerm = Convert.ToBoolean(dr["showAccept"]),
+                                terms = Convert.ToString(dr["terms"])
 
                             });
                         }
