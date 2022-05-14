@@ -338,6 +338,7 @@
     <Compile Include="Controllers\GParivar\AddLatLonOrganationController.cs" />
     <Compile Include="Controllers\GParivar\AddsalereturnrequestitemController.cs" />
     <Compile Include="Controllers\GParivar\AddVisitorController.cs" />
+    <Compile Include="Controllers\GStar\AddTripController.cs" />
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryListController.cs" />
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryResponseController.cs" />
     <Compile Include="Controllers\GStar\ExecAttendanceController.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="Controllers\GStar\PresentCopyController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomDetailsController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomListController.cs" />
+    <Compile Include="Controllers\GStar\TripListController.cs" />
     <Compile Include="Controllers\GStar\VehicleListController.cs" />
     <Compile Include="Controllers\GStar\VehicleMstController.cs" />
     <Compile Include="Controllers\hrm\AttendenceSyncController.cs" />
@@ -744,6 +746,7 @@
     <Compile Include="Models\GParivar\BranchwiseAttCount.cs" />
     <Compile Include="Models\GParivar\Branchwiseattdetails.cs" />
     <Compile Include="Models\GParivar\BranchWiseComboCount.cs" />
+    <Compile Include="Models\GStar\AddTripDetails.cs" />
     <Compile Include="Models\GStar\AppExecutiveEnquiryResponse.cs" />
     <Compile Include="Models\GStar\AppExecutivrEnquiryList.cs" />
     <Compile Include="Models\GStar\BranchWiseExecWiseDivWiseTarget.cs" />
@@ -763,6 +766,7 @@
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
     <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
+    <Compile Include="Models\GStar\ListTripList.cs" />
     <Compile Include="Models\GStar\MediaDetails.cs" />
     <Compile Include="Models\GStar\MediaList.cs" />
     <Compile Include="Models\GStar\NewArrivalDetails.cs" />
