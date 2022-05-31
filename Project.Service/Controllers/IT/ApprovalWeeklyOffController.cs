@@ -43,7 +43,8 @@ namespace Project.Service.Controllers.IT
                                 EmpID = Convert.ToString(dr["EmpID"].ToString()),
                                 WeeklyOffDay = Convert.ToString(dr["WeeklyOffDay"].ToString()),
                                 ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
-                                
+                                salesexnm = Convert.ToString(dr["salesexnm"].ToString()),
+                                EmployeeLastName = Convert.ToString(dr["EmployeeLastName"].ToString()),
                             });
                         }
                         g1.close_connection();

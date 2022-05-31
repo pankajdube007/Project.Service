@@ -387,6 +387,7 @@
     <Compile Include="Controllers\GStar\PresentCopyController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomDetailsController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomListController.cs" />
+    <Compile Include="Controllers\GStar\TravelTxnManagerDetailsController.cs" />
     <Compile Include="Controllers\GStar\TripListController.cs" />
     <Compile Include="Controllers\GStar\VehicleListController.cs" />
     <Compile Include="Controllers\GStar\VehicleMstController.cs" />
@@ -824,6 +825,7 @@
     <Compile Include="Models\GStar\ShowRoomList.cs" />
     <Compile Include="Models\GStar\StockAvailibility.cs" />
     <Compile Include="Models\GStar\TravelTxn.cs" />
+    <Compile Include="Models\GStar\TravelTxnManager.cs" />
     <Compile Include="Models\GStar\VehicleList.cs" />
     <Compile Include="Models\GStar\VehicleMst.cs" />
     <Compile Include="Models\hrm\AttendenceSync.cs" />

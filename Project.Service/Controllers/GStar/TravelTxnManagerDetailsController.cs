@@ -12,60 +12,13 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers
 {
-    public class InsertTravelTxnController : ApiController
+    public class TravelTxnManagerDetailsController : ApiController
     {
+           
         [HttpPost]
         [ValidateModel]
-        [Route("api/InsertTravelTxnData")]
-        public HttpResponseMessage GetDetails(TravelTxn ula)
-        {
-            DataConnectionTrans g2 = new DataConnectionTrans();
-            Common cm = new Common();
-            if (ula.ExId != 0)
-            {
-                try
-                {
-                    //  string data1;
-
-                    //List<DCRExecutives> alldcr = new List<DCRExecutives>();
-                    //List<DCRExecutive> alldcr1 = new List<DCRExecutive>();
-
-                    var dr = g2.return_dr("insertTravelTxnData " + ula.ExId + "," + ula.TotalTravelDays + ",'" +ula.TravelFromDate + "','" + ula.TravelToDate + "','" + ula.Source + "','" + ula.Destination + "','" + ula.Stop1 + "','" + ula.Stop2 + "','" + ula.ReturnSource + "','" + ula.ReturnDestination + "','" + ula.PersonalTravel + "'," + ula.PersonalTravelDays +",'" + ula.PersonalTFromDate + "','" + ula.PersonalTToDate + "'," + ula.ModeOfTransport +"," + ula.AccomodationDays +"," + ula.Purpose +"," + ula.ApprovedBy1 +",'" + ula.ApprovedBy1Date + "'," + ula.ApprovedBy2 + ",'" + ula.ApprovedBy2Date +"','" + ula.ApprovedStatus + "'");
-
-                    if (dr.HasRows)
-                    {
-                        g2.close_connection();
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "Data Inserted!!!"), Encoding.UTF8, "application/json");
-                        return response;
-                    }
-                    else
-                    {
-                        g2.close_connection();
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "Something Went Wrong,Data not innserted!!!"), Encoding.UTF8, "application/json");
-                        return response;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
-                    return response;
-                }
-            }
-            else
-            {
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-                response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
-                return response;
-            }
-        }
-
-        [HttpPost]
-        [ValidateModel]
-        [Route("api/getListOfAllTravelData")]
-        public HttpResponseMessage GetListOfAllTravelData(TravelTxn ula)
+        [Route("api/getListOfAllTravelManagerData")]
+        public HttpResponseMessage GetListOfAllTravelManagerData(TravelTxnManager ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
@@ -75,15 +28,19 @@ namespace Project.Service.Controllers
                 {
                     string data1;
 
-                    List<getListOfTravelDetails> alldcr = new List<getListOfTravelDetails>();
-                    List<TravelTxn> alldcr1 = new List<TravelTxn>();
-                    var dr = g1.return_dr("dbo.getListOfAllTravelData "+ula.ExId);
+                    List<getListOfTravelManagerDetails> alldcr = new List<getListOfTravelManagerDetails>();
+                    List<TravelTxnManager> alldcr1 = new List<TravelTxnManager>();
+                    var dr = g1.return_dr("dbo.getListOfAllTravelManagerData " + ula.ExId);
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new TravelTxn
+                            alldcr1.Add(new TravelTxnManager
                             {
+                                PendingReqCount = Convert.ToInt32(dr["PendingReqCount"].ToString()),
+                                ApprovedReqCount = Convert.ToInt32(dr["ApprovedReqCount"].ToString()),
+                                WithdrawReqCount = Convert.ToInt32(dr["WithdrawReqCount"].ToString()),
+                                RejectReqCount = Convert.ToInt32(dr["RejectReqCount"].ToString()),
                                 TravelTxnId = Convert.ToInt32(dr["TravelTxnId"].ToString()),
                                 TotalTravelDays = Convert.ToInt32(dr["TotalTravelDays"].ToString()),
                                 TravelFromDate = Convert.ToString(dr["TravelFromDate"].ToString()),
@@ -113,7 +70,7 @@ namespace Project.Service.Controllers
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new getListOfTravelDetails
+                        alldcr.Add(new getListOfTravelManagerDetails
                         {
                             result = true,
                             message = string.Empty,
@@ -151,8 +108,8 @@ namespace Project.Service.Controllers
 
         [HttpPost]
         [ValidateModel]
-        [Route("api/WithdrawTravelTxnRequest")]
-        public HttpResponseMessage withdrawRequest(TravelTxn ula)
+        [Route("api/ApprovedRejectTravelTxnRequest")]
+        public HttpResponseMessage withdrawRequest(TravelTxnManager ula)
         {
             DataConnectionTrans g2 = new DataConnectionTrans();
             Common cm = new Common();
@@ -160,11 +117,11 @@ namespace Project.Service.Controllers
             {
                 try
                 {
-                     //string data1;
-                    //List<DCRExecutives> alldcr = new List<DCRExecutives>();
+                   //string data1;
+                   //List<DCRExecutives> alldcr = new List<DCRExecutives>();
                    //List<DCRExecutive> alldcr1 = new List<DCRExecutive>();
 
-                    var dr = g2.return_dr("WithdrawTravelRequest " + ula.ExId + "," + ula.TravelTxnId+",'"+ula.WithdrawRemark+"'");
+                    var dr = g2.return_dr("updateApprovedRejectTravelTxnRequest " + ula.ExId + "," + ula.TravelTxnId +",'"+ ula.ApprovedStatus+"','" +ula.RejectRemark+"'");
 
                     if (dr.HasRows)
                     {
@@ -177,7 +134,7 @@ namespace Project.Service.Controllers
                     {
                         g2.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "Something Went Wrong,Data not innserted!!!"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "Something Went Wrong, Request is not submited!!!"), Encoding.UTF8, "application/json");
                         return response;
                     }
                 }

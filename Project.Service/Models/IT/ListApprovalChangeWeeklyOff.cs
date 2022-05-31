@@ -39,6 +39,7 @@ namespace Project.Service.Models.IT
         public string EmpID { get; set; }
         public string ChangeWeeklyOffDay { get; set; }
         public string ApprovalStatus { get; set; }
-
+        public string salesexnm { get; set; }
+        public string EmployeeLastName { get; set; }
     }
 }
