@@ -25,16 +25,16 @@ namespace Project.Service.Controllers
                     string uploadVehicleImage = string.Empty;
                     if (pa.img != "") uploadVehicleImage = GetImage(pa.img, 1);
                     DateTime presentdates = DateTime.Now;
-                    int row = g2.ExecDB("exec AppExecutiveAttendance " + pa.ExId + ",2,'" + pa.Present + "','" + pa.Remark + "','" + presentdates + "','" + pa.IP + "','" + pa.Lat + "','" + pa.Long + "','" + pa.DeviceId + "'," + pa.Type + ",'" + pa.time + "','"+Convert.ToBoolean(pa.IsTimeMismatch)+"','"+ uploadVehicleImage + "'");
+                    int row = g2.ExecDB("exec AppExecutiveAttendance " + pa.ExId + ",2,'" + pa.Present + "','" + pa.Remark + "','" + presentdates + "','" + pa.IP + "','" + pa.Lat + "','" + pa.Long + "','" + pa.DeviceId + "'," + pa.Type + ",'" + pa.time + "','"+Convert.ToBoolean(pa.IsTimeMismatch)+"','"+ uploadVehicleImage+"','"+pa.odoMeter+"'");
                     g2.close_connection();
 
-                    if (row > 0)
+                    if (row > 0 )
                     {
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StringContent(cm.StatusTime(true, "Attendence Sucesssfully submitted"), Encoding.UTF8, "application/json");
                         return response;
                     }
-                    else
+                  else
                     {
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong or Attendence Already submitted"), Encoding.UTF8, "application/json");

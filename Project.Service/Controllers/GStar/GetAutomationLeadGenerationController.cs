@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GStar;
+using Project.Service.Models.GParivar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,52 +11,55 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers.GParivar
 {
-    public class TripListController : ApiController
+    public class GetAutomationLeadGenerationController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/GetAutomationLeadGeneration")]
+        public HttpResponseMessage GetDetails(GetAutomationLeadGeneration ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            GoldMedia _goldMedia = new GoldMedia();
-            if (ula.ExId != 0)
+            if (ula.CIN != null)
             {
                 try
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<GetListAutomationLeadGenerations> alldcr = new List<GetListAutomationLeadGenerations>();
+                    List<GetListAutomationLeadGeneration> alldcr1 = new List<GetListAutomationLeadGeneration>();
+                    var dr = g1.return_dr("dbo.GetAutomationLeadGeneration_GParivar_Gstar_API '" + ula.CIN + "', '" + ula.CategoryType + "'");
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetListAutomationLeadGeneration
                             {
-
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                Cust_Mob_No = Convert.ToString(dr["Cust_Mob_No"].ToString()),
+                                Cust_Name = Convert.ToString(dr["Cust_Name"].ToString()),
+                                Pincode = Convert.ToString(dr["Pincode"].ToString()),
+                                Add_Line_1 = Convert.ToString(dr["Add_Line_1"].ToString()),
+                                Add_Line_2 = Convert.ToString(dr["Add_Line_2"].ToString()),
+                                statenm = Convert.ToString(dr["statenm"].ToString()),
+                                Distrctnm = Convert.ToString(dr["Distrctnm"].ToString()),
+                                City_ID = Convert.ToString(dr["City_ID"].ToString()),
+                                categorynm = Convert.ToString(dr["categorynm"].ToString()),
+                                Involve_Architech = Convert.ToString(dr["Involve_Architech"].ToString()),
+                                Architech_No = Convert.ToString(dr["Architech_No"].ToString()),
+                                Architech_Name = Convert.ToString(dr["Architech_Name"].ToString()),
+                                Remark = Convert.ToString(dr["Remark"].ToString()),
+                                Project_name = Convert.ToString(dr["Project_name"].ToString()),
+                                ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
+                                Available_dt = Convert.ToString(dr["Available_dt"].ToString()),
+                                Available_time = Convert.ToString(dr["Available_time"].ToString()),
+                                CategoryType = Convert.ToString(dr["CategoryType"].ToString()),
+                                
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetListAutomationLeadGenerations
                         {
                             result = true,
                             message = string.Empty,

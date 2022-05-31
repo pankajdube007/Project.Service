@@ -19,6 +19,9 @@ namespace Project.Service.Models
         public int Points { get; set; }
 
         [Required]
+
+        public string  address { get; set; }
+        [Required]
         public object PriceDetails { get; set; }
     }
 

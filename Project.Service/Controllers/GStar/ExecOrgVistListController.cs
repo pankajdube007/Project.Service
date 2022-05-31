@@ -13,12 +13,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GStar
 {
-    public class TripListController : ApiController
+    public class ExecOrgVistListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getExecOrgVistList")]
+        public HttpResponseMessage GetDetails(ListExecOrgVist ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
@@ -29,34 +29,29 @@ namespace Project.Service.Controllers.GStar
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<GetExecOrgVistLists> alldcr = new List<GetExecOrgVistLists>();
+                    List<GetExecOrgVistList> alldcr1 = new List<GetExecOrgVistList>();
+                    var dr = g1.return_dr("dbo.ExecOrgVistList '" + ula.ExId + "','" + ula.orgid + "','" + ula.orgcat + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetExecOrgVistList
                             {
-
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                execid = Convert.ToString(dr["execid"].ToString()),
+                                orgid = Convert.ToString(dr["orgid"].ToString()),
+                                orgcat = Convert.ToString(dr["orgcat"].ToString()),
+                                visitortype = Convert.ToString(dr["visitortype"].ToString()),
+                                purposetype = Convert.ToString(dr["purposetype"].ToString()),
+                                visitdate = Convert.ToString(dr["visitdate"].ToString()),
+                                daydiff = Convert.ToString(dr["daydiff"].ToString()),
+                                remark = Convert.ToString(dr["remark"].ToString()),
+                                
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetExecOrgVistLists
                         {
                             result = true,
                             message = string.Empty,

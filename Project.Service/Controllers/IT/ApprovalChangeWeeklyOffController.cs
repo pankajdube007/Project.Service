@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GStar;
+using Project.Service.Models.IT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,52 +11,43 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Models.IT
 {
-    public class TripListController : ApiController
+    public class ApprovalChangeWeeklyOffController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getApprovalChangeWeeklyOffList")]
+        public HttpResponseMessage GetDetails(ListofApprovalChangeWeeklyOff ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
             GoldMedia _goldMedia = new GoldMedia();
-            if (ula.ExId != 0)
+            if (ula.EmpID != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<GetApprovalChangeWeeklyOffLists> alldcr = new List<GetApprovalChangeWeeklyOffLists>();
+                    List<GetApprovalChangeWeeklyOffList> alldcr1 = new List<GetApprovalChangeWeeklyOffList>();
+                    var dr = g1.return_dr("dbo.GetApprovalChangeWeeklyOff '" + ula.EmpID + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetApprovalChangeWeeklyOffList
                             {
 
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                EmpID = Convert.ToString(dr["EmpID"].ToString()),
+                                ChangeWeeklyOffDay = Convert.ToString(dr["ChangeWeeklyOffDay"].ToString()),
+                                ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetApprovalChangeWeeklyOffLists
                         {
                             result = true,
                             message = string.Empty,

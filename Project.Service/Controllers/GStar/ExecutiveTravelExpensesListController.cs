@@ -13,12 +13,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GStar
 {
-    public class TripListController : ApiController
+    public class ExecutiveTravelExpensesListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getExecutiveTravelExpenses")]
+        public HttpResponseMessage GetDetails(ListofExecutiveTravelExpenses ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
@@ -29,34 +29,30 @@ namespace Project.Service.Controllers.GStar
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<GetExecutiveTravelExpensesLists> alldcr = new List<GetExecutiveTravelExpensesLists>();
+                    List<GetExecutiveTravelExpensesList> alldcr1 = new List<GetExecutiveTravelExpensesList>();
+                    var dr = g1.return_dr("dbo.GetExpensesDetails '" + ula.ExId + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetExecutiveTravelExpensesList
                             {
 
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                Execid = Convert.ToString(dr["Execid"].ToString()),
+                                ExpenseNo = Convert.ToString(dr["ExpenseNo"].ToString()),
+                                TravelDate = Convert.ToString(dr["TravelDate"].ToString()),
+                                ImgBill = string.IsNullOrEmpty(dr["ImgBill"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr["ImgBill"]).ToString().TrimEnd(',')),
+                                SupplierName = Convert.ToString(dr["SupplierName"].ToString()),
+                                GSTIN = Convert.ToString(dr["GSTIN"].ToString()),
+                                TotalAmt = Convert.ToString(dr["TotalAmt"].ToString()),
+                                createdt = Convert.ToString(dr["createdt"].ToString()),
+                                ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetExecutiveTravelExpensesLists
                         {
                             result = true,
                             message = string.Empty,

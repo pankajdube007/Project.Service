@@ -32,6 +32,7 @@ namespace Project.Service.Models
         public string Price { get; set; }
         public string Qty { get; set; }
         public string DealerPoint { get; set; }
+        public string priceimg { get; set; }
         public string ProductPoint { get; set; }
 
 

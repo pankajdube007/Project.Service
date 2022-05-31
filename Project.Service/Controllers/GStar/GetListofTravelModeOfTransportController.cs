@@ -11,52 +11,43 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers
 {
-    public class TripListController : ApiController
+    public class GetListofTravelModeOfTransportController : ApiController
     {
+        
+
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getlistofTravelModeOfTransport")]
+        public HttpResponseMessage GetDetails(ListOfModeOfTransport ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            GoldMedia _goldMedia = new GoldMedia();
             if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<getListOfModeOfTransport> alldcr = new List<getListOfModeOfTransport>();
+                    List<getListOfModeOfTransportData> alldcr1 = new List<getListOfModeOfTransportData>();
+                    var dr = g1.return_dr("dbo.getModeOfTransportMaster");
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new getListOfModeOfTransportData
                             {
 
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                TransportId = Convert.ToInt32(dr["TransportId"].ToString()),
+                                ModeOfTransport = Convert.ToString(dr["ModeOfTransport"].ToString()),
+                        
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new getListOfModeOfTransport
                         {
                             result = true,
                             message = string.Empty,

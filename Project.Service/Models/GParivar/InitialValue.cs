@@ -163,5 +163,10 @@ namespace Project.Service.Models
         public string ExecutiveWiseNewYearBonaza { get; set; }
         public string verifysigndocument { get; set; }
         public string ValidateVendorPayment { get; set; }
+        public string PincodeDetails { get; set; }
+        public string DistrictMaster { get; set; }
+        public string StateMast { get; set; }
+        public string BonanazaGiftAdd { get; set; }
+        public string BonanzaPriceList { get; set; }
     }
 }

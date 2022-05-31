@@ -2,57 +2,48 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
+using Project.Service.Models.GParivar;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Web.Configuration;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GParivar
 {
-    public class BonanzaPriceListController : ApiController
+    public class PincodeDetailsController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getBonanzaPriceList")]
-        public HttpResponseMessage GetDetails(BonanzaPriceList ula)
+        [Route("api/getPincodeDetails")]
+        public HttpResponseMessage GetAllUserdetails(ListofPincodeDetails ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
-            GoldMedia _goldMedia = new GoldMedia();
-
             if (ula.CIN != "")
             {
-
                 try
                 {
                     string data1;
-
-                    List<ListBonanzaPrices> alldcr = new List<ListBonanzaPrices>();
-                    List<ListBonanzaPrice> alldcr1 = new List<ListBonanzaPrice>();
-
-                    var dr = g1.return_dr("bonanzapricerlist '" + ula.CIN + "'");
-
+                    List<PincodeDetailsLists> alldcr = new List<PincodeDetailsLists>();
+                    List<PincodeDetailsList> alldcr1 = new List<PincodeDetailsList>();
+                    var dr = g1.return_dr("GetPincodeDetailsList '" + ula.Pincode + "'");
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ListBonanzaPrice
+                            alldcr1.Add(new PincodeDetailsList
                             {
-                                PriceId = Convert.ToInt32(dr["priceid"].ToString()),
-                                Price = Convert.ToString(dr["price"].ToString()),
-                                Qty = Convert.ToString(dr["qty"].ToString()),
-                                DealerPoint = Convert.ToString(dr["dealerpoint"].ToString()),
-                                ProductPoint = Convert.ToString(dr["point"].ToString()),
-                                priceimg = string.IsNullOrEmpty(dr["priceimg"].ToString().Trim(',')) ? "" : (baseurl + "newyearbonanzaimg/" + dr["priceimg"].ToString().Trim(',')),
-
+                                StateID = Convert.ToString(dr["StateID"].ToString()),
+                                statenm = Convert.ToString(dr["statenm"].ToString()),
+                                DistrictID = Convert.ToString(dr["DistrictID"].ToString()),
+                                Distrctnm = Convert.ToString(dr["Distrctnm"].ToString()),
+                                citynm = Convert.ToString(dr["citynm"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new ListBonanzaPrices
+                        alldcr.Add(new PincodeDetailsLists
                         {
                             result = true,
                             message = string.Empty,
@@ -70,7 +61,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -78,11 +69,10 @@ namespace Project.Service.Controllers
                 catch (Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
 
                     return response;
                 }
-
             }
             else
             {

@@ -20,7 +20,7 @@ namespace Project.Service.Controllers
         [Route("api/partyWiseBonanazaGiftAdd")]
         public HttpResponseMessage GetDetails(PartyWiseBonanazaGiftAdd ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
             GoldMedia _goldMedia = new GoldMedia();
 
@@ -34,7 +34,7 @@ namespace Project.Service.Controllers
                     List<ListBonanzaPrices> alldcr = new List<ListBonanzaPrices>();
                     List<ListBonanzaPrice> alldcr1 = new List<ListBonanzaPrice>();
 
-                    var dr = g1.return_dt("addpartywisebonanazagift '" + ula.CIN + "','" + ula.Points + "','" + ula.PriceDetails.ToString() + "'");
+                    var dr = g1.return_dt("addpartywisebonanazagift '" + ula.CIN + "','" + ula.Points + "','" + ula.PriceDetails.ToString() + "','"+ula.address+"'");
 
                     if (dr.Rows.Count > 0)
                     {
@@ -119,7 +119,7 @@ namespace Project.Service.Controllers
                 catch (Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"+ex.Message.ToString()), Encoding.UTF8, "application/json");
 
                     return response;
                 }

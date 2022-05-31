@@ -13,12 +13,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GStar
 {
-    public class TripListController : ApiController
+    public class OrgDetailsListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getOrgDetailsList")]
+        public HttpResponseMessage GetDetails(ListOrgDetails ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
@@ -29,34 +29,31 @@ namespace Project.Service.Controllers.GStar
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<GetOrgDetailsLists> alldcr = new List<GetOrgDetailsLists>();
+                    List<GetOrgDetailsList> alldcr1 = new List<GetOrgDetailsList>();
+                    var dr = g1.return_dr("dbo.ExecOrgDetail '" + ula.orgid + "','" + ula.orgcat + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetOrgDetailsList
                             {
 
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                orgid = Convert.ToString(dr["orgid"].ToString()),
+                                compname = Convert.ToString(dr["compname"].ToString()),
+                                orgcat = Convert.ToString(dr["orgcat"].ToString()),
+                                partycatnm = Convert.ToString(dr["partycatnm"].ToString()),
+                                contact = Convert.ToString(dr["contact"].ToString()),
+                                email = Convert.ToString(dr["email"].ToString()),
+                                regaddress = Convert.ToString(dr["regaddress"].ToString()),
+                                img1 = string.IsNullOrEmpty(dr["img1"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["img1"]).ToString().TrimEnd(',')),
+                                img2 = string.IsNullOrEmpty(dr["img2"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["img2"]).ToString().TrimEnd(',')),
+                                img3 = string.IsNullOrEmpty(dr["img3"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["img3"]).ToString().TrimEnd(',')),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetOrgDetailsLists
                         {
                             result = true,
                             message = string.Empty,

@@ -36,12 +36,12 @@ namespace Project.Service.Controllers
                     List<DivisionWiseSale> Division = new List<DivisionWiseSale>();
 
                     var dr = g1.return_dt("newyearscheme '" + ula.CIN + "'");
-                    var dr1 = g1.return_dr("newyearschememain '" + ula.CIN + "'");
+                   
 
                     if (dr.Rows.Count > 0)
                     {
-                        
 
+                        var dr1 = g1.return_dr("newyearschememain '" + ula.CIN + "'");
                         for (int i = 0; i < dr.Rows.Count; i++)
                         {
                             Division.Add(new DivisionWiseSale
@@ -65,6 +65,9 @@ namespace Project.Service.Controllers
                                    
                                     //SchemeName = Convert.ToString(dr.Rows[0]["SchemeName"]),
                                     TotalSale = Convert.ToDecimal(dr1["totalsale"]),
+                                    address = Convert.ToString(dr1["address"]),
+                                    isselection = Convert.ToBoolean(dr1["isselection"]),
+                                    isEditable = Convert.ToBoolean(dr1["isEditable"]),
                                     TotalEarnedPoint = Convert.ToInt32(dr1["totalpoint"]),
                                     Currentslno = Convert.ToInt32(dr1["Currentslno"]),
                                     CurrentSlab = Convert.ToString(dr1["CurrentSlab"]),

@@ -191,7 +191,12 @@ namespace Project.Service
                     DeactivateDealerBankHistory = "DeactivateDealerBankHistory",
                     ExecutiveWiseNewYearBonaza = "getExecutiveWiseNewYearBonaza",
                     verifysigndocument = "verify-sign-document",
-                    ValidateVendorPayment = "ValidateVendorPayment"
+                    ValidateVendorPayment = "ValidateVendorPayment",
+                    PincodeDetails = "getPincodeDetails",
+                    DistrictMaster = "GetDistrictMaster",
+                    StateMast = "GetStateMast",
+                    BonanazaGiftAdd= "partyWiseBonanazaGiftAdd",
+                    BonanzaPriceList= "getBonanzaPriceList"
                 });
 
                 // g1.close_connection();

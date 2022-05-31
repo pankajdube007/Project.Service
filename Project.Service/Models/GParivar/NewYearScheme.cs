@@ -43,6 +43,9 @@ namespace Project.Service.Models
         public string NextSlabimg { get; set; }
         public string NextSlabpoint { get; set; }
         public string fileview { get; set; }
+        public string address { get; set; }
+        public bool isselection { get; set; }
+        public bool isEditable { get; set; }
         public List<DivisionWiseSale> division { get; set; }
     }
 

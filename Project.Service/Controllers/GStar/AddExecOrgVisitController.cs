@@ -2,57 +2,48 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
+using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Web.Configuration;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
-    public class BonanzaPriceListController : ApiController
+    public class AddExecOrgVisitController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getBonanzaPriceList")]
-        public HttpResponseMessage GetDetails(BonanzaPriceList ula)
+        [Route("api/InsertExecOrgVisit")]
+        public HttpResponseMessage GetDetails(AddListExecOrgVisit ula)
         {
-            DataConection g1 = new DataConection();
-            Common cm = new Common();
+            DataConnectionTrans g2 = new DataConnectionTrans();
             GoldMedia _goldMedia = new GoldMedia();
-
-            if (ula.CIN != "")
+            Common cm = new Common();
+            if (ula.ExId != 0)
             {
-
                 try
                 {
                     string data1;
 
-                    List<ListBonanzaPrices> alldcr = new List<ListBonanzaPrices>();
-                    List<ListBonanzaPrice> alldcr1 = new List<ListBonanzaPrice>();
-
-                    var dr = g1.return_dr("bonanzapricerlist '" + ula.CIN + "'");
+                    List<AddExecOrgVisitLists> alldcr = new List<AddExecOrgVisitLists>();
+                    List<AddExecOrgVisitList> alldcr1 = new List<AddExecOrgVisitList>();
+                    
+                    var dr = g2.return_dr("dbo.AddExecOrgVisit '" + ula.ExId + "','" + ula.orgid + "','" + ula.orgcat + "','" + ula.visittype + "','" + ula.purposetype + "','" + ula.remark + "'");
 
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
-                        while (dr.Read())
+                        alldcr1.Add(new AddExecOrgVisitList
                         {
-                            alldcr1.Add(new ListBonanzaPrice
-                            {
-                                PriceId = Convert.ToInt32(dr["priceid"].ToString()),
-                                Price = Convert.ToString(dr["price"].ToString()),
-                                Qty = Convert.ToString(dr["qty"].ToString()),
-                                DealerPoint = Convert.ToString(dr["dealerpoint"].ToString()),
-                                ProductPoint = Convert.ToString(dr["point"].ToString()),
-                                priceimg = string.IsNullOrEmpty(dr["priceimg"].ToString().Trim(',')) ? "" : (baseurl + "newyearbonanzaimg/" + dr["priceimg"].ToString().Trim(',')),
+                            output = "Data Sucessfully inserted"
+                        });
 
-                            });
-                        }
-                        g1.close_connection();
-                        alldcr.Add(new ListBonanzaPrices
+                        g2.close_connection();
+                        alldcr.Add(new AddExecOrgVisitLists
                         {
                             result = true,
                             message = string.Empty,
@@ -68,9 +59,9 @@ namespace Project.Service.Controllers
                     }
                     else
                     {
-                        g1.close_connection();
+                        g2.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "Add Trip Not Created!!!!!!!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -82,11 +73,10 @@ namespace Project.Service.Controllers
 
                     return response;
                 }
-
             }
             else
             {
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
                 response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
 
                 return response;

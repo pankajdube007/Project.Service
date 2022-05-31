@@ -1,62 +1,58 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Project.Service.Filters;
-using Project.Service.Models;
-using Project.Service.Models.GStar;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Web.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Project.Service.Filters;
+using Project.Service.Models;
+using System.Text;
+using System.Net.Http;
+using Project.Service.Models.IT;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers.IT
 {
-    public class TripListController : ApiController
+    public class ITLoginListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getITLogin")]
+        public HttpResponseMessage GetDetails(ListofITLogin ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
             GoldMedia _goldMedia = new GoldMedia();
-            if (ula.ExId != 0)
+            if (ula.Usernm != "")
             {
                 try
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "'");
+                    List<GetITLoginLists> alldcr = new List<GetITLoginLists>();
+                    List<GetITLoginList> alldcr1 = new List<GetITLoginList>();
+                    var dr = g1.return_dr("GetITLoginList'" + ula.Usernm + "','" + ula.password + "','" + ula.IsRefresh + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetITLoginList
                             {
 
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                SlNo = Convert.ToString(dr["SlNo"].ToString()),
+                                contactno = Convert.ToString(dr["contactno"].ToString()),
+                                salesexnm = Convert.ToString(dr["salesexnm"].ToString()),
+                                EmployeeLastName = Convert.ToString(dr["EmployeeLastName"].ToString()),
+                                WeeklyDayOff = Convert.ToString(dr["WeeklyDayOff"].ToString()),
+                                Status = Convert.ToString(dr["Status"].ToString()),
+                                IsApproval = Convert.ToString(dr["IsApproval"].ToString()),
+                                IsWeeklyoffset = Convert.ToString(dr["IsWeeklyoffset"].ToString()),
+                                
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetITLoginLists
                         {
                             result = true,
                             message = string.Empty,
