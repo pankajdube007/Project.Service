@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.IT
 
                     List<GetITLoginLists> alldcr = new List<GetITLoginLists>();
                     List<GetITLoginList> alldcr1 = new List<GetITLoginList>();
-                    var dr = g1.return_dr("GetITLoginList'" + ula.Usernm + "','" + ula.password + "','" + ula.IsRefresh + "'");
+                    var dr = g1.return_dr("GetITLoginList'" + ula.Usernm + "','" + ula.password + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
@@ -70,7 +70,7 @@ namespace Project.Service.Controllers.IT
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

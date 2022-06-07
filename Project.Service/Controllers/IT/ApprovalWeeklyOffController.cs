@@ -32,6 +32,7 @@ namespace Project.Service.Controllers.IT
                     List<GetApprovalWeeklyOffLists> alldcr = new List<GetApprovalWeeklyOffLists>();
                     List<GetApprovalWeeklyOffList> alldcr1 = new List<GetApprovalWeeklyOffList>();
                     var dr = g1.return_dr("dbo.GetApprovalWeeklyOff '" + ula.EmpID + "'");
+                    //var dr = g1.return_dr("dbo.GetApprovalWeeklyOff");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
@@ -64,9 +65,17 @@ namespace Project.Service.Controllers.IT
                     }
                     else
                     {
-                        g1.close_connection();
+                        alldcr.Add(new GetApprovalWeeklyOffLists
+                        {
+                            result = true,
+                            message = string.Empty,
+                            servertime = DateTime.Now.ToString(),
+                            data = alldcr1,
+                        });
+                        data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+
+                        response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
 
                         return response;
                     }

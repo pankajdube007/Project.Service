@@ -7,17 +7,13 @@ using System.Web;
 namespace Project.Service.Models.IT
 {
     
-    public class ListofITLogin
+    public class ListofDashboard
     {
-        
+        [Required]
+        public int EmpID { get; set; }
+
         [Required]
         public string ClientSecret { get; set; }
-
-        
-        public string Usernm { get; set; }
-
-        
-        public string password { get; set; }
 
         [Required]
         public string NotificationId { get; set; }
@@ -25,17 +21,20 @@ namespace Project.Service.Models.IT
         [Required]
         public string DeviceId { get; set; }
 
+        [Required]
+        public string DeviceType { get; set; }
+
     }
 
-    public class GetITLoginLists
+    public class GetDashboardLists
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GetITLoginList> data { get; set; }
+        public List<GetDashboardList> data { get; set; }
     }
 
-    public class GetITLoginList
+    public class GetDashboardList
     {
         public string SlNo { get; set; }
         public string contactno { get; set; }
@@ -45,6 +44,6 @@ namespace Project.Service.Models.IT
         public string Status { get; set; }
         public string IsApproval { get; set; }
         public string IsWeeklyoffset { get; set; }
-        
+
     }
 }

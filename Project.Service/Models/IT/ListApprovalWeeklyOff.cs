@@ -9,7 +9,7 @@ namespace Project.Service.Models.IT
    
     public class ListofApprovalWeeklyOff
     {
-        [Required]
+        
         public int EmpID { get; set; }
 
         [Required]
