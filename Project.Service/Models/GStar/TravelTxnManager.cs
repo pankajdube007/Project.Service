@@ -34,7 +34,7 @@ namespace Project.Service.Models.GStar
         public int ModeOfTransport { get; set; }
         public string ModeOfTransportString { get; set; }
         public int AccomodationDays { get; set; }
-        public int Purpose { get; set; }
+        public string Purpose { get; set; }
         public string PurposeString { get; set; }
         public int ApprovedBy1 { get; set; }
         public string ApprovedBy1String { get; set; }
@@ -47,6 +47,13 @@ namespace Project.Service.Models.GStar
         public string WithdrawDate { get; set; }
         public string WithdrawRemark { get; set; }
         public string RejectRemark { get; set; }
+        public string RequestDate { get; set; }
+        public string Employeename { get; set; }
+        public string search { get; set; }
+    
+
+        
+        
     }
 
     public class getListOfTravelManagerDetails

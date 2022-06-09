@@ -34,6 +34,10 @@ namespace Project.Service.Models.GStar
     {
         public string orgid { get; set; }
         public string compname { get; set; }
+        public string name { get; set; }
+        public string lat { get; set; }
+        public string lon { get; set; }
+        public string checkintime { get; set; }
         public string orgcat { get; set; }
         public string partycatnm { get; set; }
         public string contact { get; set; }
