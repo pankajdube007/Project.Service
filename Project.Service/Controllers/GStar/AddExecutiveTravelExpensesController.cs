@@ -37,7 +37,8 @@ namespace Project.Service.Controllers.GStar
                     if (ula.ImgBill != "") uploadImage = GetImage(ula.ImgBill, 1);
                    
                     var dr = g2.return_dr("dbo.AddExecutiveTravelExpenses '" + ula.ExId + "','" + ula.TravelDate + "','" + ula.BillNo + "','" + ula.TravelReqid + "','" + ula.MerchantCategoryid + "'," +
-                        "'" + ula.MerchantTypeid + "','" + ula.GSTIN + "','" + ula.GSTType + "','" + ula.TaxPer + "','" + ula.Cost + "','" + ula.CGSTamt + "','" + ula.SGSTamt + "','" + ula.IGSTamt + "','" + ula.CGSTper + "','" + ula.SGSTper + "','" + ula.IGSTper + "','" + ula.RoundOff + "','" + ula.TotalAmt + "','" + ula.Description + "','" + uploadImage + "'");
+                        "'" + ula.MerchantTypeid + "','" + ula.GSTIN + "','" + ula.GSTType + "','" + ula.TaxPer + "','" + ula.Cost + "','" + ula.CGSTamt + "','" + ula.SGSTamt + "','" + ula.IGSTamt + "'," +
+                        "'" + ula.CGSTper + "','" + ula.SGSTper + "','" + ula.IGSTper + "','" + ula.RoundOff + "','" + ula.TotalAmt + "','" + ula.Description + "','" + uploadImage + "','" + ula.EmpIds + "','" + ula.PaidBy + "','" + ula.MonthlyReport + "'");
 
                     if (dr.HasRows)
                     {

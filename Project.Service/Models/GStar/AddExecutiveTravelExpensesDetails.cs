@@ -73,6 +73,15 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ImgBill { get; set; }
 
+        [Required]
+        public string EmpIds { get; set; }
+
+        [Required]
+        public string PaidBy { get; set; }
+
+        [Required]
+        public string MonthlyReport { get; set; }
+
     }
 
     public class AddExecTravelExpDetailsLists

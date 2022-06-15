@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
 
                     List<getListOfTravelManagerDetails> alldcr = new List<getListOfTravelManagerDetails>();
                     List<TravelTxnManager> alldcr1 = new List<TravelTxnManager>();
-                    var dr = g1.return_dr("dbo.getListOfAllTravelManagerData " + ula.ExId+"'"+ula.search+ "'");
+                    var dr = g1.return_dr("dbo.getListOfAllTravelManagerData " + ula.ExId+", '"+ula.search+ "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

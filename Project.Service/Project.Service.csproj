@@ -396,7 +396,9 @@
     <Compile Include="Controllers\IT\AddSetWeeklyOffController.cs" />
     <Compile Include="Controllers\IT\ApprovalChangeWeeklyOffController.cs" />
     <Compile Include="Controllers\IT\ApprovalWeeklyOffController.cs" />
+    <Compile Include="Controllers\IT\CurrentWeeklyTeamController.cs" />
     <Compile Include="Controllers\IT\DashboardListController.cs" />
+    <Compile Include="Controllers\IT\DayDateHistoryController.cs" />
     <Compile Include="Controllers\IT\ITLoginListController.cs" />
     <Compile Include="Controllers\IT\SetApprovalChangeWeeklyOffController.cs" />
     <Compile Include="Controllers\IT\SetApprovalWeeklyOffController.cs" />
@@ -833,7 +835,9 @@
     <Compile Include="Models\IT\ListApprovalChangeWeeklyOff.cs" />
     <Compile Include="Models\IT\ListApprovalWeeklyOff.cs" />
     <Compile Include="Models\IT\ListChangeWeeklyOff.cs" />
+    <Compile Include="Models\IT\ListCurrentWeeklyTeamDetails.cs" />
     <Compile Include="Models\IT\ListDashboard.cs" />
+    <Compile Include="Models\IT\ListDayDateHistory.cs" />
     <Compile Include="Models\IT\ListITLogin.cs" />
     <Compile Include="Models\IT\ListSetApprovalChangeWeeklyOff.cs" />
     <Compile Include="Models\IT\ListSetApprovalWeeklyOff.cs" />
