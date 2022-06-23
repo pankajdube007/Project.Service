@@ -22,7 +22,7 @@ namespace Project.Service.Controllers.GStar
         public HttpResponseMessage GetDetails(ListofAddMerchant ula)
         {
 
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
 
             if (ula.ExId != 0)

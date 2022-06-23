@@ -19,7 +19,7 @@ namespace Project.Service.Models.GStar
         public string ClientSecret { get; set; }
 
         [Required]
-        public int SalesExCodeNm { get; set; }
+        public string SalesExCodeNm { get; set; }
 
     }
 

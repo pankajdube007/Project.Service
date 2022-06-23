@@ -15,6 +15,9 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
+        [Required]
+        public string stateid { get; set; }
+
     }
 
     public class GetCityMastLists

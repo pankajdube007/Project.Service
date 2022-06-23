@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<GetCityMastLists> alldcr = new List<GetCityMastLists>();
                     List<GetCityMastList> alldcr1 = new List<GetCityMastList>();
-                    var dr = g1.return_dr("dbo.GetCityMastList");
+                    var dr = g1.return_dr("dbo.GetCityMastList '" + ula.stateid + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");

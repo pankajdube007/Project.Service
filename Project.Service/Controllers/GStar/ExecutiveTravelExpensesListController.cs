@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<GetExecutiveTravelExpensesLists> alldcr = new List<GetExecutiveTravelExpensesLists>();
                     List<GetExecutiveTravelExpensesList> alldcr1 = new List<GetExecutiveTravelExpensesList>();
-                    var dr = g1.return_dr("dbo.GetExpensesDetails '" + ula.ExId + "'");
+                    var dr = g1.return_dr("dbo.GetExpensesDetails '" + ula.ExId + "','" + ula.search + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
@@ -49,6 +49,8 @@ namespace Project.Service.Controllers.GStar
                                 TotalAmt = Convert.ToString(dr["TotalAmt"].ToString()),
                                 createdt = Convert.ToString(dr["createdt"].ToString()),
                                 ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
+                                TotalAmount = Convert.ToString(dr["TotalAmount"].ToString()),
+                                TotalReimbursableAmount = Convert.ToString(dr["TotalReimbursableAmount"].ToString()),
                             });
                         }
                         g1.close_connection();

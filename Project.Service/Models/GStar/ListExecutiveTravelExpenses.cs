@@ -15,6 +15,8 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
+        public string search { get; set; }
+
     }
 
     public class GetExecutiveTravelExpensesLists
@@ -36,6 +38,7 @@ namespace Project.Service.Models.GStar
         public string TotalAmt { get; set; }
         public string createdt { get; set; }
         public string ApprovalStatus { get; set; }
-        
+        public string TotalAmount { get; set; }
+        public string TotalReimbursableAmount { get; set; }
     }
 }
