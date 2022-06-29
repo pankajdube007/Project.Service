@@ -18,9 +18,6 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
-        [Required]
-        public string SalesExCodeNm { get; set; }
-
     }
 
     public class GetEmpAttendeesLists
@@ -34,7 +31,8 @@ namespace Project.Service.Models.GStar
     public class GetEmpAttendeesList
     {
         public string SlNo { get; set; }
-        public string SalesExCodeName { get; set; }
+        public string salesexcode { get; set; }
+        public string salesexnm { get; set; }
         
     }
 }

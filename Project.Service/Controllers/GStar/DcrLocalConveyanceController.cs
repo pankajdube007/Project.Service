@@ -52,7 +52,7 @@ namespace Project.Service.Controllers.GStar
                                 orgcat = Convert.ToString(dr["orgcat"].ToString()),
                                 traveldistance = Convert.ToString(dr["traveldistance"].ToString()),
                                 orgnm = Convert.ToString(dr["orgnm"].ToString()),
-
+                                travelduration = Convert.ToString(dr["timediff"].ToString()),
                             });
                         }
 
@@ -66,7 +66,7 @@ namespace Project.Service.Controllers.GStar
                             alldcr2.Add(new GetexeccheckinoutlistdtwisesumList
                             {
 
-                                traveldistanceinout = Convert.ToString(dr1["traveldistanceinout"].ToString()),
+                                grossdistance = Convert.ToString(dr1["grossdistance"].ToString()),
                                 claimablediastance = Convert.ToString(dr1["claimablediastance"].ToString()),
                                 odomtrkm = Convert.ToString(dr1["odomtrkm"].ToString()),
                                 BikeRate = Convert.ToString(dr1["BikeRate"].ToString()),

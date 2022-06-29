@@ -24,7 +24,16 @@ namespace Project.Service.Models.GStar
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GetExecutiveTravelExpensesList> data { get; set; }
+        public List<GetExecutiveTravelLists> data { get; set; }
+    }
+
+    
+
+
+    public class GetExecutiveTravelLists
+    {
+        public List<GetExecutiveTravelExpensesList> ExecutiveTravelExpensesList { get; set; }
+        public List<GetTotalList> TotalList { get; set; }
     }
 
     public class GetExecutiveTravelExpensesList
@@ -38,7 +47,13 @@ namespace Project.Service.Models.GStar
         public string TotalAmt { get; set; }
         public string createdt { get; set; }
         public string ApprovalStatus { get; set; }
+
+    }
+
+    public class GetTotalList
+    {
         public string TotalAmount { get; set; }
         public string TotalReimbursableAmount { get; set; }
     }
+
 }

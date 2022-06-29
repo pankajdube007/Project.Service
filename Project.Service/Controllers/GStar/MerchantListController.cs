@@ -43,7 +43,8 @@ namespace Project.Service.Controllers.GStar
                                 SlNo = Convert.ToString(dr["SlNo"].ToString()),
                                 SupplierName = Convert.ToString(dr["SupplierName"].ToString()),
                                 merchanttype = Convert.ToString(dr["merchanttype"].ToString()),
-                                
+                                gstno = Convert.ToString(dr["gstno"].ToString()),
+
                             });
                         }
                         g1.close_connection();

@@ -297,6 +297,7 @@
     <Compile Include="App_Start\FileUpload\IsMimeTypeAllowedArgs.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\General\WhatsappController.cs" />
+    <Compile Include="Controllers\GParivar\AddRaiseTicketController.cs" />
     <Compile Include="Controllers\GParivar\BannerImgController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDealerDeviceController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDeviceLogoutController.cs" />
@@ -324,6 +325,7 @@
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
     <Compile Include="Controllers\GParivar\PincodeDetailsController.cs" />
+    <Compile Include="Controllers\GParivar\RaiseTicketContactDetailsController.cs" />
     <Compile Include="Controllers\GQC\ItemListForProblemController.cs" />
     <Compile Include="Controllers\GQC\ItemProblemMapController.cs" />
     <Compile Include="Controllers\GQC\ItemProblemVendorMappingController.cs" />
@@ -393,6 +395,7 @@
     <Compile Include="Controllers\GStar\PresentCopyController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomDetailsController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomListController.cs" />
+    <Compile Include="Controllers\GStar\TravelReqController.cs" />
     <Compile Include="Controllers\GStar\TravelTxnManagerDetailsController.cs" />
     <Compile Include="Controllers\GStar\TripListController.cs" />
     <Compile Include="Controllers\GStar\VehicleListController.cs" />
@@ -741,6 +744,7 @@
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />
     <Compile Include="Models\GParivar\AddPod.cs" />
+    <Compile Include="Models\GParivar\AddRaiseTicket.cs" />
     <Compile Include="Models\GParivar\BonanzaPriceList.cs" />
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
@@ -748,6 +752,7 @@
     <Compile Include="Models\GParivar\ListCFDetails.cs" />
     <Compile Include="Models\GParivar\ListDistrictMaster.cs" />
     <Compile Include="Models\GParivar\ListPincodeDetails.cs" />
+    <Compile Include="Models\GParivar\ListRaiseTicketContactDetails.cs" />
     <Compile Include="Models\GParivar\ListStateMast.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
     <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />
@@ -830,6 +835,7 @@
     <Compile Include="Models\GStar\ListOfTravelPurpose.cs" />
     <Compile Include="Models\GStar\ListOrgDetails.cs" />
     <Compile Include="Models\GStar\ListStateMastGstar.cs" />
+    <Compile Include="Models\GStar\ListTravelReq.cs" />
     <Compile Include="Models\GStar\ListTripList.cs" />
     <Compile Include="Models\GStar\MediaDetails.cs" />
     <Compile Include="Models\GStar\MediaList.cs" />

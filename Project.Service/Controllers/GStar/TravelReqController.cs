@@ -5,7 +5,6 @@ using Project.Service.Models;
 using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,39 +13,40 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GStar
 {
-    public class EmpAttendeesListController : ApiController
+    public class TravelReqController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getEmpAttendeesList")]
-        public HttpResponseMessage GetDetails(ListofEmpAttendees ula)
+        [Route("api/getTravelReqList")]
+        public HttpResponseMessage GetDetails(ListofTravelReq ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
-            GoldMedia _goldMedia = new GoldMedia();
             Common cm = new Common();
+            GoldMedia _goldMedia = new GoldMedia();
             if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<GetEmpAttendeesLists> alldcr = new List<GetEmpAttendeesLists>();
-                    List<GetEmpAttendeesList> alldcr1 = new List<GetEmpAttendeesList>();
-                    var dr = g1.return_dr("EmpAttendeesList");
+                    List<GetTravelReqLists> alldcr = new List<GetTravelReqLists>();
+                    List<GetTravelReqList> alldcr1 = new List<GetTravelReqList>();
+                    var dr = g1.return_dr("dbo.TravelReqList '" + ula.ExId + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetEmpAttendeesList
+                            alldcr1.Add(new GetTravelReqList
                             {
-                                SlNo = Convert.ToString(dr["SlNo"].ToString()),
-                                salesexcode = Convert.ToString(dr["salesexcode"].ToString()),
-                                salesexnm = Convert.ToString(dr["salesexnm"].ToString()),
+
+                                slno = Convert.ToString(dr["slno"].ToString()),
+                                refno = Convert.ToString(dr["refno"].ToString())
+                               
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetEmpAttendeesLists
+                        alldcr.Add(new GetTravelReqLists
                         {
                             result = true,
                             message = string.Empty,
@@ -64,7 +64,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -85,6 +85,5 @@ namespace Project.Service.Controllers.GStar
                 return response;
             }
         }
-
     }
 }

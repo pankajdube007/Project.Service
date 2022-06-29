@@ -2,51 +2,60 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GStar;
+using Project.Service.Models.GParivar;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers.GParivar
 {
-    public class EmpAttendeesListController : ApiController
+    public class RaiseTicketContactDetailsController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getEmpAttendeesList")]
-        public HttpResponseMessage GetDetails(ListofEmpAttendees ula)
+        [Route("api/getRaiseTicketContactDetails")]
+        public HttpResponseMessage GetDetails(ListofRaiseTicketContactDetails ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
-            GoldMedia _goldMedia = new GoldMedia();
             Common cm = new Common();
-            if (ula.ExId != 0)
+            if (ula.CIN != null)
             {
                 try
                 {
                     string data1;
 
-                    List<GetEmpAttendeesLists> alldcr = new List<GetEmpAttendeesLists>();
-                    List<GetEmpAttendeesList> alldcr1 = new List<GetEmpAttendeesList>();
-                    var dr = g1.return_dr("EmpAttendeesList");
+                    List<GetRaiseTicketContactDetailLists> alldcr = new List<GetRaiseTicketContactDetailLists>();
+                    List<GetRaiseTicketContactDetailList> alldcr1 = new List<GetRaiseTicketContactDetailList>();
+                    var dr = g1.return_dr("crm.GetCustomerDetailsFromContactNoForCustTicket  '" + ula.ContactNo + "'");
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetEmpAttendeesList
+                            alldcr1.Add(new GetRaiseTicketContactDetailList
                             {
-                                SlNo = Convert.ToString(dr["SlNo"].ToString()),
-                                salesexcode = Convert.ToString(dr["salesexcode"].ToString()),
-                                salesexnm = Convert.ToString(dr["salesexnm"].ToString()),
+                                Name = Convert.ToString(dr["Name"].ToString()),
+                                Address = Convert.ToString(dr["Address"].ToString()),
+                                Address2 = Convert.ToString(dr["Address2"].ToString()),
+                                Address3 = Convert.ToString(dr["Address3"].ToString()),
+                                ContactNo = Convert.ToString(dr["ContactNo"].ToString()),
+                                EmailID = Convert.ToString(dr["EmailID"].ToString()),
+                                PincodeID = Convert.ToString(dr["PincodeID"].ToString()),
+                                Pincode = Convert.ToString(dr["Pincode"].ToString()),
+                                StateID = Convert.ToString(dr["StateID"].ToString()),
+                                DistrictID = Convert.ToString(dr["DistrictID"].ToString()),
+                                City = Convert.ToString(dr["City"].ToString()),
+                                CustomerID = Convert.ToString(dr["CustomerID"].ToString()),
+                                CustUniquekey = Convert.ToString(dr["CustUniquekey"].ToString()),
+                                statenm = Convert.ToString(dr["statenm"].ToString()),
+                                Distrctnm = Convert.ToString(dr["Distrctnm"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetEmpAttendeesLists
+                        alldcr.Add(new GetRaiseTicketContactDetailLists
                         {
                             result = true,
                             message = string.Empty,
@@ -64,7 +73,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -85,6 +94,5 @@ namespace Project.Service.Controllers.GStar
                 return response;
             }
         }
-
     }
 }

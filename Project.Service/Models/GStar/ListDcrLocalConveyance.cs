@@ -44,12 +44,13 @@ namespace Project.Service.Models.GStar
         public string orgcat { get; set; }
         public string traveldistance { get; set; }
         public string orgnm { get; set; }
+        public string travelduration { get; set; }
         
     }
 
     public class GetexeccheckinoutlistdtwisesumList
     {
-        public string traveldistanceinout { get; set; }
+        public string grossdistance { get; set; }
         public string claimablediastance { get; set; }
         public string odomtrkm { get; set; }
         public string BikeRate { get; set; }

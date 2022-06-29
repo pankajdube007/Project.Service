@@ -149,26 +149,5 @@ namespace Project.Service.Controllers.GStar
             }
             return result;
         }
-
-
-        protected string uploadfile(string img, int folderCreation, string uniquefoldernm, string fileExtention, string fileType)
-        {
-            var _goldMedia = new GoldMedia();
-            var result = "";
-
-            if (!string.IsNullOrEmpty(img))
-            {
-                var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
-                if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
-                var binPdf = Convert.FromBase64String(s);
-                Stream stream = new MemoryStream(binPdf);
-                var FileName = Guid.NewGuid().ToString();
-
-                var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, fileExtention, stream, fileType, false, false, true);
-                //   var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".pdf", stream, "application/pdf", false,false, true);
-                result = _goldMedia.MapPathToPublicUrl(uniquefoldernm + '/' + FileName + fileExtention);
-            }
-            return result;
-        }
     }
 }

@@ -7,7 +7,8 @@ using System.Web;
 namespace Project.Service.Models.GStar
 {
     
-    public class ListofMerchant
+
+    public class ListofTravelReq
     {
         [Required]
         public int ExId { get; set; }
@@ -15,25 +16,19 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
-        [Required]
-        public int MerchantType { get; set; }
-        
     }
 
-    public class GetMerchantLists
+    public class GetTravelReqLists
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GetMerchantList> data { get; set; }
+        public List<GetTravelReqList> data { get; set; }
     }
 
-    public class GetMerchantList
+    public class GetTravelReqList
     {
-        public string SlNo { get; set; }
-        public string SupplierName { get; set; }
-        public string merchanttype { get; set; }
-        public string gstno { get; set; }
-        
+        public string slno { get; set; }
+        public string refno { get; set; }
     }
 }

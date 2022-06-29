@@ -53,11 +53,9 @@ namespace Project.Service.Models.GStar
 
         [Required]
         public int merchanttype { get; set; }
-
-        [Required]
+        
         public string gstcertificate { get; set; }
 
-        [Required]
         public string bankdetails { get; set; }
 
     }
