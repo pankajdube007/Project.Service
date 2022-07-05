@@ -43,6 +43,7 @@ namespace Project.Service
                     NewFeature = Convert.ToBoolean(data.Rows[0]["NewFeature"]),
                     AndroidVisible = Convert.ToBoolean(data.Rows[0]["AndroidVisible"]),
                     iosvisible = Convert.ToBoolean(data.Rows[0]["iosvisible"]),
+                    cfdisplay = Convert.ToBoolean(data.Rows[0]["cfdisplay"]),
                     AlertMessage = data.Rows[0]["AlertMessage"].ToString(),
 
 
@@ -195,8 +196,11 @@ namespace Project.Service
                     PincodeDetails = "getPincodeDetails",
                     DistrictMaster = "GetDistrictMaster",
                     StateMast = "GetStateMast",
-                    BonanazaGiftAdd= "partyWiseBonanazaGiftAdd",
-                    BonanzaPriceList= "getBonanzaPriceList"
+                    BonanazaGiftAdd = "partyWiseBonanazaGiftAdd",
+                    BonanzaPriceList = "getBonanzaPriceList",
+                    RaiseTicketContactDetails = "getRaiseTicketContactDetails",
+                    RaiseTicketDetails = "addRaiseTicketDetails",
+                    CFDetailsList = "getCFDetailsList"
                 });
 
                 // g1.close_connection();

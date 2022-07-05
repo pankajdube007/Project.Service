@@ -51,15 +51,16 @@ namespace Project.Service.Controllers.GParivar
                         {
                             alldcr1.Add(new CFDetailsList
                             {
-                                InvoiceId = Convert.ToInt32(dr.Rows[i]["invoiceid"].ToString()),
-                                InvoiceNo = Convert.ToString(dr.Rows[i]["invoiceno"].ToString()),
-                                InvoiceDate = Convert.ToString(dr.Rows[i]["invoicedate"].ToString()),
-                                DivisionName = Convert.ToString(dr.Rows[i]["divisionnm"].ToString()),
-                                InvoiceAmt = Convert.ToString(dr.Rows[i]["finalamount"].ToString()),
-                                //OuststandingAmt = Convert.ToString(dr.Rows[i]["outstandingamt"].ToString()),
+                                TransactionID = Convert.ToString(dr.Rows[i]["TransactionID"].ToString()),
+                                TransactionDate = Convert.ToString(dr.Rows[i]["TransactionDate"].ToString()),
+                                TranAmount = Convert.ToString(dr.Rows[i]["TranAmount"].ToString()),
+                                BalanceOutstanding = Convert.ToString(dr.Rows[i]["BalanceOutstanding"].ToString()),
                                 DueDate = Convert.ToString(dr.Rows[i]["DueDate"].ToString()),
-                                Interestdate = Convert.ToString(dr.Rows[i]["Interestdate"].ToString()),
-                                
+                                OverdueWithinCureINR = Convert.ToString(dr.Rows[i]["OverdueWithinCureINR"].ToString()),
+                                OverdueWithinCureNoOfDays = Convert.ToString(dr.Rows[i]["OverdueWithinCureNoOfDays"].ToString()),
+                                OverdueBeyondCureINR = Convert.ToString(dr.Rows[i]["OverdueBeyondCureINR"].ToString()),
+                                OverdueBeyondCureNoOfDays = Convert.ToString(dr.Rows[i]["OverdueBeyondCureNoOfDays"].ToString()),
+                               
                             });
                         }
 

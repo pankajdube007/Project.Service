@@ -42,15 +42,16 @@ namespace Project.Service.Models.GParivar
 
     public class CFDetailsList
     {
-        public int InvoiceId { get; set; }
-        public string InvoiceNo { get; set; }
-        public string InvoiceDate { get; set; }
-        public string DivisionName { get; set; }
-        public string InvoiceAmt { get; set; }
-        //public string OuststandingAmt { get; set; }
+        public string TransactionID { get; set; }
+        public string TransactionDate { get; set; }
+        public string TranAmount { get; set; }
+        public string BalanceOutstanding { get; set; }
         public string DueDate { get; set; }
-        public string Interestdate { get; set; }
-        
+        public string OverdueWithinCureINR { get; set; }
+        public string OverdueWithinCureNoOfDays { get; set; }
+        public string OverdueBeyondCureINR { get; set; }
+        public string OverdueBeyondCureNoOfDays { get; set; }
+
     }
 
     public class TotalCFDetailsList

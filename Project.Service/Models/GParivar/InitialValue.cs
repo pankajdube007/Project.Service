@@ -20,6 +20,7 @@ namespace Project.Service.Models
         public bool NewFeature { get; set; }
         public bool AndroidVisible { get; set; }
         public bool iosvisible { get; set; }
+        public bool cfdisplay { get; set; }        
         public string AlertMessage { get; set; }
         public string divisionLastUpdated { get; set; }
         public string enquiryLastUpdated { get; set; }
@@ -166,7 +167,10 @@ namespace Project.Service.Models
         public string PincodeDetails { get; set; }
         public string DistrictMaster { get; set; }
         public string StateMast { get; set; }
-        public string BonanazaGiftAdd { get; set; }
-        public string BonanzaPriceList { get; set; }
+        public string BonanazaGiftAdd { get; set; }        
+        public string BonanzaPriceList { get; set; }        
+        public string RaiseTicketContactDetails { get; set; }
+        public string RaiseTicketDetails { get; set; }
+        public string CFDetailsList { get; set; }
     }
 }
