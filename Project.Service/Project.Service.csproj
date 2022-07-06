@@ -315,12 +315,14 @@
     <Compile Include="Controllers\GParivar\ApprovalPendingUsersDetailsController.cs" />
     <Compile Include="Controllers\GParivar\AppthirdpartypaymentController.cs" />
     <Compile Include="Controllers\GParivar\BonanzaPriceListController.cs" />
+    <Compile Include="Controllers\GParivar\CFSInvoiceController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactivationController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactiveHistoryController.cs" />
     <Compile Include="Controllers\GParivar\GetCategoryMastController.cs" />
     <Compile Include="Controllers\GParivar\GetCFDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetDistrictMasterController.cs" />
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
+    <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
@@ -747,6 +749,8 @@
     <Compile Include="Models\GParivar\AddRaiseTicket.cs" />
     <Compile Include="Models\GParivar\BonanzaPriceList.cs" />
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
+    <Compile Include="Models\GParivar\GetCFSInvoiceList.cs" />
+    <Compile Include="Models\GParivar\GetRaiseTicketDetails.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
     <Compile Include="Models\GParivar\ListCategoryMast.cs" />
     <Compile Include="Models\GParivar\ListCFDetails.cs" />

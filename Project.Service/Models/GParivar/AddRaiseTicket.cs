@@ -36,18 +36,19 @@ namespace Project.Service.Models.GParivar
 
         public int ServiceCenterID { get; set; }
 
-
+        [Required]
         public string CustName { get; set; }
 
-
+        [Required]
         public string CustContactNo { get; set; }
 
-
+        [Required]
         public string ContactPersonContactNo { get; set; }
+
 
         public string EmailID { get; set; }
 
-
+        [Required]
         public string CustAddress { get; set; }
 
 
@@ -56,25 +57,25 @@ namespace Project.Service.Models.GParivar
 
         public string Address3 { get; set; }
 
-
+        [Required]
         public string Pincode { get; set; }
 
 
         //public long PincodeID { get; set; }
 
-
+        [Required]
         public int StateID { get; set; }
 
-
+        [Required]
         public int DistrictID { get; set; }
 
-
+        [Required]
         public string City { get; set; }
 
 
         public string PersonCallingName { get; set; }
 
-
+        [Required]
         public string ContactPersonName { get; set; }
 
         public int ProductInputType { get; set; }
@@ -96,10 +97,10 @@ namespace Project.Service.Models.GParivar
 
         public long ItemID { get; set; }
 
-
+        [Required]
         public string ProductDescription { get; set; }
 
-
+        [Required]
         public string PurchaseDt { get; set; }
 
         public string WarrantyUpToDt { get; set; }
@@ -118,7 +119,7 @@ namespace Project.Service.Models.GParivar
 
         public string ProductIssue { get; set; }
 
-
+        [Required]
         public string ProductIssueDesc { get; set; }
 
         public string CloseRemark { get; set; }

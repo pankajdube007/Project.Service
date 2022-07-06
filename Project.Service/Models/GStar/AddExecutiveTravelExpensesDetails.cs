@@ -19,8 +19,8 @@ namespace Project.Service.Models.GStar
         [Required]
         public string TravelDate { get; set; }
 
-        [Required]
-        public string BillNo { get; set; }
+        //[Required]
+        //public string BillNo { get; set; }
 
         [Required]
         public int TravelReqid { get; set; }
