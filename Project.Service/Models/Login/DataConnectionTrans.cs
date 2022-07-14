@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,6 +9,11 @@ namespace Project.Service.Models
     public class DataConnectionTrans
     {
         public SqlConnection sql;
+        public SqlBulkCopy sqlBulkCopy;
+        public SqlDataAdapter da;
+        public SqlCommand cmd;
+
+
 
         /// <summary>
         /// To send an email
@@ -56,6 +61,12 @@ namespace Project.Service.Models
                 string str1 = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
                 sql = new SqlConnection(str1);
                 // sql.ConnectionString = str1;
+
+
+                cmd = new SqlCommand();
+                cmd.Connection = sql;
+                cmd.CommandTimeout = 2000;
+                sqlBulkCopy = new SqlBulkCopy(sql);
 
                 sql.Open();
             }
@@ -194,5 +205,103 @@ namespace Project.Service.Models
                 throw;
             }
         }
+
+
+        #region Dataset Methods With Parameter
+        public DataSet FillDataSet(string spName, SqlParameter[] sqlparam, String ConnectionStringCode)
+        {
+            DataSet DataSetToFill = new DataSet();
+            try
+            {
+                open_connection();
+                if (sqlparam != null)
+                    Add_Parameter_In_Command(sqlparam);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = spName;
+                da = new SqlDataAdapter(cmd);
+                da.Fill(DataSetToFill);
+                return DataSetToFill;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                close_connection();
+                da.Dispose();
+            }
+        }
+        #endregion
+
+        #region Dataset Methods withOut Parameter
+        public DataSet FillDataSet(string spName)
+        {
+            try
+            {
+                open_connection();
+                DataSet DataSetToFill = new DataSet();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = spName;
+                da = new SqlDataAdapter(cmd);
+                da.Fill(DataSetToFill, spName);
+                return DataSetToFill;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                close_connection();
+                da.Dispose();
+            }
+        }
+        #endregion
+
+        private void Add_Parameter_In_Command(SqlParameter[] oParameterArray)
+        {
+            if (cmd != null)
+            {
+                cmd.Parameters.Clear();
+                if (oParameterArray != null)
+                {
+                    foreach (SqlParameter Param in oParameterArray)
+                    {
+                        cmd.Parameters.Add(Param);
+                    }
+                }
+            }
+        }
+
+        public String BulkInsert(DataTable dtBulk, String strTableName)
+        {
+
+            string retValue = "";
+            try
+            {
+                open_connection();
+                sqlBulkCopy.DestinationTableName = strTableName;
+                try
+                {
+                    sqlBulkCopy.WriteToServer(dtBulk);
+                    retValue = "True";
+                }
+                catch (Exception ex)
+                {
+                    retValue = "False";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                close_connection();
+            }
+            return retValue;
+        }
+
     }
 }

@@ -23,6 +23,7 @@ namespace Project.Service.Controllers
             Common cm = new Common();
             if (ula.ExId != 0)
             {
+
                 try
                 {
                     //  string data1;
@@ -30,29 +31,61 @@ namespace Project.Service.Controllers
                     //List<DCRExecutives> alldcr = new List<DCRExecutives>();
                     //List<DCRExecutive> alldcr1 = new List<DCRExecutive>();
 
-                    var dr = g2.return_dr("insertTravelTxnData " + ula.ExId + "," + ula.TotalTravelDays + ",'" +ula.TravelFromDate + "','" + ula.TravelToDate + "','" + ula.Source + "','" + ula.Destination + "','" + ula.Stop1 + "','" + ula.Stop2 + "','" + ula.ReturnSource + "','" + ula.ReturnDestination + "','" + ula.PersonalTravel + "'," + ula.PersonalTravelDays +",'" + ula.PersonalTFromDate + "','" + ula.PersonalTToDate + "'," + ula.ModeOfTransport +"," + ula.AccomodationDays +",'" + ula.Purpose +"','" + ula.ApprovedStatus + "','"+ula.Remark+"'");
+                    var dr = g2.return_dr("CheckEmployeeExistsRecord_ApplyTravel "
+                        + ula.ExId + ",'"
+                        + ula.TravelFromDate + "','"
+                        + ula.TravelToDate + "'"
+                        );
 
-                    if (dr.HasRows)
+                    if (!dr.HasRows)
+                    {
+   
+                    try
+                        {
+                    
+
+                    var dr1 = g2.return_dr("insertTravelTxnData " + ula.ExId + "," + ula.TotalTravelDays + ",'" + ula.TravelFromDate + "','" + ula.TravelToDate + "','" + ula.Source + "','" + ula.Destination + "','" + ula.Stop1 + "','" + ula.Stop2 + "','" + ula.ReturnSource + "','" + ula.ReturnDestination + "','" + ula.PersonalTravel + "'," + ula.PersonalTravelDays + ",'" + ula.PersonalTFromDate + "','" + ula.PersonalTToDate + "'," + ula.ModeOfTransport + "," + ula.AccomodationDays + ",'" + ula.Purpose + "','" + ula.ApprovedStatus + "','" + ula.Remark + "'");
+
+                    if (dr1.HasRows)
                     {
                         g2.close_connection();
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "Data Inserted!!!"), Encoding.UTF8, "application/json");
-                        return response;
+                        HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+                        response1.Content = new StringContent(cm.StatusTime(true, "Data Inserted!!!"), Encoding.UTF8, "application/json");
+                        return response1;
                     }
                     else
                     {
                         g2.close_connection();
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "Something Went Wrong,Data not innserted!!!"), Encoding.UTF8, "application/json");
-                        return response;
+                        HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+                        response1.Content = new StringContent(cm.StatusTime(true, "Something Went Wrong,Data not innserted!!!"), Encoding.UTF8, "application/json");
+                        return response1;
                     }
                 }
                 catch (Exception ex)
                 {
-                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
-                    return response;
+                    HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+                    response1.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
+                    return response1;
                 }
+                
+                      
+                  }
+                  else
+                  {
+                      g2.close_connection();
+                      HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                      response.Content = new StringContent(cm.StatusTime(false, "Selected Date is already present please choose another date."), Encoding.UTF8, "application/json");
+                      return response;
+                  }
+               }
+               catch (Exception ex)
+               {
+                   HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                   response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
+                   return response;
+               }
+
+
             }
             else
             {
@@ -61,6 +94,9 @@ namespace Project.Service.Controllers
                 return response;
             }
         }
+
+       
+
 
         [HttpPost]
         [ValidateModel]
@@ -77,7 +113,7 @@ namespace Project.Service.Controllers
 
                     List<getListOfTravelDetails> alldcr = new List<getListOfTravelDetails>();
                     List<TravelTxn> alldcr1 = new List<TravelTxn>();
-                    var dr = g1.return_dr("dbo.getListOfAllTravelData "+ula.ExId);
+                    var dr = g1.return_dr("dbo.getListOfAllTravelData " + ula.ExId);
                     if (dr.HasRows)
                     {
                         while (dr.Read())
@@ -112,6 +148,7 @@ namespace Project.Service.Controllers
                                 WithdrawRemark = Convert.ToString(dr["WithdrawRemark"].ToString()),
                                 RequestDate = Convert.ToString(dr["RequestDate"].ToString()),
                                 Employeename = Convert.ToString(dr["Employeename"].ToString()),
+                                TravelReqId = Convert.ToString(dr["TravelReqId"].ToString()),
                             });
                         }
                         g1.close_connection();
@@ -147,8 +184,8 @@ namespace Project.Service.Controllers
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
                 response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
                 return response;
+            }
         }
-    }
 
 
         [HttpPost]
@@ -173,10 +210,10 @@ namespace Project.Service.Controllers
                         {
                             alldcr1.Add(new TravelTxn
                             {
-                                
+
                                 Approvar1 = Convert.ToString(dr["Approvar1"].ToString()),
                                 Approvar2 = Convert.ToString(dr["Approvar2"].ToString()),
-                                
+
                             });
                         }
                         g1.close_connection();
@@ -227,11 +264,11 @@ namespace Project.Service.Controllers
             {
                 try
                 {
-                     //string data1;
+                    //string data1;
                     //List<DCRExecutives> alldcr = new List<DCRExecutives>();
-                   //List<DCRExecutive> alldcr1 = new List<DCRExecutive>();
+                    //List<DCRExecutive> alldcr1 = new List<DCRExecutive>();
 
-                    var dr = g2.return_dr("WithdrawTravelRequest " + ula.ExId + "," + ula.TravelTxnId+",'"+ula.WithdrawRemark+"'");
+                    var dr = g2.return_dr("WithdrawTravelRequest " + ula.ExId + "," + ula.TravelTxnId + ",'" + ula.WithdrawRemark + "'");
 
                     if (dr.HasRows)
                     {

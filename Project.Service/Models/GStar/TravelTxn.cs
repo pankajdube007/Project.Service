@@ -1,4 +1,4 @@
-﻿using System; 
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -45,12 +45,11 @@ namespace Project.Service.Models.GStar
         public string WithdrawDate { get; set; }
         public string WithdrawRemark { get; set; }
         public string Remark { get; set; }
-        public string RequestDate {get;set;}
-        public string Employeename { get;set;}
-        public string Approvar1 { get;set;}
-        public string Approvar2 { get;set;}
-
-
+        public string RequestDate { get; set; }
+        public string Employeename { get; set; }
+        public string Approvar1 { get; set; }
+        public string Approvar2 { get; set; }
+        public string TravelReqId { get; set; }
     }
 
 
@@ -64,5 +63,5 @@ namespace Project.Service.Models.GStar
     }
 
 
-   
+
 }

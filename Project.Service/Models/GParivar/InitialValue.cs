@@ -20,7 +20,8 @@ namespace Project.Service.Models
         public bool NewFeature { get; set; }
         public bool AndroidVisible { get; set; }
         public bool iosvisible { get; set; }
-        public bool cfdisplay { get; set; }        
+        public bool cfdisplay { get; set; }
+        public bool showDeactivationButton { get; set; }
         public string AlertMessage { get; set; }
         public string divisionLastUpdated { get; set; }
         public string enquiryLastUpdated { get; set; }
@@ -172,5 +173,7 @@ namespace Project.Service.Models
         public string RaiseTicketContactDetails { get; set; }
         public string RaiseTicketDetails { get; set; }
         public string CFDetailsList { get; set; }
+        public string getRaiseTicketDetails { get; set; }
+        public string CFSInvoiceDetails { get; set; }
     }
 }

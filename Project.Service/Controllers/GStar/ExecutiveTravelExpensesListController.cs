@@ -37,7 +37,7 @@ namespace Project.Service.Controllers.GStar
                     List<GetExecutiveTravelLists> Final = new List<GetExecutiveTravelLists>();
 
 
-                    var dr = g1.return_dt("dbo.GetExpensesDetails '" + ula.ExId + "','" + ula.search + "'");
+                    var dr = g1.return_dt("dbo.GetExpensesDetails '" + ula.ExId + "','" + ula.search + "','" + ula.fdate + "','" + ula.tdate + "'");
                     if (dr.Rows.Count > 0)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
@@ -56,6 +56,8 @@ namespace Project.Service.Controllers.GStar
                                 TotalAmt = Convert.ToString(dr.Rows[i]["TotalAmt"].ToString()),
                                 createdt = Convert.ToString(dr.Rows[i]["createdt"].ToString()),
                                 ApprovalStatus = Convert.ToString(dr.Rows[i]["ApprovalStatus"].ToString()),
+                                reimbursementamt=  Convert.ToString(dr.Rows[i]["reimbursementamt"].ToString()),
+                                catimg = string.IsNullOrEmpty(dr.Rows[i]["catimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr.Rows[i]["catimg"]).ToString().TrimEnd(',')),
 
                             });
                         }

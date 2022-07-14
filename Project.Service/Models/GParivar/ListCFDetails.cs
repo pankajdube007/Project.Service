@@ -47,10 +47,10 @@ namespace Project.Service.Models.GParivar
         public string TranAmount { get; set; }
         public string BalanceOutstanding { get; set; }
         public string DueDate { get; set; }
-        public string OverdueWithinCureINR { get; set; }
-        public string OverdueWithinCureNoOfDays { get; set; }
-        public string OverdueBeyondCureINR { get; set; }
-        public string OverdueBeyondCureNoOfDays { get; set; }
+        //public string OverdueWithinCureINR { get; set; }
+        //public string OverdueWithinCureNoOfDays { get; set; }
+        //public string OverdueBeyondCureINR { get; set; }
+        //public string OverdueBeyondCureNoOfDays { get; set; }
 
     }
 
@@ -59,6 +59,13 @@ namespace Project.Service.Models.GParivar
         public string Dealerssanctionlimits { get; set; }
         public string AvailableLimits { get; set; }
         public string BalanceOSwiththebank { get; set; }
+
+        public string OverdueWithinCureINR { get; set; }
+        public string OverdueWithinCureNoOfDays { get; set; }
+        public string OverdueBeyondCureINR { get; set; }
+        public string OverdueBeyondCureNoOfDays { get; set; }
+        public bool IsFreeze { get; set; }
+        
     }
     
 }

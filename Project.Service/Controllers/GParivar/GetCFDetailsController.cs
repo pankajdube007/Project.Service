@@ -56,10 +56,10 @@ namespace Project.Service.Controllers.GParivar
                                 TranAmount = Convert.ToString(dr.Rows[i]["TranAmount"].ToString()),
                                 BalanceOutstanding = Convert.ToString(dr.Rows[i]["BalanceOutstanding"].ToString()),
                                 DueDate = Convert.ToString(dr.Rows[i]["DueDate"].ToString()),
-                                OverdueWithinCureINR = Convert.ToString(dr.Rows[i]["OverdueWithinCureINR"].ToString()),
-                                OverdueWithinCureNoOfDays = Convert.ToString(dr.Rows[i]["OverdueWithinCureNoOfDays"].ToString()),
-                                OverdueBeyondCureINR = Convert.ToString(dr.Rows[i]["OverdueBeyondCureINR"].ToString()),
-                                OverdueBeyondCureNoOfDays = Convert.ToString(dr.Rows[i]["OverdueBeyondCureNoOfDays"].ToString()),
+                                //OverdueWithinCureINR = Convert.ToString(dr.Rows[i]["OverdueWithinCureINR"].ToString()),
+                                //OverdueWithinCureNoOfDays = Convert.ToString(dr.Rows[i]["OverdueWithinCureNoOfDays"].ToString()),
+                                //OverdueBeyondCureINR = Convert.ToString(dr.Rows[i]["OverdueBeyondCureINR"].ToString()),
+                                //OverdueBeyondCureNoOfDays = Convert.ToString(dr.Rows[i]["OverdueBeyondCureNoOfDays"].ToString()),
                                
                             });
                         }
@@ -72,6 +72,12 @@ namespace Project.Service.Controllers.GParivar
                             Dealerssanctionlimits = Convert.ToString(dr.Rows[0]["Dealerssanctionlimits"].ToString()),
                             AvailableLimits = Convert.ToString(dr.Rows[0]["AvailableLimits"].ToString()),
                             BalanceOSwiththebank = Convert.ToString(dr.Rows[0]["BalanceOSwiththebank"].ToString()),
+                            OverdueWithinCureINR = Convert.ToString(dr.Rows[0]["OverdueWithinCureINR"].ToString()),
+                            OverdueWithinCureNoOfDays = Convert.ToString(dr.Rows[0]["OverdueWithinCureNoOfDays"].ToString()),
+                            OverdueBeyondCureINR = Convert.ToString(dr.Rows[0]["OverdueBeyondCureINR"].ToString()),
+                            OverdueBeyondCureNoOfDays = Convert.ToString(dr.Rows[0]["OverdueBeyondCureNoOfDays"].ToString()),
+                            IsFreeze = Convert.ToBoolean(dr.Rows[0]["IsFreeze"].ToString()),
+                            
                         });
 
                         OutstandingFinal.Add(new FinalData

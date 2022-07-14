@@ -45,6 +45,8 @@ namespace Project.Service
                     iosvisible = Convert.ToBoolean(data.Rows[0]["iosvisible"]),
                     cfdisplay = Convert.ToBoolean(data.Rows[0]["cfdisplay"]),
                     AlertMessage = data.Rows[0]["AlertMessage"].ToString(),
+                    showDeactivationButton = Convert.ToBoolean(data.Rows[0]["showDeactivationButton"]),
+
 
 
 
@@ -200,7 +202,9 @@ namespace Project.Service
                     BonanzaPriceList = "getBonanzaPriceList",
                     RaiseTicketContactDetails = "getRaiseTicketContactDetails",
                     RaiseTicketDetails = "addRaiseTicketDetails",
-                    CFDetailsList = "getCFDetailsList"
+                    CFDetailsList = "getCFDetailsList",
+                    getRaiseTicketDetails= "getRaiseTicketDetails",
+                    CFSInvoiceDetails= "getCFSInvoiceDetails"
                 });
 
                 // g1.close_connection();

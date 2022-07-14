@@ -50,10 +50,10 @@ namespace Project.Service.Models.GStar
         public string RequestDate { get; set; }
         public string Employeename { get; set; }
         public string search { get; set; }
-    
+        public string TravelReqId { get; set; }
 
-        
-        
+
+
     }
 
     public class getListOfTravelManagerDetails

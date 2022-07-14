@@ -13,39 +13,36 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GParivar
 {
-    public class CFSInvoiceController : ApiController
+    public class DeActivateAccountController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getCFSInvoiceDetails")]
-        public HttpResponseMessage GetDetails(ListofCFSInvoiceDetails ula)
+        [Route("api/getDeActivateAccountDetails")]
+        public HttpResponseMessage GetDetails(ListofDeActivateAccount ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != null)
+            if (ula.appid != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<GetCFSInvoiceLists> alldcr = new List<GetCFSInvoiceLists>();
-                    List<GetCFSInvoiceList> alldcr1 = new List<GetCFSInvoiceList>();
-                    var dr = g1.return_dr("App_CFSInvoice '" + ula.CIN + "','" + ula.Date + "','"+ula.Amount+"'");
+                    List<GetDeActivateAccountLists> alldcr = new List<GetDeActivateAccountLists>();
+                    List<GetDeActivateAccountList> alldcr1 = new List<GetDeActivateAccountList>();
+                    var dr = g1.return_dr("dacticeaccount '" + ula.loginid + "','" + ula.appid + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetCFSInvoiceList
+                            alldcr1.Add(new GetDeActivateAccountList
                             {
-                                InvoiceId = Convert.ToString(dr["InvoiceId"].ToString()),
-                                InvoiceNo = Convert.ToString(dr["InvoiceNo"].ToString()),
-                                Division = Convert.ToString(dr["Division"].ToString()),
-                                Amount = Convert.ToString(dr["Amount"].ToString()),
-                               
+                                msg = Convert.ToString(dr["msg"].ToString()),
+                                
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetCFSInvoiceLists
+                        alldcr.Add(new GetDeActivateAccountLists
                         {
                             result = true,
                             message = string.Empty,

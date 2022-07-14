@@ -149,7 +149,7 @@ namespace Project.Service.Models.GParivar
 
         public long logno { get; set; }
 
-        public Guid Custuniquekey { get; set; }
+        //public Guid Custuniquekey { get; set; }
 
         public Guid Itemuniquekey { get; set; }
 

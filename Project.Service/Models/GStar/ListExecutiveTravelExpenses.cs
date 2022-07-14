@@ -15,6 +15,12 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
+        [Required]
+        public DateTime fdate { get; set; }
+
+        [Required]
+        public DateTime tdate { get; set; }
+
         public string search { get; set; }
 
     }
@@ -47,6 +53,8 @@ namespace Project.Service.Models.GStar
         public string TotalAmt { get; set; }
         public string createdt { get; set; }
         public string ApprovalStatus { get; set; }
+        public string reimbursementamt { get; set; }
+        public string catimg { get; set; }
 
     }
 

@@ -316,6 +316,7 @@
     <Compile Include="Controllers\GParivar\AppthirdpartypaymentController.cs" />
     <Compile Include="Controllers\GParivar\BonanzaPriceListController.cs" />
     <Compile Include="Controllers\GParivar\CFSInvoiceController.cs" />
+    <Compile Include="Controllers\GParivar\DeActivateAccountController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactivationController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactiveHistoryController.cs" />
     <Compile Include="Controllers\GParivar\GetCategoryMastController.cs" />
@@ -734,6 +735,7 @@
     <Compile Include="Controllers\Vendor\vendorpurchaseordrpendingsummaryController.cs" />
     <Compile Include="Controllers\Vendor\vendorpurchasependingorderController.cs" />
     <Compile Include="Controllers\Vendor\VendorPurOrderAllController.cs" />
+    <Compile Include="Controllers\Vendor\VendorQRController.cs" />
     <Compile Include="Controllers\Vendor\VendorRemarkUpdateController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalependingorderController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalependingorderpowiseController.cs" />
@@ -754,6 +756,7 @@
     <Compile Include="Models\GParivar\InvoicePod.cs" />
     <Compile Include="Models\GParivar\ListCategoryMast.cs" />
     <Compile Include="Models\GParivar\ListCFDetails.cs" />
+    <Compile Include="Models\GParivar\ListDeActivateAccount.cs" />
     <Compile Include="Models\GParivar\ListDistrictMaster.cs" />
     <Compile Include="Models\GParivar\ListPincodeDetails.cs" />
     <Compile Include="Models\GParivar\ListRaiseTicketContactDetails.cs" />
@@ -1385,6 +1388,7 @@
     <Compile Include="Models\Vendor\vendorpurchaseordrpendingsummary.cs" />
     <Compile Include="Models\Vendor\vendorpurchasependingorder.cs" />
     <Compile Include="Models\Vendor\VendorPurOrderAll.cs" />
+    <Compile Include="Models\Vendor\VendorQRDetails.cs" />
     <Compile Include="Models\Vendor\VendorRemarkUpdate.cs" />
     <Compile Include="Models\Vendor\vendorsalependingorderpowise.cs" />
     <Compile Include="Models\Vendor\vendorsalepndingsummary.cs" />

@@ -18,6 +18,9 @@ namespace Project.Service.Models.GParivar
         [Required]
         public string Date { get; set; }
 
+        [Required]
+        public string Amount { get; set; }
+
     }
 
     public class GetCFSInvoiceLists

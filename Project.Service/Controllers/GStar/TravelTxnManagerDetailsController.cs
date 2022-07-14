@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
 
                     List<getListOfTravelManagerDetails> alldcr = new List<getListOfTravelManagerDetails>();
                     List<TravelTxnManager> alldcr1 = new List<TravelTxnManager>();
-                    var dr = g1.return_dr("dbo.getListOfAllTravelManagerData " + ula.ExId+", '"+ula.search+ "'");
+                    var dr = g1.return_dr("dbo.getListOfAllTravelManagerData " + ula.ExId+",'"+ula.search+ "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
@@ -69,6 +69,7 @@ namespace Project.Service.Controllers
                                 WithdrawRemark = Convert.ToString(dr["WithdrawRemark"].ToString()),
                                 RequestDate = Convert.ToString(dr["RequestDate"].ToString()),
                                 Employeename = Convert.ToString(dr["Employeename"].ToString()),
+                                TravelReqId = Convert.ToString(dr["TravelReqId"].ToString()),
                             });
                         }
                         g1.close_connection();
