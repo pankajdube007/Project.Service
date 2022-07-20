@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<GetTravelReqLists> alldcr = new List<GetTravelReqLists>();
                     List<GetTravelReqList> alldcr1 = new List<GetTravelReqList>();
-                    var dr = g1.return_dr("dbo.TravelReqList '" + ula.ExId + "'");
+                    var dr = g1.return_dr("dbo.TravelReqList '" + ula.ExId + "', '" + ula.Date + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
@@ -64,7 +64,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No Travel ID found for this date"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

@@ -66,7 +66,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No Merchant found for this category"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

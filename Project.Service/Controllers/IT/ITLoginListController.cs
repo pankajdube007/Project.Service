@@ -68,12 +68,28 @@ namespace Project.Service.Controllers.IT
                     }
                     else
                     {
-                        g1.close_connection();
+                        alldcr.Add(new GetITLoginLists
+                        {
+                            result = true,
+                            message = "No Data available",
+                            servertime = DateTime.Now.ToString(),
+                            data = alldcr1,
+                        });
+                        data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+
+                        response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
 
                         return response;
                     }
+                    //else
+                    //{
+                    //    g1.close_connection();
+                    //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                    //    response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+
+                    //    return response;
+                    //}
                 }
                 catch (Exception ex)
                 {

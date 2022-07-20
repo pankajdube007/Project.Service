@@ -16,6 +16,10 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
+        [Required]
+        public string Date { get; set; }
+        
+
     }
 
     public class GetTravelReqLists

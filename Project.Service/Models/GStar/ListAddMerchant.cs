@@ -24,7 +24,7 @@ namespace Project.Service.Models.GStar
         [Required]
         public string addline1 { get; set; }
 
-        [Required]
+        
         public string addline2 { get; set; }
 
         [Required]

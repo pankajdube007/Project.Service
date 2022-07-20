@@ -43,22 +43,22 @@ namespace Project.Service.Models.GStar
         [Required]
         public decimal Cost { get; set; }
 
-        [Required]
+
         public decimal CGSTamt { get; set; }
 
-        [Required]
+       
         public decimal SGSTamt { get; set; }
 
-        [Required]
+        
         public decimal IGSTamt { get; set; }
 
-        [Required]
+       
         public decimal CGSTper { get; set; }
 
-        [Required]
+        
         public decimal SGSTper { get; set; }
 
-        [Required]
+        
         public decimal IGSTper { get; set; }
 
         [Required]
@@ -67,13 +67,13 @@ namespace Project.Service.Models.GStar
         [Required]
         public decimal TotalAmt { get; set; }
 
-        [Required]
+        
         public string Description { get; set; }
 
         [Required]
         public string ImgBill { get; set; }
 
-        [Required]
+        
         public string EmpIds { get; set; }
 
         [Required]

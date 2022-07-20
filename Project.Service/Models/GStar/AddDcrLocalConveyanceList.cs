@@ -25,40 +25,40 @@ namespace Project.Service.Models.GStar
         [Required]
         public string claimabledistance { get; set; }
 
-        [Required]
+        
         public string personaltravl { get; set; }
 
         [Required]
         public string odomtrkm { get; set; }
 
-        [Required]
+     
         public int trvlmodeq { get; set; }
 
-        [Required]
+       
         public string claimableamt { get; set; }
 
-        [Required]
+       
         public string self { get; set; }
 
-        [Required]
+        
         public string train { get; set; }
 
-        [Required]
+        
         public string metro { get; set; }
 
-        [Required]
+        
         public string rentalcar { get; set; }
 
-        [Required]
+       
         public string bus { get; set; }
 
-        [Required]
+       
         public string auto { get; set; }
 
-        [Required]
+        
         public string tollparking { get; set; }
 
-        [Required]
+        
         public string totalpayble { get; set; }
 
         [Required]

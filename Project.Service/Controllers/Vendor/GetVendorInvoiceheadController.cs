@@ -29,7 +29,7 @@ namespace Project.Service.Controllers
 
                     List<GetVendorInvoiceHeadDetails> alldcr = new List<GetVendorInvoiceHeadDetails>();
                     List<GetVendorInvoiceHeadDetail> alldcr1 = new List<GetVendorInvoiceHeadDetail>();
-                    var dr = g1.return_dr("dbo.x '" + ula.datefrom + "','" + ula.dateto + "','" + ula.PartyID + "','" + ula.TypeCat + "','" + ula.Cat + "'");
+                    var dr = g1.return_dr("dbo.spVendorProcInvoiceheadselectreportapp '" + ula.datefrom + "','" + ula.dateto + "','" + ula.PartyID + "','" + ula.TypeCat + "','" + ula.Cat + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

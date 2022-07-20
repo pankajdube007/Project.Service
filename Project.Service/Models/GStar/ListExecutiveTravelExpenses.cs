@@ -55,7 +55,10 @@ namespace Project.Service.Models.GStar
         public string ApprovalStatus { get; set; }
         public string reimbursementamt { get; set; }
         public string catimg { get; set; }
-
+        public string TravelRefNo { get; set; }
+        public string Travel { get; set; }
+        public string TravelFromDate { get; set; }
+        public string TravelToDate { get; set; }
     }
 
     public class GetTotalList

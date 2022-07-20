@@ -58,7 +58,10 @@ namespace Project.Service.Controllers.GStar
                                 ApprovalStatus = Convert.ToString(dr.Rows[i]["ApprovalStatus"].ToString()),
                                 reimbursementamt=  Convert.ToString(dr.Rows[i]["reimbursementamt"].ToString()),
                                 catimg = string.IsNullOrEmpty(dr.Rows[i]["catimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr.Rows[i]["catimg"]).ToString().TrimEnd(',')),
-
+                                TravelRefNo = Convert.ToString(dr.Rows[i]["TravelRefNo"].ToString()),
+                                Travel = Convert.ToString(dr.Rows[i]["Travel"].ToString()),
+                                TravelFromDate = Convert.ToString(dr.Rows[i]["TravelFromDate"].ToString()),
+                                TravelToDate = Convert.ToString(dr.Rows[i]["TravelToDate"].ToString()),
                             });
                         }
 
