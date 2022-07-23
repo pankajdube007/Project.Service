@@ -56,12 +56,33 @@ namespace Project.Service.Controllers.GStar
                                 TotalAmt = Convert.ToString(dr.Rows[i]["TotalAmt"].ToString()),
                                 createdt = Convert.ToString(dr.Rows[i]["createdt"].ToString()),
                                 ApprovalStatus = Convert.ToString(dr.Rows[i]["ApprovalStatus"].ToString()),
-                                reimbursementamt=  Convert.ToString(dr.Rows[i]["reimbursementamt"].ToString()),
+                                reimbursementamt = Convert.ToString(dr.Rows[i]["reimbursementamt"].ToString()),
                                 catimg = string.IsNullOrEmpty(dr.Rows[i]["catimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr.Rows[i]["catimg"]).ToString().TrimEnd(',')),
                                 TravelRefNo = Convert.ToString(dr.Rows[i]["TravelRefNo"].ToString()),
                                 Travel = Convert.ToString(dr.Rows[i]["Travel"].ToString()),
                                 TravelFromDate = Convert.ToString(dr.Rows[i]["TravelFromDate"].ToString()),
                                 TravelToDate = Convert.ToString(dr.Rows[i]["TravelToDate"].ToString()),
+
+                                ShowEdit          = Convert.ToBoolean(dr.Rows[i]["ShowEdit"].ToString()),
+                                MonthlyReport     = Convert.ToString(dr.Rows[i]["MonthlyReport"].ToString()),
+                                PaidBY            = Convert.ToString(dr.Rows[i]["PaidBY"].ToString()),
+                                EmployeeGeplCodes = Convert.ToString(dr.Rows[i]["EmployeeGeplCodes"].ToString()),
+                                EmployeeID        = Convert.ToString(dr.Rows[i]["EmployeeID"].ToString()),
+                                Description       = Convert.ToString(dr.Rows[i]["Description"].ToString()),
+                                IGSTper           = Convert.ToString(dr.Rows[i]["IGSTper"].ToString()),
+                                CGSTamt           = Convert.ToString(dr.Rows[i]["CGSTamt"].ToString()),
+                                SGSTamt           = Convert.ToString(dr.Rows[i]["SGSTamt"].ToString()),
+                                IGSTamt           = Convert.ToString(dr.Rows[i]["IGSTamt"].ToString()),
+                                CGSTper           = Convert.ToString(dr.Rows[i]["CGSTper"].ToString()),
+                                SGSTper           = Convert.ToString(dr.Rows[i]["SGSTper"].ToString()),
+                                CostBeforeTax     = Convert.ToString(dr.Rows[i]["CostBeforeTax"].ToString()),
+                                CategoryName      = Convert.ToString(dr.Rows[i]["CategoryName"].ToString()),
+                                CategoryId        = Convert.ToString(dr.Rows[i]["CategoryId"].ToString()),
+                                MerchantId        = Convert.ToString(dr.Rows[i]["MerchantId"].ToString()),
+                                TravelID          = Convert.ToString(dr.Rows[i]["TravelID"].ToString()),
+                                BillNo            = Convert.ToString(dr.Rows[i]["BillNo"].ToString()),
+                                
+
                             });
                         }
 

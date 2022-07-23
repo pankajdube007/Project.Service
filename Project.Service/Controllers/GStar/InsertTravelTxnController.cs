@@ -149,6 +149,7 @@ namespace Project.Service.Controllers
                                 RequestDate = Convert.ToString(dr["RequestDate"].ToString()),
                                 Employeename = Convert.ToString(dr["Employeename"].ToString()),
                                 TravelReqId = Convert.ToString(dr["TravelReqId"].ToString()),
+                                Remark = Convert.ToString(dr["Remark"].ToString()),
                             });
                         }
                         g1.close_connection();

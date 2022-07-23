@@ -82,6 +82,9 @@ namespace Project.Service.Models.GStar
         [Required]
         public string MonthlyReport { get; set; }
 
+        [Required]
+        public string ExpenseNo { get; set; }
+
     }
 
     public class AddExecTravelExpDetailsLists

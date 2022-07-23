@@ -59,6 +59,27 @@ namespace Project.Service.Models.GStar
         public string Travel { get; set; }
         public string TravelFromDate { get; set; }
         public string TravelToDate { get; set; }
+
+
+
+        public bool ShowEdit            { get; set; }
+        public string MonthlyReport       { get; set; }
+        public string PaidBY              { get; set; }
+        public string EmployeeGeplCodes    { get; set; }
+        public string EmployeeID          { get; set; }
+        public string Description         { get; set; }
+        public string IGSTper             { get; set; }
+        public string CGSTamt             { get; set; }
+        public string SGSTamt             { get; set; }
+        public string IGSTamt             { get; set; }
+        public string CGSTper             { get; set; }
+        public string SGSTper             { get; set; }
+        public string CostBeforeTax       { get; set; }
+        public string CategoryName        { get; set; }
+        public string CategoryId          { get; set; }
+        public string MerchantId          { get; set; }
+        public string TravelID            { get; set; }
+        public string BillNo               { get; set; }
     }
 
     public class GetTotalList
