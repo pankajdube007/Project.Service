@@ -744,6 +744,9 @@
     <Compile Include="Controllers\GParivar\VisitorCatListController.cs" />
     <Compile Include="Controllers\GParivar\VisitorController.cs" />
     <Compile Include="Controllers\GParivar\VisitorDivisionController.cs" />
+    <Compile Include="Controllers\Vendor\WAPostQRMapingDetailsController.cs" />
+    <Compile Include="Controllers\Vendor\WAQRSyncPostAPIUrlController.cs" />
+    <Compile Include="Controllers\Vendor\WAVendorQRController.cs" />
     <Compile Include="Models\General\Whatsapp.cs" />
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />

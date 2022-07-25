@@ -208,7 +208,7 @@ namespace Project.Service.Models
 
 
         #region Dataset Methods With Parameter
-        public DataSet FillDataSet(string spName, SqlParameter[] sqlparam, String ConnectionStringCode)
+        public DataSet FillDataSet(string spName, SqlParameter[] sqlparam)
         {
             DataSet DataSetToFill = new DataSet();
             try

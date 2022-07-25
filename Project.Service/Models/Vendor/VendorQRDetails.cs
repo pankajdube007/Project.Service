@@ -60,12 +60,12 @@ namespace Project.Service.Models
             DataSet ds = new DataSet();
             try
             {
-                DataAccess objDataAccess = new DataAccess();
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
                 SqlParameter[] param = new SqlParameter[3];
                 param[0] = new SqlParameter("@VendorID", VendorID);
                 param[1] = new SqlParameter("@BranchID", BranchID);
                 param[2] = new SqlParameter("@Type", Type);
-                ds = objDataAccess.FillDataSet("GetProductDetailsForScanner", param, "GoldErp");
+                ds = objDataAccess.FillDataSet("GetProductDetailsForScanner", param);
             }
             catch (Exception ex)
             {
@@ -155,15 +155,15 @@ namespace Project.Service.Models
                 newColumn.DefaultValue = BranchID.Trim();
                 dtData.Columns.Add(newColumn);
 
-                DataAccess objDataAccess = new DataAccess();
-                String Data = objDataAccess.InsertBulkInsert(dtData, "GoldErp", "TempQRPostDetails");
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                String Data = objDataAccess.BulkInsert(dtData, "TempQRPostDetails");
 
-                objDataAccess = new DataAccess();
+                objDataAccess = new DataConnectionTrans();
                 SqlParameter[] param = new SqlParameter[3];
                 param[0] = new SqlParameter("@VendorID", VendorID);
                 param[1] = new SqlParameter("@BranchID", BranchID);
                 param[2] = new SqlParameter("@SessionID", strSessionID.ToString().ToUpper());
-                ds = objDataAccess.FillDataSet("UpdateProductDetailsForScannerQRBulk", param, "GoldErp");
+                ds = objDataAccess.FillDataSet("UpdateProductDetailsForScannerQRBulk", param);
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -250,15 +250,15 @@ namespace Project.Service.Models
                         newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
                         dtData.Columns.Add(newColumn);
 
-                        DataAccess objDataAccess = new DataAccess();
-                        String Data = objDataAccess.InsertBulkInsert(dtData, "GoldErp", "TempQRQCGID");
+                        DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                        String Data = objDataAccess.BulkInsert(dtData, "TempQRQCGID");
 
                         DataSet ds = new DataSet();
-                        objDataAccess = new DataAccess();
+                        objDataAccess = new DataConnectionTrans();
                         SqlParameter[] param = new SqlParameter[2];
                         param[0] = new SqlParameter("@VendorID", VendorID);
                         param[1] = new SqlParameter("@SessionID", strSessionID.ToString().ToUpper());
-                        ds = objDataAccess.FillDataSet("UpdateQRSyncDataBulk", param, "GoldErp");
+                        ds = objDataAccess.FillDataSet("UpdateQRSyncDataBulk", param);
 
                         if (ds.Tables[0].Rows.Count > 0)
                         {
