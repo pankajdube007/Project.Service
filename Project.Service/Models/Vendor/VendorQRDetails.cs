@@ -1,4 +1,4 @@
-﻿using Project.Service.Models;
+using Project.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +13,6 @@ namespace Project.Service.Models
 {
     public class VendorQRDetails
     {
-
         public HttpResponseMessage GetQRDetails(GetQRData objGetQRData)
         {
             String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objGetQRData);
@@ -61,7 +60,7 @@ namespace Project.Service.Models
             DataSet ds = new DataSet();
             try
             {
-                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                DataAccess objDataAccess = new DataAccess();
                 SqlParameter[] param = new SqlParameter[3];
                 param[0] = new SqlParameter("@VendorID", VendorID);
                 param[1] = new SqlParameter("@BranchID", BranchID);
@@ -156,10 +155,10 @@ namespace Project.Service.Models
                 newColumn.DefaultValue = BranchID.Trim();
                 dtData.Columns.Add(newColumn);
 
-                DataConnectionTrans objDataAccess = new DataConnectionTrans();
-                String Data = objDataAccess.BulkInsert(dtData, "TempQRPostDetails");
+                DataAccess objDataAccess = new DataAccess();
+                String Data = objDataAccess.InsertBulkInsert(dtData, "GoldErp", "TempQRPostDetails");
 
-                objDataAccess = new DataConnectionTrans();
+                objDataAccess = new DataAccess();
                 SqlParameter[] param = new SqlParameter[3];
                 param[0] = new SqlParameter("@VendorID", VendorID);
                 param[1] = new SqlParameter("@BranchID", BranchID);
@@ -170,9 +169,25 @@ namespace Project.Service.Models
                 {
                     foreach (DataRow dr in dtData.Rows)
                     {
-                        PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
-                        objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
-                        objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                        if (dr["InvPostType"].ToString().Trim().ToUpper() != "AUTO")
+                        {
+                            PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
+                            objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
+                            objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                        }
+                    }
+
+                    DataTable dtAutoQR = new DataTable();
+                    dtAutoQR = ds.Tables[1];
+
+                    if (dtAutoQR.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dtAutoQR.Rows)
+                        {
+                            PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
+                            objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
+                            objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                        }
                     }
                 }
             }
@@ -235,11 +250,11 @@ namespace Project.Service.Models
                         newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
                         dtData.Columns.Add(newColumn);
 
-                        DataConnectionTrans objDataAccess = new DataConnectionTrans();
-                        String Data = objDataAccess.BulkInsert(dtData, "TempQRQCGID");
+                        DataAccess objDataAccess = new DataAccess();
+                        String Data = objDataAccess.InsertBulkInsert(dtData, "GoldErp", "TempQRQCGID");
 
                         DataSet ds = new DataSet();
-                        objDataAccess = new DataConnectionTrans();
+                        objDataAccess = new DataAccess();
                         SqlParameter[] param = new SqlParameter[2];
                         param[0] = new SqlParameter("@VendorID", VendorID);
                         param[1] = new SqlParameter("@SessionID", strSessionID.ToString().ToUpper());
@@ -291,7 +306,6 @@ namespace Project.Service.Models
 
             return dataTable;
         }
-
     }
 
 }
@@ -366,8 +380,11 @@ public class PostQRMapingDetails
     public string InvoiceRefDate { get; set; }
     public string InvPostType { get; set; }
     public string InvPostDate { get; set; }
+    public string IType { get; set; }
     public string POID { get; set; }
+    public string BatchNo { get; set; }
 }
+
 
 
 
