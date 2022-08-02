@@ -64,6 +64,9 @@ namespace Project.Service.Models.GStar
         [Required]
         public Boolean IsClaimable { get; set; }
 
+        public string AppRemark { get; set; }
+        
+
     }
 
     public class AddDcrLocalConveyanceLists

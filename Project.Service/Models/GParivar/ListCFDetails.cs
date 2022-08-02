@@ -65,7 +65,10 @@ namespace Project.Service.Models.GParivar
         public string OverdueBeyondCureINR { get; set; }
         public string OverdueBeyondCureNoOfDays { get; set; }
         public bool IsFreeze { get; set; }
-        
+        public string ZeroTo30 { get; set; }
+        public string ThirtyOneTo60 { get; set; }
+        public string SixtyOneTo90 { get; set; }
+        public string NinetyOneAbove { get; set; }
     }
     
 }

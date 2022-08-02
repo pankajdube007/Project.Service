@@ -33,7 +33,7 @@ namespace Project.Service.Controllers.GStar
                     List<AddDcrLocalConveyanceLists> alldcr = new List<AddDcrLocalConveyanceLists>();
                     List<AddDcrLocalConveyanceList> alldcr1 = new List<AddDcrLocalConveyanceList>();
                     
-                    var dr = g2.return_dr("dbo.AddDcrLocalConveyance '" + ula.ExId + "','" + ula.trvldt + "','" + ula.grossdistance + "','" + ula.claimabledistance + "','" + ula.personaltravl + "','" + ula.odomtrkm + "','" + ula.trvlmodeq + "','" + ula.claimableamt + "','" + ula.self + "','" + ula.train + "','" + ula.metro + "','" + ula.rentalcar + "','" + ula.bus + "','" + ula.auto + "','" + ula.tollparking + "','" + ula.totalpayble + "','" + ula.IsClaimable + "'");
+                    var dr = g2.return_dr("dbo.AddDcrLocalConveyance '" + ula.ExId + "','" + ula.trvldt + "','" + ula.grossdistance + "','" + ula.claimabledistance + "','" + ula.personaltravl + "','" + ula.odomtrkm + "','" + ula.trvlmodeq + "','" + ula.claimableamt + "','" + ula.self + "','" + ula.train + "','" + ula.metro + "','" + ula.rentalcar + "','" + ula.bus + "','" + ula.auto + "','" + ula.tollparking + "','" + ula.totalpayble + "','" + ula.IsClaimable + "', '" + ula.AppRemark + "' ");
 
                     if (dr.HasRows)
                     {

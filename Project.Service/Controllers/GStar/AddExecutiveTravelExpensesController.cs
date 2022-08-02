@@ -39,7 +39,8 @@ namespace Project.Service.Controllers.GStar
      var dr = g2.return_dr("dbo.AddExecutiveTravelExpenses '" +
                         ula.ExId                 + "','" +
                         ula.ExpenseNo            + "','" +
-                        ula.TravelDate           + "','" + 
+                        ula.TravelDate           + "','" +
+                        ula.BillNo               + "','" +
                         ula.TravelReqid          + "','" + 
                         ula.MerchantCategoryid   + "','" + 
                         ula.MerchantTypeid       + "','" + 

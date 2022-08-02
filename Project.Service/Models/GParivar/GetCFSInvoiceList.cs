@@ -20,7 +20,7 @@ namespace Project.Service.Models.GParivar
 
         [Required]
         public string Amount { get; set; }
-
+        
     }
 
     public class GetCFSInvoiceLists
@@ -37,6 +37,7 @@ namespace Project.Service.Models.GParivar
         public string InvoiceNo { get; set; }
         public string Division { get; set; }
         public string Amount { get; set; }
-      
+        public string DueDays { get; set; }
+        
     }
 }

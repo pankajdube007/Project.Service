@@ -30,7 +30,7 @@ namespace Project.Service.Controllers.GParivar
 
                     List<GetCFSInvoiceLists> alldcr = new List<GetCFSInvoiceLists>();
                     List<GetCFSInvoiceList> alldcr1 = new List<GetCFSInvoiceList>();
-                    var dr = g1.return_dr("App_CFSInvoice '" + ula.CIN + "','" + ula.Date + "','"+ula.Amount+"'");
+                    var dr = g1.return_dr("App_CFSInvoice '" + ula.CIN + "','" + ula.Date + "','" + ula.Amount + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
@@ -41,7 +41,8 @@ namespace Project.Service.Controllers.GParivar
                                 InvoiceNo = Convert.ToString(dr["InvoiceNo"].ToString()),
                                 Division = Convert.ToString(dr["Division"].ToString()),
                                 Amount = Convert.ToString(dr["Amount"].ToString()),
-                               
+                                DueDays = Convert.ToString(dr["DueDays"].ToString()),
+                                
                             });
                         }
                         g1.close_connection();

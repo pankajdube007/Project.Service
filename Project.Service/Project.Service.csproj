@@ -389,6 +389,7 @@
     <Compile Include="Controllers\GStar\GstInformationController.cs" />
     <Compile Include="Controllers\GStar\InsertAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\InsertTravelTxnController.cs" />
+    <Compile Include="Controllers\GStar\ListLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
     <Compile Include="Controllers\GStar\MediaListController.cs" />
     <Compile Include="Controllers\GStar\MerchantListController.cs" />
@@ -403,6 +404,7 @@
     <Compile Include="Controllers\GStar\TripListController.cs" />
     <Compile Include="Controllers\GStar\VehicleListController.cs" />
     <Compile Include="Controllers\GStar\VehicleMstController.cs" />
+    <Compile Include="Controllers\GStar\ViewDetailsLocalConveyanceController.cs" />
     <Compile Include="Controllers\hrm\AttendenceSyncController.cs" />
     <Compile Include="Controllers\IT\AddChangeWeeklyOffController.cs" />
     <Compile Include="Controllers\IT\AddSetWeeklyOffController.cs" />
@@ -838,6 +840,7 @@
     <Compile Include="Models\GStar\ListExecOrgVistList.cs" />
     <Compile Include="Models\GStar\ListExecutiveTravelExpenses.cs" />
     <Compile Include="Models\GStar\ListGstInformation.cs" />
+    <Compile Include="Models\GStar\ListLocalConveyance.cs" />
     <Compile Include="Models\GStar\ListMerchant.cs" />
     <Compile Include="Models\GStar\ListmerchantCat.cs" />
     <Compile Include="Models\GStar\ListOfCity.cs" />
@@ -859,6 +862,7 @@
     <Compile Include="Models\GStar\TravelTxnManager.cs" />
     <Compile Include="Models\GStar\VehicleList.cs" />
     <Compile Include="Models\GStar\VehicleMst.cs" />
+    <Compile Include="Models\GStar\ViewDetailsLocalConveyance.cs" />
     <Compile Include="Models\hrm\AttendenceSync.cs" />
     <Compile Include="Models\IT\ListApprovalChangeWeeklyOff.cs" />
     <Compile Include="Models\IT\ListApprovalWeeklyOff.cs" />

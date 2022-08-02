@@ -53,10 +53,30 @@ namespace Project.Service.Models.GStar
         public string grossdistance { get; set; }
         public string claimablediastance { get; set; }
         public string odomtrkm { get; set; }
-        public string BikeRate { get; set; }
+        public string trainlimit { get; set; }
+        public string MetroLimit { get; set; }
+        public string TollLimit { get; set; }
+        public string Buslimit { get; set; }
+        public string AutoLimit { get; set; }
+        public string RentalLimit { get; set; }
+        public string TrvlLimit { get; set; }
         public string CarRate { get; set; }
+        public string BikeRate { get; set; }
+        public string SameDaykm { get; set; }
+        public string SameDayAmount { get; set; }
+        public string TrainUsed { get; set; }
+        public string MetroUsed { get; set; }
+        public string TollUsed { get; set; }
+        public string BusUsed { get; set; }
+        public string AutoUsed { get; set; }
+        public string RentalUsed { get; set; }
+        public string trvlUsed { get; set; }
+        public string TrainBalance { get; set; }
+        public string MetroBalance { get; set; }
+        public string TollBalance { get; set; }
+        public string BusBalance { get; set; }
+        public string AutoBalance { get; set; }
+        public string RentalBalance { get; set; }
         public string balancekm { get; set; }
-        public string balanceamt { get; set; }
-
     }
 }

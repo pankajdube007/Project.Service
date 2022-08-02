@@ -60,6 +60,8 @@ namespace Project.Service.Models.GStar
         public string TravelFromDate { get; set; }
         public string TravelToDate { get; set; }
 
+        public string Remark { get; set; }
+        
 
 
         public bool ShowEdit            { get; set; }
@@ -80,6 +82,11 @@ namespace Project.Service.Models.GStar
         public string MerchantId          { get; set; }
         public string TravelID            { get; set; }
         public string BillNo               { get; set; }
+
+        public string SlNoAttendees { get; set; }
+        public string TaxPer { get; set; }
+        public string GSTType { get; set; }
+
     }
 
     public class GetTotalList

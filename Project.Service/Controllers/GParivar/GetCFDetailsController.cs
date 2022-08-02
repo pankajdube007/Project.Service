@@ -77,7 +77,11 @@ namespace Project.Service.Controllers.GParivar
                             OverdueBeyondCureINR = Convert.ToString(dr.Rows[0]["OverdueBeyondCureINR"].ToString()),
                             OverdueBeyondCureNoOfDays = Convert.ToString(dr.Rows[0]["OverdueBeyondCureNoOfDays"].ToString()),
                             IsFreeze = Convert.ToBoolean(dr.Rows[0]["IsFreeze"].ToString()),
-                            
+                            ZeroTo30 = Convert.ToString(dr.Rows[0]["ZeroTo30"].ToString()),
+                            ThirtyOneTo60 = Convert.ToString(dr.Rows[0]["ThirtyOneTo60"].ToString()),
+                            SixtyOneTo90 = Convert.ToString(dr.Rows[0]["SixtyOneTo90"].ToString()),
+                            NinetyOneAbove = Convert.ToString(dr.Rows[0]["NinetyOneAbove"].ToString()),
+
                         });
 
                         OutstandingFinal.Add(new FinalData

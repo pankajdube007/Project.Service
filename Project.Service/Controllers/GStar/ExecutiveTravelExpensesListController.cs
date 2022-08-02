@@ -63,6 +63,8 @@ namespace Project.Service.Controllers.GStar
                                 TravelFromDate = Convert.ToString(dr.Rows[i]["TravelFromDate"].ToString()),
                                 TravelToDate = Convert.ToString(dr.Rows[i]["TravelToDate"].ToString()),
 
+                                Remark = Convert.ToString(dr.Rows[i]["Remark"].ToString()),
+
                                 ShowEdit          = Convert.ToBoolean(dr.Rows[i]["ShowEdit"].ToString()),
                                 MonthlyReport     = Convert.ToString(dr.Rows[i]["MonthlyReport"].ToString()),
                                 PaidBY            = Convert.ToString(dr.Rows[i]["PaidBY"].ToString()),
@@ -81,7 +83,10 @@ namespace Project.Service.Controllers.GStar
                                 MerchantId        = Convert.ToString(dr.Rows[i]["MerchantId"].ToString()),
                                 TravelID          = Convert.ToString(dr.Rows[i]["TravelID"].ToString()),
                                 BillNo            = Convert.ToString(dr.Rows[i]["BillNo"].ToString()),
-                                
+
+                                SlNoAttendees = Convert.ToString(dr.Rows[i]["SlNoAttendees"].ToString()),
+                                TaxPer = Convert.ToString(dr.Rows[i]["TaxPer"].ToString()),
+                                GSTType = Convert.ToString(dr.Rows[i]["GSTType"].ToString()),
 
                             });
                         }
