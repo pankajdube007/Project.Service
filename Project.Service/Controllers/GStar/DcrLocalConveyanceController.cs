@@ -37,7 +37,7 @@ namespace Project.Service.Controllers.GStar
                     List<GetFinalLists> Final = new List<GetFinalLists>();
 
                     var dr = g1.return_dr("dbo.execcheckinoutlistdtwise '" + ula.ExId + "','" + ula.date + "'");
-                    var dr1 = g1.return_dr("dbo.execcheckinoutlistdtwisesum '" + ula.ExId + "','" + ula.date + "','" + ula.transportid + "'");
+                    var dr1 = g1.return_dr("dbo.execcheckinoutlistdtwisesum '" + ula.ExId + "','" + ula.date + "','" + ula.transportid + "', '" + ula.slno + "' ");
 
 
                     if (dr.HasRows)
@@ -94,6 +94,17 @@ namespace Project.Service.Controllers.GStar
                                 AutoBalance = Convert.ToString(dr1["AutoBalance"].ToString()),
                                 RentalBalance = Convert.ToString(dr1["RentalBalance"].ToString()),
                                 balancekm = Convert.ToString(dr1["balancekm"].ToString()),
+                                slno = Convert.ToString(dr1["slno"].ToString()),
+                                InsertedOdoMtr = Convert.ToString(dr1["InsertedOdoMtr"].ToString()),
+                                InsertedSelf = Convert.ToString(dr1["InsertedSelf"].ToString()),
+                                InsertedtrvlMode = Convert.ToString(dr1["InsertedtrvlMode"].ToString()),
+                                Insertedtrain = Convert.ToString(dr1["Insertedtrain"].ToString()),
+                                Insertedmetro = Convert.ToString(dr1["Insertedmetro"].ToString()),
+                                Insertedrentalcar = Convert.ToString(dr1["Insertedrentalcar"].ToString()),
+                                Insertedbus = Convert.ToString(dr1["Insertedbus"].ToString()),
+                                Insertedauto = Convert.ToString(dr1["Insertedauto"].ToString()),
+                                Insertedtollparking = Convert.ToString(dr1["Insertedtollparking"].ToString()),
+                                isapprove = Convert.ToString(dr1["isapprove"].ToString()),
                             });
                         }
 

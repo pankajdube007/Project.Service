@@ -21,6 +21,10 @@ namespace Project.Service.Models.GStar
         [Required]
         public string transportid { get; set; }
 
+        [Required]
+        public string slno { get; set; }
+        
+
     }
 
     public class GetDcrLocalConveyanceLists
@@ -78,5 +82,16 @@ namespace Project.Service.Models.GStar
         public string AutoBalance { get; set; }
         public string RentalBalance { get; set; }
         public string balancekm { get; set; }
+        public string slno { get; set; }
+        public string InsertedOdoMtr { get; set; }
+        public string InsertedSelf { get; set; }
+        public string InsertedtrvlMode { get; set; }
+        public string Insertedtrain { get; set; }
+        public string Insertedmetro { get; set; }
+        public string Insertedrentalcar { get; set; }
+        public string Insertedbus { get; set; }
+        public string Insertedauto { get; set; }
+        public string Insertedtollparking { get; set; }
+        public string isapprove { get; set; }
     }
 }
