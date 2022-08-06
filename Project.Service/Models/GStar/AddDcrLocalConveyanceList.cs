@@ -65,7 +65,10 @@ namespace Project.Service.Models.GStar
         public Boolean IsClaimable { get; set; }
 
         public string AppRemark { get; set; }
-        
+
+        [Required]
+        public int slno { get; set; }
+
 
     }
 

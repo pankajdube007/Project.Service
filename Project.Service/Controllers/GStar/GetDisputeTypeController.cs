@@ -5,7 +5,6 @@ using Project.Service.Models;
 using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,36 +13,38 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GStar
 {
-    public class DcrAddLocalConveyanceController : ApiController
+    public class GetDisputeTypeController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/addDcrLocalConveyance")]
-        public HttpResponseMessage GetDetails(ListofAddDcrLocalConveyance ula)
+        [Route("api/getDisputeList")]
+        public HttpResponseMessage GetDetails(ListofDisputeType ula)
         {
-            DataConnectionTrans g2 = new DataConnectionTrans();
-            GoldMedia _goldMedia = new GoldMedia();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
+            GoldMedia _goldMedia = new GoldMedia();
             if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<AddDcrLocalConveyanceLists> alldcr = new List<AddDcrLocalConveyanceLists>();
-                    List<AddDcrLocalConveyanceList> alldcr1 = new List<AddDcrLocalConveyanceList>();
-                    
-                    var dr = g2.return_dr("dbo.AddDcrLocalConveyance '" + ula.ExId + "','" + ula.trvldt + "','" + ula.grossdistance + "','" + ula.claimabledistance + "','" + ula.personaltravl + "','" + ula.odomtrkm + "','" + ula.trvlmodeq + "','" + ula.claimableamt + "','" + ula.self + "','" + ula.train + "','" + ula.metro + "','" + ula.rentalcar + "','" + ula.bus + "','" + ula.auto + "','" + ula.tollparking + "','" + ula.totalpayble + "','" + ula.IsClaimable + "', '" + ula.AppRemark + "','" + ula.slno + "'  ");
-
+                    List<GetDisputeTypeLists> alldcr = new List<GetDisputeTypeLists>();
+                    List<GetDisputeTypeList> alldcr1 = new List<GetDisputeTypeList>();
+                    var dr = g1.return_dr("dbo.DisputeTypeList");
                     if (dr.HasRows)
                     {
-                        alldcr1.Add(new AddDcrLocalConveyanceList
+                        string baseurl = _goldMedia.MapPathToPublicUrl("");
+                        while (dr.Read())
                         {
-                            output = "Data Sucessfully inserted"
-                        });
-
-                        g2.close_connection();
-                        alldcr.Add(new AddDcrLocalConveyanceLists
+                            alldcr1.Add(new GetDisputeTypeList
+                            {
+                                slno = Convert.ToString(dr["slno"].ToString()),
+                                dispute = Convert.ToString(dr["dispute"].ToString()),
+                            });
+                        }
+                        g1.close_connection();
+                        alldcr.Add(new GetDisputeTypeLists
                         {
                             result = true,
                             message = string.Empty,
@@ -59,9 +60,9 @@ namespace Project.Service.Controllers.GStar
                     }
                     else
                     {
-                        g2.close_connection();
+                        g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Add Trip Not Created!!!!!!!!"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "Dispute Type not found !!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -69,7 +70,7 @@ namespace Project.Service.Controllers.GStar
                 catch (Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
 
                     return response;
                 }
@@ -82,7 +83,5 @@ namespace Project.Service.Controllers.GStar
                 return response;
             }
         }
-
-
     }
 }
