@@ -104,6 +104,7 @@ namespace Project.Service.Controllers.GStar
                                 Insertedbus = Convert.ToString(dr1["Insertedbus"].ToString()),
                                 Insertedauto = Convert.ToString(dr1["Insertedauto"].ToString()),
                                 Insertedtollparking = Convert.ToString(dr1["Insertedtollparking"].ToString()),
+                                insertedRemark = Convert.ToString(dr1["insertedRemark"].ToString()),
                                 isapprove = Convert.ToString(dr1["isapprove"].ToString()),
                             });
                         }

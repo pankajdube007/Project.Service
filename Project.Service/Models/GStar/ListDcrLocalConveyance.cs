@@ -92,6 +92,7 @@ namespace Project.Service.Models.GStar
         public string Insertedbus { get; set; }
         public string Insertedauto { get; set; }
         public string Insertedtollparking { get; set; }
+        public string insertedRemark { get; set; }        
         public string isapprove { get; set; }
     }
 }

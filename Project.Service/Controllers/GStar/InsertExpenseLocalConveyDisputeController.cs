@@ -46,7 +46,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         alldcr1.Add(new AddInsertExpenseLocalConveyDisputeList
                         {
-                            output = "Data Sucessfully inserted"
+                            output = "Your dispute raised send successfully"
                         });
 
                         g2.close_connection();
@@ -68,7 +68,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g2.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Add Trip Not Created!!!!!!!!"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "Raised Dispute Not Created!!!!!!!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

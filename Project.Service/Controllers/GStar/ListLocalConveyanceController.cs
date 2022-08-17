@@ -52,6 +52,7 @@ namespace Project.Service.Controllers.GStar
                                 SelfConveyance = Convert.ToString(dr["SelfConveyance"].ToString()),
                                 status = Convert.ToString(dr["status"].ToString()),
                                 TotalApproved = Convert.ToString(dr["TotalApproved"].ToString()),
+                                TotalAmt = Convert.ToString(dr["TotalAmt"].ToString()),
 
                             });
                         }

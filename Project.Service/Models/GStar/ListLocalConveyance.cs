@@ -44,6 +44,7 @@ namespace Project.Service.Models.GStar
         public string SelfConveyance { get; set; }
         public string status { get; set; }
         public string TotalApproved { get; set; }
+        public string TotalAmt { get; set; }
         
     }
 }

@@ -86,6 +86,8 @@ namespace Project.Service.Models.GStar
         public string SlNoAttendees { get; set; }
         public string TaxPer { get; set; }
         public string GSTType { get; set; }
+        public string SlNoExecutiveTravelExpenses { get; set; }
+        
 
     }
 

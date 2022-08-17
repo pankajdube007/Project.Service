@@ -87,6 +87,7 @@ namespace Project.Service.Controllers.GStar
                                 SlNoAttendees = Convert.ToString(dr.Rows[i]["SlNoAttendees"].ToString()),
                                 TaxPer = Convert.ToString(dr.Rows[i]["TaxPer"].ToString()),
                                 GSTType = Convert.ToString(dr.Rows[i]["GSTType"].ToString()),
+                                SlNoExecutiveTravelExpenses = Convert.ToString(dr.Rows[i]["SlNoExecutiveTravelExpenses"].ToString()),
 
                             });
                         }

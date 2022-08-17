@@ -380,6 +380,7 @@
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\GetCityMastController.cs" />
     <Compile Include="Controllers\GStar\GetDealerContactExecutiveNewController.cs" />
+    <Compile Include="Controllers\GStar\GetDisputeTypeController.cs" />
     <Compile Include="Controllers\GStar\GetExecutiveWiseNewYearBonazaController.cs" />
     <Compile Include="Controllers\GStar\GetListofCityController.cs" />
     <Compile Include="Controllers\GStar\GetListofTravelModeOfTransportController.cs" />
@@ -388,6 +389,7 @@
     <Compile Include="Controllers\GStar\GetStateMastGstarController.cs" />
     <Compile Include="Controllers\GStar\GstInformationController.cs" />
     <Compile Include="Controllers\GStar\InsertAutomationLeadGenerationController.cs" />
+    <Compile Include="Controllers\GStar\InsertExpenseLocalConveyDisputeController.cs" />
     <Compile Include="Controllers\GStar\InsertTravelTxnController.cs" />
     <Compile Include="Controllers\GStar\ListLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
@@ -830,8 +832,10 @@
     <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
+    <Compile Include="Models\GStar\GetDisputeType.cs" />
     <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
+    <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
     <Compile Include="Models\GStar\ListAddMerchant.cs" />
     <Compile Include="Models\GStar\ListAreaMast.cs" />
     <Compile Include="Models\GStar\ListCityMast.cs" />
