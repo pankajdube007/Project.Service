@@ -325,6 +325,8 @@
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
     <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
+    <Compile Include="Controllers\GParivar\MenInBlueSumDetailController.cs" />
+    <Compile Include="Controllers\GParivar\MenInBlueSumPartyController.cs" />
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
     <Compile Include="Controllers\GParivar\PincodeDetailsController.cs" />
@@ -394,6 +396,7 @@
     <Compile Include="Controllers\GStar\ListLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
     <Compile Include="Controllers\GStar\MediaListController.cs" />
+    <Compile Include="Controllers\GStar\MenInBlueSumExecController.cs" />
     <Compile Include="Controllers\GStar\MerchantListController.cs" />
     <Compile Include="Controllers\GStar\NewArrivalDetailsController.cs" />
     <Compile Include="Controllers\GStar\NewArrivalListDataController.cs" />
@@ -768,6 +771,8 @@
     <Compile Include="Models\GParivar\ListPincodeDetails.cs" />
     <Compile Include="Models\GParivar\ListRaiseTicketContactDetails.cs" />
     <Compile Include="Models\GParivar\ListStateMast.cs" />
+    <Compile Include="Models\GParivar\MenInBlueSumDetailList.cs" />
+    <Compile Include="Models\GParivar\MenInBlueSumPartyList.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
     <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />
     <Compile Include="Models\GParivar\RequestPartyChannelFinance.cs" />
@@ -856,6 +861,7 @@
     <Compile Include="Models\GStar\ListTripList.cs" />
     <Compile Include="Models\GStar\MediaDetails.cs" />
     <Compile Include="Models\GStar\MediaList.cs" />
+    <Compile Include="Models\GStar\MenInBlueSumExecList.cs" />
     <Compile Include="Models\GStar\NewArrivalDetails.cs" />
     <Compile Include="Models\GStar\NewArrivalListData.cs" />
     <Compile Include="Models\GStar\PresentCopy.cs" />

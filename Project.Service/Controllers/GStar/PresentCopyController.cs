@@ -22,7 +22,7 @@ namespace Project.Service.Controllers
                 try
                 {
                     DateTime presentdates = DateTime.Now;
-                    int row = g2.ExecDB("exec AppExecutiveAttendancecopy " + pa.ExId + ",2,'" + pa.Present + "','" + pa.Remark + "','" + presentdates + "','" + pa.IP + "','" + pa.Lat + "','" + pa.Long + "','" + pa.DeviceId + "'," + pa.Type + ",'" + pa.time + "','" + Convert.ToBoolean(pa.IsTimeMismatch) + "','" + pa.Distance + "','" + pa.Address + "'");
+                    int row = g2.ExecDB("exec AppExecutiveAttendancecopy1 " + pa.ExId + ",2,'" + pa.Present + "','" + pa.Remark + "','" + presentdates + "','" + pa.IP + "','" + pa.Lat + "','" + pa.Long + "','" + pa.DeviceId + "'," + pa.Type + ",'" + pa.time + "','" + Convert.ToBoolean(pa.IsTimeMismatch) + "','" + pa.Distance + "','" + pa.Address + "','" + pa.odoimg + "','" + pa.odokm + "'");
                     g2.close_connection();
 
                     if (row > 0)
@@ -35,7 +35,7 @@ namespace Project.Service.Controllers
                     else
                     {
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong or Attendence Already submitted"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong or Attendence Already submitted or odometer issue "), Encoding.UTF8, "application/json");
 
                         return response;
                     }

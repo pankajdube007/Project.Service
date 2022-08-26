@@ -44,5 +44,7 @@ namespace Project.Service.Models
        public string purchaseamt { get; set; }
         public string ledgerbalanceamt { get; set; }
         public string saleamt { get; set; }
+        public string dayss { get; set; }
+        
     }
 }

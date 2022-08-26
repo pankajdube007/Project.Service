@@ -39,6 +39,8 @@ namespace Project.Service.Controllers
                                 purchaseamt = Convert.ToString(dr["totalpurchase"]),
                                 ledgerbalanceamt = Convert.ToString(dr["totalledgerBalance"]),
                                 saleamt = Convert.ToString(dr["saleamt"]),
+                                dayss = Convert.ToString(dr["dayss"]),
+                                
                             });
                         }
                         g1.close_connection();

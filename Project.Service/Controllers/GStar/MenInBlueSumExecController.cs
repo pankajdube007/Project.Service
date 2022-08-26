@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GParivar;
+using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,43 +10,52 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using NLog;
 
-namespace Project.Service.Controllers.GParivar
+namespace Project.Service.Controllers.GStar
 {
-    public class CFSInvoiceController : ApiController
+    public class MenInBlueSumExecController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getCFSInvoiceDetails")]
-        public HttpResponseMessage GetDetails(ListofCFSInvoiceDetails ula)
+        [Route("api/getMenInBlueSumExecList")]
+        public HttpResponseMessage GetDetails(ListofMenInBlueSumExec ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != null)
+            GoldMedia _goldMedia = new GoldMedia();
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<GetCFSInvoiceLists> alldcr = new List<GetCFSInvoiceLists>();
-                    List<GetCFSInvoiceList> alldcr1 = new List<GetCFSInvoiceList>();
-                    var dr = g1.return_dr("App_CFSInvoicel '" + ula.CIN + "','" + ula.Date + "','" + ula.Amount + "'");
+                    List<GetMenInBlueSumExecLists> alldcr = new List<GetMenInBlueSumExecLists>();
+                    List<GetMenInBlueSumExecList> alldcr1 = new List<GetMenInBlueSumExecList>();
+                    var dr = g1.return_dr("dbo.gstarmeninbluesum '" + ula.ExId + "'");
                     if (dr.HasRows)
                     {
+                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetCFSInvoiceList
+                            alldcr1.Add(new GetMenInBlueSumExecList
                             {
-                                InvoiceId = Convert.ToString(dr["InvoiceId"].ToString()),
-                                InvoiceNo = Convert.ToString(dr["InvoiceNo"].ToString()),
-                                Division = Convert.ToString(dr["Division"].ToString()),
-                                Amount = Convert.ToString(dr["Amount"].ToString()),
-                                DueDays = Convert.ToString(dr["DueDays"].ToString()),
-                                
+
+                                Name = Convert.ToString(dr["name"].ToString()),
+                                Partyid = Convert.ToString(dr["partyid"].ToString()),
+                                TypeCat = Convert.ToString(dr["typecat"].ToString()),
+                                TotalPoints = Convert.ToString(dr["totalpoints"].ToString()),
+                                DisplayName = Convert.ToString(dr["displaynm"].ToString()),
+                                HomeBranch = Convert.ToString(dr["HomeBranch"].ToString()),
+                                CurrentPrice = Convert.ToString(dr["CurPrice"].ToString()),
+                                CurrentPriceImg = string.IsNullOrEmpty(dr["CurPriceimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr["CurPriceimg"]).ToString().TrimEnd(',')),
+                                NextPrice = Convert.ToString(dr["NextPrice"].ToString()),
+                                NextPriceImg = string.IsNullOrEmpty(dr["NextPriceimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr["NextPriceimg"]).ToString().TrimEnd(',')),
+                                cin = Convert.ToString(dr["cin"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetCFSInvoiceLists
+                        alldcr.Add(new GetMenInBlueSumExecLists
                         {
                             result = true,
                             message = string.Empty,

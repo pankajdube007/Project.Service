@@ -37,6 +37,9 @@ namespace Project.Service.Models
 
 
         public string Address { get; set; }
+        public string odoimg { get; set; }
+        public decimal odokm { get; set; }
+
 
     }
 }

@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GParivar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,43 +9,48 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using NLog;
+using Project.Service.Models.GParivar;
 
 namespace Project.Service.Controllers.GParivar
 {
-    public class CFSInvoiceController : ApiController
+    public class MenInBlueSumDetailController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getCFSInvoiceDetails")]
-        public HttpResponseMessage GetDetails(ListofCFSInvoiceDetails ula)
+        [Route("api/getMenInBlueSumDetailList")]
+        public HttpResponseMessage GetDetails(ListofMenInBlueSumDetail ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
+            GoldMedia _goldMedia = new GoldMedia();
             if (ula.CIN != null)
             {
                 try
                 {
                     string data1;
 
-                    List<GetCFSInvoiceLists> alldcr = new List<GetCFSInvoiceLists>();
-                    List<GetCFSInvoiceList> alldcr1 = new List<GetCFSInvoiceList>();
-                    var dr = g1.return_dr("App_CFSInvoicel '" + ula.CIN + "','" + ula.Date + "','" + ula.Amount + "'");
+                    List<GetMenInBlueSumDetailLists> alldcr = new List<GetMenInBlueSumDetailLists>();
+                    List<GetMenInBlueSumDetailList> alldcr1 = new List<GetMenInBlueSumDetailList>();
+                    var dr = g1.return_dr("dbo.meninbluesumdetail '" + ula.CIN + "'");
                     if (dr.HasRows)
                     {
+                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetCFSInvoiceList
+                            alldcr1.Add(new GetMenInBlueSumDetailList
                             {
-                                InvoiceId = Convert.ToString(dr["InvoiceId"].ToString()),
-                                InvoiceNo = Convert.ToString(dr["InvoiceNo"].ToString()),
+                                Partyid = Convert.ToString(dr["partyid"].ToString()),
                                 Division = Convert.ToString(dr["Division"].ToString()),
-                                Amount = Convert.ToString(dr["Amount"].ToString()),
-                                DueDays = Convert.ToString(dr["DueDays"].ToString()),
+                                Slab = Convert.ToString(dr["slb"].ToString()),
+                                Sale = Convert.ToString(dr["Sale"].ToString()),
+                                Point = Convert.ToString(dr["point"].ToString()),
+                                PartyName = Convert.ToString(dr["PartyName"].ToString()),
                                 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetCFSInvoiceLists
+                        alldcr.Add(new GetMenInBlueSumDetailLists
                         {
                             result = true,
                             message = string.Empty,
