@@ -22,6 +22,7 @@ namespace Project.Service.Models
             String VendorID = "0";
             String BranchID = "0";
             String Type = "PRODUCT";
+            String UserType = "VENDOR";
 
             if (objGetQRData != null)
             {
@@ -30,6 +31,18 @@ namespace Project.Service.Models
                     if (objGetQRData.VendorID.ToString().Trim() != null)
                     {
                         VendorID = objGetQRData.VendorID.ToString().Trim();
+                    }
+                }
+            }
+
+
+            if (objGetQRData != null)
+            {
+                if (objGetQRData.UserType != null)
+                {
+                    if (objGetQRData.UserType.ToString().Trim() != null)
+                    {
+                        UserType = objGetQRData.UserType.ToString().Trim();
                     }
                 }
             }
@@ -60,11 +73,20 @@ namespace Project.Service.Models
             DataSet ds = new DataSet();
             try
             {
+                //DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                //SqlParameter[] param = new SqlParameter[3];
+                //param[0] = new SqlParameter("@VendorID", VendorID);
+                //param[1] = new SqlParameter("@BranchID", BranchID);
+                //param[2] = new SqlParameter("@Type", Type);
+                //ds = objDataAccess.FillDataSet("GetProductDetailsForScanner", param);
+
+
                 DataConnectionTrans objDataAccess = new DataConnectionTrans();
-                SqlParameter[] param = new SqlParameter[3];
+                SqlParameter[] param = new SqlParameter[4];
                 param[0] = new SqlParameter("@VendorID", VendorID);
                 param[1] = new SqlParameter("@BranchID", BranchID);
                 param[2] = new SqlParameter("@Type", Type);
+                param[3] = new SqlParameter("@UserType", UserType);
                 ds = objDataAccess.FillDataSet("GetProductDetailsForScanner", param);
             }
             catch (Exception ex)
@@ -316,6 +338,9 @@ public class GetQRData
     public string VendorID { get; set; }
     public string BranchID { get; set; }
     public string Type { get; set; }
+    public string UserType { get; set; }
+
+    
 }
 
 

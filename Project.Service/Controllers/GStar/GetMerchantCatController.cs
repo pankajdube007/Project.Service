@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<GetmerchantCatLists> alldcr = new List<GetmerchantCatLists>();
                     List<GetmerchantCatList> alldcr1 = new List<GetmerchantCatList>();
-                    var dr = g1.return_dr("dbo.GetmerchantCatList");
+                    var dr = g1.return_dr("dbo.GetmerchantCatListnew '" + ula.ExId + "', '" + ula.slno + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
@@ -41,7 +41,11 @@ namespace Project.Service.Controllers.GStar
                             {
 
                                 SlNo = Convert.ToString(dr["SlNo"].ToString()),
-                                citynm = Convert.ToString(dr["name"].ToString()),
+                                name = Convert.ToString(dr["name"].ToString()),
+                                catimg = string.IsNullOrEmpty(dr["catimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr["catimg"]).ToString().TrimEnd(',')),  // Convert.ToString(dr["catimg"].ToString()),
+                                usedamt = Convert.ToString(dr["usedamt"].ToString()),
+                                Limit = Convert.ToString(dr["Limit"].ToString()),
+                                Balance = Convert.ToString(dr["Balance"].ToString()),
                             });
                         }
                         g1.close_connection();

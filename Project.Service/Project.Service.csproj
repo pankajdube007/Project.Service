@@ -325,7 +325,6 @@
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
     <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
-    <Compile Include="Controllers\GParivar\MenInBlueSumDetailController.cs" />
     <Compile Include="Controllers\GParivar\MenInBlueSumPartyController.cs" />
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
@@ -771,7 +770,6 @@
     <Compile Include="Models\GParivar\ListPincodeDetails.cs" />
     <Compile Include="Models\GParivar\ListRaiseTicketContactDetails.cs" />
     <Compile Include="Models\GParivar\ListStateMast.cs" />
-    <Compile Include="Models\GParivar\MenInBlueSumDetailList.cs" />
     <Compile Include="Models\GParivar\MenInBlueSumPartyList.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
     <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />

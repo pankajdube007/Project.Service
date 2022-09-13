@@ -33,12 +33,13 @@ namespace Project.Service.Controllers.GParivar
                     List<GetMenInBlueSumPartyLists> alldcr = new List<GetMenInBlueSumPartyLists>();
                     List<GetMenInBlueSumPartyList> alldcr1 = new List<GetMenInBlueSumPartyList>();
 
-                    List<GetMenInBlueSumDetailList> alldcr2 = new List<GetMenInBlueSumDetailList>();
+                    List<GetMenInBlueSumDetailsList> alldcr2 = new List<GetMenInBlueSumDetailsList>();
 
                     List<GetFinalLists> Final = new List<GetFinalLists>();
 
-                    var dr = g1.return_dr("dbo.gpariwarmeninbluesum '" + ula.CIN + "'");
-                    var dr1 = g1.return_dr("dbo.meninbluesumdetail '" + ula.CIN + "'");
+                    var dr = g1.return_dr("dbo.gpariwarmeninbluesum'" + ula.CIN + "'");
+                    
+                    var dr1 = g1.return_dr("dbo.meninbluesumdetail'" + ula.CIN + "'");
 
                     if (dr.HasRows)
                     {
@@ -59,6 +60,10 @@ namespace Project.Service.Controllers.GParivar
                                 NextPrice = Convert.ToString(dr["NextPrice"].ToString()),
                                 NextPriceImg = string.IsNullOrEmpty(dr["NextPriceimg"].ToString().TrimEnd(',')) ? string.Empty : (Convert.ToString(dr["NextPriceimg"]).ToString().TrimEnd(',')),
                                 cin = Convert.ToString(dr["cin"].ToString()),
+                                CurPricePoints = Convert.ToString(dr["CurPricePoints"].ToString()),
+                                NextPricePoints = Convert.ToString(dr["NextPricePoints"].ToString()),
+                                Totalsale = Convert.ToString(dr["Totalsale"].ToString()),
+                                meninbluefile = Convert.ToString(dr["meninbluefile"].ToString()),
                             });
                         }
                     }
@@ -68,15 +73,15 @@ namespace Project.Service.Controllers.GParivar
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr1.Read())
                         {
-                            alldcr2.Add(new GetMenInBlueSumDetailList
+                            alldcr2.Add(new GetMenInBlueSumDetailsList
                             {
-                                Partyid = Convert.ToString(dr["partyid"].ToString()),
-                                Division = Convert.ToString(dr["Division"].ToString()),
-                                Slab = Convert.ToString(dr["slb"].ToString()),
-                                Sale = Convert.ToString(dr["Sale"].ToString()),
-                                Point = Convert.ToString(dr["point"].ToString()),
-                                PartyName = Convert.ToString(dr["PartyName"].ToString()),
-
+                                Partyid = Convert.ToString(dr1["partyid"].ToString()),
+                                Division = Convert.ToString(dr1["Division"].ToString()),
+                                Slab = Convert.ToString(dr1["slb"].ToString()),
+                                Sale = Convert.ToString(dr1["Sale"].ToString()),
+                                Point = Convert.ToString(dr1["point"].ToString()),
+                                PartyName = Convert.ToString(dr1["PartyName"].ToString()),
+                                perpoint = Convert.ToString(dr1["perpoint"].ToString()),
                             });
                         }
 

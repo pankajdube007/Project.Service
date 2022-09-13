@@ -38,7 +38,7 @@ namespace Project.Service.Models.GParivar
     public class GetFinalLists
     {
         public List<GetMenInBlueSumPartyList> partyList { get; set; }
-        public List<GetMenInBlueSumDetailList> detailList { get; set; }
+        public List<GetMenInBlueSumDetailsList> detailList { get; set; }
     }
 
     public class GetMenInBlueSumPartyList
@@ -54,10 +54,13 @@ namespace Project.Service.Models.GParivar
         public string NextPrice { get; set; }
         public string NextPriceImg { get; set; }
         public string cin { get; set; }
-        
+        public string CurPricePoints { get; set; }
+        public string NextPricePoints { get; set; }
+        public string Totalsale { get; set; }
+        public string meninbluefile { get; set; }
     }
 
-    public class GetMenInBlueSumDetailList
+    public class GetMenInBlueSumDetailsList
     {
         public string Partyid { get; set; }
         public string Division { get; set; }
@@ -65,6 +68,7 @@ namespace Project.Service.Models.GParivar
         public string Sale { get; set; }
         public string Point { get; set; }
         public string PartyName { get; set; }
-
+        public string perpoint { get; set; }
+        
     }
 }

@@ -175,5 +175,7 @@ namespace Project.Service.Models
         public string CFDetailsList { get; set; }
         public string getRaiseTicketDetails { get; set; }
         public string CFSInvoiceDetails { get; set; }
+        public string MenInBlueSumPartyList { get; set; }
+        
     }
 }

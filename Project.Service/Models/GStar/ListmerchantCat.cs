@@ -13,6 +13,11 @@ namespace Project.Service.Models.GStar
         [Required]
         public int ExId { get; set; }
 
+
+        [Required]
+        public int slno { get; set; }
+        
+
         [Required]
         public string ClientSecret { get; set; }
 
@@ -29,8 +34,11 @@ namespace Project.Service.Models.GStar
     public class GetmerchantCatList
     {
         public string SlNo { get; set; }
-        public string citynm { get; set; }
-
+        public string name { get; set; }
+        public string catimg { get; set; }
+        public string usedamt { get; set; }
+        public string Limit { get; set; }
+        public string Balance { get; set; }
     }
 
 }
