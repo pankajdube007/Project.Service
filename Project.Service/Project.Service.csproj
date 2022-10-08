@@ -450,6 +450,9 @@
     <Compile Include="Controllers\Management\BlockedPartyController.cs" />
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
+    <Compile Include="Controllers\Management\GetGroupwisePassengerCountController.cs" />
+    <Compile Include="Controllers\Management\GetHotelwiseRoomCountController.cs" />
+    <Compile Include="Controllers\Management\GetPassengerDetailsByMobileNoController.cs" />
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
     <Compile Include="Controllers\Management\PartyFianYearWiseDivSaleController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
@@ -884,8 +887,11 @@
     <Compile Include="Models\IT\ListSetWeeklyOff.cs" />
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
+    <Compile Include="Models\Management\GroupwisePassengerCount.cs" />
+    <Compile Include="Models\Management\HotelwiseRoomCount.cs" />
     <Compile Include="Models\Management\ItemCosting.cs" />
     <Compile Include="Models\Management\PartyFinYearWiseDivSale.cs" />
+    <Compile Include="Models\Management\PassengerDetailsByMobileNo.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
     <Compile Include="Models\Management\SalesOrderPartyStatus.cs" />

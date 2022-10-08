@@ -2,25 +2,24 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GParivar;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web.Configuration;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GParivar
+namespace Project.Service.Models.Management
 {
-    public class CFSInvoiceController : ApiController
+    public class GetHotelwiseRoomCountController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getCFSInvoiceDetails")]
-        public HttpResponseMessage GetDetails(ListofCFSInvoiceDetails ula)
+        [Route("api/getHotelwiseRoomCount")]
+        public HttpResponseMessage GetDetails(ListofHotelwiseRoomCount ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
             if (ula.CIN != null)
             {
@@ -28,25 +27,30 @@ namespace Project.Service.Controllers.GParivar
                 {
                     string data1;
 
-                    List<GetCFSInvoiceLists> alldcr = new List<GetCFSInvoiceLists>();
-                    List<GetCFSInvoiceList> alldcr1 = new List<GetCFSInvoiceList>();
-                    var dr = g1.return_dr("App_CFSInvoice '" + ula.CIN + "','" + ula.Date + "','" + ula.Amount + "'");
+
+                    List<HotelwiseRoomCounts> alldcr = new List<HotelwiseRoomCounts>();
+                    List<HotelwiseRoomCount> alldcr1 = new List<HotelwiseRoomCount>();
+                    var dr = g1.return_dr("GetHotelwiseRoomCount");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetCFSInvoiceList
+                            alldcr1.Add(new HotelwiseRoomCount
                             {
-                                InvoiceId = Convert.ToString(dr["InvoiceId"].ToString()),
-                                InvoiceNo = Convert.ToString(dr["InvoiceNo"].ToString()),
-                                Division = Convert.ToString(dr["Division"].ToString()),
-                                Amount = Convert.ToString(dr["Amount"].ToString()),
-                                DueDays = Convert.ToString(dr["DueDays"].ToString()),
+                                HotelID = Convert.ToString(dr["HotelID"]),
+                                ProductName = Convert.ToString(dr["ProductName"]),
+                                HotelName = Convert.ToString(dr["HotelName"].ToString()),
+                                FromDate = Convert.ToString(dr["FromDate"].ToString()),
+                                ToDate = Convert.ToString(dr["ToDate"].ToString()),
+                                TotalRoomCount = Convert.ToString(dr["TotalRoomCount"].ToString()),
+                                TotalRoomsAdded = Convert.ToString(dr["TotalRoomsAdded"].ToString()),
+                                TotalBookedRoom = Convert.ToString(dr["TotalBookedRoom"].ToString()),
+                                VacantRoom = Convert.ToString(dr["VacantRoom"].ToString()),
                                 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetCFSInvoiceLists
+                        alldcr.Add(new HotelwiseRoomCounts
                         {
                             result = true,
                             message = string.Empty,

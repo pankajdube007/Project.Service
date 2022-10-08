@@ -2,25 +2,24 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GParivar;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web.Configuration;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GParivar
+namespace Project.Service.Controllers.Management
 {
-    public class CFSInvoiceController : ApiController
+    public class GetGroupwisePassengerCountController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getCFSInvoiceDetails")]
-        public HttpResponseMessage GetDetails(ListofCFSInvoiceDetails ula)
+        [Route("api/getGroupwisePassengerCount")]
+        public HttpResponseMessage GetDetails(ListofGroupwisePassengerCount ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
             if (ula.CIN != null)
             {
@@ -28,25 +27,24 @@ namespace Project.Service.Controllers.GParivar
                 {
                     string data1;
 
-                    List<GetCFSInvoiceLists> alldcr = new List<GetCFSInvoiceLists>();
-                    List<GetCFSInvoiceList> alldcr1 = new List<GetCFSInvoiceList>();
-                    var dr = g1.return_dr("App_CFSInvoice '" + ula.CIN + "','" + ula.Date + "','" + ula.Amount + "'");
+
+                    List<GroupwisePassengerCounts> alldcr = new List<GroupwisePassengerCounts>();
+                    List<GroupwisePassengerCount> alldcr1 = new List<GroupwisePassengerCount>();
+                    var dr = g1.return_dr("GetGroupwisePassengerCount ");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetCFSInvoiceList
+                            alldcr1.Add(new GroupwisePassengerCount
                             {
-                                InvoiceId = Convert.ToString(dr["InvoiceId"].ToString()),
-                                InvoiceNo = Convert.ToString(dr["InvoiceNo"].ToString()),
-                                Division = Convert.ToString(dr["Division"].ToString()),
-                                Amount = Convert.ToString(dr["Amount"].ToString()),
-                                DueDays = Convert.ToString(dr["DueDays"].ToString()),
+                                GroupName = Convert.ToString(dr["GroupName"]),
+                                UserType = Convert.ToString(dr["UserType"]),
+                                PassangerCount = Convert.ToString(dr["PassangerCount"].ToString()),
                                 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetCFSInvoiceLists
+                        alldcr.Add(new GroupwisePassengerCounts
                         {
                             result = true,
                             message = string.Empty,
