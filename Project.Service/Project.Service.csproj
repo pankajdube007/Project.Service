@@ -451,6 +451,7 @@
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
     <Compile Include="Controllers\Management\GetGroupwisePassengerCountController.cs" />
+    <Compile Include="Controllers\Management\GetHotelRoomwWisePassengerListController.cs" />
     <Compile Include="Controllers\Management\GetHotelwiseRoomCountController.cs" />
     <Compile Include="Controllers\Management\GetPassengerDetailsByMobileNoController.cs" />
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
@@ -460,6 +461,7 @@
     <Compile Include="Controllers\Management\SalesOrderPartyStatusController.cs" />
     <Compile Include="Controllers\Management\SignUpController.cs" />
     <Compile Include="Controllers\Management\TodayDivisionwiseSaleController.cs" />
+    <Compile Include="Controllers\Management\TourPassengerListController.cs" />
     <Compile Include="Controllers\Vendor\CancelVendorPaymentController.cs" />
     <Compile Include="Controllers\GParivar\CashBackCountDataCategorywiseController.cs" />
     <Compile Include="Controllers\GParivar\CashBackCountDataDivisionwiseController.cs" />
@@ -888,6 +890,7 @@
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
     <Compile Include="Models\Management\GroupwisePassengerCount.cs" />
+    <Compile Include="Models\Management\HotelRoomwWisePassengerList.cs" />
     <Compile Include="Models\Management\HotelwiseRoomCount.cs" />
     <Compile Include="Models\Management\ItemCosting.cs" />
     <Compile Include="Models\Management\PartyFinYearWiseDivSale.cs" />
@@ -897,6 +900,7 @@
     <Compile Include="Models\Management\SalesOrderPartyStatus.cs" />
     <Compile Include="Models\Management\SignUp.cs" />
     <Compile Include="Models\Management\TodayDivisionwiseSale.cs" />
+    <Compile Include="Models\Management\TourPassengerList.cs" />
     <Compile Include="Models\Vendor\Appvendorsalependingorder.cs" />
     <Compile Include="Models\Vendor\CancelVendorPayment.cs" />
     <Compile Include="Models\GParivar\CashBackCountDataCategorywiseFor.cs" />

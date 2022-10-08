@@ -12,12 +12,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.Management
 {
-    public class GetGroupwisePassengerCountController : ApiController
+    public class GetHotelRoomwWisePassengerListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getGroupwisePassengerCount")]
-        public HttpResponseMessage GetDetails(ListofGroupwisePassengerCount ula)
+        [Route("api/getHotelRoomwWisePassengerList")]
+        public HttpResponseMessage GetDetails(ListofHotelRoomwWisePassenger ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -28,24 +28,25 @@ namespace Project.Service.Controllers.Management
                     string data1;
 
 
-                    List<GroupwisePassengerCounts> alldcr = new List<GroupwisePassengerCounts>();
-                    List<GroupwisePassengerCount> alldcr1 = new List<GroupwisePassengerCount>();
-                    var dr = g1.return_dr("GetGroupwisePassengerCount ");
+                    List<HotelRoomwWisePassengerLists> alldcr = new List<HotelRoomwWisePassengerLists>();
+                    List<HotelRoomwWisePassengerList> alldcr1 = new List<HotelRoomwWisePassengerList>();
+                    var dr = g1.return_dr("GetHotelRoomwWisePassengerList_API '" + ula.HotelID + "','" + ula.Type + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GroupwisePassengerCount
+                            alldcr1.Add(new HotelRoomwWisePassengerList
                             {
-                                GroupName = Convert.ToString(dr["GroupName"]),
-                                DealerCount = Convert.ToString(dr["DealerCount"]),
-                                RetailerCount = Convert.ToString(dr["RetailerCount"].ToString()),
-                                OtherCount = Convert.ToString(dr["OtherCount"].ToString()),
+                                HotelName = Convert.ToString(dr["HotelName"]),
+                                RoomType = Convert.ToString(dr["RoomType"]),
+                                RoomNumber = Convert.ToString(dr["RoomNumber"].ToString()),
+                                PassengerName = Convert.ToString(dr["PassengerName"].ToString()),
+                                PassengerContactNo = Convert.ToString(dr["PassengerContactNo"].ToString()),
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GroupwisePassengerCounts
+                        alldcr.Add(new HotelRoomwWisePassengerLists
                         {
                             result = true,
                             message = string.Empty,

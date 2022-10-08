@@ -34,6 +34,7 @@ namespace Project.Service.Models
     {
         public string SlNo { get; set; }
         public string PassengerName { get; set; }
+        public string UserType { get; set; }
         public string BranchName { get; set; }
         public string MobileNo { get; set; }
         public string PassengerQRCode { get; set; }

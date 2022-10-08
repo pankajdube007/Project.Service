@@ -38,6 +38,7 @@ namespace Project.Service.Controllers.Management
                             {
                                 SlNo = Convert.ToString(dr["SlNo"]),
                                 PassengerName = Convert.ToString(dr["PassengerName"]),
+                                UserType = Convert.ToString(dr["UserType"]),
                                 BranchName = Convert.ToString(dr["BranchName"].ToString()),
                                 MobileNo = Convert.ToString(dr["MobileNo"].ToString()),
                                 PassengerQRCode = Convert.ToString(dr["PassengerQRCode"].ToString()),

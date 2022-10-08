@@ -10,14 +10,14 @@ using System.Text;
 using System.Web.Configuration;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.Management
+namespace Project.Service.Controllers
 {
-    public class GetGroupwisePassengerCountController : ApiController
+    public class TourPassengerListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getGroupwisePassengerCount")]
-        public HttpResponseMessage GetDetails(ListofGroupwisePassengerCount ula)
+        [Route("api/getTourPassengerList")]
+        public HttpResponseMessage GetDetails(ListofTourPassenger ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -28,24 +28,22 @@ namespace Project.Service.Controllers.Management
                     string data1;
 
 
-                    List<GroupwisePassengerCounts> alldcr = new List<GroupwisePassengerCounts>();
-                    List<GroupwisePassengerCount> alldcr1 = new List<GroupwisePassengerCount>();
-                    var dr = g1.return_dr("GetGroupwisePassengerCount ");
+                    List<TourPassengerLists> alldcr = new List<TourPassengerLists>();
+                    List<TourPassengerList> alldcr1 = new List<TourPassengerList>();
+                    var dr = g1.return_dr("BangkokTourPassengerList");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GroupwisePassengerCount
+                            alldcr1.Add(new TourPassengerList
                             {
-                                GroupName = Convert.ToString(dr["GroupName"]),
-                                DealerCount = Convert.ToString(dr["DealerCount"]),
-                                RetailerCount = Convert.ToString(dr["RetailerCount"].ToString()),
-                                OtherCount = Convert.ToString(dr["OtherCount"].ToString()),
-
+                                SlNo = Convert.ToString(dr["SlNo"]),
+                                PassengerName = Convert.ToString(dr["PassengerName"]),
+                               
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GroupwisePassengerCounts
+                        alldcr.Add(new TourPassengerLists
                         {
                             result = true,
                             message = string.Empty,

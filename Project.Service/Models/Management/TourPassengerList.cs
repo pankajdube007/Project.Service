@@ -8,7 +8,7 @@ namespace Project.Service.Models
 {
   
 
-    public class ListofGroupwisePassengerCount
+    public class ListofTourPassenger
     {
         [Required]
         public string ClientSecret { get; set; }
@@ -18,19 +18,17 @@ namespace Project.Service.Models
 
     }
 
-    public class GroupwisePassengerCounts
+    public class TourPassengerLists
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GroupwisePassengerCount> data { get; set; }
+        public List<TourPassengerList> data { get; set; }
     }
 
-    public class GroupwisePassengerCount
+    public class TourPassengerList
     {
-        public string GroupName { get; set; }
-        public string DealerCount { get; set; }
-        public string RetailerCount { get; set; }
-        public string OtherCount { get; set; }
+        public string SlNo { get; set; }
+        public string PassengerName { get; set; }
     }
 }
