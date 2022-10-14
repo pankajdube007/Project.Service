@@ -31,7 +31,7 @@ namespace Project.Service.Controllers
 
                     List<GetDivisionVisitors> alldcr = new List<GetDivisionVisitors>();
                     List<GetDivisionVisitor> alldcr1 = new List<GetDivisionVisitor>();
-                    var dr = g1.return_dr("dbo.Getlistofdivisionvisitor");
+                    var dr = g1.return_dr("dbo.Getlistofdivisionvisitornew '" + ula.ExId+"'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");

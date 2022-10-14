@@ -10,6 +10,9 @@ namespace Project.Service.Models
 
         [Required]
         public string ClientSecret { get; set; }
+
+
+        public int ExecId { get; set; }
     }
 
     public class PendingOrderDivisions

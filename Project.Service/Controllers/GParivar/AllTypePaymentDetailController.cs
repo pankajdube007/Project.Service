@@ -4,6 +4,7 @@ using Project.Service.Filters;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -30,8 +31,22 @@ namespace Project.Service.Controllers
 
                     List<AllTypePaymentDetails> alldcr = new List<AllTypePaymentDetails>();
                     List<AllTypePaymentDetail> alldcr1 = new List<AllTypePaymentDetail>();
+                    var dr = (SqlDataReader)null;
 
-                    var dr = g1.return_dr("apppartyalltypeamountdetails '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'");
+                    if (ula.ExecId == 0)
+                    {
+                        dr = g1.return_dr("apppartyalltypeamountdetails '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'");
+                    }
+
+                    else
+                    {
+                        dr = g1.return_dr("apppartyalltypeamountdetailsgstar '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "','"+ula.ExecId+"'");
+
+                    }
+
+
+
+
 
                     if (dr.HasRows)
                     {

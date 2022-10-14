@@ -4,6 +4,7 @@ using Project.Service.Filters;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -68,7 +69,19 @@ namespace Project.Service.Controllers
                     //        return response;
                     //    }
                     //}
-                    var dr = g1.return_dt("apppartyalltypeamountdetailslist '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + "");
+                    DataTable dr = new DataTable();
+                    if(ula.ExecId==0)
+                    {
+
+                         dr = g1.return_dt("apppartyalltypeamountdetailslist '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + "");
+                    }
+                    else
+                    {
+                         dr = g1.return_dt("apppartyalltypeamountdetailslistgstar '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + ",'"+ula.ExecId+"'");
+
+                    }
+
+                    
 
                     bool more = false;
 

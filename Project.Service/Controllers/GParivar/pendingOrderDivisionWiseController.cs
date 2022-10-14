@@ -32,7 +32,19 @@ namespace Project.Service.Controllers
                     List<PendingOrderDivisionDetails> PendingOrderDivisionDetails = new List<PendingOrderDivisionDetails>();
                     List<PendingOrderDivisionTotal> PendingOrderDivisionTotal = new List<PendingOrderDivisionTotal>();
 
-                    DataTable dr = g1.return_dt("App_PendingOrderDivisionWise '" + ula.CIN + "'");
+                    DataTable dr = new DataTable();
+
+                    if(ula.ExecId==0)
+                    {
+                         dr = g1.return_dt("App_PendingOrderDivisionWise '" + ula.CIN + "'");
+
+                    }
+                    else
+                    {
+                         dr = g1.return_dt("App_PendingOrderDivisionWisegstar '" + ula.CIN + "','" + ula.ExecId + "'");
+
+                    }
+                   
 
                     if (dr.Rows.Count > 0)
                     {

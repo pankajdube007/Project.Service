@@ -454,6 +454,7 @@
     <Compile Include="Controllers\Management\GetHotelRoomwWisePassengerListController.cs" />
     <Compile Include="Controllers\Management\GetHotelwiseRoomCountController.cs" />
     <Compile Include="Controllers\Management\GetPassengerDetailsByMobileNoController.cs" />
+    <Compile Include="Controllers\Management\GetUserTypePassangerCountListController.cs" />
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
     <Compile Include="Controllers\Management\PartyFianYearWiseDivSaleController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
@@ -901,6 +902,7 @@
     <Compile Include="Models\Management\SignUp.cs" />
     <Compile Include="Models\Management\TodayDivisionwiseSale.cs" />
     <Compile Include="Models\Management\TourPassengerList.cs" />
+    <Compile Include="Models\Management\UserTypePassangerCountList.cs" />
     <Compile Include="Models\Vendor\Appvendorsalependingorder.cs" />
     <Compile Include="Models\Vendor\CancelVendorPayment.cs" />
     <Compile Include="Models\GParivar\CashBackCountDataCategorywiseFor.cs" />

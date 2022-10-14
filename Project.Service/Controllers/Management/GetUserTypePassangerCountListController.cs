@@ -7,17 +7,17 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web.Configuration;
 using System.Web.Http;
-using System.Data.SqlClient;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.Management
 {
-    public class DivisionWiseYsaController : ApiController
+    public class GetUserTypePassangerCountListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getDivisionWiseYSA")]
-        public HttpResponseMessage GetDetails(DivisionWiseYsaAction ula)
+        [Route("api/getUserTypePassangerCountList")]
+        public HttpResponseMessage GetDetails(ListofUserTypePassangerCount ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -26,55 +26,24 @@ namespace Project.Service.Controllers
                 try
                 {
                     string data1;
-                    decimal total = 0;
 
-                    List<DivisionWiseYsas> alldcr = new List<DivisionWiseYsas>();
-                    List<DivisionWiseYsa> alldcr1 = new List<DivisionWiseYsa>();
-                    List<DivisionWiseDetails> DivisionWiseDetails = new List<DivisionWiseDetails>();
-                    List<DivisionWiseTotal> DivisionWiseTotal = new List<DivisionWiseTotal>();
 
-                    var dr = (SqlDataReader)null;
-                    if(ula.ExecId==0)
-                    {
-                        dr = g1.return_dr("App_divisionwisesale  '" + ula.CIN + "'," + ula.divisionid);
-
-                    }
-                    else
-                    {
-                        dr = g1.return_dr("App_divisionwisesalegstar  '" + ula.CIN + "'," + ula.divisionid+",'"+ula.ExecId+"'");
-
-                    }
-                     
-                   
-
+                    List<UserTypePassangerCountLists> alldcr = new List<UserTypePassangerCountLists>();
+                    List<UserTypePassangerCountList> alldcr1 = new List<UserTypePassangerCountList>();
+                    var dr = g1.return_dr("GetUserTypePassangerCountList");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            DivisionWiseDetails.Add(new DivisionWiseDetails
+                            alldcr1.Add(new UserTypePassangerCountList
                             {
-                                categorynm = dr["categorynm"].ToString(),
-                                sale = dr["sale"].ToString()
+                                UserType = Convert.ToString(dr["UserType"]),
+                                PassangerCount = Convert.ToString(dr["PassangerCount"]),
+                                
                             });
-
-                            total = total + Convert.ToDecimal(dr["sale"].ToString());
                         }
-
-                    
-
-                        DivisionWiseTotal.Add(new DivisionWiseTotal
-                        {
-                            TotalSale = total.ToString()
-                        });
-
-                        alldcr1.Add(new DivisionWiseYsa
-                        {
-                            DivisionWiseSale = DivisionWiseDetails,
-                            DivisionWiseSaleTotal = DivisionWiseTotal
-                        });
-
                         g1.close_connection();
-                        alldcr.Add(new DivisionWiseYsas
+                        alldcr.Add(new UserTypePassangerCountLists
                         {
                             result = true,
                             message = string.Empty,

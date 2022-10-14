@@ -15,6 +15,10 @@ namespace Project.Service.Models
         [Required]
         public string edate { get; set; }
 
+    
+        public int ExecId { get; set; }
+
+
         [Required]
         public string ClientSecret { get; set; }
     }

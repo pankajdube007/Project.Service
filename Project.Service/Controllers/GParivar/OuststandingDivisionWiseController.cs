@@ -33,7 +33,21 @@ namespace Project.Service.Controllers
                     List<OutstandingDivisionDetails> OutstandingDivisionDetails = new List<OutstandingDivisionDetails>();
                     List<OutstandingDivisionTotal> OutstandingDivisionTotal = new List<OutstandingDivisionTotal>();
 
-                    DataTable dr = g1.return_dt("App_OutstandingDivisionWise '" + ula.CIN + "'");
+
+                    DataTable dr = new DataTable();
+                    if(ula.ExecId==0)
+                    {
+                         dr = g1.return_dt("App_OutstandingDivisionWise '" + ula.CIN + "'");
+                    }
+
+                    else
+                    {
+                        dr = g1.return_dt("App_OutstandingDivisionWisegstar '" + ula.CIN + "','"+ula.ExecId+"'");
+
+                    }
+
+                 
+
 
                     if (dr.Rows.Count > 0)
                     {

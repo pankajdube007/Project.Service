@@ -47,8 +47,20 @@ namespace Project.Service.Controllers
                         ty = DateTime.Now.Year;
                     }
 
-                    // var dr = g1.return_dr("App_dealerSaleYsa " +fy+","+ty+",'FY "+fy+"-"+ty+"','"+ ula.CIN + "'");
-                    DataTable dr = g1.return_dt("App_dealerSaleYsa " + fy + "," + ty + ",'FY " + fy + "-" + ty + "','" + ula.CIN + "'");
+
+                    DataTable dr = new DataTable();
+
+                    if(ula.ExecId==0)
+                    {
+                        dr = g1.return_dt("App_dealerSaleYsa " + fy + "," + ty + ",'FY " + fy + "-" + ty + "','" + ula.CIN + "'");
+                    }
+                    
+                    else
+                    {
+                        dr = g1.return_dt("App_dealerSaleYsagstar " + fy + "," + ty + ",'FY " + fy + "-" + ty + "','" + ula.CIN + "','"+ula.ExecId+"'");
+
+                    }
+                   
 
                     if (dr.Rows.Count > 0)
                     {

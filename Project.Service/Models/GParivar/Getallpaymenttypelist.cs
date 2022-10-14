@@ -23,6 +23,10 @@ namespace Project.Service.Models
 
         [Required]
         public int Count { get; set; }
+
+       
+        public int ExecId { get; set; }
+
     }
 
     public class Getallpaymenttypelists

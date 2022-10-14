@@ -13,6 +13,9 @@ namespace Project.Service.Models
 
         [Required]
         public int divisionid { get; set; }
+
+        
+        public int ExecId { get; set; }
     }
 
     public class DivisionWiseYsas

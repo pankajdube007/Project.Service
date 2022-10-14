@@ -4,6 +4,7 @@ using Project.Service.Filters;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -29,8 +30,21 @@ namespace Project.Service.Controllers
                     List<DealerLstYearSaless> alldcr = new List<DealerLstYearSaless>();
                     List<DealerLstYearSales> alldcr1 = new List<DealerLstYearSales>();
 
-                    var dr = g1.return_dr("App_dealerlstyearsale '" + ula.CIN + "'");
-                    //  DataTable dr1 = g1.return_dt("App_dealerlstyearsale '" + ula.CIN + "'");
+                    var dr = (SqlDataReader)null;
+                    if (ula.ExecId==0)
+                    {
+                         dr = g1.return_dr("App_dealerlstyearsale '" + ula.CIN + "'");
+
+                    }
+                    else
+                    {
+                         dr = g1.return_dr("App_dealerlstyearsalegstar '" + ula.CIN + "','"+ula.ExecId+"'");
+
+                    }
+                  
+
+      
+                  
 
                     if (dr.HasRows)
                     {

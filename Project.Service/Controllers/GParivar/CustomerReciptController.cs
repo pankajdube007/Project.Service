@@ -4,6 +4,7 @@ using Project.Service.Filters;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -29,7 +30,23 @@ namespace Project.Service.Controllers
                     List<CustomerRecipts> alldcr = new List<CustomerRecipts>();
                     List<CustomerRecipt> alldcr1 = new List<CustomerRecipt>();
                     List<CustomerReciptFinal> CustomerReciptFinal = new List<CustomerReciptFinal>();
-                    var dr = g1.return_dt("App_CustomerRecipt '" + ula.CIN + "'," + ula.Index + "," + ula.Count + ",'" + ula.SearchText + "','" + ula.FromDate + "','" + ula.ToDate + "'");
+
+
+
+                    DataTable dr = new DataTable();
+
+                    if(ula.ExecId==0)
+                    {
+
+                        dr = g1.return_dt("App_CustomerRecipt '" + ula.CIN + "'," + ula.Index + "," + ula.Count + ",'" + ula.SearchText + "','" + ula.FromDate + "','" + ula.ToDate + "'");
+                    }
+
+                    else
+                    {
+                        dr = g1.return_dt("App_CustomerReciptgstar '" + ula.CIN + "'," + ula.Index + "," + ula.Count + ",'" + ula.SearchText + "','" + ula.FromDate + "','" + ula.ToDate + "','" + ula.ExecId + "'");
+
+                    }
+                   
 
                     bool more = false;
 
