@@ -323,6 +323,8 @@
     <Compile Include="Controllers\GParivar\GetCFDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetDistrictMasterController.cs" />
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
+    <Compile Include="Controllers\GParivar\GetItemDetailsByCategoryAndNameorCodeController.cs" />
+    <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeController.cs" />
     <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
     <Compile Include="Controllers\GParivar\MenInBlueSumPartyController.cs" />
@@ -448,8 +450,10 @@
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockController.cs" />
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockDetailsController.cs" />
     <Compile Include="Controllers\Management\BlockedPartyController.cs" />
+    <Compile Include="Controllers\Management\BranchWiseComboController.cs" />
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
+    <Compile Include="Controllers\Management\ComboWiseCountController.cs" />
     <Compile Include="Controllers\Management\GetGroupwisePassengerCountController.cs" />
     <Compile Include="Controllers\Management\GetHotelRoomwWisePassengerListController.cs" />
     <Compile Include="Controllers\Management\GetHotelwiseRoomCountController.cs" />
@@ -457,6 +461,7 @@
     <Compile Include="Controllers\Management\GetUserTypePassangerCountListController.cs" />
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
     <Compile Include="Controllers\Management\PartyFianYearWiseDivSaleController.cs" />
+    <Compile Include="Controllers\Management\PartyWiseComboController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
     <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
     <Compile Include="Controllers\Management\SalesOrderPartyStatusController.cs" />
@@ -767,6 +772,8 @@
     <Compile Include="Models\GParivar\BonanzaPriceList.cs" />
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\GetCFSInvoiceList.cs" />
+    <Compile Include="Models\GParivar\GetItemDetailsByCategoryAndNameorCode.cs" />
+    <Compile Include="Models\GParivar\GetItemDetailsByItemCode.cs" />
     <Compile Include="Models\GParivar\GetRaiseTicketDetails.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
     <Compile Include="Models\GParivar\ListCategoryMast.cs" />
@@ -888,13 +895,16 @@
     <Compile Include="Models\IT\ListSetApprovalChangeWeeklyOff.cs" />
     <Compile Include="Models\IT\ListSetApprovalWeeklyOff.cs" />
     <Compile Include="Models\IT\ListSetWeeklyOff.cs" />
+    <Compile Include="Models\Management\BranchWiseCombo.cs" />
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
+    <Compile Include="Models\Management\ComboWiseCount.cs" />
     <Compile Include="Models\Management\GroupwisePassengerCount.cs" />
     <Compile Include="Models\Management\HotelRoomwWisePassengerList.cs" />
     <Compile Include="Models\Management\HotelwiseRoomCount.cs" />
     <Compile Include="Models\Management\ItemCosting.cs" />
     <Compile Include="Models\Management\PartyFinYearWiseDivSale.cs" />
+    <Compile Include="Models\Management\PartyWiseCombo.cs" />
     <Compile Include="Models\Management\PassengerDetailsByMobileNo.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />
