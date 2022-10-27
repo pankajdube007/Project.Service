@@ -454,6 +454,7 @@
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
     <Compile Include="Controllers\Management\ComboWiseCountController.cs" />
+    <Compile Include="Controllers\Management\DivisionBrachWiseSaleExpenseController.cs" />
     <Compile Include="Controllers\Management\GetGroupwisePassengerCountController.cs" />
     <Compile Include="Controllers\Management\GetHotelRoomwWisePassengerListController.cs" />
     <Compile Include="Controllers\Management\GetHotelwiseRoomCountController.cs" />
@@ -899,6 +900,7 @@
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
     <Compile Include="Models\Management\ComboWiseCount.cs" />
+    <Compile Include="Models\Management\DivisionBrachWiseSaleExpense.cs" />
     <Compile Include="Models\Management\GroupwisePassengerCount.cs" />
     <Compile Include="Models\Management\HotelRoomwWisePassengerList.cs" />
     <Compile Include="Models\Management\HotelwiseRoomCount.cs" />
