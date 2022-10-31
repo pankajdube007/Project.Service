@@ -53,6 +53,7 @@ namespace Project.Service.Controllers.GStar
                                 traveldistance = Convert.ToString(dr["traveldistance"].ToString()),
                                 orgnm = Convert.ToString(dr["orgnm"].ToString()),
                                 travelduration = Convert.ToString(dr["timediff"].ToString()),
+                                transport = Convert.ToString(dr["transport"].ToString()),
                             });
                         }
 

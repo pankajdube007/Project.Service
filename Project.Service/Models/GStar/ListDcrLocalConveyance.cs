@@ -49,7 +49,8 @@ namespace Project.Service.Models.GStar
         public string traveldistance { get; set; }
         public string orgnm { get; set; }
         public string travelduration { get; set; }
-        
+        public string transport { get; set; }
+
     }
 
     public class GetexeccheckinoutlistdtwisesumList
