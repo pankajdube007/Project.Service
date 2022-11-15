@@ -13,6 +13,10 @@ namespace Project.Service.Models.GStar
         public int ExId { get; set; }
 
         [Required]
+        public int VehId { get; set; }
+
+
+        [Required]
         public string ClientSecret { get; set; }
 
     }

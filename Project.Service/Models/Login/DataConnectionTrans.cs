@@ -29,12 +29,12 @@ namespace Project.Service.Models
             {
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    smtpClient.Credentials = new System.Net.NetworkCredential("arun.g@goldmedalindia.com", "231015@itArun");
+                    smtpClient.Credentials = new System.Net.NetworkCredential("Software.Query@goldmedalindia.com", "gol123##");
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtpClient.EnableSsl = true;
                     using (MailMessage mail = new MailMessage())
                     {
-                        mail.From = new MailAddress("arun.g@goldmedalindia.com", displayname);
+                        mail.From = new MailAddress("Software.Query@goldmedalindia.com", displayname);
                         mail.To.Add(new MailAddress(toeamilid));
                         mail.IsBodyHtml = true;
                         mail.Priority = MailPriority.High;

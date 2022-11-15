@@ -2,61 +2,56 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers
 {
-    public class TripListController : ApiController
+    public class GetOrderCatItemDetailsController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getOrderCatItemDetailList")]
+        public HttpResponseMessage GetDetails(ListOfGetOrderCatItemDetails ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
             GoldMedia _goldMedia = new GoldMedia();
-            if (ula.ExId != 0)
+            if (ula.CIN != null)
             {
                 try
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "','" + ula.VehId + "'");
+                    List<GetOrderCatItemDetailss> alldcr = new List<GetOrderCatItemDetailss>();
+                    List<GetOrderCatItemDetails> alldcr1 = new List<GetOrderCatItemDetails>();
+
+                    var dr = g1.return_dr("GetAppCatlagueItemDetails " + ula.CategoryId + "," + ula.DivisionId + ",'" + ula.CIN + "'");
+
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new GetOrderCatItemDetails
                             {
-
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                CategoryId = dr["categoryid"].ToString(),
+                                categorynm = dr["categorynm"].ToString(),
+                                SubCategoryId = dr["rangeid"].ToString(),
+                                Subcategorynm = dr["rangenm"].ToString(),
+                                DivisionId = dr["divisionid"].ToString(),
+                                divisionnm = dr["divisionnm"].ToString(),
+                                itemcode = dr["itemcode"].ToString(),
+                                itemnm = dr["itemnm"].ToString(),
+                                Subcategoryurl = string.IsNullOrEmpty(dr["uploadfile"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "subcategorymaster/" + Convert.ToString(dr["uploadfile"]).ToString().TrimEnd(',')),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new GetOrderCatItemDetailss
                         {
                             result = true,
                             message = string.Empty,

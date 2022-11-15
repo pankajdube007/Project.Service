@@ -325,8 +325,14 @@
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByCategoryAndNameorCodeController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeController.cs" />
+    <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeDetailListController.cs" />
+    <Compile Include="Controllers\GParivar\GetOrderCatItemDetailsController.cs" />
+    <Compile Include="Controllers\GParivar\GetOrderDivisionAndCategoryController.cs" />
+    <Compile Include="Controllers\GParivar\GetOrderItemCatPriceDetailsController.cs" />
+    <Compile Include="Controllers\GParivar\GetOrderItemDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
+    <Compile Include="Controllers\GParivar\ItemDetailsByCategoryAndNameOrCodeController.cs" />
     <Compile Include="Controllers\GParivar\MenInBlueSumPartyController.cs" />
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
@@ -775,8 +781,13 @@
     <Compile Include="Models\GParivar\GetCFSInvoiceList.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByCategoryAndNameorCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCode.cs" />
+    <Compile Include="Models\GParivar\GetItemDetailsByItemCodeDetailList.cs" />
+    <Compile Include="Models\GParivar\GetOrderCatItemDetails.cs" />
+    <Compile Include="Models\GParivar\GetOrderItemCatPriceDetails.cs" />
+    <Compile Include="Models\GParivar\GetOrderItemDetails.cs" />
     <Compile Include="Models\GParivar\GetRaiseTicketDetails.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
+    <Compile Include="Models\GParivar\ItemDetailsByCategoryAndNameOrCode.cs" />
     <Compile Include="Models\GParivar\ListCategoryMast.cs" />
     <Compile Include="Models\GParivar\ListCFDetails.cs" />
     <Compile Include="Models\GParivar\ListDeActivateAccount.cs" />
@@ -786,6 +797,7 @@
     <Compile Include="Models\GParivar\ListStateMast.cs" />
     <Compile Include="Models\GParivar\MenInBlueSumPartyList.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
+    <Compile Include="Models\GParivar\OrderDivisionAndCategory.cs" />
     <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />
     <Compile Include="Models\GParivar\RequestPartyChannelFinance.cs" />
     <Compile Include="Models\GQC\ItemListForProblem.cs" />

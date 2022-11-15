@@ -36,7 +36,7 @@ namespace Project.Service.Controllers
                     {
                         alldcr1.Add(new mpincheck
                         {
-                            isBlock = false,
+                            isBlock = Convert.ToBoolean(val.Rows[0]["isBlock"]),
                             isForcedLogout = Convert.ToBoolean(val.Rows[0]["Isforcedlogout"]),
                         });
 
@@ -65,7 +65,7 @@ namespace Project.Service.Controllers
                     {
                         alldcr1.Add(new mpincheck
                         {
-                            isBlock = false,
+                            isBlock = Convert.ToBoolean(val.Rows[0]["isBlock"]),
                             isForcedLogout = Convert.ToBoolean(val.Rows[0]["Isforcedlogout"]),
                         });
 
@@ -95,7 +95,7 @@ namespace Project.Service.Controllers
                     {
                         alldcr1.Add(new mpincheck
                         {
-                            isBlock = false,
+                            isBlock = Convert.ToBoolean(val.Rows[0]["isBlock"]),
                             isForcedLogout = Convert.ToBoolean(val.Rows[0]["Isforcedlogout"]),
                         });
 
@@ -118,7 +118,7 @@ namespace Project.Service.Controllers
                     {
                         alldcr1.Add(new mpincheck
                         {
-                            isBlock = false,
+                            isBlock = Convert.ToBoolean(val.Rows[0]["isBlock"]),
                             isForcedLogout = Convert.ToBoolean(val.Rows[0]["Isforcedlogout"]),
                         });
 
