@@ -31,10 +31,10 @@ namespace Project.Service.Models.GStar
         [Required]
         public string FromKm { get; set; }
 
-        [Required]
+        
         public string EndTripImg { get; set; }
 
-        [Required]
+        
         public string ToKm { get; set; }
 
 

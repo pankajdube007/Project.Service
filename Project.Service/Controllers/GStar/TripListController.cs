@@ -53,6 +53,8 @@ namespace Project.Service.Controllers.GStar
                                 mfgby = Convert.ToString(dr["mfgby"].ToString()),
                                 VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
                                 OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                imgstatus = Convert.ToString(dr["imgstatus"].ToString()),
+                                slno = Convert.ToString(dr["slno"].ToString()),
                             });
                         }
                         g1.close_connection();
