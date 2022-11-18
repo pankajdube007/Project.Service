@@ -44,7 +44,7 @@ namespace Project.Service.Models.GStar
         public string mfgby { get; set; }
         public string VehicleType { get; set; }
         public string OwnedBy { get; set; }
-        public string imgstatus { get; set; }
+        public string IsCompleted { get; set; }
         public string slno { get; set; }
         
     }

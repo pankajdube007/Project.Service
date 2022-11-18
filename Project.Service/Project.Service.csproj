@@ -337,6 +337,7 @@
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
     <Compile Include="Controllers\GParivar\PincodeDetailsController.cs" />
+    <Compile Include="Controllers\GParivar\PlaceOrderController.cs" />
     <Compile Include="Controllers\GParivar\RaiseTicketContactDetailsController.cs" />
     <Compile Include="Controllers\GQC\ItemListForProblemController.cs" />
     <Compile Include="Controllers\GQC\ItemProblemMapController.cs" />
@@ -774,6 +775,7 @@
     <Compile Include="Models\General\Whatsapp.cs" />
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />
+    <Compile Include="Models\GParivar\AddPlaceOrder.cs" />
     <Compile Include="Models\GParivar\AddPod.cs" />
     <Compile Include="Models\GParivar\AddRaiseTicket.cs" />
     <Compile Include="Models\GParivar\BonanzaPriceList.cs" />
