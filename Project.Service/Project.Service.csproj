@@ -415,6 +415,7 @@
     <Compile Include="Controllers\GStar\TravelReqController.cs" />
     <Compile Include="Controllers\GStar\TravelTxnManagerDetailsController.cs" />
     <Compile Include="Controllers\GStar\TripListController.cs" />
+    <Compile Include="Controllers\GStar\UpdateTripEndController.cs" />
     <Compile Include="Controllers\GStar\VehicleListController.cs" />
     <Compile Include="Controllers\GStar\VehicleMstController.cs" />
     <Compile Include="Controllers\GStar\ViewDetailsLocalConveyanceController.cs" />
@@ -896,6 +897,7 @@
     <Compile Include="Models\GStar\StockAvailibility.cs" />
     <Compile Include="Models\GStar\TravelTxn.cs" />
     <Compile Include="Models\GStar\TravelTxnManager.cs" />
+    <Compile Include="Models\GStar\UpdateTripEnd.cs" />
     <Compile Include="Models\GStar\VehicleList.cs" />
     <Compile Include="Models\GStar\VehicleMst.cs" />
     <Compile Include="Models\GStar\ViewDetailsLocalConveyance.cs" />
