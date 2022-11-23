@@ -391,6 +391,8 @@
     <Compile Include="Controllers\GStar\GetCityMastController.cs" />
     <Compile Include="Controllers\GStar\GetDealerContactExecutiveNewController.cs" />
     <Compile Include="Controllers\GStar\GetDisputeTypeController.cs" />
+    <Compile Include="Controllers\GStar\GetExecDistrictWiseRetCntController.cs" />
+    <Compile Include="Controllers\GStar\GetExecDistrictWiseRetdetailController.cs" />
     <Compile Include="Controllers\GStar\GetExecutiveWiseNewYearBonazaController.cs" />
     <Compile Include="Controllers\GStar\GetListofCityController.cs" />
     <Compile Include="Controllers\GStar\GetListofTravelModeOfTransportController.cs" />
@@ -862,6 +864,8 @@
     <Compile Include="Models\GParivar\BranshWiseNonMovementStock.cs" />
     <Compile Include="Models\GParivar\BranshWiseNonMovementStockDetails.cs" />
     <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
+    <Compile Include="Models\GStar\ExecDistrictWiseRetCn.cs" />
+    <Compile Include="Models\GStar\ExecDistrictWiseRetdetail.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
     <Compile Include="Models\GStar\GetDisputeType.cs" />

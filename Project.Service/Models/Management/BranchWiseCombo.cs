@@ -32,6 +32,7 @@ namespace Project.Service.Models
         public string branchid { get; set; }
         public string branchname { get; set; }
         public string Count { get; set; }
+        public string used { get; set; }
 
     }
 

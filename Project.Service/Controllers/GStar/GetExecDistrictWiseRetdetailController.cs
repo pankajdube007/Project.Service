@@ -2,49 +2,57 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-
+using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
-    public class ComboWiseCountController : ApiController
+    public class GetExecDistrictWiseRetdetailController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getComboWiseCount")]
-        public HttpResponseMessage GetDetails(ListofComboWiseCount ula)
+        [Route("api/GetExecDistrictWiseRetdetail")]
+        public HttpResponseMessage GetDetails(ExecDistrictWiseRetdetail ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != "")
+            GoldMedia _goldMedia = new GoldMedia();
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<ComboWiseCountLists> alldcr = new List<ComboWiseCountLists>();
-                    List<ComboWiseCountList> alldcr1 = new List<ComboWiseCountList>();
-
-                    var dr = g1.return_dr("combowisecount '" + ula.CIN + "','" + ula.Category + "'");
+                    List<GetExecDistrictWiseRetdetail> alldcr = new List<GetExecDistrictWiseRetdetail>();
+                    List<GetExecDistrictWiseRetdetail1> alldcr1 = new List<GetExecDistrictWiseRetdetail1>();
+                    var dr = g1.return_dr("dbo.ExecDistrictWiseRetdetail '" + ula.ExId + "','" + ula.districtid + "'");
 
                     if (dr.HasRows)
                     {
+                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ComboWiseCountList
+                            alldcr1.Add(new GetExecDistrictWiseRetdetail1
                             {
-                                ComboName = Convert.ToString(dr["ComboName"].ToString()),
-                                NumberOfCombo = Convert.ToString(dr["NumberOfCombo"].ToString()),
-                                used = Convert.ToString(dr["used"].ToString()),
+                                //districtid = Convert.ToString(dr["districtid"].ToString()),
+                                name = Convert.ToString(dr["name"].ToString()),
+                                Pincode = Convert.ToString(dr["Pincode"].ToString()),
+                                Distrctnm = Convert.ToString(dr["Distrctnm"].ToString()),
+                                MobileNo = Convert.ToString(dr["MobileNo"].ToString()),
+                                address = Convert.ToString(dr["address"].ToString()),
+                                lat = Convert.ToString(dr["lat"].ToString()),
+                                Long = Convert.ToString(dr["long"].ToString()),
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new ComboWiseCountLists
+                        alldcr.Add(new GetExecDistrictWiseRetdetail
                         {
                             result = true,
                             message = string.Empty,
@@ -62,7 +70,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -85,3 +93,11 @@ namespace Project.Service.Controllers
         }
     }
 }
+
+
+
+
+
+
+
+      

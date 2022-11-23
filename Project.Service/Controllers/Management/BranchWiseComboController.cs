@@ -41,7 +41,8 @@ namespace Project.Service.Controllers
                                 branchname = Convert.ToString(dr["locnm"].ToString()),
                                  branchid= Convert.ToString(dr["SlNo"].ToString()),
                                 Count = Convert.ToString(dr["cnt"].ToString()),
-                       
+                                used = Convert.ToString(dr["used"].ToString()),
+
                             });
                         }
                         g1.close_connection();

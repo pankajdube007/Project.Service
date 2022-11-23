@@ -30,6 +30,7 @@ namespace Project.Service.Models
     {
         public string ComboName { get; set; }
         public string NumberOfCombo { get; set; }
-        
+        public string used { get; set; }
+
     }
 }

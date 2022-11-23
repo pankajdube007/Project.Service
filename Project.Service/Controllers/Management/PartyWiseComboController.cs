@@ -38,6 +38,7 @@ namespace Project.Service.Controllers
                             {
                                 Party = Convert.ToString(dr["locnm"].ToString()),
                                 Count = Convert.ToString(dr["cnt"].ToString()),
+                                used = Convert.ToString(dr["used"].ToString()),
 
                             });
                         }
