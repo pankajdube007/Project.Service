@@ -43,14 +43,28 @@ namespace Project.Service.Controllers.GStar
                     //ula.Date = Convert.ToDateTime(ula.Date).ToString();
 
                     //  var dr = g2.return_dr("dbo.AddTripMst");
-                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "'");
+                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "'");
 
                     if (dr.HasRows)
                     {
-                        alldcr1.Add(new AddTripList
+                        if (ula.slno == 0)
                         {
-                            output = "Data Sucessfully inserted"
-                        });
+                            alldcr1.Add(new AddTripList
+                            {
+                                output = "Data Sucessfully Inserted"
+                            });
+                        }
+                        else
+                        {
+                            alldcr1.Add(new AddTripList
+                            {
+                                output = "Data Sucessfully Updated"
+                            });
+                        }
+                        //alldcr1.Add(new AddTripList
+                        //{
+                        //    output = "Data Sucessfully inserted"
+                        //});
 
                         g2.close_connection();
                         alldcr.Add(new AddTripLists

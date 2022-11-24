@@ -11,14 +11,16 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
+
 namespace Project.Service.Controllers.GStar
 {
-    public class TripListController : ApiController
+    public class GetpeechedekholightappController : ApiController
     {
+
         [HttpPost]
         [ValidateModel]
-        [Route("api/getTripList")]
-        public HttpResponseMessage GetDetails(ListTripList ula)
+        [Route("api/getpeechedekholightapp")]
+        public HttpResponseMessage GetDetails(peechedekholightapp ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
@@ -29,38 +31,37 @@ namespace Project.Service.Controllers.GStar
                 {
                     string data1;
 
-                    List<GetTripLists> alldcr = new List<GetTripLists>();
-                    List<GetTripList> alldcr1 = new List<GetTripList>();
-                    var dr = g1.return_dr("dbo.TripList '" + ula.ExId + "','" + ula.VehId + "'");
+                    List<Getpeechedekholightapp> alldcr = new List<Getpeechedekholightapp>();
+                    List<Getpeechedekholightapp1> alldcr1 = new List<Getpeechedekholightapp1>();
+                    var dr = g1.return_dr("dbo.execpeechedekholightapp '" + ula.ExId + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetTripList
+                            alldcr1.Add(new Getpeechedekholightapp1
                             {
 
-                                exeid = Convert.ToString(dr["exeid"].ToString()),
-                                vehid = Convert.ToString(dr["vehid"].ToString()),
-                                date = Convert.ToString(dr["date"].ToString()),
-                                refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
-                                fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
-                                tokm = Convert.ToString(dr["tokm"].ToString()),
-                                VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
-                                model = Convert.ToString(dr["model"].ToString()),
-                                mfgby = Convert.ToString(dr["mfgby"].ToString()),
-                                VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
-                                OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
-                                IsCompleted = Convert.ToString(dr["imgstatus"].ToString()),
-                                slno = Convert.ToString(dr["slno"].ToString()),
-                                IsEdited = Convert.ToString(dr["editstatus"].ToString()),
-                                
+                                displaynm = Convert.ToString(dr["displaynm"].ToString()),
+                                HomeBranch = Convert.ToString(dr["HomeBranch"].ToString()),
+                                cin = Convert.ToString(dr["cin"].ToString()),
+                                salesexname = Convert.ToString(dr["salesexname"].ToString()),
+                                runningtarget = Convert.ToString(dr["runningtarget"].ToString()),
+                                nexttarget = Convert.ToString(dr["nexttarget"].ToString()),
+                                OctNormal = Convert.ToString(dr["OctNormal"].ToString()),
+                                OctBonus = Convert.ToString(dr["OctBonus"].ToString()),
+                                NovNormal = Convert.ToString(dr["NovNormal"].ToString()),
+                                NovBonus = Convert.ToString(dr["NovBonus"].ToString()),
+                                DecNormal = Convert.ToString(dr["DecNormal"].ToString()),
+                                DecBonus = Convert.ToString(dr["DecBonus"].ToString()),
+                                Bonusq2 = Convert.ToString(dr["Bonusq2"].ToString()),
+                                Total = Convert.ToString(dr["TotalBonus"].ToString()),
+
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetTripLists
+                        alldcr.Add(new Getpeechedekholightapp
                         {
                             result = true,
                             message = string.Empty,
@@ -101,3 +102,4 @@ namespace Project.Service.Controllers.GStar
         }
     }
 }
+        
