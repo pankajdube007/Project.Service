@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-namespace Project.Service.Models
-{
-    
 
-    public class ListofPartyWiseCombo
+namespace Project.Service.Models.Management
+{
+    public class ListOfpartywisecomboid
     {
         [Required]
         public string ClientSecret { get; set; }
@@ -17,23 +15,21 @@ namespace Project.Service.Models
         public string Category { get; set; }
 
         [Required]
-        public string BranchId { get; set; }
-
+        public int partycin { get; set; }
     }
 
-    public class PartyWiseCombos
+    public class partywisecomboids
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<PartyWiseCombo> data { get; set; }
+        public List<partywisecomboid> data { get; set; }
     }
-
-    public class PartyWiseCombo
+    public class partywisecomboid
     {
-        public string Party { get; set; }
-        public string Count { get; set; }
-        public string partycin { get; set; }
+        public string ComboName { get; set; }
+        public string NumberOfCombo { get; set; }
+        public string used { get; set; }
 
     }
 }

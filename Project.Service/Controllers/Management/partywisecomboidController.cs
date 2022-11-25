@@ -10,15 +10,14 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.Management
 {
-    public class PartyWiseComboController : ApiController
+    public class partywisecomboidController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/Getpartywisecombo")]
-        public HttpResponseMessage GetDetails(ListofPartyWiseCombo ula)
+        [Route("api/Getpartywisecomboid")]
+        public HttpResponseMessage GetDetails(ListOfpartywisecomboid ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -28,25 +27,27 @@ namespace Project.Service.Controllers
                 {
                     string data1;
 
-                    List<PartyWiseCombos> alldcr = new List<PartyWiseCombos>();
-                    List<PartyWiseCombo> alldcr1 = new List<PartyWiseCombo>();
+                    List<partywisecomboids> alldcr = new List<partywisecomboids>();
+                    List<partywisecomboid> alldcr1 = new List<partywisecomboid>();
 
-                    var dr = g1.return_dr("partywisecombocountapp '" + ula.BranchId + "''" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("partywisecomboidcount '" + ula.partycin + "','" + ula.CIN + "','" + ula.Category + "'");
 
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PartyWiseCombo
+                            alldcr1.Add(new partywisecomboid
                             {
-                                Party = Convert.ToString(dr["locnm"].ToString()),
-                                Count = Convert.ToString(dr["cnt"].ToString()),
-                                partycin = Convert.ToString(dr["partycin"].ToString()),
+                                ComboName = Convert.ToString(dr["ComboName"].ToString()),
+                                NumberOfCombo = Convert.ToString(dr["NumberOfCombo"].ToString()),
+                                used = Convert.ToString(dr["used"].ToString()),
+
+
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new PartyWiseCombos
+                        alldcr.Add(new partywisecomboids
                         {
                             result = true,
                             message = string.Empty,
@@ -87,4 +88,4 @@ namespace Project.Service.Controllers
         }
     }
 }
-    
+       

@@ -37,10 +37,34 @@ namespace Project.Service.Controllers.GStar
                     string uploadImage = string.Empty;
                     string uploadImage1 = string.Empty;
 
-                    if (ula.StartTripImg != "") uploadImage = GetImage(ula.StartTripImg, 1);
-                    if (ula.EndTripImg != "") uploadImage1 = GetImage(ula.EndTripImg, 1);
+                    if(ula.StartTripImg!="0")
+                    {
+                        if (ula.StartTripImg != "") uploadImage = GetImage(ula.StartTripImg, 1);
 
-                    
+                    }
+                    else
+                    {
+
+                        uploadImage = "0";
+                    }
+
+                    if (ula.EndTripImg != "0")
+                    {
+                        if (ula.EndTripImg != "") uploadImage1 = GetImage(ula.EndTripImg, 1);
+
+                    }
+                    else
+                    {
+
+                        uploadImage1 = "0";
+                    }
+
+
+
+                    //if (ula.StartTripImg != "") uploadImage = GetImage(ula.StartTripImg, 1);
+                    //if (ula.EndTripImg != "") uploadImage1 = GetImage(ula.EndTripImg, 1);
+
+
                     //var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "'");
 
                     var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "'");
