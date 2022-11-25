@@ -37,9 +37,9 @@ namespace Project.Service.Models.GStar
         
         public string ToKm { get; set; }
 
-        //[Required]
-        //public int slno { get; set; }
-        
+        [Required]
+        public int slno { get; set; }
+
     }
 
     public class AddTripLists
