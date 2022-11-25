@@ -330,6 +330,8 @@
     <Compile Include="Controllers\GParivar\GetOrderDivisionAndCategoryController.cs" />
     <Compile Include="Controllers\GParivar\GetOrderItemCatPriceDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetOrderItemDetailsController.cs" />
+    <Compile Include="Controllers\GParivar\GetpartyidpeechedekhoappController.cs" />
+    <Compile Include="Controllers\GParivar\GetpartyidpeechedekholightappController.cs" />
     <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
     <Compile Include="Controllers\GParivar\ItemDetailsByCategoryAndNameOrCodeController.cs" />
@@ -398,6 +400,8 @@
     <Compile Include="Controllers\GStar\GetListofTravelModeOfTransportController.cs" />
     <Compile Include="Controllers\GStar\GetListofTravelPurposeController.cs" />
     <Compile Include="Controllers\GStar\GetMerchantCatController.cs" />
+    <Compile Include="Controllers\GStar\GetpeechedekhoappController.cs" />
+    <Compile Include="Controllers\GStar\GetpeechedekholightappController.cs" />
     <Compile Include="Controllers\GStar\GetStateMastGstarController.cs" />
     <Compile Include="Controllers\GStar\GstInformationController.cs" />
     <Compile Include="Controllers\GStar\InsertAutomationLeadGenerationController.cs" />
@@ -803,6 +807,8 @@
     <Compile Include="Models\GParivar\MenInBlueSumPartyList.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
     <Compile Include="Models\GParivar\OrderDivisionAndCategory.cs" />
+    <Compile Include="Models\GParivar\partyidpeechedekhoapp.cs" />
+    <Compile Include="Models\GParivar\partyidpeechedekholightapp.cs" />
     <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />
     <Compile Include="Models\GParivar\RequestPartyChannelFinance.cs" />
     <Compile Include="Models\GQC\ItemListForProblem.cs" />
@@ -895,6 +901,8 @@
     <Compile Include="Models\GStar\MenInBlueSumExecList.cs" />
     <Compile Include="Models\GStar\NewArrivalDetails.cs" />
     <Compile Include="Models\GStar\NewArrivalListData.cs" />
+    <Compile Include="Models\GStar\peechedekhoapp.cs" />
+    <Compile Include="Models\GStar\peechedekholightapp.cs" />
     <Compile Include="Models\GStar\PresentCopy.cs" />
     <Compile Include="Models\GStar\ShowRoomDetails.cs" />
     <Compile Include="Models\GStar\ShowRoomList.cs" />

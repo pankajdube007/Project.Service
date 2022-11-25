@@ -40,31 +40,31 @@ namespace Project.Service.Controllers.GStar
                     if (ula.StartTripImg != "") uploadImage = GetImage(ula.StartTripImg, 1);
                     if (ula.EndTripImg != "") uploadImage1 = GetImage(ula.EndTripImg, 1);
 
-                    //ula.Date = Convert.ToDateTime(ula.Date).ToString();
+                    
+                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "'");
 
-                    //  var dr = g2.return_dr("dbo.AddTripMst");
-                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "'");
+                    //var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "'");
 
                     if (dr.HasRows)
                     {
-                        if (ula.slno == 0)
-                        {
-                            alldcr1.Add(new AddTripList
-                            {
-                                output = "Data Sucessfully Inserted"
-                            });
-                        }
-                        else
-                        {
-                            alldcr1.Add(new AddTripList
-                            {
-                                output = "Data Sucessfully Updated"
-                            });
-                        }
-                        //alldcr1.Add(new AddTripList
+                        //if (ula.slno == 0)
                         //{
-                        //    output = "Data Sucessfully inserted"
-                        //});
+                        //    alldcr1.Add(new AddTripList
+                        //    {
+                        //        output = "Data Sucessfully Inserted"
+                        //    });
+                        //}
+                        //else
+                        //{
+                        //    alldcr1.Add(new AddTripList
+                        //    {
+                        //        output = "Data Sucessfully Updated"
+                        //    });
+                        //}
+                        alldcr1.Add(new AddTripList
+                        {
+                            output = "Data Sucessfully inserted"
+                        });
 
                         g2.close_connection();
                         alldcr.Add(new AddTripLists
@@ -86,6 +86,7 @@ namespace Project.Service.Controllers.GStar
                         g2.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StringContent(cm.StatusTime(false, "Add Trip Not Created!!!!!!!!"), Encoding.UTF8, "application/json");
+                        //response.Content = new StringContent(cm.StatusTime(false, "Only one trip can be Add in a day!!!!!!!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
