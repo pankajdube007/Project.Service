@@ -27,6 +27,9 @@ namespace Project.Service.Models.GStar
         public string cin { get; set; }
         public string salesexname { get; set; }
         public string runningtarget { get; set; }
+        public string target1 { get; set; }
+        public string target2 { get; set; }
+        public string target3 { get; set; }
         public string nexttarget { get; set; }
         public string octto15novNormal { get; set; }
         public string octto15novBonus { get; set; }

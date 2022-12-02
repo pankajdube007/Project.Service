@@ -2,66 +2,52 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GStar;
+using Project.Service.Models.Management;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web.Configuration;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers.Management
 {
-    public class GetpeechedekhoappController : ApiController
+    public class agenetlistformanagementController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getpeechedekhoapp")]
-        public HttpResponseMessage GetDetails(peechedekhoapp ula)
+        [Route("api/getagenetlistformanagement")]
+        public HttpResponseMessage GetDetails(Listofagenetlistformanagement ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
-            GoldMedia _goldMedia = new GoldMedia();
-            if (ula.ExId != 0)
+            if (ula.CIN != "")
             {
                 try
                 {
                     string data1;
 
-                    List<Getpeechedekhoapp> alldcr = new List<Getpeechedekhoapp>();
-                    List<Getpeechedekhoapp1> alldcr1 = new List<Getpeechedekhoapp1>();
-                    var dr = g1.return_dr("dbo.execpeechedekhoapp '" + ula.ExId + "'");
+                    List<agenetlistformanagementLists> alldcr = new List<agenetlistformanagementLists>();
+                    List<agenetlistformanagementList> alldcr1 = new List<agenetlistformanagementList>();
+                    var dr = g1.return_dr("AgentListManagement '" + ula.CIN + "','" + ula.Category + "'");
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new Getpeechedekhoapp1
+                            alldcr1.Add(new agenetlistformanagementList
                             {
 
-                                displaynm = Convert.ToString(dr["displaynm"].ToString()),
-                                HomeBranch = Convert.ToString(dr["HomeBranch"].ToString()),
-                                cin = Convert.ToString(dr["cin"].ToString()),
-                                salesexname = Convert.ToString(dr["salesexname"].ToString()),
-                                target1 = Convert.ToString(dr["MainTarget60"].ToString()),
-                                target2 = Convert.ToString(dr["MainTarget70"].ToString()),
-                                target3 = Convert.ToString(dr["MainTarget80"].ToString()),
-                                runningtarget = Convert.ToString(dr["runningtarget"].ToString()),
-                                nexttarget = Convert.ToString(dr["nexttarget"].ToString()),
-                                octto15novNormal = Convert.ToString(dr["octto15novNormal"].ToString()),
-                                octto15novBonus = Convert.ToString(dr["octto15novBonus"].ToString()),
-                                oct16todec31Normal = Convert.ToString(dr["oct16todec31Normal"].ToString()),
-                                oct16todec31Bonus = Convert.ToString(dr["oct16todec31Bonus"].ToString()),
-                                q2Bonus = Convert.ToString(dr["q2Bonus"].ToString()),
-                                Total = Convert.ToString(dr["TotalBonus"].ToString()),
-
+                                slno = Convert.ToString(dr["slno"]),
+                                agentcode = Convert.ToString(dr["agentcode"]),
+                                agentnm = Convert.ToString(dr["agentnm"]),
+                                email = Convert.ToString(dr["email"]),
 
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new Getpeechedekhoapp
+                        alldcr.Add(new agenetlistformanagementLists
                         {
                             result = true,
                             message = string.Empty,
@@ -102,5 +88,3 @@ namespace Project.Service.Controllers.GStar
         }
     }
 }
-
-        

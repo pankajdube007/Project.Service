@@ -477,6 +477,7 @@
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
     <Compile Include="Controllers\Management\PartyFianYearWiseDivSaleController.cs" />
     <Compile Include="Controllers\Management\PartyWiseComboController.cs" />
+    <Compile Include="Controllers\Management\partywisecomboidController.cs" />
     <Compile Include="Controllers\Management\SalesBranchDivisionWiseController.cs" />
     <Compile Include="Controllers\Management\SalesDivisionBranchWiseController.cs" />
     <Compile Include="Controllers\Management\SalesOrderPartyStatusController.cs" />
@@ -935,6 +936,7 @@
     <Compile Include="Models\Management\ItemCosting.cs" />
     <Compile Include="Models\Management\PartyFinYearWiseDivSale.cs" />
     <Compile Include="Models\Management\PartyWiseCombo.cs" />
+    <Compile Include="Models\Management\partywisecomboid.cs" />
     <Compile Include="Models\Management\PassengerDetailsByMobileNo.cs" />
     <Compile Include="Models\Management\SalesBranchDivisionWise.cs" />
     <Compile Include="Models\Management\SalesDivisionBranchWise.cs" />

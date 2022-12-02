@@ -23,6 +23,9 @@ namespace Project.Service.Models.GParivar
         public string displaynm { get; set; }
         public string HomeBranch { get; set; }
         public string cin { get; set; }
+        public string target1 { get; set; }
+        public string target2 { get; set; }
+        public string target3 { get; set; }
         public string runningtarget { get; set; }
         public string nexttarget { get; set; }
         public string octto15novNormal { get; set; }
