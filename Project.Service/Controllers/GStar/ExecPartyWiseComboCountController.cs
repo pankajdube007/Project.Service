@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.Management;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -10,43 +9,42 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-
 namespace Project.Service.Controllers
 {
-    public class PartyWiseComboController : ApiController
+    public class ExecPartyWiseComboCountController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/Getpartywisecombo")]
-        public HttpResponseMessage GetDetails(ListofPartyWiseCombo ula)
+        [Route("api/getexecPartywiesecombo")]
+        public HttpResponseMessage GetDetails(ListsPartyWiseCobmoCount ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
-            if (ula.CIN != "")
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<PartyWiseCombos> alldcr = new List<PartyWiseCombos>();
-                    List<PartyWiseCombo> alldcr1 = new List<PartyWiseCombo>();
+                    List<PartyWiseCobmoCounts> alldcr = new List<PartyWiseCobmoCounts>();
+                    List<PartyWiseCobmoCount> alldcr1 = new List<PartyWiseCobmoCount>();
 
-                    var dr = g1.return_dr("partywisecombocountapp '" + ula.BranchId + "','" + ula.CIN + "','" + ula.Category + "'");
-
+                    var dr = g1.return_dr("execPartywiesecombo " + ula.ExId + "");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PartyWiseCombo
+                            alldcr1.Add(new PartyWiseCobmoCount
                             {
-                                Party = Convert.ToString(dr["locnm"].ToString()),
-                                Count = Convert.ToString(dr["cnt"].ToString()),
-                                partycin = Convert.ToString(dr["partycin"].ToString()),
-
+                                Cin = Convert.ToString(dr["partycin"]),
+                                Name = Convert.ToString(dr["locnm"]),
+                                Count = Convert.ToString(dr["cnt"]),
+                                Used = Convert.ToString(dr["used"]),
+                               
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new PartyWiseCombos
+                        alldcr.Add(new PartyWiseCobmoCounts
                         {
                             result = true,
                             message = string.Empty,
@@ -64,7 +62,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -87,4 +85,3 @@ namespace Project.Service.Controllers
         }
     }
 }
-    

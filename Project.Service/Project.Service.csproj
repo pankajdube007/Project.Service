@@ -436,6 +436,7 @@
     <Compile Include="Controllers\IT\ITLoginListController.cs" />
     <Compile Include="Controllers\IT\SetApprovalChangeWeeklyOffController.cs" />
     <Compile Include="Controllers\IT\SetApprovalWeeklyOffController.cs" />
+    <Compile Include="Controllers\Management\agenetlistformanagementController.cs" />
     <Compile Include="Controllers\Management\AgentWisePartySecureAmtController.cs" />
     <Compile Include="Controllers\Management\AgentWiseSecureAmtController.cs" />
     <Compile Include="Controllers\GParivar\AgingController.cs" />
@@ -925,6 +926,7 @@
     <Compile Include="Models\IT\ListSetApprovalChangeWeeklyOff.cs" />
     <Compile Include="Models\IT\ListSetApprovalWeeklyOff.cs" />
     <Compile Include="Models\IT\ListSetWeeklyOff.cs" />
+    <Compile Include="Models\Management\agenetlistformanagement.cs" />
     <Compile Include="Models\Management\BranchWiseCombo.cs" />
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
