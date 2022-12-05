@@ -337,6 +337,7 @@
     <Compile Include="Controllers\GParivar\ItemDetailsByCategoryAndNameOrCodeController.cs" />
     <Compile Include="Controllers\GParivar\MenInBlueSumPartyController.cs" />
     <Compile Include="Controllers\GParivar\NewYearSchemeController.cs" />
+    <Compile Include="Controllers\GParivar\PartyComboNameWiseCountController.cs" />
     <Compile Include="Controllers\GParivar\PartyWiseBonanazaGiftAddController.cs" />
     <Compile Include="Controllers\GParivar\PincodeDetailsController.cs" />
     <Compile Include="Controllers\GParivar\PlaceOrderController.cs" />
@@ -378,6 +379,7 @@
     <Compile Include="Controllers\GStar\ExecLatestLatLngController.cs" />
     <Compile Include="Controllers\GStar\ExecManagementController.cs" />
     <Compile Include="Controllers\GStar\ExecOrgVistListController.cs" />
+    <Compile Include="Controllers\GStar\ExecPartyWiseComboCountController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveDCRController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveLatLanAddListController.cs" />
     <Compile Include="Controllers\GStar\ExecutivePresentAbsentController.cs" />
@@ -809,6 +811,7 @@
     <Compile Include="Models\GParivar\MenInBlueSumPartyList.cs" />
     <Compile Include="Models\GParivar\NewYearScheme.cs" />
     <Compile Include="Models\GParivar\OrderDivisionAndCategory.cs" />
+    <Compile Include="Models\GParivar\PartyComboNameWiseCount.cs" />
     <Compile Include="Models\GParivar\partyidpeechedekhoapp.cs" />
     <Compile Include="Models\GParivar\partyidpeechedekholightapp.cs" />
     <Compile Include="Models\GParivar\PartyWiseBonanazaGiftAdd.cs" />
@@ -874,6 +877,7 @@
     <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
     <Compile Include="Models\GStar\ExecDistrictWiseRetCn.cs" />
     <Compile Include="Models\GStar\ExecDistrictWiseRetdetail.cs" />
+    <Compile Include="Models\GStar\ExecPartyWiseComboCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
     <Compile Include="Models\GStar\GetDisputeType.cs" />

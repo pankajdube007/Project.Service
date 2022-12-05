@@ -33,6 +33,7 @@ namespace Project.Service.Models
     {
         public string Party { get; set; }
         public string Count { get; set; }
+        public string used { get; set; }
         public string partycin { get; set; }
 
     }
