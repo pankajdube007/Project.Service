@@ -12,6 +12,10 @@ namespace Project.Service.Models
         public string Cat { get; set; }
         [Required]
         public string CIN { get; set; }
+
+        [Required]
+        public int branchid1 { get; set; }
+
         [Required]
         public string ClientSecret { get; set; }
     }

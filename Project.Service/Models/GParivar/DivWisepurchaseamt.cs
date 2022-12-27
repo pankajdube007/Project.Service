@@ -30,6 +30,7 @@ namespace Project.Service.Models
     {
         public string DivisionId { get; set; }
         public string DivisionName { get; set; }
+        public string SaleAmount { get; set; }
         public string Amount { get; set; }
     }
 }

@@ -40,6 +40,7 @@ namespace Project.Service.Controllers
                             {
                                 DivisionId = Convert.ToString(dr["divisionid"].ToString()),
                                 DivisionName = Convert.ToString(dr["divisionnm"].ToString()),
+                                SaleAmount = Convert.ToString(dr["saleamount"].ToString()),
                                 Amount = Convert.ToString(dr["amount"].ToString()),
 
                             });

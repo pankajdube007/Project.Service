@@ -29,7 +29,7 @@ namespace Project.Service.Controllers
                     List<DesignationWiseCountLists> alldcr = new List<DesignationWiseCountLists>();
                     List<DesignationWiseCountList> alldcr1 = new List<DesignationWiseCountList>();
 
-                    var dr = g1.return_dr("[hrm].[DesignationWiseEmployeeCount] '" + ula.CIN + "','" + ula.Cat + "'");
+                    var dr = g1.return_dr("[hrm].[DesignationWiseEmployeeCount] '" + ula.CIN + "','" + ula.Cat + "','" + ula.branchid1 + "'");
 
                     if (dr.HasRows)
                     {
