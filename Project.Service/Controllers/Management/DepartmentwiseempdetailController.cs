@@ -39,6 +39,7 @@ namespace Project.Service.Controllers
                             {
                                 EmployeeName = Convert.ToString(dr["EmployeeName"].ToString()),
                                 Departmentname = Convert.ToString(dr["Departmentname"].ToString()),
+                                SubDepartmentname = Convert.ToString(dr["SubDepartmentname"].ToString()),
                                 DesignationName = Convert.ToString(dr["DesignationName"].ToString()),
                                 EmployeeCode = Convert.ToString(dr["EmployeeCode"].ToString()),
                                 Branchname = Convert.ToString(dr["Branchname"].ToString()),

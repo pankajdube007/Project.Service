@@ -26,6 +26,7 @@ namespace Project.Service.Models
     {
         public string EmployeeName { get; set; }
         public string Departmentname { get; set; }
+        public string SubDepartmentname { get; set; }
         public string DesignationName { get; set; }
         public string EmployeeCode { get; set; }
         public string Branchname { get; set; }
