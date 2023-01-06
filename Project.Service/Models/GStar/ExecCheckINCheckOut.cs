@@ -30,6 +30,9 @@ namespace Project.Service.Models
         [Required]
         public decimal Distance { get; set; }
 
+        
+        public decimal MDistance { get; set; }
+
         [Required]
         public int Type { get; set; }
 
