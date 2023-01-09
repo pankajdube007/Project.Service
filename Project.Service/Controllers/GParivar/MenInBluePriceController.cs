@@ -47,6 +47,7 @@ namespace Project.Service.Controllers
                                 Price = Convert.ToString(dr["price"].ToString()),
                                 Cn = Convert.ToString(dr["Cn"].ToString()),
                                 Qty = Convert.ToString(dr["qty"].ToString()),
+                                iscn = Convert.ToString(dr["iscn"].ToString()),
                                 DealerPoint = Convert.ToString(dr["dealerpoint"].ToString()),
                                 ProductPoint = Convert.ToString(dr["point"].ToString()),
                                 priceimg = string.IsNullOrEmpty(dr["priceimg"].ToString().Trim(',')) ? "" : (baseurl + "meninblueimg/" + dr["priceimg"].ToString().Trim(',')),

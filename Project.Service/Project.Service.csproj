@@ -393,6 +393,8 @@
     <Compile Include="Controllers\GStar\ExecutiveWisePodInvoiceListController.cs" />
     <Compile Include="Controllers\GStar\ExecWiseFavItemController.cs" />
     <Compile Include="Controllers\GStar\ExecWisePartyWiseItemQtyController.cs" />
+    <Compile Include="Controllers\GStar\ExecWiseVendorReqitemListController.cs" />
+    <Compile Include="Controllers\GStar\ExecWiseVendorReqListController.cs" />
     <Compile Include="Controllers\GStar\GetAreaMastController.cs" />
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\GetCityMastController.cs" />
@@ -888,6 +890,8 @@
     <Compile Include="Models\GStar\ExecPartyWiseComboCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
+    <Compile Include="Models\GStar\ExecWiseVendorReqitemList.cs" />
+    <Compile Include="Models\GStar\ExecWiseVendorReqList.cs" />
     <Compile Include="Models\GStar\GetDisputeType.cs" />
     <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
