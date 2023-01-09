@@ -2,59 +2,59 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
+using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Web.Configuration;
 using System.Web.Http;
 
-
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
-    public class MenInBluePriceController : ApiController
+    public class ExecWiseVendorReqitemListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getmeninbluePriceList")]
-        public HttpResponseMessage GetDetails(MenInBluePriceList ula)
+        [Route("api/getExecWiseVendorReqitemList")]
+        public HttpResponseMessage GetDetails(ExecWiseVendorReqitemList ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
             GoldMedia _goldMedia = new GoldMedia();
 
-            if (ula.CIN != "")
+            if (ula.ExId != 0)
             {
-
                 try
                 {
                     string data1;
 
-                    List<LisMenInBluePrices> alldcr = new List<LisMenInBluePrices>();
-                    List<ListMenInBluePrice> alldcr1 = new List<ListMenInBluePrice>();
-
-                    var dr = g1.return_dr("meninbluepricerlist '" + ula.CIN + "'");
+                    List<ExecWiseVendorReqitemLists> alldcr = new List<ExecWiseVendorReqitemLists>();
+                    List<ExecWiseVendorReqitemList1> alldcr1 = new List<ExecWiseVendorReqitemList1>();
+                    var dr = g1.return_dr("ExecWiseVendorReqitemList '" + ula.slno + "'");
 
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ListMenInBluePrice
+                            alldcr1.Add(new ExecWiseVendorReqitemList1
                             {
-                                PriceId = Convert.ToInt32(dr["priceid"].ToString()),
-                                Price = Convert.ToString(dr["price"].ToString()),
-                                Cn = Convert.ToString(dr["Cn"].ToString()),
-                                Qty = Convert.ToString(dr["qty"].ToString()),
-                                DealerPoint = Convert.ToString(dr["dealerpoint"].ToString()),
-                                ProductPoint = Convert.ToString(dr["point"].ToString()),
-                                priceimg = string.IsNullOrEmpty(dr["priceimg"].ToString().Trim(',')) ? "" : (baseurl + "meninblueimg/" + dr["priceimg"].ToString().Trim(',')),
+
+                                ProductCode = dr["ProductCode"].ToString(),
+                                slno = dr["slno"].ToString(),
+                                RefID = dr["RefID"].ToString(),
+                                status = dr["status"].ToString(),
+                                inspectiondate = dr["inspectiondate"].ToString(),
+                                files = dr["files"].ToString(),
+                                remark = dr["remark"].ToString(),
+                                
+
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new LisMenInBluePrices
+                        alldcr.Add(new ExecWiseVendorReqitemLists
                         {
                             result = true,
                             message = string.Empty,
@@ -72,7 +72,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -84,11 +84,10 @@ namespace Project.Service.Controllers
 
                     return response;
                 }
-
             }
             else
             {
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
                 response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
 
                 return response;

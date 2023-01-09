@@ -30,6 +30,7 @@ namespace Project.Service.Models
     {
         public int PriceId { get; set; }
         public string Price { get; set; }
+        public string Cn { get; set; }
         public string Qty { get; set; }
         public string DealerPoint { get; set; }
         public string priceimg { get; set; }
