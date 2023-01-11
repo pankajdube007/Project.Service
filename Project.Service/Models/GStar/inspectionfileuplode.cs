@@ -18,8 +18,10 @@ namespace Project.Service.Models
         public string ClientSecret { get; set; }
         [Required]
         public string img { get; set; }
+        [Required]
+        public int type { get; set; }
 
-       
+
 
 
     }

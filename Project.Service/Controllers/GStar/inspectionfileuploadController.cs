@@ -22,7 +22,7 @@ namespace Project.Service.Controllers
         [Route("api/inspectionfileupload")]
         public HttpResponseMessage GetDetails(Listinspectionfileuplode ula)
         {
-            DataConnectionTrans g2 = new DataConnectionTrans();
+          //  DataConnectionTrans g2 = new DataConnectionTrans();
             GoldMedia _goldMedia = new GoldMedia();
             Common cm = new Common();
             if (ula.ExId != 0)
@@ -34,16 +34,16 @@ namespace Project.Service.Controllers
                     List<inspectionfileuplodes> alldcr = new List<inspectionfileuplodes>();
                     List<inspectionfileuplode> alldcr1 = new List<inspectionfileuplode>();
                     string uploadVehicleImage = string.Empty;
+                    //ula.type=0 image 1 pdf
+                    if (ula.img != "") uploadVehicleImage = GetImage(ula.img, 1,ula.type);
 
-                    if (ula.img != "") uploadVehicleImage = GetImage(ula.img, 1);
 
-                  
-                        alldcr1.Add(new inspectionfileuplode
-                        {
-                            output = uploadVehicleImage
+                    alldcr1.Add(new inspectionfileuplode
+                    {
+                        output = uploadVehicleImage
                         });
 
-                        g2.close_connection();
+                        //g2.close_connection();
                         alldcr.Add(new inspectionfileuplodes
                         {
                             result = true,
@@ -61,6 +61,7 @@ namespace Project.Service.Controllers
                 }
                 catch (Exception ex)
                 {
+                    //var a =ex.Message;
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                     response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
 
@@ -78,7 +79,7 @@ namespace Project.Service.Controllers
 
 
 
-        protected string GetImage(string img, int folderCreation)
+        protected string GetImage(string img, int folderCreation, int type)
         {
             var _goldMedia = new GoldMedia();
             var result = "";
@@ -91,16 +92,33 @@ namespace Project.Service.Controllers
 
             if (!string.IsNullOrEmpty(img))
             {
+
+
                 var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
                 if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
                 var binPdf = Convert.FromBase64String(s);
                 Stream stream = new MemoryStream(binPdf);
                 var FileName = "erp" + '-' + Guid.NewGuid();
 
-                var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".pdf", stream, "application/pdf", false,false, true);
-                result = FileName + ".pdf";
+                if (type == 1)
+                {
+                    var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".pdf", stream, "application/pdf", false, false, true);
+                    result = FileName + ".pdf";
+                }
+                if (type == 0)
+                {
+                    var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".jpg", stream, "image/jpeg", false,
+                   false, true);
+                    result = FileName + ".jpg";
+                }
             }
+
+
+
             return result;
         }
     }
 }
+
+
+                    }

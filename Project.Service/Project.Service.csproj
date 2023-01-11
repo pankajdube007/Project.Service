@@ -414,6 +414,7 @@
     <Compile Include="Controllers\GStar\InsertAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\InsertExpenseLocalConveyDisputeController.cs" />
     <Compile Include="Controllers\GStar\InsertTravelTxnController.cs" />
+    <Compile Include="Controllers\GStar\inspectionfileuploadController.cs" />
     <Compile Include="Controllers\GStar\ListLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
     <Compile Include="Controllers\GStar\MediaListController.cs" />
@@ -899,6 +900,7 @@
     <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
+    <Compile Include="Models\GStar\inspectionfileuplode.cs" />
     <Compile Include="Models\GStar\ListAddMerchant.cs" />
     <Compile Include="Models\GStar\ListAreaMast.cs" />
     <Compile Include="Models\GStar\ListCityMast.cs" />
