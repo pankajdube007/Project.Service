@@ -2,77 +2,68 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.GStar;
+using Project.Service.Models.Management;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers.Management
 {
-    public class ExecWiseVendorReqListController : ApiController
+    public class MaterialInspectionItemHistoryController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetExecWiseVendorReqList")]
-        public HttpResponseMessage GetDetails(ExecWiseVendorReqList ula)
+        [Route("api/getMaterialInspectionItemHistory")]
+        public HttpResponseMessage GetDetails(MaterialInspectionItemHistory ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
-            GoldMedia _goldMedia = new GoldMedia();
-            if (ula.ExId != 0)
+            if (ula.CIN != "")
             {
                 try
                 {
                     string data1;
 
-                    List<ExecWiseVendorReqLists> alldcr = new List<ExecWiseVendorReqLists>();
-                    List<ExecWiseVendorReqLists1> alldcr1 = new List<ExecWiseVendorReqLists1>();
-                    var dr = g1.return_dr("ExecWiseVendorReqList '" + ula.ExId + "'");
+                    List<MaterialInspectionItemHistoryes> alldcr = new List<MaterialInspectionItemHistoryes>();
+                    List<MaterialInspectionItemHistorye> alldcr1 = new List<MaterialInspectionItemHistorye>();
+
+                    var dr = g1.return_dr("MaterialInspectionItemHistory '" + ula.Vendorid + "', '" + ula.Category + "','" + ula.slno + "'");
+
 
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ExecWiseVendorReqLists1
+                            alldcr1.Add(new MaterialInspectionItemHistorye
                             {
 
-                                ReferenceNo = Convert.ToString(dr["ReferenceNo"].ToString()),
-                                slno = Convert.ToString(dr["slno"].ToString()),
-                                vendorname = Convert.ToString(dr["vendorname"].ToString()),
-                                inspectiondate = Convert.ToString(dr["inspectiondate"].ToString()),
-                                status = Convert.ToString(dr["status"].ToString()),
-                                vaddress = Convert.ToString(dr["vaddress"].ToString()),
-                                vcontact = Convert.ToString(dr["vcontact"].ToString()),
+                                ProductCode = Convert.ToString(dr["ProductCode"].ToString()),
+                                Status = Convert.ToString(dr["status"].ToString()),
                                 
+
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new ExecWiseVendorReqLists
+                        alldcr.Add(new MaterialInspectionItemHistoryes
                         {
                             result = true,
                             message = string.Empty,
                             servertime = DateTime.Now.ToString(),
-                            data = alldcr1
+                            data = alldcr1,
                         });
-
                         data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-
                         response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
-
                         return response;
                     }
                     else
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "No Data Found"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

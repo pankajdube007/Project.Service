@@ -27,6 +27,7 @@ namespace Project.Service.Models.GStar
     {
         public string ReferenceNo { get; set; }
         public string slno { get; set; }
+        public string vendorname { get; set; }
         public string inspectiondate { get; set; }
         public string status { get; set; }
         public string vaddress { get; set; }

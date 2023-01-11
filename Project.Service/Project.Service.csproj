@@ -428,6 +428,7 @@
     <Compile Include="Controllers\GStar\TravelReqController.cs" />
     <Compile Include="Controllers\GStar\TravelTxnManagerDetailsController.cs" />
     <Compile Include="Controllers\GStar\TripListController.cs" />
+    <Compile Include="Controllers\GStar\updateinspectionbyuexecController.cs" />
     <Compile Include="Controllers\GStar\UpdateTripEndController.cs" />
     <Compile Include="Controllers\GStar\VehicleListController.cs" />
     <Compile Include="Controllers\GStar\VehicleMstController.cs" />
@@ -483,6 +484,8 @@
     <Compile Include="Controllers\Management\GetPassengerDetailsByMobileNoController.cs" />
     <Compile Include="Controllers\Management\GetUserTypePassangerCountListController.cs" />
     <Compile Include="Controllers\Management\ItemCostingController.cs" />
+    <Compile Include="Controllers\Management\MaterialInspectionHistoryController.cs" />
+    <Compile Include="Controllers\Management\MaterialInspectionItemHistoryController.cs" />
     <Compile Include="Controllers\Management\PartyFianYearWiseDivSaleController.cs" />
     <Compile Include="Controllers\Management\PartyWiseComboController.cs" />
     <Compile Include="Controllers\Management\partywisecomboidController.cs" />
@@ -927,6 +930,7 @@
     <Compile Include="Models\GStar\StockAvailibility.cs" />
     <Compile Include="Models\GStar\TravelTxn.cs" />
     <Compile Include="Models\GStar\TravelTxnManager.cs" />
+    <Compile Include="Models\GStar\updateinspectionbyuexec.cs" />
     <Compile Include="Models\GStar\UpdateTripEnd.cs" />
     <Compile Include="Models\GStar\VehicleList.cs" />
     <Compile Include="Models\GStar\VehicleMst.cs" />
@@ -952,6 +956,8 @@
     <Compile Include="Models\Management\HotelRoomwWisePassengerList.cs" />
     <Compile Include="Models\Management\HotelwiseRoomCount.cs" />
     <Compile Include="Models\Management\ItemCosting.cs" />
+    <Compile Include="Models\Management\MaterialInspectionHistory.cs" />
+    <Compile Include="Models\Management\MaterialInspectionItemHistory.cs" />
     <Compile Include="Models\Management\PartyFinYearWiseDivSale.cs" />
     <Compile Include="Models\Management\PartyWiseCombo.cs" />
     <Compile Include="Models\Management\partywisecomboid.cs" />
