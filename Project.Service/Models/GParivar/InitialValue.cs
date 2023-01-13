@@ -176,6 +176,9 @@ namespace Project.Service.Models
         public string getRaiseTicketDetails { get; set; }
         public string CFSInvoiceDetails { get; set; }
         public string MenInBlueSumPartyList { get; set; }
+        public string meninbluePriceList { get; set; }
+        public string meninblueschememain { get; set; }
+        public string partyWisemeninblueGiftAdd { get; set; }
         
     }
 }

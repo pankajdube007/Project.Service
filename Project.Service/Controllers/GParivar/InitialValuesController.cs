@@ -205,7 +205,11 @@ namespace Project.Service
                     CFDetailsList = "getCFDetailsList",
                     getRaiseTicketDetails= "getRaiseTicketDetails",
                     CFSInvoiceDetails= "getCFSInvoiceDetails",
-                    MenInBlueSumPartyList= "getMenInBlueSumPartyList"
+                    MenInBlueSumPartyList= "getMenInBlueSumPartyList",
+                    meninbluePriceList = "getmeninbluePriceList",
+                   meninblueschememain = "getmeninblueschememain",
+                    partyWisemeninblueGiftAdd = "partyWisemeninblueGiftAdd"
+
                 });
 
                 // g1.close_connection();
