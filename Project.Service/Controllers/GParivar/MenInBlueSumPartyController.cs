@@ -68,6 +68,29 @@ namespace Project.Service.Controllers.GParivar
                         }
                     }
 
+                    else
+                    {
+                        alldcr1.Add(new GetMenInBlueSumPartyList
+                        {
+
+                            Name = "",
+                            Partyid = "",
+                            TypeCat = "",
+                            TotalPoints = "",
+                            DisplayName = "",
+                            HomeBranch = "",
+                            CurrentPrice = "",
+                            CurrentPriceImg = "",
+                            NextPrice = "",
+                            NextPriceImg ="",
+                            cin = "",
+                            CurPricePoints ="",
+                            NextPricePoints = "",
+                            Totalsale = "",
+                            meninbluefile = "",
+                        });
+                    }
+
                     if (dr1.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");

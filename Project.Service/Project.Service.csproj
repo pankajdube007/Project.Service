@@ -372,7 +372,9 @@
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryListController.cs" />
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryResponseController.cs" />
     <Compile Include="Controllers\GStar\DcrAddLocalConveyanceController.cs" />
+    <Compile Include="Controllers\GStar\DcrAddLocalConveyancenewController.cs" />
     <Compile Include="Controllers\GStar\DcrLocalConveyanceController.cs" />
+    <Compile Include="Controllers\GStar\DcrLocalConveyancenewController.cs" />
     <Compile Include="Controllers\GStar\EmpAttendeesListController.cs" />
     <Compile Include="Controllers\GStar\ExecAttendanceController.cs" />
     <Compile Include="Controllers\GStar\ExecCheckInOutListController.cs" />
@@ -415,6 +417,7 @@
     <Compile Include="Controllers\GStar\InsertExpenseLocalConveyDisputeController.cs" />
     <Compile Include="Controllers\GStar\InsertTravelTxnController.cs" />
     <Compile Include="Controllers\GStar\inspectionfileuploadController.cs" />
+    <Compile Include="Controllers\GStar\lastchecindetailController.cs" />
     <Compile Include="Controllers\GStar\ListLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\MediaDetailsController.cs" />
     <Compile Include="Controllers\GStar\MediaListController.cs" />
@@ -842,6 +845,7 @@
     <Compile Include="Models\GParivar\Addexechomelatlanaddress.cs" />
     <Compile Include="Models\GStar\AddAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\AddDcrLocalConveyanceList.cs" />
+    <Compile Include="Models\GStar\AddDcrLocalConveyanceListnew.cs" />
     <Compile Include="Models\GStar\AddDetailsExecOrgVisit.cs" />
     <Compile Include="Models\GStar\AddexecLatLanAddress.cs" />
     <Compile Include="Models\GParivar\AddFanCombo.cs" />
@@ -901,10 +905,12 @@
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
     <Compile Include="Models\GStar\inspectionfileuplode.cs" />
+    <Compile Include="Models\GStar\lastchecindetail.cs" />
     <Compile Include="Models\GStar\ListAddMerchant.cs" />
     <Compile Include="Models\GStar\ListAreaMast.cs" />
     <Compile Include="Models\GStar\ListCityMast.cs" />
     <Compile Include="Models\GStar\ListDcrLocalConveyance.cs" />
+    <Compile Include="Models\GStar\ListDcrLocalConveyancenew.cs" />
     <Compile Include="Models\GStar\ListEmpAttendees.cs" />
     <Compile Include="Models\GStar\ListExecOrgVistList.cs" />
     <Compile Include="Models\GStar\ListExecutiveTravelExpenses.cs" />

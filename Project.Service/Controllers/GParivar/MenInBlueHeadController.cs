@@ -65,11 +65,40 @@ namespace Project.Service.Controllers
                     }
                     else
                     {
+
+                        alldcr1.Add(new MenInBlueHead
+                        {
+                            Name ="",
+                            Branch = "",
+                            TotalPoint = "",
+                            AusPoint = "",
+                            PendingPoints = "",
+                            address = "",
+                            isselection = false,
+                            isEditable = false,
+
+                        });
+
                         g1.close_connection();
+                        alldcr.Add(new MenInBlueHeads
+                        {
+                            result = false,
+                            message = string.Empty,
+                            servertime = DateTime.Now.ToString(),
+                            data = alldcr1,
+                        });
+
+                        data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8, "application/json");
+
+                        response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
 
                         return response;
+                        //g1.close_connection();
+                        //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                        //response.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8, "application/json");
+
+                        //return response;
                     }
                 }
                 catch (Exception ex)
