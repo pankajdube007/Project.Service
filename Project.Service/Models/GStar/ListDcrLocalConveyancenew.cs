@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Project.Service.Models
+namespace Project.Service.Models.GStar
 {
     public class ListofDcrLocalConveyancenew
     {
@@ -101,6 +101,8 @@ namespace Project.Service.Models
         public string outstationused { get; set; }
         public string outstationbalance { get; set; }
         public string isbtnshow { get; set; }
+        public string fixamt { get; set; }
+        public string InsertedOutStation { get; set; }
 
     }
 }
