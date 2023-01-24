@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.GStar
+namespace Project.Service.Controllers
 {
     public class DcrLocalConveyancenewController : ApiController
     {
@@ -107,21 +107,14 @@ namespace Project.Service.Controllers.GStar
                                 Insertedtollparking = Convert.ToString(dr1["Insertedtollparking"].ToString()),
                                 insertedRemark = Convert.ToString(dr1["insertedRemark"].ToString()),
                                 isapprove = Convert.ToString(dr1["isapprove"].ToString()),
-                                isfix = Convert.ToString(dr1["isfix"].ToString()),
-                                localfood = Convert.ToString(dr1["foodamount"].ToString()),
+
+
+                                isfix = Convert.ToString(dr1["isapprove"].ToString()),
+                                localfood = Convert.ToString(dr1["isapprove"].ToString()),
                                 outstationlimit = Convert.ToString(dr1["outstationlimit"].ToString()),
                                 outstationused = Convert.ToString(dr1["outstationused"].ToString()),
                                 outstationbalance = Convert.ToString(dr1["OutStationBalance"].ToString()),
                                 isbtnshow = Convert.ToString(dr1["isbtnshow"].ToString()),
-                                fixamt=Convert.ToString(dr1["isfix"].ToString()),
-                                InsertedOutStation=Convert.ToString(dr1["isfix"].ToString()),
-
-
-
-
-
-
-
                             });
                         }
 

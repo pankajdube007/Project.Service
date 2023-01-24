@@ -12,7 +12,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
     public class DcrAddLocalConveyancenewController : ApiController
     {
@@ -33,7 +33,7 @@ namespace Project.Service.Controllers
                     List<AddDcrLocalConveyanceListsnew> alldcr = new List<AddDcrLocalConveyanceListsnew>();
                     List<AddDcrLocalConveyanceListnew> alldcr1 = new List<AddDcrLocalConveyanceListnew>();
 
-                    var dr = g2.return_dr("dbo.AddDcrLocalConveyancenew '" + ula.ExId + "','" + ula.trvldt + "','" + ula.grossdistance + "','" + ula.claimabledistance + "','" + ula.personaltravl + "','" + ula.odomtrkm + "','" + ula.trvlmodeq + "','" + ula.claimableamt + "','" + ula.self + "','" + ula.train + "','" + ula.metro + "','" + ula.rentalcar + "','" + ula.bus + "','" + ula.auto + "','" + ula.tollparking + "','" + ula.totalpayble + "','" + ula.IsClaimable + "', '" + ula.AppRemark + "','" + ula.slno + "'  ");
+                    var dr = g2.return_dr("dbo.AddDcrLocalConveyancenew '" + ula.ExId + "','" + ula.trvldt + "','" + ula.grossdistance + "','" + ula.claimabledistance + "','" + ula.personaltravl + "','" + ula.odomtrkm + "','" + ula.trvlmodeq + "','" + ula.claimableamt + "','" + ula.self + "','" + ula.train + "','" + ula.metro + "','" + ula.rentalcar + "','" + ula.bus + "','" + ula.auto + "','" + ula.tollparking + "','" + ula.totalpayble + "','" + ula.IsClaimable + "', '" + ula.AppRemark + "','" + ula.slno + "','" + ula.food + "','" + ula.outstation + "' ,'" + ula.fixamt + "','" + ula.samedayamt + "','" + ula.isfix + "' ");
 
                     if (dr.HasRows)
                     {

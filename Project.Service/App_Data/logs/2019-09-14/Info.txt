@@ -1,1 +1,0 @@
-2019-09-14 12:46:54.7674 INFO Project.Service.Models.RemoteClientExtentions                              IP =>                               Project.Service.Models.RemoteClientExtentions               11 Project.Service.Models.RemoteClientExtentions.SendAsync Executing RestAPI Url:'https://gsp.adaequare.com/gsp/authenticate?grant_type=token' and Body :''

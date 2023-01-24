@@ -34,7 +34,10 @@ namespace Project.Service.Models
 
         public string mfgby { get; set; }
 
-       
+        
+        public string odoimg { get; set; }
+        
+
     }
 
     public class AddVehicleMsts

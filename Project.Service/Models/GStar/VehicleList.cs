@@ -34,6 +34,7 @@ namespace Project.Service.Models
         public string mfgby { get; set; }
         public string VehicleType { get; set; }
         public string OwnedBy { get; set; }
+        public string odoimg { get; set; }
     }
 
 }

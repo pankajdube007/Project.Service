@@ -47,6 +47,8 @@ namespace Project.Service.Models.GStar
         public string IsCompleted { get; set; }
         public string slno { get; set; }
         public string IsEdited { get; set; }
+        public string EndImgUploadBy { get; set; }
+        public string StartImgUploadBy { get; set; }
     }
 
 }

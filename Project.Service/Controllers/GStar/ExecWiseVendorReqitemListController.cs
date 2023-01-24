@@ -48,7 +48,8 @@ namespace Project.Service.Controllers.GStar
                                 inspectiondate = dr["inspectiondate"].ToString(),
                                 files = dr["files"].ToString(),
                                 remark = dr["remark"].ToString(),
-                                
+                                isedit = dr["isedit"].ToString()
+
 
 
                             });

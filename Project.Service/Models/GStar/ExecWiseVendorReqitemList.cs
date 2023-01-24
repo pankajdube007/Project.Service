@@ -35,6 +35,7 @@ namespace Project.Service.Models.GStar
         public string inspectiondate { get; set; }
         public string files { get; set; }
         public string remark { get; set; }
-        
+        public string isedit { get; set; }
+
     }
 }

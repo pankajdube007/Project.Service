@@ -40,6 +40,10 @@ namespace Project.Service.Models.GStar
         [Required]
         public int slno { get; set; }
 
+       
+        public int suploadby { get; set; }
+        public int euploadby { get; set; }
+
     }
 
     public class AddTripLists

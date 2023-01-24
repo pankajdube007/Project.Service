@@ -59,7 +59,7 @@ namespace Project.Service.Controllers
                 else
                 {
                     g2.close_connection();
-                    logger.Warn($"Error occours! API : {RequestContext.Url}  Input : '{JsonConvert.SerializeObject(ula)}'");
+                    logger.Warn($"Error occours! API : {RequestContext.Url} ");
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                     response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, Data not Inserted!!!! ExecutiveId:" + ula.ExId), Encoding.UTF8, "application/json");
 
@@ -69,7 +69,7 @@ namespace Project.Service.Controllers
             catch (Exception ex)
             {
                 g2.close_connection();
-                logger.Error($"Error occours! API : {RequestContext.Url}  Input : '{JsonConvert.SerializeObject(ula)}' Exception : {ex}");
+                logger.Error($"Error occours! API 2: {RequestContext.Url} Exception : {ex}");
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                 response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!! ExecutiveId:" + ula.ExId), Encoding.UTF8, "application/json");
 

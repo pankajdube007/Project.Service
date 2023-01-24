@@ -1,1 +1,0 @@
-2019-03-30 12:28:21.4958 DEBUG Project.Service.Models.RemoteClientExtentions                              IP =>                               Project.Service.Models.RemoteClientExtentions               73 Project.Service.Models.RemoteClientExtentions.SendAsync Executing RestAPI Url:'http://52.76.179.117/GPXAPI/payments' and Body :'System.Net.Http.StreamContent'

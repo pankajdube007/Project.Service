@@ -67,7 +67,7 @@ namespace Project.Service.Controllers.GStar
 
                     //var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "'");
 
-                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "'");
+                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "','" + ula.suploadby + "','" + ula.euploadby + "'");
 
                     if (dr.HasRows)
                     {

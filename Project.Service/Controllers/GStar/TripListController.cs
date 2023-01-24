@@ -53,6 +53,8 @@ namespace Project.Service.Controllers.GStar
                                 mfgby = Convert.ToString(dr["mfgby"].ToString()),
                                 VehicleType = Convert.ToString(dr["VehicleType"].ToString()),
                                 OwnedBy = Convert.ToString(dr["OwnedBy"].ToString()),
+                                StartImgUploadBy = Convert.ToString(dr["suploadby"].ToString()),
+                                EndImgUploadBy = Convert.ToString(dr["euploadby"].ToString()),
                                 IsCompleted = Convert.ToString(dr["imgstatus"].ToString()),
                                 slno = Convert.ToString(dr["slno"].ToString()),
                                 IsEdited = Convert.ToString(dr["editstatus"].ToString()),

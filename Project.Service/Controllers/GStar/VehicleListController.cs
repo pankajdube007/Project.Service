@@ -46,7 +46,8 @@ namespace Project.Service.Controllers.GStar
                                 model = Convert.ToString(dr["model"].ToString()),
                                 mfgby = Convert.ToString(dr["mfgby"].ToString()),
                                 img = string.IsNullOrEmpty(dr["img"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "vehicleimage/" + Convert.ToString(dr["img"]).ToString().TrimEnd(',')),
-                               
+                                odoimg = string.IsNullOrEmpty(dr["odoimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "vehicleimage/" + Convert.ToString(dr["odoimg"]).ToString().TrimEnd(',')),
+
 
                             });
                         }

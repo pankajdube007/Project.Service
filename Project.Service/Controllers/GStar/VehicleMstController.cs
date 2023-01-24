@@ -34,12 +34,14 @@ namespace Project.Service.Controllers.GStar
                     List<AddVehicleMsts> alldcr = new List<AddVehicleMsts>();
                     List<AddVehicleMst> alldcr1 = new List<AddVehicleMst>();
                     string uploadVehicleImage = string.Empty;
-                   
+                    string uploadOdometerImage = string.Empty;
+
                     if (ula.img != "") uploadVehicleImage = GetImage(ula.img, 1);
-                
+                    if (ula.odoimg != "") uploadOdometerImage = GetImage(ula.odoimg, 1);
 
 
-                    var dr = g2.return_dr("dbo.AddVehicleMst '" + ula.ExId + "','" + ula.VehicleType + "','" + ula.VehicleNo + "','" + ula.OwnedBy + "','" + uploadVehicleImage + "','" + ula.model + "','" + ula.mfgby + "'");
+
+                    var dr = g2.return_dr("dbo.AddVehicleMst '" + ula.ExId + "','" + ula.VehicleType + "','" + ula.VehicleNo + "','" + ula.OwnedBy + "','" + uploadVehicleImage + "','" + ula.model + "','" + ula.mfgby + "','" + uploadOdometerImage + "'");
 
                     if (dr.HasRows)
                     {

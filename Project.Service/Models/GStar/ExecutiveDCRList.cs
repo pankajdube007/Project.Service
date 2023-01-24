@@ -14,6 +14,12 @@ namespace Project.Service.Models
         public int OrgId { get; set; }
 
         public int OrgCat { get; set; }
+
+       
+        public string fromdate { get; set; }
+
+        
+        public string todate { get; set; }
     }
 
     public class ExecutiveDCRLists
