@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
     public class DcrLocalConveyancenewController : ApiController
     {
@@ -36,8 +36,8 @@ namespace Project.Service.Controllers
 
                     List<GetFinalListsnew> Final = new List<GetFinalListsnew>();
 
-                    var dr = g1.return_dr("dbo.execcheckinoutlistdtwisenew '" + ula.ExId + "','" + ula.date + "'");
-                    var dr1 = g1.return_dr("dbo.execcheckinoutlistdtwisesumnew '" + ula.ExId + "','" + ula.date + "','" + ula.transportid + "', '" + ula.slno + "' ");
+                    var dr = g1.return_dr("dbo.execcheckinoutlistdtwisenew '" + ula.ExId + "','" + ula.date + "','" + ula.EmpType + "'");
+                    var dr1 = g1.return_dr("dbo.execcheckinoutlistdtwisesumnew '" + ula.ExId + "','" + ula.date + "','" + ula.transportid + "', '" + ula.slno + "','" + ula.EmpType + "' ");
 
 
                     if (dr.HasRows)
@@ -107,14 +107,21 @@ namespace Project.Service.Controllers
                                 Insertedtollparking = Convert.ToString(dr1["Insertedtollparking"].ToString()),
                                 insertedRemark = Convert.ToString(dr1["insertedRemark"].ToString()),
                                 isapprove = Convert.ToString(dr1["isapprove"].ToString()),
-
-
-                                isfix = Convert.ToString(dr1["isapprove"].ToString()),
-                                localfood = Convert.ToString(dr1["isapprove"].ToString()),
+                                isfix = Convert.ToString(dr1["isfix"].ToString()),
+                                fixamt = Convert.ToString(dr1["fixamt"].ToString()),
+                                localfood = Convert.ToString(dr1["foodamount"].ToString()),
                                 outstationlimit = Convert.ToString(dr1["outstationlimit"].ToString()),
                                 outstationused = Convert.ToString(dr1["outstationused"].ToString()),
                                 outstationbalance = Convert.ToString(dr1["OutStationBalance"].ToString()),
                                 isbtnshow = Convert.ToString(dr1["isbtnshow"].ToString()),
+                                
+
+
+
+
+
+
+
                             });
                         }
 

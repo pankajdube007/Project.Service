@@ -11,6 +11,7 @@ namespace Project.Service.Models
         [Required]
         public int ExId { get; set; }
 
+        public int EmpType { get; set; }
         [Required]
         public string date { get; set; }
 
@@ -96,6 +97,7 @@ namespace Project.Service.Models
         public string isapprove { get; set; }
 
         public string localfood { get; set; }
+        public string fixamt { get; set; }
         public string isfix { get; set; }
         public string outstationlimit { get; set; }
         public string outstationused { get; set; }

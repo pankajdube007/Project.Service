@@ -11,6 +11,7 @@ namespace Project.Service.Models
 
         [Range(1, int.MaxValue, ErrorMessage = "Please Input User ID")]
         public int ExId { get; set; }
+        public int EmpType { get; set; }
 
         [Required]
         public string ClientSecret { get; set; }
