@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
 
                     List<ExecutiveScheduleLists> alldcr = new List<ExecutiveScheduleLists>();
                     List<ExecutiveScheduleList> alldcr1 = new List<ExecutiveScheduleList>();
-                    var dr = g1.return_dr("ExecutiveScheduleLists  " + ula.ExId + "," + ula.OrgId + "," + ula.OrgCat + "");
+                    var dr = g1.return_dr("ExecutiveScheduleLists  " + ula.ExId + "," + ula.OrgId + "," + ula.OrgCat + ",'"+ ula.EmpType + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

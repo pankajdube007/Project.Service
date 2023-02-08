@@ -14,6 +14,7 @@ namespace Project.Service.Models
         public int OrgId { get; set; }
 
         public int OrgCat { get; set; }
+        public int EmpType { get; set; }
     }
 
     public class ExecutiveScheduleLists

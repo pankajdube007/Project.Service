@@ -27,7 +27,7 @@ namespace Project.Service.Controllers
 
                     List<OrganizationSearchs> alldcr = new List<OrganizationSearchs>();
                     List<OrganizationSearch> alldcr1 = new List<OrganizationSearch>();
-                    var dr = g1.return_dr("AppOrganizaionSearch '" + ula.searchtxt + "','" + ula.ExId + "'");
+                    var dr = g1.return_dr("AppOrganizaionSearch '" + ula.searchtxt + "','" + ula.ExId + "','"+ ula.EmpType + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

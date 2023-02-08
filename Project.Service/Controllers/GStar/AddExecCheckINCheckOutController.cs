@@ -48,7 +48,7 @@ namespace Project.Service.Controllers
                         uploadfilename = FileName + ".jpg";
                     }
 
-                    var dr = g2.return_dt("addexeccheckinout '" + ula.OrgId + "','" + ula.OrgCat + "','" + ula.ExId + "','" + ula.DeviceId + "','" + ula.Lat + "','" + ula.Long + "','"+ula.address+"'," + ula.Distance + "," + ula.Type + "," + ula.IsForceFully + "," + ula.InOuttype + ",'" + ula.InOuttime + "','" + uploadfilename + "','"+ula.MDistance + "'");
+                    var dr = g2.return_dt("addexeccheckinout '" + ula.OrgId + "','" + ula.OrgCat + "','" + ula.ExId + "','" + ula.DeviceId + "','" + ula.Lat + "','" + ula.Long + "','"+ula.address+"'," + ula.Distance + "," + ula.Type + "," + ula.IsForceFully + "," + ula.InOuttype + ",'" + ula.InOuttime + "','" + uploadfilename + "','"+ula.MDistance + "','" + ula.EmpType + "'");
                     string errormsg = string.Empty;
 
                     if (dr.Rows.Count > 0)

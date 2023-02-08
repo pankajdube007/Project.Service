@@ -14,6 +14,9 @@ namespace Project.Service.Models
 
         [Required]
         public string ClientSecret { get; set; }
+
+       
+        public string EmpType { get; set; }
     }
 
     public class ExecCheckInOutLists

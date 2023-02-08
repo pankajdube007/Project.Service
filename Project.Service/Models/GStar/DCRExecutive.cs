@@ -61,6 +61,7 @@ namespace Project.Service.Models
         public int transportid { get; set; }
         public string journeydistance { get; set; }
         public string systemdistance { get; set; }
+        public int EmpType { get; set; }
     }
 
     //public class DCRExecutives

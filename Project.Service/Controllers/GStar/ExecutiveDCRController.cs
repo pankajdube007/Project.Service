@@ -29,7 +29,7 @@ namespace Project.Service.Controllers
                     List<ExecutiveDCRLists> alldcr = new List<ExecutiveDCRLists>();
                     List<ExecutiveDCRList> alldcr1 = new List<ExecutiveDCRList>();
 
-                    var dr = g1.return_dr("ExecutiveDCRLists " + ula.ExId + "," + ula.OrgId + "," + ula.OrgCat + ",'"+ ula.fromdate + "','" + ula.todate + "'");
+                    var dr = g1.return_dr("ExecutiveDCRLists " + ula.ExId + "," + ula.OrgId + "," + ula.OrgCat + ",'"+ula.EmpType + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
 
                     List<AddLatLonOrganisations> alldcr = new List<AddLatLonOrganisations>();
                     List<AddLatLonOrganisation> alldcr1 = new List<AddLatLonOrganisation>();
-                    var dr = g2.return_dr("addlatlonOrganisation '" + ula.OrgId + "','" + ula.CatId + "','" + ula.Lat + "','" + ula.Lon + "','"+ula.address+"',"+ula.ExId);
+                    var dr = g2.return_dr("addlatlonOrganisation '" + ula.OrgId + "','" + ula.CatId + "','" + ula.Lat + "','" + ula.Lon + "','"+ula.address+"','"+ula.ExId+"','"+ula.EmpType+ "'");
 
                     if (dr.HasRows)
                     {

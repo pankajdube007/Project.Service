@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
                     List<testExecutivePresentAbsentLists> alldcr = new List<testExecutivePresentAbsentLists>();
                     List<testExecutivePresentAbsentList> alldcr1 = new List<testExecutivePresentAbsentList>();
 
-                    var dr = g1.return_dr("ExecutivePresentAbsenttest " + ula.ExId + "");
+                    var dr = g1.return_dr("ExecutivePresentAbsenttest " + ula.ExId + ",'"+ula.EmpType + "'");
 
                     if (dr.HasRows)
                     {

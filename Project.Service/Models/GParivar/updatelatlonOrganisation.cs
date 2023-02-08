@@ -12,6 +12,8 @@ namespace Project.Service.Models
         [Required]
         public int ExId { get; set; }
 
+        public int EmpType { get; set; }
+
         [Required]
         public string ClientSecret { get; set; }
 

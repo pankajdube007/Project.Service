@@ -31,7 +31,7 @@ namespace Project.Service.Controllers
                     List<DcrCatExeFinalList> alldcrfinal = new List<DcrCatExeFinalList>();
                     List<AreaListOrganationList> alldcrarea = new List<AreaListOrganationList>();
                     var dr = g1.return_dr("apppartycatselect");
-                    var dr1 = g1.return_dr("AppSelectArea " + ula.ExId);
+                    var dr1 = g1.return_dr("AppSelectArea '"+ula.ExId+"','"+ula.EmpType+ "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

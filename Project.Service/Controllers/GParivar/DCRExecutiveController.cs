@@ -29,7 +29,7 @@ namespace Project.Service.Controllers
                     var dr = g2.return_dr("App_dcraddforlead " + ula.ExId + "," + ula.slno + ",'" + ula.dcrdate + "','" + ula.dcrtime + "','" + ula.dcrduration + "'," + ula.modeid + "," + ula.catid + "," + ula.orgid + "," + ula.addressid + ",'" + ula.contactperson + "','" +
                         ula.purposeid + "','" + ula.productid + "','" + ula.priority + "','" + ula.remark + "'," + ula.reschduled +
                         ",'" + ula.redcrdate + "','" + ula.redcrtime + "'," + ula.remodeid + "," + ula.readdressid + ",'" + ula.recontactperson + "','"
-                        + ula.repurposeid + "','" + ula.reproductid + "','" + ula.repriority + "','" + ula.reason + "',"+ula.transportid+",'"+ula.journeydistance+"','"+ula.systemdistance+"'");
+                        + ula.repurposeid + "','" + ula.reproductid + "','" + ula.repriority + "','" + ula.reason + "',"+ula.transportid+",'"+ula.journeydistance+"','"+ula.systemdistance+"','"+ula.EmpType+"'");
 
                     if (dr.HasRows)
                     {

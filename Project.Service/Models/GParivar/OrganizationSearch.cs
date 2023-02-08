@@ -12,8 +12,9 @@ namespace Project.Service.Models
     {
         [Required]
         public int ExId { get; set; }
+        public int EmpType { get; set; }
 
-       
+
         public string searchtxt { get; set; }
 
         [Required]

@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
                 List<LatLongExs> alldcr = new List<LatLongExs>();
                 List<LatLongEx> alldcr1 = new List<LatLongEx>();
                 var dr = g2.return_dr("ApplatlongInsert " + ula.ExId + ",'" + ula.Lat + "','" + ula.Long + "','" + ula.Date + "','"+
-                    ula.Distance+"','"+ula.BatteryStraingth+"','"+ula.SignalStraingth+"','"+ula.DevoiceIsOnline+"','"+ula.Speed+"'");
+                    ula.Distance+"','"+ula.BatteryStraingth+"','"+ula.SignalStraingth+"','"+ula.DevoiceIsOnline+"','"+ula.Speed+"','"+ula.EmpType + "'");
 
                 if (dr.HasRows)
                 {
@@ -59,7 +59,7 @@ namespace Project.Service.Controllers
                 else
                 {
                     g2.close_connection();
-                    logger.Warn($"Error occours! API : {RequestContext.Url} ");
+                    logger.Warn($"Error occours! API : {RequestContext.Url}  Input : '{JsonConvert.SerializeObject(ula)}'");
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                     response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, Data not Inserted!!!! ExecutiveId:" + ula.ExId), Encoding.UTF8, "application/json");
 
@@ -69,7 +69,7 @@ namespace Project.Service.Controllers
             catch (Exception ex)
             {
                 g2.close_connection();
-                logger.Error($"Error occours! API 2: {RequestContext.Url} Exception : {ex}");
+                logger.Error($"Error occours! API : {RequestContext.Url}  Input : '{JsonConvert.SerializeObject(ula)}' Exception : {ex}");
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                 response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!! ExecutiveId:" + ula.ExId), Encoding.UTF8, "application/json");
 

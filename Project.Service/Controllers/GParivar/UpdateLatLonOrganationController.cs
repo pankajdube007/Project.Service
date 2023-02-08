@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
 
                     List<updatelatlonOrganisations> alldcr = new List<updatelatlonOrganisations>();
                     List<updatelatlonOrganisation> alldcr1 = new List<updatelatlonOrganisation>();
-                    var dr = g2.return_dr("updatelatlonOrganisation '" + ula.OrgId + "','" + ula.CatId + "','" + ula.Lat + "','" + ula.Lon + "','"+ula.address+"',"+ula.ExId);
+                    var dr = g2.return_dr("updatelatlonOrganisation '" + ula.OrgId + "','" + ula.CatId + "','" + ula.Lat + "','" + ula.Lon + "','"+ula.address+"','"+ ula.ExId + "','"+ula.EmpType + "'");
 
                     if (dr.HasRows)
                     {

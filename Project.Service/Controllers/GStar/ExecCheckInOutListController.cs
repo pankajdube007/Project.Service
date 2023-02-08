@@ -29,7 +29,7 @@ namespace Project.Service.Controllers
                     List<ExecCheckInOutLists> alldcr = new List<ExecCheckInOutLists>();
                     List<ExecCheckInOutList> alldcr1 = new List<ExecCheckInOutList>();
 
-                    var dr = g1.return_dr("appcheckincheckoutList " + ula.ExId + ",'" + ula.date + "'");
+                    var dr = g1.return_dr("appcheckincheckoutList " + ula.ExId + ",'" + ula.date + "','"+ula.EmpType+"'");
 
                     if (dr.HasRows)
                     {

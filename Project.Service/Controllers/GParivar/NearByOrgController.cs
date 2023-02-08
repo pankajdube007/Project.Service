@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
                     List<NearByOrgList> alldcr1 = new List<NearByOrgList>();
 
                     //var dr = g1.return_dr("app_nearbyorg " + ula.StateId + "," + ula.Lat + "," + ula.Lan);
-                    var dr = g1.return_dr("app_nearbyorg " + ula.ExId + ",'" + ula.Lat + "','" + ula.Lan + "'");
+                    var dr = g1.return_dr("app_nearbyorg " + ula.ExId + ",'" + ula.Lat + "','" + ula.Lan + "','"+ula.EmpType+"'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

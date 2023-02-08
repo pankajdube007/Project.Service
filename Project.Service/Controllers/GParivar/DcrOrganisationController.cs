@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
 
                     List<DcrOrganisationLists> alldcr = new List<DcrOrganisationLists>();
                     List<DcrOrganisationList> alldcr1 = new List<DcrOrganisationList>();
-                    var dr = g1.return_dr("apporgselectdcr '" + ula.CatId + "','" + ula.ExId + "'");
+                    var dr = g1.return_dr("apporgselectdcr '" + ula.CatId + "','" + ula.ExId + "','"+ ula.EmpType + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())

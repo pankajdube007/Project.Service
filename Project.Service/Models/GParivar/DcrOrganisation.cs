@@ -14,6 +14,8 @@ namespace Project.Service.Models
 
         [Required]
         public string ClientSecret { get; set; }
+      
+        public int EmpType { get; set; }
     }
 
     public class DcrOrganisationLists

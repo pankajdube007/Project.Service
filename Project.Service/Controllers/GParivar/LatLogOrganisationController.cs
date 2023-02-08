@@ -29,7 +29,7 @@ namespace Project.Service.Controllers
                     List<LatLonOrganisationLists> alldcr = new List<LatLonOrganisationLists>();
                     List<LatLonOrganisationList> alldcr1 = new List<LatLonOrganisationList>();
 
-                    var dr = g1.return_dr("latlonOrganisationList " + ula.Orgid + "," + ula.Catid + "," + ula.ExId + "");
+                    var dr = g1.return_dr("latlonOrganisationList " + ula.Orgid + "," + ula.Catid + "," + ula.ExId + ",'"+ula.EmpType + "'");
 
                     if (dr.HasRows)
                     {

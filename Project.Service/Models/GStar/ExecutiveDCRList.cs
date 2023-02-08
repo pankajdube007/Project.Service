@@ -15,7 +15,9 @@ namespace Project.Service.Models
 
         public int OrgCat { get; set; }
 
-       
+        public int EmpType { get; set; }
+
+
         public string fromdate { get; set; }
 
         
