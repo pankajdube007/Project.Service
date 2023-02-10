@@ -23,6 +23,14 @@ namespace Project.Service.Models
         [Required]
         public int vendorid { get; set; }
     }
+
+    public class ListofvendorsalependingorderIntern
+    {
+        [Required]
+        public string ClientSecret { get; set; }
+      
+    }
+
     public class vendorsalependingorderLists
     {
         public bool result { get; set; }

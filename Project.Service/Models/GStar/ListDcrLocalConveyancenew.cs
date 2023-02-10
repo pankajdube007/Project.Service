@@ -103,6 +103,9 @@ namespace Project.Service.Models
         public string outstationused { get; set; }
         public string outstationbalance { get; set; }
         public string isbtnshow { get; set; }
+        public string Insertedfood { get; set; }
+        public string Insertedoutstation { get; set; }
+        public string Insertedfixamt { get; set; }
 
     }
 }

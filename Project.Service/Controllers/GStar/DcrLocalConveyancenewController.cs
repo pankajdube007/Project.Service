@@ -96,6 +96,8 @@ namespace Project.Service.Controllers.GStar
                                 RentalBalance = Convert.ToString(dr1["RentalBalance"].ToString()),
                                 balancekm = Convert.ToString(dr1["balancekm"].ToString()),
                                 slno = Convert.ToString(dr1["slno"].ToString()),
+
+
                                 InsertedOdoMtr = Convert.ToString(dr1["InsertedOdoMtr"].ToString()),
                                 InsertedSelf = Convert.ToString(dr1["InsertedSelf"].ToString()),
                                 InsertedtrvlMode = Convert.ToString(dr1["InsertedtrvlMode"].ToString()),
@@ -106,6 +108,8 @@ namespace Project.Service.Controllers.GStar
                                 Insertedauto = Convert.ToString(dr1["Insertedauto"].ToString()),
                                 Insertedtollparking = Convert.ToString(dr1["Insertedtollparking"].ToString()),
                                 insertedRemark = Convert.ToString(dr1["insertedRemark"].ToString()),
+
+
                                 isapprove = Convert.ToString(dr1["isapprove"].ToString()),
                                 isfix = Convert.ToString(dr1["isfix"].ToString()),
                                 fixamt = Convert.ToString(dr1["fixamt"].ToString()),
@@ -114,7 +118,10 @@ namespace Project.Service.Controllers.GStar
                                 outstationused = Convert.ToString(dr1["outstationused"].ToString()),
                                 outstationbalance = Convert.ToString(dr1["OutStationBalance"].ToString()),
                                 isbtnshow = Convert.ToString(dr1["isbtnshow"].ToString()),
-                                
+                                Insertedfood = Convert.ToString(dr1["insertedfood"].ToString()),
+                                Insertedoutstation = Convert.ToString(dr1["InsertedOutStation"].ToString()),
+                                Insertedfixamt = Convert.ToString(dr1["Insertedfixamt"].ToString()),
+
 
 
 

@@ -818,6 +818,7 @@
     <Compile Include="Controllers\Vendor\vendorsalependingorderController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalependingorderpowiseController.cs" />
     <Compile Include="Controllers\Vendor\vendorsalepndingsummaryController.cs" />
+    <Compile Include="Controllers\Vendor\VendorSalesPendingOrderInternController.cs" />
     <Compile Include="Controllers\Vendor\VendorUserProfileController.cs" />
     <Compile Include="Controllers\GParivar\VisitorCatListController.cs" />
     <Compile Include="Controllers\GParivar\VisitorController.cs" />
