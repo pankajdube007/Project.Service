@@ -412,11 +412,13 @@
     <Compile Include="Controllers\GStar\ExecFanComboListController.cs" />
     <Compile Include="Controllers\GStar\ExecFavItemController.cs" />
     <Compile Include="Controllers\GStar\ExecGCSSaleController.cs" />
+    <Compile Include="Controllers\GStar\ExecGCSSalePastController.cs" />
     <Compile Include="Controllers\GStar\ExecLatestLatLngController.cs" />
     <Compile Include="Controllers\GStar\ExecManagementController.cs" />
     <Compile Include="Controllers\GStar\ExecOrgVistListController.cs" />
     <Compile Include="Controllers\GStar\ExecPartyWiseComboCountController.cs" />
     <Compile Include="Controllers\GStar\ExecSchemeWiseTargetController.cs" />
+    <Compile Include="Controllers\GStar\ExecSchemeWiseTargetPastController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveDCRController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveLatLanAddListController.cs" />
     <Compile Include="Controllers\GStar\ExecutivePresentAbsentController.cs" />
@@ -460,6 +462,7 @@
     <Compile Include="Controllers\GStar\OrgDetailsListController.cs" />
     <Compile Include="Controllers\GStar\PresentCopyController.cs" />
     <Compile Include="Controllers\GStar\SchemeWiseItemListController.cs" />
+    <Compile Include="Controllers\GStar\SchemeWiseItemListPastController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomDetailsController.cs" />
     <Compile Include="Controllers\GStar\ShowRoomListController.cs" />
     <Compile Include="Controllers\GStar\TravelReqController.cs" />
@@ -932,7 +935,9 @@
     <Compile Include="Models\GStar\ExecDistrictWiseRetdetail.cs" />
     <Compile Include="Models\GStar\ExecPartyWiseComboCount.cs" />
     <Compile Include="Models\GStar\ExecSchemeWiseTarget.cs" />
+    <Compile Include="Models\GStar\ExecSchemeWiseTargetPast.cs" />
     <Compile Include="Models\GStar\executiveGscSale.cs" />
+    <Compile Include="Models\GStar\executiveGscSalePast.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
     <Compile Include="Models\GStar\ExecWiseVendorReqitemList.cs" />
@@ -971,6 +976,7 @@
     <Compile Include="Models\GStar\peechedekholightapp.cs" />
     <Compile Include="Models\GStar\PresentCopy.cs" />
     <Compile Include="Models\GStar\SchemeWiseItemList.cs" />
+    <Compile Include="Models\GStar\SchemeWiseItemListPast.cs" />
     <Compile Include="Models\GStar\ShowRoomDetails.cs" />
     <Compile Include="Models\GStar\ShowRoomList.cs" />
     <Compile Include="Models\GStar\StockAvailibility.cs" />
