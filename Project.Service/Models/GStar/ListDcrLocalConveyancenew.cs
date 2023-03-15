@@ -106,6 +106,13 @@ namespace Project.Service.Models
         public string Insertedfood { get; set; }
         public string Insertedoutstation { get; set; }
         public string Insertedfixamt { get; set; }
+        public string insertedtrainimg { get; set; }
+        public string insertedmetroimg { get; set; }
+        public string insertedrentalcarimg { get; set; }
+        public string insertedtollparkingimg { get; set; }
+        public string insertedautoimg { get; set; }
+        public string insertedbusimg { get; set; }
+        public string insertedoutstationimg { get; set; }
 
     }
 }

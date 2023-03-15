@@ -121,6 +121,16 @@ namespace Project.Service.Controllers.GStar
                                 Insertedfood = Convert.ToString(dr1["insertedfood"].ToString()),
                                 Insertedoutstation = Convert.ToString(dr1["InsertedOutStation"].ToString()),
                                 Insertedfixamt = Convert.ToString(dr1["Insertedfixamt"].ToString()),
+                                insertedtrainimg  = Convert.ToString(dr1["insertedtrainimg"].ToString()),
+                                insertedmetroimg  = Convert.ToString(dr1["insertedmetroimg"].ToString()),
+                                insertedrentalcarimg  = Convert.ToString(dr1["insertedrentalcarimg"].ToString()),
+                                insertedtollparkingimg = Convert.ToString(dr1["insertedtollparkingimg"].ToString()),
+                                insertedautoimg = Convert.ToString(dr1["insertedautoimg"].ToString()),
+                                insertedbusimg  = Convert.ToString(dr1["insertedbusimg"].ToString()),
+                                insertedoutstationimg = Convert.ToString(dr1["insertedoutstationimg"].ToString()),
+
+
+
 
 
 

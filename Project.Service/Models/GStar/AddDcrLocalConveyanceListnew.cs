@@ -76,6 +76,15 @@ namespace Project.Service.Models
         public string samedayamt { get; set; }
         public string isfix { get; set; }
 
+        public string trainimg { get; set; }
+        public string metroimg { get; set; }
+        public string rentalcarimg { get; set; }
+        public string tollparkingimg { get; set; }
+        public string autoimg { get; set; }
+        public string busimg { get; set; }
+        public string outstationimg { get; set; }
+
+
 
     }
 
