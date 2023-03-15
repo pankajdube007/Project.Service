@@ -17,7 +17,7 @@ namespace Project.Service.Controllers.GStar
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getExecSchemeWiseTargetPast>")]
+        [Route("api/getExecSchemeWiseTargetPast")]
         public HttpResponseMessage GetDetails(ListExecSchemeWiseTargetPast ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
