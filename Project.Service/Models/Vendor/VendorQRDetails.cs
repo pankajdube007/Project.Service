@@ -370,6 +370,7 @@ public class PostQRMapingDetails
     public string ProductID { get; set; }
     public string PQRCode { get; set; }
     public string MPQRCode { get; set; }
+    public string BQRCode { get; set; }
     public string IQRCode { get; set; }
     public string OQRCode { get; set; }
     public string CQRCode { get; set; }

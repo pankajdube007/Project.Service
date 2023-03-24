@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List< ExecSchemeWiseTargetPast > alldcr = new List<ExecSchemeWiseTargetPast>();
                     List< ExecSchemeWiseTargetsPast > alldcr1 = new List<ExecSchemeWiseTargetsPast>();
-                    var dr = g1.return_dr("GCSExecSchemeWiseTargetPast> '" + ula.ExId + "'");
+                    var dr = g1.return_dr("GCSExecSchemeWiseTargetPast '" + ula.ExId + "'");
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");
