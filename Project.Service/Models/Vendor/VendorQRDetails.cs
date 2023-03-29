@@ -410,6 +410,13 @@ public class PostQRMapingDetails
     public string IType { get; set; }
     public string POID { get; set; }
     public string BatchNo { get; set; }
+
+
+    public string FProductID { get; set; }
+    public string ISQCChecked { get; set; }
+    public string QCType { get; set; }
+    public string QCRemark { get; set; }
+    public string QCCheckedDate { get; set; }
 }
 
 

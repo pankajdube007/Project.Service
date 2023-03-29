@@ -60,6 +60,8 @@ namespace Project.Service.Models
     public class ExecCheckINCheckOut
     {
         public string CheckInLat { get; set; }
+        public string PastLat { get; set; }
+        public string PastLan { get; set; }
         public string CheckInLong { get; set; }
         public string CheckOutLat { get; set; }
         public string CheckOutLong { get; set; }

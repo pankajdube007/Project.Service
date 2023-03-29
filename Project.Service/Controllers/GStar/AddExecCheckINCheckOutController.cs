@@ -9,6 +9,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using System.Xml.Linq;
+using System.Data;
 
 namespace Project.Service.Controllers
 {
@@ -48,7 +50,20 @@ namespace Project.Service.Controllers
                         uploadfilename = FileName + ".jpg";
                     }
 
-                    var dr = g2.return_dt("addexeccheckinout '" + ula.OrgId + "','" + ula.OrgCat + "','" + ula.ExId + "','" + ula.DeviceId + "','" + ula.Lat + "','" + ula.Long + "','"+ula.address+"'," + ula.Distance + "," + ula.Type + "," + ula.IsForceFully + "," + ula.InOuttype + ",'" + ula.InOuttime + "','" + uploadfilename + "','"+ula.MDistance + "','" + ula.EmpType + "'");
+                    string dis = "0";
+                    var dr1 = g2.return_dt("latlancurpas '" + ula.ExId + "','" + ula.EmpType + "'");
+                    if (dr1.Rows.Count > 0)
+                    {
+                      string pastlat = dr1.Rows[0]["pastlat"].ToString();
+                      string pastlan =  dr1.Rows[0]["pastlan"].ToString();
+                      dis = GetAddress2(pastlat, pastlan, ula.Lat, ula.Long);
+                    }
+
+
+
+                  
+
+                    var dr = g2.return_dt("addexeccheckinout '" + ula.OrgId + "','" + ula.OrgCat + "','" + ula.ExId + "','" + ula.DeviceId + "','" + ula.Lat + "','" + ula.Long + "','"+ula.address+"','" + dis + "'," + ula.Type + "," + ula.IsForceFully + "," + ula.InOuttype + ",'" + ula.InOuttime + "','" + uploadfilename + "','"+ula.MDistance + "','" + ula.EmpType + "'");
                     string errormsg = string.Empty;
 
                     if (dr.Rows.Count > 0)
@@ -145,6 +160,25 @@ namespace Project.Service.Controllers
 
                 return response;
             }
+        }
+
+        private string GetAddress2(string latitude, string longitude, string latitude1, string longitude1)
+        {
+            DataSet dsResult = new DataSet();
+            string locationName = "";
+            string url = string.Format("https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + latitude + "," + longitude + "&destinations=" + latitude1 + "," + longitude1 + "&sensor=false&key=AIzaSyCuYEQogqF3cTj_f8oj-eM3YabPaF57js4");
+            XElement xml = XElement.Load(url);
+            WebRequest request = WebRequest.Create(url);
+            using (WebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                {
+
+                    dsResult.ReadXml(reader);
+                    locationName = dsResult.Tables["distance"].Rows[0]["value"].ToString();
+                }
+            }
+            return locationName;
         }
     }
 }
