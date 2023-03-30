@@ -51,19 +51,24 @@ namespace Project.Service.Controllers
                     }
 
                     string dis = "0";
-                    var dr1 = g2.return_dt("latlancurpas '" + ula.ExId + "','" + ula.EmpType + "'");
-                    if (dr1.Rows.Count > 0)
+                    string pastlat="";
+                    string pastlan="";
+                    if (ula.Type == 1)
                     {
-                      string pastlat = dr1.Rows[0]["pastlat"].ToString();
-                      string pastlan =  dr1.Rows[0]["pastlan"].ToString();
-                      dis = GetAddress2(pastlat, pastlan, ula.Lat, ula.Long);
+                        var dr1 = g2.return_dt("latlancurpas '" + ula.ExId + "','" + ula.EmpType + "'");
+                        if (dr1.Rows.Count > 0)
+                        {
+                             pastlat = dr1.Rows[0]["pastlat"].ToString();
+                             pastlan = dr1.Rows[0]["pastlan"].ToString();
+                             dis = GetAddress2(pastlat, pastlan, ula.Lat, ula.Long);
+                        }
                     }
 
 
 
                   
 
-                    var dr = g2.return_dt("addexeccheckinout '" + ula.OrgId + "','" + ula.OrgCat + "','" + ula.ExId + "','" + ula.DeviceId + "','" + ula.Lat + "','" + ula.Long + "','"+ula.address+"','" + dis + "'," + ula.Type + "," + ula.IsForceFully + "," + ula.InOuttype + ",'" + ula.InOuttime + "','" + uploadfilename + "','"+ula.MDistance + "','" + ula.EmpType + "'");
+                    var dr = g2.return_dt("addexeccheckinout '" + ula.OrgId + "','" + ula.OrgCat + "','" + ula.ExId + "','" + ula.DeviceId + "','" + ula.Lat + "','" + ula.Long + "','"+ula.address+"','" + dis + "'," + ula.Type + "," + ula.IsForceFully + "," + ula.InOuttype + ",'" + ula.InOuttime + "','" + uploadfilename + "','"+ula.MDistance + "','" + ula.EmpType + "','"+pastlat+"','"+ pastlan + "'");
                     string errormsg = string.Empty;
 
                     if (dr.Rows.Count > 0)
