@@ -20,6 +20,7 @@ namespace Project.Service.Models
         public string img { get; set; }
         [Required]
         public int type { get; set; }
+        public int foldertype { get; set; }
 
 
 

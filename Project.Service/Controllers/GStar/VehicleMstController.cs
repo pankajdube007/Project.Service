@@ -33,15 +33,15 @@ namespace Project.Service.Controllers.GStar
 
                     List<AddVehicleMsts> alldcr = new List<AddVehicleMsts>();
                     List<AddVehicleMst> alldcr1 = new List<AddVehicleMst>();
-                    string uploadVehicleImage = string.Empty;
-                    string uploadOdometerImage = string.Empty;
+                    //string uploadVehicleImage = string.Empty;
+                    //string uploadOdometerImage = string.Empty;
 
-                    if (ula.img != "") uploadVehicleImage = GetImage(ula.img, 1);
-                    if (ula.odoimg != "") uploadOdometerImage = GetImage(ula.odoimg, 1);
+                    //if (ula.img != "") uploadVehicleImage = GetImage(ula.img, 1);
+                    //if (ula.odoimg != "") uploadOdometerImage = GetImage(ula.odoimg, 1);
 
 
 
-                    var dr = g2.return_dr("dbo.AddVehicleMst '" + ula.ExId + "','" + ula.VehicleType + "','" + ula.VehicleNo + "','" + ula.OwnedBy + "','" + uploadVehicleImage + "','" + ula.model + "','" + ula.mfgby + "','" + uploadOdometerImage + "'");
+                    var dr = g2.return_dr("dbo.AddVehicleMst '" + ula.ExId + "','" + ula.VehicleType + "','" + ula.VehicleNo + "','" + ula.OwnedBy + "','" + ula.img + "','" + ula.model + "','" + ula.mfgby + "','" + ula.odoimg + "'");
 
                     if (dr.HasRows)
                     {
@@ -93,30 +93,30 @@ namespace Project.Service.Controllers.GStar
 
 
 
-        protected string GetImage(string img, int folderCreation)
-        {
-            var _goldMedia = new GoldMedia();
-            var result = "";
-            string uniquefoldernm = "";
-            if (folderCreation == 1)
-            {
-                uniquefoldernm = "Vehicleimage";
-            }
+        //protected string GetImage(string img, int folderCreation)
+        //{
+        //    var _goldMedia = new GoldMedia();
+        //    var result = "";
+        //    string uniquefoldernm = "";
+        //    if (folderCreation == 1)
+        //    {
+        //        uniquefoldernm = "Vehicleimage";
+        //    }
            
 
-            if (!string.IsNullOrEmpty(img))
-            {
-                var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
-                if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
-                var binPdf = Convert.FromBase64String(s);
-                Stream stream = new MemoryStream(binPdf);
-                var FileName = "erp" + '-' + Guid.NewGuid();
+        //    if (!string.IsNullOrEmpty(img))
+        //    {
+        //        var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
+        //        if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
+        //        var binPdf = Convert.FromBase64String(s);
+        //        Stream stream = new MemoryStream(binPdf);
+        //        var FileName = "erp" + '-' + Guid.NewGuid();
 
-                var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".jpg", stream, "image/jpeg", false,
-                    false, true);
-                result = FileName + ".jpg";
-            }
-            return result;
-        }
+        //        var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".jpg", stream, "image/jpeg", false,
+        //            false, true);
+        //        result = FileName + ".jpg";
+        //    }
+        //    return result;
+        //}
     }
 }

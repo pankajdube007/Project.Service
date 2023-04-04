@@ -35,7 +35,7 @@ namespace Project.Service.Controllers
                     List<inspectionfileuplode> alldcr1 = new List<inspectionfileuplode>();
                     string uploadVehicleImage = string.Empty;
                     //ula.type=0 image 1 pdf
-                    if (ula.img != "") uploadVehicleImage = GetImage(ula.img, 1,ula.type);
+                    if (ula.img != "") uploadVehicleImage = GetImage(ula.img, ula.foldertype, ula.type);
 
 
                     alldcr1.Add(new inspectionfileuplode
@@ -84,13 +84,17 @@ namespace Project.Service.Controllers
             var _goldMedia = new GoldMedia();
             var result = "";
             string uniquefoldernm = "";
-            if (folderCreation == 1)
+            if (folderCreation == 0)
             {
                 uniquefoldernm = "inspectionimg";
             }
+            else if (folderCreation == 2)
+            {
+                uniquefoldernm = "Vehicleimage";
+            }
 
 
-            if (!string.IsNullOrEmpty(img))
+                if (!string.IsNullOrEmpty(img))
             {
 
 
