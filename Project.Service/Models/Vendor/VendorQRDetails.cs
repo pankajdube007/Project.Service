@@ -1,8 +1,10 @@
+using DevExpress.XtraPrinting;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -304,6 +306,122 @@ namespace Project.Service.Models
             return resp;
         }
 
+        public HttpResponseMessage GETCartonPrint(GetCQRLabelData objGetCQRLabelData)
+        {
+            ReportResponse objReportResponse = new ReportResponse();
+
+            Byte[] reportdata = null;
+
+            String ProductID = "0";
+            String QRCODE = "";
+            String LabelBarcode = "";
+            String PrintDimension = "";
+
+            if (objGetCQRLabelData.ProductID != null)
+            {
+                if (objGetCQRLabelData.ProductID.ToString().Trim() != "")
+                {
+                    ProductID = objGetCQRLabelData.ProductID.ToString().Trim();
+                }
+            }
+
+            if (objGetCQRLabelData.QRCode != null)
+            {
+                if (objGetCQRLabelData.QRCode.ToString().Trim() != "")
+                {
+                    QRCODE = objGetCQRLabelData.QRCode.ToString().Trim();
+                }
+            }
+
+            if (objGetCQRLabelData.LabelQRCode != null)
+            {
+                if (objGetCQRLabelData.LabelQRCode.ToString().Trim() != "")
+                {
+                    LabelBarcode = objGetCQRLabelData.LabelQRCode.ToString().Trim();
+                }
+            }
+
+
+
+            if (objGetCQRLabelData.PrintDimension != null)
+            {
+                if (objGetCQRLabelData.PrintDimension.ToString().Trim() != "")
+                {
+                    PrintDimension = objGetCQRLabelData.PrintDimension.ToString().Trim();
+                }
+            }
+
+
+            try
+            {
+                if (PrintDimension == "125x75")
+                {
+                    using (MasterCeilingFanTransparentPrint report = new MasterCeilingFanTransparentPrint())
+                    {
+                        report.Parameters["parameter1"].Value = "Mfg at: Bldg. No. 2,Shripal Industrial Estate,Valliv Road,Vasai East, Palghar 401208,Maharashtra,India";
+                        report.Parameters["parameter2"].Value = ProductID;
+                        report.Parameters["parameter3"].Value = QRCODE;
+                        report.Parameters["parameter4"].Value = LabelBarcode;
+                        report.CreateDocument();
+                        using (var ms = new MemoryStream())
+                        {
+                            var opts = new PdfExportOptions
+                            {
+                                ShowPrintDialogOnOpen = false
+                            };
+                            report.ExportToPdf(ms, opts);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+                            reportdata = ms.ToArray();
+                        }
+                    }
+                }
+                else if (PrintDimension == "75x125")
+                {
+                    using (MasterFanTransparent report = new MasterFanTransparent())
+                    {
+                        report.Parameters["parameter1"].Value = "Mfg at: Bldg. No. 2,Shripal Industrial Estate,Valliv Road,Vasai East, Palghar 401208,Maharashtra,India";
+                        report.Parameters["parameter2"].Value = ProductID;
+                        report.Parameters["parameter3"].Value = QRCODE;
+                        report.Parameters["parameter4"].Value = LabelBarcode;
+                        report.CreateDocument();
+                        using (var ms = new MemoryStream())
+                        {
+                            var opts = new PdfExportOptions
+                            {
+                                ShowPrintDialogOnOpen = false
+                            };
+                            report.ExportToPdf(ms, opts);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+                            reportdata = ms.ToArray();
+                        }
+                    }
+                }
+
+                objReportResponse.Code = "200";
+                objReportResponse.Message = "Success";
+                objReportResponse.Report = reportdata;
+            }
+            catch (Exception ex)
+            {
+                objReportResponse.Code = "400";
+                objReportResponse.Message = "Error";
+                objReportResponse.Report = reportdata;
+            }
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objReportResponse);
+
+            var resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings)
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return resp;
+        }
+
+
+
         public DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable();
@@ -341,6 +459,23 @@ public class GetQRData
     public string UserType { get; set; }
 
     
+}
+
+
+public class GetCQRLabelData
+{
+    public string ProductID { get; set; }
+    public string QRCode { get; set; }
+    public string LabelQRCode { get; set; }
+    public string PrintDimension { get; set; }
+}
+
+
+public class ReportResponse
+{
+    public string Code { get; set; }
+    public string Message { get; set; }
+    public Byte[] Report { get; set; }
 }
 
 
