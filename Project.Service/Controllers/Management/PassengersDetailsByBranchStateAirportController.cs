@@ -27,49 +27,82 @@ namespace Project.Service.Controllers
                 {
                     string data1;
 
-                    List<PassengersDetailsByBranchStateAirports> alldcr = new List<PassengersDetailsByBranchStateAirports>();
-                    List<PassengersDetailsByBranchStateAirport> alldcr1 = new List<PassengersDetailsByBranchStateAirport>();
+                    List<PassengersDetailsByBranchStateAirportFinal> final = new List<PassengersDetailsByBranchStateAirportFinal>();
+                   // List<PassengersDetailsByBranchStateAirport> head = new List<PassengersDetailsByBranchStateAirport>();
+                   
+                    List<PassengersDetailsByBranchStateAirports> head1 = new List<PassengersDetailsByBranchStateAirports>();
 
-                    var dr = g1.return_dr("GetPassengersDetailsByBranchStateAirport '" + ula.CIN + "','" + ula.Category + "','" + ula.Type + "','" + ula.Typeid + "'");
 
-                    if (dr.HasRows)
+
+                    var dr = g1.return_dt("GetPassengersDetailsByBranchStateAirport '" + ula.CIN + "','" + ula.Category + "','" + ula.Type + "','" + ula.Typeid + "'");
+
+                    if (dr.Rows.Count>0)
                     {
-                        while (dr.Read())
+                        for(int i=0;i<dr.Rows.Count;i++)
                         {
-                            alldcr1.Add(new PassengersDetailsByBranchStateAirport
+
+                            var dr1 = g1.return_dr("GetPassengerGroupDetails '" + Convert.ToString(dr.Rows[i]["ProfileID"].ToString()) + "'");
+                            List<PassengersDetailsByBranchStateAirportdetail> child = new List<PassengersDetailsByBranchStateAirportdetail>();
+                            if (dr1.HasRows)
                             {
-                                PassengerName = Convert.ToString(dr["PassengerName"].ToString()),
-                                RelationName = Convert.ToString(dr["RelationName"].ToString()),
-                                MobileNo = Convert.ToString(dr["MobileNo"].ToString()),
-                                TravelIDNo = Convert.ToString(dr["TravelIDNo"].ToString()),
-                                BranchName = Convert.ToString(dr["BranchName"].ToString()),
-                                CategoryName = Convert.ToString(dr["CategoryName"].ToString()),
+
+                                //child = null;
+                                while (dr1.Read())
+                                {
+                                    child.Add(new PassengersDetailsByBranchStateAirportdetail
+                                    {
+                                        PassengerName = Convert.ToString(dr1["PassengerName"].ToString()),
+                                        RelationName = Convert.ToString(dr1["RelationName"].ToString()),
+                                        MobileNo = Convert.ToString(dr1["MobileNo"].ToString()),
+                                        TravelIDNo = Convert.ToString(dr1["TravelIDNo"].ToString()),
+                                        ProfileID = Convert.ToString(dr1["ProfileID"].ToString()),
+                                        UserType = Convert.ToString(dr1["UserType"].ToString()),
+
+                                    });
+                                }
+
+                            }
+     
+
+                            final.Add(new PassengersDetailsByBranchStateAirportFinal
+                            {
+                                PassengerName = Convert.ToString(dr.Rows[i]["PassengerName"].ToString()),
+                                RelationName = Convert.ToString(dr.Rows[i]["RelationName"].ToString()),
+                                MobileNo = Convert.ToString(dr.Rows[i]["MobileNo"].ToString()),
+                                TravelIDNo = Convert.ToString(dr.Rows[i]["TravelIDNo"].ToString()),
+                                BranchName = Convert.ToString(dr.Rows[i]["BranchName"].ToString()),
+                                CategoryName = Convert.ToString(dr.Rows[i]["CategoryName"].ToString()),
+                                ProfileID = Convert.ToString(dr.Rows[i]["ProfileID"].ToString()),
+                                ShopName = Convert.ToString(dr.Rows[i]["ShopName"].ToString()),
+                                child=child
 
                             });
+
+
+                  
                         }
-                        g1.close_connection();
-                        alldcr.Add(new PassengersDetailsByBranchStateAirports
-                        {
-                            result = true,
-                            message = string.Empty,
-                            servertime = DateTime.Now.ToString(),
-                            data = alldcr1,
-                        });
-                        data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                       
 
-                        response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
-
-                        return response;
                     }
-                    else
+
+                   
+
+                 
+                    g1.close_connection();
+                    head1.Add(new PassengersDetailsByBranchStateAirports
                     {
-                        g1.close_connection();
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        result = true,
+                        message = string.Empty,
+                        servertime = DateTime.Now.ToString(),
+                        data = final,
+                    });
+                    data1 = JsonConvert.SerializeObject(head1, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
 
-                        return response;
-                    }
+                    response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                    return response;
+
                 }
                 catch (Exception ex)
                 {
@@ -83,7 +116,6 @@ namespace Project.Service.Controllers
             {
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
                 response.Content = new StringContent(cm.StatusTime(false, "Please Log In"), Encoding.UTF8, "application/json");
-
                 return response;
             }
         }

@@ -28,10 +28,26 @@ namespace Project.Service.Models
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<PassengersDetailsByBranchStateAirport> data { get; set; }
+        public List<PassengersDetailsByBranchStateAirportFinal> data { get; set; }
     }
 
-    public class PassengersDetailsByBranchStateAirport
+   
+
+    //public class PassengersDetailsByBranchStateAirport
+    //{
+    //    public string PassengerName { get; set; }
+    //    public string RelationName { get; set; }
+    //    public string MobileNo { get; set; }
+    //    public string TravelIDNo { get; set; }
+    //    public string BranchName { get; set; }
+    //    public string CategoryName { get; set; }
+    //    public string ProfileID  { get; set; }
+    //   public string ShopName  { get; set; }
+
+    //}
+
+
+    public class PassengersDetailsByBranchStateAirportFinal
     {
         public string PassengerName { get; set; }
         public string RelationName { get; set; }
@@ -39,6 +55,20 @@ namespace Project.Service.Models
         public string TravelIDNo { get; set; }
         public string BranchName { get; set; }
         public string CategoryName { get; set; }
+        public string ProfileID { get; set; }
+        public string ShopName { get; set; }
 
+        public List<PassengersDetailsByBranchStateAirportdetail> child { get; set; }
+    }
+
+
+    public class PassengersDetailsByBranchStateAirportdetail
+    {
+        public string PassengerName { get; set; }
+        public string RelationName { get; set; }
+        public string MobileNo { get; set; }
+        public string TravelIDNo { get; set; }
+        public string ProfileID { get; set; }
+        public string UserType { get; set; }
     }
 }
