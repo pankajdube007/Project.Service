@@ -57,6 +57,7 @@ namespace Project.Service.Models
         public string CategoryName { get; set; }
         public string ProfileID { get; set; }
         public string ShopName { get; set; }
+        public string  ApprovalStatus { get; set; }
 
         public List<PassengersDetailsByBranchStateAirportdetail> child { get; set; }
     }
@@ -70,5 +71,6 @@ namespace Project.Service.Models
         public string TravelIDNo { get; set; }
         public string ProfileID { get; set; }
         public string UserType { get; set; }
+        public string ApprovalStatus { get; set; }
     }
 }

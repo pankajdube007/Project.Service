@@ -36,7 +36,8 @@ namespace Project.Service.Controllers
                     List<ewaybill> ewaybill = new List<ewaybill>();
                     List<ewaybills> result = new List<ewaybills>();
                     // int active = 0;
-                    key = cm.GetEwayTokanno();
+                     key = cm.GetEwayTokanno();
+                   // key = "12644";
 
 
                     if (key != "")
@@ -129,7 +130,7 @@ namespace Project.Service.Controllers
 
                                             // for Production //
                                             supplyType = "O",
-                                            subSupplyType = "1",
+                                            subSupplyType = dr3.Rows[i]["subSupplyType"].ToString(),
                                             docType = dr3.Rows[i]["doctype"].ToString(),
                                             // docType = "CHL",
                                             subSupplyDesc = dr3.Rows[i]["docdec"].ToString(),

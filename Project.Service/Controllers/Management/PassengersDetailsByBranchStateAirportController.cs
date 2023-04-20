@@ -57,6 +57,7 @@ namespace Project.Service.Controllers
                                         TravelIDNo = Convert.ToString(dr1["TravelIDNo"].ToString()),
                                         ProfileID = Convert.ToString(dr1["ProfileID"].ToString()),
                                         UserType = Convert.ToString(dr1["UserType"].ToString()),
+                                        ApprovalStatus = Convert.ToString(dr1["ApprovalStatus"].ToString()),
 
                                     });
                                 }
@@ -74,7 +75,8 @@ namespace Project.Service.Controllers
                                 CategoryName = Convert.ToString(dr.Rows[i]["CategoryName"].ToString()),
                                 ProfileID = Convert.ToString(dr.Rows[i]["ProfileID"].ToString()),
                                 ShopName = Convert.ToString(dr.Rows[i]["ShopName"].ToString()),
-                                child=child
+                                ApprovalStatus = Convert.ToString(dr.Rows[i]["ApprovalStatus"].ToString()),
+                                child =child
 
                             });
 
