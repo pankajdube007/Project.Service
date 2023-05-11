@@ -241,6 +241,7 @@ namespace Project.Service.Controllers
                                             streamWriter.Write(json);
                                             streamWriter.Flush();
                                             streamWriter.Close();
+                                            var dr99 = g2.return_dr("InsertEwayInput " + ula.slno + ",'" + json.ToString() + "'");
                                         }
                                       //  System.Net.HttpWebResponse response1 = null;
 
