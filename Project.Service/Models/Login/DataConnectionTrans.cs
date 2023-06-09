@@ -29,7 +29,7 @@ namespace Project.Service.Models
             {
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    smtpClient.Credentials = new System.Net.NetworkCredential("software.support@goldmedalindia.com", "8080772544");
+                    smtpClient.Credentials = new System.Net.NetworkCredential("software.support@goldmedalindia.com", "8108572544");
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtpClient.EnableSsl = true;
                     using (MailMessage mail = new MailMessage())

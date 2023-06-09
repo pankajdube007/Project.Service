@@ -1,24 +1,24 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Project.Service.Filters;
+﻿using Project.Service.Filters;
 using Project.Service.Models;
-using Project.Service.Models.Management;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Web.Http;
+using Project.Service.Models.Management;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.Text;
 
 namespace Project.Service.Controllers.Management
 {
-    public class ManagementDhbOrderDetailsByProductandStateController : ApiController
+    public class ManagementstateListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/ManagementDhbOrderDetailsByProductandState")]
-        public HttpResponseMessage GetDetails(ManagementDhbOrderDetailsByProductandState ula)
+        [Route("api/GetManagementstateList")]
+        public HttpResponseMessage GetDetails(ManagementstateList ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -28,33 +28,24 @@ namespace Project.Service.Controllers.Management
                 {
                     string data1;
 
-                    List<DataManagementDhbOrderDetailsByProductandStates> alldcr = new List<DataManagementDhbOrderDetailsByProductandStates>();
-                    List<DataManagementDhbOrderDetailsByProductandState> alldcr1 = new List<DataManagementDhbOrderDetailsByProductandState>();
+                    List<ManagementstateLists> alldcr = new List<ManagementstateLists>();
+                    List<dataManagementstateList> alldcr1 = new List<dataManagementstateList>();
 
-                    var dr = g1.return_dr("GetOrderDetailsByProductandState " + ula.ProductId + "," + ula.StateId + ",'" + ula.Fromdate + "','" + ula.Todate + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("usp_GetDhanbarseStateList '" + ula.Category +  "'");
 
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new DataManagementDhbOrderDetailsByProductandState
+                            alldcr1.Add(new dataManagementstateList
                             {
-                               
-                                ProductName = Convert.ToString(dr["ProductName"].ToString()),
-                                OrderNumber = Convert.ToString(dr["OrderNumber"].ToString()),
-                                ShopName = Convert.ToString(dr["ShopName"].ToString()),
-                                CIN = Convert.ToString(dr["CIN"].ToString()),
-                                Orderstatus = Convert.ToString(dr["OrderStatus"].ToString()),
-                                CustomerName = Convert.ToString(dr["CustomerName"].ToString()),
-                                MobileNo = Convert.ToString(dr["MobileNo"].ToString()),
-                                Workstate = Convert.ToString(dr["WorkState"].ToString()),
-                                DeliveryDate = Convert.ToString(dr["DeliveryDate"].ToString()),
-                                TrackingLink = Convert.ToString(dr["TrackingLink"].ToString())
-
+                                Slno = Convert.ToInt32(dr["SlNo"].ToString()),
+                                Statename = Convert.ToString(dr["statenm"].ToString())
+                                
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new DataManagementDhbOrderDetailsByProductandStates
+                        alldcr.Add(new ManagementstateLists
                         {
                             result = true,
                             message = string.Empty,
@@ -63,14 +54,16 @@ namespace Project.Service.Controllers.Management
                         });
                         data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+
                         response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
                         return response;
                     }
                     else
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

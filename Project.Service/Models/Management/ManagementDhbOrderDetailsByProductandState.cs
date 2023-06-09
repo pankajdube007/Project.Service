@@ -58,5 +58,9 @@ namespace Project.Service.Models.Management
 
         public string Workstate { get; set; }
 
+        public string DeliveryDate { get; set; }
+
+        public string TrackingLink { get; set; }
+
     }
 }
