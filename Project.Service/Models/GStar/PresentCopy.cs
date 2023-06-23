@@ -41,6 +41,8 @@ namespace Project.Service.Models
         public string odoimg { get; set; }
         public decimal odokm { get; set; }
 
+        public int vehicleId { get; set; }
+
 
     }
 }

@@ -178,7 +178,8 @@ namespace Project.Service.Controllers
                     enableNetLanding = Convert.ToBoolean(data.Rows[0]["enableNetLanding"]),
                     showAnnouncements= Convert.ToBoolean(data.Rows[0]["showAnnouncements"]),
                     showMenu = Convert.ToBoolean(data.Rows[0]["showMenu"]),
-                    showWorldcup= Convert.ToBoolean(data.Rows[0]["showWorldcup"])
+                    showWorldcup= Convert.ToBoolean(data.Rows[0]["showWorldcup"]),
+                    useplacesapi = Convert.ToBoolean(data.Rows[0]["useplaceapi"])
                 });
 
                 // g1.close_connection();

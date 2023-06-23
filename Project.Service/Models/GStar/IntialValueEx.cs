@@ -156,5 +156,7 @@ namespace Project.Service.Models
         public bool showAnnouncements { get; set; }
         public bool showMenu { get; set; }
         public bool showWorldcup { get; set; }
+        public bool useplacesapi { get; set; }
+        
     }
 }

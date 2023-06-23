@@ -34,30 +34,30 @@ namespace Project.Service.Controllers.GStar
 
                     List<AddTripLists> alldcr = new List<AddTripLists>();
                     List<AddTripList> alldcr1 = new List<AddTripList>();
-                    string uploadImage = string.Empty;
-                    string uploadImage1 = string.Empty;
+                    //string uploadImage = string.Empty;
+                    //string uploadImage1 = string.Empty;
 
-                    if(ula.StartTripImg!="0")
-                    {
-                        if (ula.StartTripImg != "") uploadImage = GetImage(ula.StartTripImg, 1);
+                    //if(ula.StartTripImg!="0")
+                    //{
+                    //    if (ula.StartTripImg != "") uploadImage = GetImage(ula.StartTripImg, 1);
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
 
-                        uploadImage = "0";
-                    }
+                    //    uploadImage = "0";
+                    //}
 
-                    if (ula.EndTripImg != "0")
-                    {
-                        if (ula.EndTripImg != "") uploadImage1 = GetImage(ula.EndTripImg, 1);
+                    //if (ula.EndTripImg != "0")
+                    //{
+                    //    if (ula.EndTripImg != "") uploadImage1 = GetImage(ula.EndTripImg, 1);
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
 
-                        uploadImage1 = "0";
-                    }
+                    //    uploadImage1 = "0";
+                    //}
 
 
 
@@ -67,7 +67,7 @@ namespace Project.Service.Controllers.GStar
 
                     //var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "'");
 
-                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + uploadImage + "','" + ula.FromKm + "','" + uploadImage1 + "','" + ula.ToKm + "','" + ula.slno + "','" + ula.suploadby + "','" + ula.euploadby + "'");
+                    var dr = g2.return_dr("dbo.AddTripMst '" + ula.ExId + "','" + ula.VehicleID + "','" + ula.Date + "','" + ula.StartTripImg + "','" + ula.FromKm + "','" + ula.EndTripImg + "','" + ula.ToKm + "','" + ula.slno + "','" + ula.suploadby + "','" + ula.euploadby + "'");
 
                     if (dr.HasRows)
                     {
@@ -134,30 +134,30 @@ namespace Project.Service.Controllers.GStar
 
 
 
-        protected string GetImage(string img, int folderCreation)
-        {
-            var _goldMedia = new GoldMedia();
-            var result = "";
-            string uniquefoldernm = "";
-            if (folderCreation == 1)
-            {
-                uniquefoldernm = "tripimg";
-            }
+        //protected string GetImage(string img, int folderCreation)
+        //{
+        //    var _goldMedia = new GoldMedia();
+        //    var result = "";
+        //    string uniquefoldernm = "";
+        //    if (folderCreation == 1)
+        //    {
+        //        uniquefoldernm = "tripimg";
+        //    }
 
 
-            if (!string.IsNullOrEmpty(img))
-            {
-                var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
-                if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
-                var binPdf = Convert.FromBase64String(s);
-                Stream stream = new MemoryStream(binPdf);
-                var FileName =  Guid.NewGuid().ToString();
+        //    if (!string.IsNullOrEmpty(img))
+        //    {
+        //        var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
+        //        if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
+        //        var binPdf = Convert.FromBase64String(s);
+        //        Stream stream = new MemoryStream(binPdf);
+        //        var FileName =  Guid.NewGuid().ToString();
 
-                var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".jpg", stream, "image/jpeg", false,
-                    false, true);
-                result = _goldMedia.MapPathToPublicUrl(uniquefoldernm+'/'+FileName + ".jpg");
-            }
-            return result;
-        }
+        //        var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".jpg", stream, "image/jpeg", false,
+        //            false, true);
+        //        result = _goldMedia.MapPathToPublicUrl(uniquefoldernm+'/'+FileName + ".jpg");
+        //    }
+        //    return result;
+        //}
     }
 }

@@ -92,12 +92,14 @@ namespace Project.Service.Controllers
             {
                 uniquefoldernm = "Vehicleimage";
             }
-
-
-                if (!string.IsNullOrEmpty(img))
+            else if(folderCreation == 3)
             {
+                uniquefoldernm = "tripimg";
+            }
 
 
+            if (!string.IsNullOrEmpty(img))
+            {
                 var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
                 if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
                 var binPdf = Convert.FromBase64String(s);
