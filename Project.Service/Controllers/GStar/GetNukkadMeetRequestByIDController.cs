@@ -28,32 +28,51 @@ namespace Project.Service.Controllers.GStar
                 {
                     string data1;
 
+                    List<NukkadMeetGift> _gift = new List<NukkadMeetGift>();
                     List<NukkadMeetRequestByIDS> alldcr = new List<NukkadMeetRequestByIDS>();
                     List<NukkadMeetRequestByID> alldcr1 = new List<NukkadMeetRequestByID>();
-                    var dr = g1.return_dr($"exec Get_NukkadMeetRequestByID_List_API {ula.ExecId} ");
-                    if (dr.HasRows)
+                    var dr = g1.return_dt($"exec Get_NukkadMeetRequestByID_List_API {ula.ExecId} ");
+                    if (dr.Rows.Count>0)
                     {
-                        while (dr.Read())
+                        var dr2 = g1.return_dr($"exec Get_NukkadMeetRequestByIDGift "+ Convert.ToString(dr.Rows[0]["Slno"]));
+
+                        if(dr2.HasRows)
+                        {
+
+                            while(dr2.Read())
+                            {
+                                _gift.Add(new NukkadMeetGift
+                                {
+                                    Slno = Convert.ToString(dr2["slno"].ToString()),
+                                    Itemnm = Convert.ToString(dr2["itemnm"].ToString()),
+                                    url = Convert.ToString(dr2["url"].ToString()),
+                                });
+
+                            }
+                        }
+                        for (int i = 0; i < dr.Rows.Count; i++)
+                       
                         {
                             alldcr1.Add(new NukkadMeetRequestByID
                             {
 
-                                Slno = Convert.ToString(dr["Slno"].ToString()),
-                                TypeOfMeet = Convert.ToString(dr["TypeofMeet"].ToString()),
-                                Meetname = Convert.ToString(dr["MeetName"].ToString()),
-                                Meetdate = Convert.ToString(dr["MeetDate"].ToString()),
-                                MeetVenueAddTypename = Convert.ToString(dr["MeetVenueAddressTypeName"].ToString()),
-                                MeetVenueAdd = Convert.ToString(dr["MeetVenueAddress"].ToString()),
-                                MeetPincode = Convert.ToString(dr["MeetPincode"].ToString()),
-                                Meetstate = Convert.ToString(dr["MeetState"].ToString()),
-                                Meetdistrict = Convert.ToString(dr["MeetDistrict"].ToString()),
-                                Meetcity = Convert.ToString(dr["MeetCity"].ToString()),
-                                AddtenceTotalCount = Convert.ToString(dr["AttendeesTotalCount"].ToString()),
-                                ExpectedExpense = Convert.ToString(dr["expectedExpenses"].ToString()),
-                                ListGiftItem = Convert.ToString(dr["List_GiftItemnm"].ToString()),
-                                PurposeName = Convert.ToString(dr["PurposeName"].ToString()),
-                                ListaddcomsalesExnm = Convert.ToString(dr["List_AddCompanionSalesExnm"].ToString()),
-                                Meetremark = Convert.ToString(dr["MeetRemark"].ToString())
+                                Slno = Convert.ToString(dr.Rows[0]["Slno"].ToString()),
+                                TypeOfMeet = Convert.ToString(dr.Rows[0]["TypeofMeet"].ToString()),
+                                Meetname = Convert.ToString(dr.Rows[0]["MeetName"].ToString()),
+                                Meetdate = Convert.ToString(dr.Rows[0]["MeetDate"].ToString()),
+                                MeetVenueAddTypename = Convert.ToString(dr.Rows[0]["MeetVenueAddressTypeName"].ToString()),
+                                MeetVenueAdd = Convert.ToString(dr.Rows[0]["MeetVenueAddress"].ToString()),
+                                MeetPincode = Convert.ToString(dr.Rows[0]["MeetPincode"].ToString()),
+                                Meetstate = Convert.ToString(dr.Rows[0]["MeetState"].ToString()),
+                                Meetdistrict = Convert.ToString(dr.Rows[0]["MeetDistrict"].ToString()),
+                                Meetcity = Convert.ToString(dr.Rows[0]["MeetCity"].ToString()),
+                                AddtenceTotalCount = Convert.ToString(dr.Rows[0]["AttendeesTotalCount"].ToString()),
+                                ExpectedExpense = Convert.ToString(dr.Rows[0]["expectedExpenses"].ToString()),
+                               ListGiftItem = _gift,
+                                PurposeName = Convert.ToString(dr.Rows[0]["PurposeName"].ToString()),
+                                ListaddcomsalesExnm = Convert.ToString(dr.Rows[0]["List_AddCompanionSalesExnm"].ToString()),
+                                Meetremark = Convert.ToString(dr.Rows[0]["MeetRemark"].ToString()),
+                                Status = Convert.ToString(dr.Rows[0]["stat"].ToString())
 
                             });
                         }

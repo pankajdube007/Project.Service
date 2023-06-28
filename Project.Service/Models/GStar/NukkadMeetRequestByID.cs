@@ -25,7 +25,7 @@ namespace Project.Service.Models.GStar
     public class NukkadMeetRequestByID
     {
         public string Slno { get; set; }
-                               
+
         public string TypeOfMeet { get; set; }
 
         public string Meetname { get; set; }
@@ -47,8 +47,8 @@ namespace Project.Service.Models.GStar
         public string AddtenceTotalCount { get; set; }
 
         public string ExpectedExpense { get; set; }
-       
-        public string ListGiftItem { get; set; }
+
+        public List<NukkadMeetGift> ListGiftItem { get; set; }
 
         public string PurposeName { get; set; }
 
@@ -56,6 +56,18 @@ namespace Project.Service.Models.GStar
 
         public string Meetremark { get; set; }
 
-        
+        public string Status { get; set; }
+
+
+    }
+
+
+    public class NukkadMeetGift
+    {
+        public string Slno { get; set; }
+
+        public string Itemnm { get; set; }
+
+        public string url { get; set; }
     }
 }
