@@ -47,6 +47,8 @@ namespace Project.Service.Models.GStar
 
         public string Pincode { get; set; }
 
+        public string Photo { get; set; }
+
 
     }
 

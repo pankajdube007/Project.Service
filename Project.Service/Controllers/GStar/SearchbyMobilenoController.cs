@@ -48,7 +48,8 @@ namespace Project.Service.Controllers.GStar
                                 Category = Convert.ToString(dr["categorynm"].ToString()),
                                 Status = Convert.ToString(dr["ApprovalStatus"].ToString()),
                                 Address = Convert.ToString(dr["add1"].ToString()),
-                                Pincode = Convert.ToString(dr["Pincode"].ToString())
+                                Pincode = Convert.ToString(dr["Pincode"].ToString()),
+                                Photo = Convert.ToString(dr["ProfileImageURL"].ToString())
                             });
                         }
                         g1.close_connection();

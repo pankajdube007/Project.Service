@@ -32,7 +32,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<NukkadMeetAddGuestS> alldcr = new List<NukkadMeetAddGuestS>();
                     List<NukkadMeetAddGuest> alldcr1 = new List<NukkadMeetAddGuest>();
-                    var dr = g1.return_dr($"exec Nukkadmeetaddguest " + ula.ExecId + ',' + ula.UserID);
+                    var dr = g1.return_dr($"exec Nukkadmeetaddguest " + ula.ExecId + ',' + ula.UserID + ',' + ula.MeetId);
                     if (dr.HasRows)
                     {
 
@@ -64,7 +64,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "User Already In Meet List"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

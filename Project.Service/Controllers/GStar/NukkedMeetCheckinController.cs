@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<NukkedMeetCheckinS> alldcr = new List<NukkedMeetCheckinS>();
                     List<NukkedMeetCheckin> alldcr1 = new List<NukkedMeetCheckin>();
-                    var dr = g1.return_dr($"exec NukkadmeetCheckin "+ula.ExecId+','+ula.UserID);
+                    var dr = g1.return_dr($"exec NukkadmeetCheckin "+ula.ExecId + "," +ula.UserID + "," + ula.MeetID + ",'" + ula.Uniquekey+"'");
                     if (dr.HasRows)
                     {
 
@@ -63,7 +63,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "User Checked in Already or Not Available in this Meet"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

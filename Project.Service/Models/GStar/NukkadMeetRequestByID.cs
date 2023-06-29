@@ -32,6 +32,8 @@ namespace Project.Service.Models.GStar
 
         public string Meetdate { get; set; }
 
+        public string Meettime { get; set; }
+
         public string MeetVenueAddTypename { get; set; }
 
         public string MeetVenueAdd { get; set; }

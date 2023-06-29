@@ -60,6 +60,7 @@ namespace Project.Service.Controllers.GStar
                                 TypeOfMeet = Convert.ToString(dr.Rows[0]["TypeofMeet"].ToString()),
                                 Meetname = Convert.ToString(dr.Rows[0]["MeetName"].ToString()),
                                 Meetdate = Convert.ToString(dr.Rows[0]["MeetDate"].ToString()),
+                                Meettime = Convert.ToString(dr.Rows[0]["meetTime"].ToString()),
                                 MeetVenueAddTypename = Convert.ToString(dr.Rows[0]["MeetVenueAddressTypeName"].ToString()),
                                 MeetVenueAdd = Convert.ToString(dr.Rows[0]["MeetVenueAddress"].ToString()),
                                 MeetPincode = Convert.ToString(dr.Rows[0]["MeetPincode"].ToString()),

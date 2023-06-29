@@ -32,7 +32,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<NukkadMeetGiftS> alldcr = new List<NukkadMeetGiftS>();
                     List<NukkadMeetGift1> alldcr1 = new List<NukkadMeetGift1>();
-                    var dr = g1.return_dr($"exec NukkadmeetGiftAlotment " + ula.ExecId + ',' + ula.UserID+ ',' + ula.GiftID);
+                    var dr = g1.return_dr($"exec NukkadmeetGiftAlotment " + ula.ExecId + ',' + ula.UserID+ ',' + ula.GiftID + ',' + ula.MeetID + ",'" + ula.Uniquekey + "'");
                     if (dr.HasRows)
                     {
 

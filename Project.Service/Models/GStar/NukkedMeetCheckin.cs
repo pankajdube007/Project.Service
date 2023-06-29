@@ -16,6 +16,14 @@ namespace Project.Service.Models.GStar
         [Required]
         public int UserID { get; set; }
 
+
+        [Required]
+        public int MeetID { get; set; }
+
+
+        [Required]
+        public string Uniquekey { get; set; }
+
         [Required]
         public string ClientSecret { get; set; }
 
