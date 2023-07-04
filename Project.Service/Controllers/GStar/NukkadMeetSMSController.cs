@@ -12,6 +12,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Configuration;
 using System.Web;
+using System.Web.UI;
 
 namespace Project.Service.Controllers.GStar
 {
@@ -24,8 +25,8 @@ namespace Project.Service.Controllers.GStar
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            WebClient web = new WebClient();
-            byte[] bufData = null;
+           // WebClient web = new WebClient();
+           // byte[] bufData = null;
             if (ula.ExecId != 0)
             {
                 try
@@ -34,15 +35,21 @@ namespace Project.Service.Controllers.GStar
 
                     List<NukkadMeetSMSS> alldcr = new List<NukkadMeetSMSS>();
                     List<NukkadMeetSMS> alldcr1 = new List<NukkadMeetSMS>();
+                  
+                    var dr = g1.return_dr($"exec NukkadmeetmobileSearch {ula.Mobile} ");
+                    if (dr.HasRows)
+                    {
 
-                    string smsBody = HttpUtility.UrlEncode("Dear Business Partner, As you are aware, Finance Act 2020 had introduced Section 206C(1H) w.e.f 01.10.2020 - Requirement to collect TCS on sale of goods at 0.1% on sales consideration exceeding Rs.50 Lakhs in a financial year. We request you to kindly fill the form (Link Provided) at the earliest. https://erp.goldmedalindia.in/TDSTCSapplicability.aspx?UniqueKey=2  In case of any clarification (if required), please reach out to us at Aruna Gupta –aruna.gupta@goldmedalindia.com ( 022-42023000 Extn:3071 )-Team Goldmedal");
 
-                    string url = "http://sms6.rmlconnect.net:8080/bulksms/bulksms?username=" + "goldmedal&password=sd56jjaa"  + "&type=0&dlr=1&destination=" + ula.Mobile + "&source=GLDMDL&message=" + smsBody + "&entityid=1601100000000001629&tempid=1007756728420877008";
-                    bufData = web.DownloadData(url);
+                        while (dr.Read())
+                        {
 
-                    //   var dr = g1.return_dr($"exec NukkadmeetmobileSearch {ula.Mobile} ");
-                    //if (dr.HasRows)
-                    //{
+                           // SendSMS(ula.MeetId, dr["SlNo"].ToString(), dr["UserFullName"].ToString(),ula.Mobile);
+
+
+                        }
+
+
 
                         g1.close_connection();
                         alldcr.Add(new NukkadMeetSMSS
@@ -50,7 +57,7 @@ namespace Project.Service.Controllers.GStar
                             result = true,
                             message = string.Empty,
                             servertime = DateTime.Now.ToString(),
-                            data = null,
+                            data = alldcr1,
                         });
                         data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
@@ -58,15 +65,16 @@ namespace Project.Service.Controllers.GStar
                         response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
 
                         return response;
-                    //}
-                    //else
-                    //{
-                    //    g1.close_connection();
-                    //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    //    response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                    }
+                    else
+                    {
+                        g1.close_connection();
+                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
-                    //    return response;
-                    //}
+                        return response;
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -83,6 +91,35 @@ namespace Project.Service.Controllers.GStar
 
                 return response;
             }
+        }
+
+        private void SendSMS(int MeetId,string userid,string usernm, string MobileNO)
+        {
+
+            var TemplateID = string.Empty;
+            var Message = string.Empty;
+
+            if (MeetId == 2)
+            {
+                var para = MeetId + "&userid=" + userid;
+                Message = "Dear " + usernm + ",\r\n\r\nYou are cordially invited for the Electrician's Meet to be held on Saturday, 8th July 2023, 4.30 pm onwards at Shree Convention, Guntur. Please click https://erp.goldmedalindia.in/NukkadMeetEinvite.aspx?id=" + HttpUtility.UrlEncode(para) + " to download the e-invitation (you can also view the invite in your Dhan Barse account). For exact event location, please click https://tinyurl.com/mrxumvef . This event is exclusively for electricians registered in Dhanbarse.\r\n\r\nThank you,\r\nTeam Goldmedal";
+                TemplateID = "1007586822796409511";
+            }
+            else if (MeetId == 3)
+            {
+                var para = MeetId + "&userid=" + userid;
+                Message = "Dear " + usernm + ",\r\n\r\nYou are cordially invited for the Electrician's Meet to be held on Monday, 10th July 2023, 4.30 pm onwards at Shree Convention, Guntur. Please click https://erp.goldmedalindia.in/NukkadMeetEinvite.aspx?id=" + HttpUtility.UrlEncode(para) + " to download the e-invitation (you can also view the invite in your Dhan Barse account). For exact event location, please click https://tinyurl.com/mrxumvef . This event is exclusively for electricians registered in Dhanbarse.\r\n\r\nThank you,\r\nTeam Goldmedal";
+                TemplateID = "1007574070602116210";
+            }
+
+
+
+
+            string MobileNoSend = string.Empty;
+            WebClient web = new WebClient();
+            byte[] bufData = null;          
+            bufData = web.DownloadData("http://sms6.rmlconnect.net:8080/bulksms/bulksms?username=goldmedal&password=sd56jjaa&type=0&dlr=1&destination=" + MobileNO + "&source=GLDMDL&entityid=1601100000000001629&tempid=" + TemplateID + "&message=" + Message + "");
+          
         }
     }
 }

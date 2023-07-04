@@ -17,7 +17,7 @@ namespace Project.Service.Models.GStar
         public int UserID { get; set; }
 
         [Required]
-        public int GiftID { get; set; }
+        public string GiftID { get; set; }
 
         [Required]
         public int MeetID { get; set; }

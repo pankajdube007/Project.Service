@@ -31,19 +31,18 @@ namespace Project.Service.Controllers.GStar
 
                     List<NukkedMeetCheckinS> alldcr = new List<NukkedMeetCheckinS>();
                     List<NukkedMeetCheckin> alldcr1 = new List<NukkedMeetCheckin>();
-                    var dr = g1.return_dr($"exec NukkadmeetCheckin "+ula.ExecId + "," +ula.UserID + "," + ula.MeetID + ",'" + ula.Uniquekey+"'");
-                    if (dr.HasRows)
+                    var dr = g1.return_dt($"exec NukkadmeetCheckin "+ula.ExecId + "," +ula.UserID + "," + ula.MeetID + ",'" + ula.Uniquekey+"'");
+                    if (dr.Rows.Count>0)
                     {
 
 
-                        while (dr.Read())
-                        {
+                    
                             alldcr1.Add(new NukkedMeetCheckin
                             {
 
-                                msg = "User Check In Sucessfully"
+                                msg = dr.Rows[0]["msg"].ToString()
                             });
-                        }
+                  
                         g1.close_connection();
                         alldcr.Add(new NukkedMeetCheckinS
                         {

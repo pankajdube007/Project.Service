@@ -17,6 +17,9 @@ namespace Project.Service.Models.GStar
         public string Mobile { get; set; }
 
         [Required]
+        public int MeetId { get; set; }
+
+        [Required]
         public string ClientSecret { get; set; }
 
     }
@@ -35,8 +38,6 @@ namespace Project.Service.Models.GStar
         public string Sent { get; set; }
 
        
-
-
     }
 
 }

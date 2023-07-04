@@ -32,19 +32,18 @@ namespace Project.Service.Controllers.GStar
 
                     List<NukkadMeetGiftS> alldcr = new List<NukkadMeetGiftS>();
                     List<NukkadMeetGift1> alldcr1 = new List<NukkadMeetGift1>();
-                    var dr = g1.return_dr($"exec NukkadmeetGiftAlotment " + ula.ExecId + ',' + ula.UserID+ ',' + ula.GiftID + ',' + ula.MeetID + ",'" + ula.Uniquekey + "'");
-                    if (dr.HasRows)
+                    var dr = g1.return_dt($"exec NukkadmeetGiftAlotment " + ula.ExecId + "," + ula.UserID+ ",'" + ula.GiftID + "'," + ula.MeetID + ",'" + ula.Uniquekey + "'");
+                    if (dr.Rows.Count > 0)
                     {
 
 
-                        while (dr.Read())
+                        alldcr1.Add(new NukkadMeetGift1
                         {
-                            alldcr1.Add(new NukkadMeetGift1
-                            {
 
-                                msg = "User Gift Alloted SucessFully"
-                            });
-                        }
+                            msg = dr.Rows[0]["msg"].ToString()
+                        });
+
+
                         g1.close_connection();
                         alldcr.Add(new NukkadMeetGiftS
                         {
@@ -64,7 +63,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "Already Gift  Aloted or No user Exist in this meet"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
