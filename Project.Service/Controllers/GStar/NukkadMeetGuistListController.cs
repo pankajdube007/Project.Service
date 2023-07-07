@@ -41,11 +41,14 @@ namespace Project.Service.Controllers.GStar
                             alldcr1.Add(new NukkadMeetRequestGuisetByID
                             {
 
+                                UserId = Convert.ToString(dr["UserID"].ToString()),
                                 Name = Convert.ToString(dr["UserName"].ToString()),
                                 Photo = Convert.ToString(dr["photo"].ToString()),
                                 Mobile = Convert.ToString(dr["MobileNo"].ToString()),
                                 Category = Convert.ToString(dr["RoleName"].ToString()),
-                                Status = Convert.ToString(dr["stat"].ToString())
+                                Status = Convert.ToString(dr["stat"].ToString()),
+                                CheckinStatus = Convert.ToString(dr["checkinstat"].ToString()),
+                                url = Convert.ToString(dr["url"].ToString())
                             });
                         }
                         g1.close_connection();

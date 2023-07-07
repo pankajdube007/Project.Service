@@ -32,6 +32,8 @@ namespace Project.Service.Models.GStar
 
     public class NukkadMeetRequestGuisetByID
     {
+        public string UserId { get; set; }
+
         public string Name { get; set; }
 
         public string Photo { get; set; }
@@ -41,6 +43,10 @@ namespace Project.Service.Models.GStar
         public string Category { get; set; }
 
         public string Status { get; set; }
+
+        public string CheckinStatus { get; set; }
+
+        public string url { get; set; }
 
 
     }

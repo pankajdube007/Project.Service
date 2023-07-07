@@ -36,15 +36,25 @@ namespace Project.Service.Controllers.GStar
                     List<NukkadMeetSMSS> alldcr = new List<NukkadMeetSMSS>();
                     List<NukkadMeetSMS> alldcr1 = new List<NukkadMeetSMS>();
                   
-                    var dr = g1.return_dr($"exec NukkadmeetmobileSearch {ula.Mobile} ");
-                    if (dr.HasRows)
+                    var dr = g1.return_dt($"exec Nukkadmeetmobilesms '" + ula.Mobile+"'");
+                    if (dr.Rows.Count>0)
                     {
 
 
-                        while (dr.Read())
+                        for (int i = 0; i < dr.Rows.Count; i++)
+                       
                         {
+                            try
+                            {
+                                SendSMS(ula.MeetId, dr.Rows[i]["SlNo"].ToString(), dr.Rows[i]["UserFullName"].ToString(), ula.Mobile);
+                            }
+                            catch (Exception)
+                            {
 
-                           // SendSMS(ula.MeetId, dr["SlNo"].ToString(), dr["UserFullName"].ToString(),ula.Mobile);
+
+                            }
+
+
 
 
                         }
