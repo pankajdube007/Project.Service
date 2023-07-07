@@ -122,6 +122,13 @@ namespace Project.Service.Controllers.GStar
                 TemplateID = "1007574070602116210";
             }
 
+            else if (MeetId == 15)
+            {
+                var para = MeetId + "&userid=" + userid;
+                Message = "Dear "+usernm+ ",\r\n\r\nYou are cordially invited for the Channel Partners' Meet to be held on Sunday, 9th July 2023, 4.30 pm onwards at Shree Convention, Guntur. Please click https://erp.goldmedalindia.in/NukkadMeetEinvite.aspx?id=" + HttpUtility.UrlEncode(para) + " to download the e-invitation (you can also view the invite in your Dhan Barse account). For exact event location, please click https://tinyurl.com/mrxumvef. This event is exclusively for the Channel Partners registered in Dhanbarse.\r\n\r\nThank you,\r\nTeam Goldmedal";
+                TemplateID = "1007739556206312942";
+            }
+
 
 
 
