@@ -44,9 +44,9 @@ namespace Project.Service.Controllers.GStar
                                 vehid = Convert.ToString(dr["vehid"].ToString()),
                                 date = Convert.ToString(dr["date"].ToString()),
                                 refno = Convert.ToString(dr["refno"].ToString()),
-                                starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
+                                //starttripimg = string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
                                 fromkm = Convert.ToString(dr["fromkm"].ToString()),
-                                endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
+                                //endtripimg = string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : ( Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
                                 tokm = Convert.ToString(dr["tokm"].ToString()),
                                 VehicleNo = Convert.ToString(dr["VehicleNo"].ToString()),
                                 model = Convert.ToString(dr["model"].ToString()),
@@ -58,7 +58,9 @@ namespace Project.Service.Controllers.GStar
                                 IsCompleted = Convert.ToString(dr["imgstatus"].ToString()),
                                 slno = Convert.ToString(dr["slno"].ToString()),
                                 IsEdited = Convert.ToString(dr["editstatus"].ToString()),
-                                
+                                starttripimg=string.IsNullOrEmpty(dr["starttripimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "tripimg/" + Convert.ToString(dr["starttripimg"]).ToString().TrimEnd(',')),
+                                endtripimg=string.IsNullOrEmpty(dr["endtripimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "tripimg/" + Convert.ToString(dr["endtripimg"]).ToString().TrimEnd(',')),
+
                             });
                         }
                         g1.close_connection();
