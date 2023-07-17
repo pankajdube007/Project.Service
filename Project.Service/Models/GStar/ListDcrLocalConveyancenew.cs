@@ -113,6 +113,6 @@ namespace Project.Service.Models
         public string insertedautoimg { get; set; }
         public string insertedbusimg { get; set; }
         public string insertedoutstationimg { get; set; }
-
+        public string Foodimg { get; set; }
     }
 }

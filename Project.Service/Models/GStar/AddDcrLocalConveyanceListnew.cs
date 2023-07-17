@@ -83,6 +83,7 @@ namespace Project.Service.Models
         public string autoimg { get; set; }
         public string busimg { get; set; }
         public string outstationimg { get; set; }
+        public string Foodimg { get; set; }
 
 
 

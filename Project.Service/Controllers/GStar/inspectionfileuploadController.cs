@@ -96,6 +96,10 @@ namespace Project.Service.Controllers
             {
                 uniquefoldernm = "tripimg";
             }
+            else if(folderCreation == 4)
+            {
+                uniquefoldernm = "addmerchantpdf";
+            }
 
 
             if (!string.IsNullOrEmpty(img))

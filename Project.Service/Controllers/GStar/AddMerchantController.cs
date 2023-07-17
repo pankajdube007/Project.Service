@@ -34,13 +34,13 @@ namespace Project.Service.Controllers.GStar
                     List<AddMerchants> alldcr = new List<AddMerchants>();
                     List<AddMerchant> alldcr1 = new List<AddMerchant>();
 
-                    string uploadPDF = string.Empty;
-                    string uploadPDF1 = string.Empty;
+                    //string uploadPDF = string.Empty;
+                    //string uploadPDF1 = string.Empty;
 
-                    if (ula.gstcertificate != "") uploadPDF = GetImage(ula.gstcertificate, 1);
-                    if (ula.bankdetails != "") uploadPDF1 = GetImage(ula.bankdetails, 1);
+                    //if (ula.gstcertificate != "") uploadPDF = GetImage(ula.gstcertificate, 1);
+                    //if (ula.bankdetails != "") uploadPDF1 = GetImage(ula.bankdetails, 1);
 
-                    var dr = g1.return_dt("AddMerchantApp'" + ula.suppliername + "','" + ula.gstno + "','" + ula.addline1 + "','" + ula.addline2 + "','" + ula.cityid + "','" + ula.areaid + "','" + ula.stateid + "','" + ula.countryid + "','" + ula.pinno + "','" + ula.ConcernedPerson + "','" + ula.email + "','" + ula.mobile + "','" + ula.merchanttype + "','" + uploadPDF + "','" + uploadPDF1 + "'");
+                    var dr = g1.return_dt("AddMerchantApp'" + ula.suppliername + "','" + ula.gstno + "','" + ula.addline1 + "','" + ula.addline2 + "','" + ula.cityid + "','" + ula.areaid + "','" + ula.stateid + "','" + ula.countryid + "','" + ula.pinno + "','" + ula.ConcernedPerson + "','" + ula.email + "','" + ula.mobile + "','" + ula.merchanttype + "','" + ula.gstcertificate + "','" + ula.bankdetails + "'");
                     if (dr.Rows.Count > 0)
                     {
                         if (Convert.ToInt32(dr.Rows[0]["RES"]) == 2)
@@ -124,30 +124,30 @@ namespace Project.Service.Controllers.GStar
             }
         }
 
-        protected string GetImage(string img, int folderCreation)
-        {
-            var _goldMedia = new GoldMedia();
-            var result = "";
-            string uniquefoldernm = "";
-            if (folderCreation == 1)
-            {
-                uniquefoldernm = "addmerchantpdf";
-            }
+        //protected string GetImage(string img, int folderCreation)
+        //{
+        //    var _goldMedia = new GoldMedia();
+        //    var result = "";
+        //    string uniquefoldernm = "";
+        //    if (folderCreation == 1)
+        //    {
+        //        uniquefoldernm = "addmerchantpdf";
+        //    }
 
 
-            if (!string.IsNullOrEmpty(img))
-            {
-                var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
-                if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
-                var binPdf = Convert.FromBase64String(s);
-                Stream stream = new MemoryStream(binPdf);
-                var FileName = Guid.NewGuid().ToString();
+        //    if (!string.IsNullOrEmpty(img))
+        //    {
+        //        var s = img.Trim().Replace(' ', '+').Replace("-", "+").Replace("_", "/");
+        //        if (s.Length % 4 > 0) s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
+        //        var binPdf = Convert.FromBase64String(s);
+        //        Stream stream = new MemoryStream(binPdf);
+        //        var FileName = Guid.NewGuid().ToString();
 
-                var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".pdf", stream, "application/pdf", false,
-                    false, true);
-                result = _goldMedia.MapPathToPublicUrl(uniquefoldernm + '/' + FileName + ".pdf");
-            }
-            return result;
-        }
+        //        var retStr = _goldMedia.GoldMediaUpload(FileName, uniquefoldernm, ".pdf", stream, "application/pdf", false,
+        //            false, true);
+        //        result = _goldMedia.MapPathToPublicUrl(uniquefoldernm + '/' + FileName + ".pdf");
+        //    }
+        //    return result;
+        //}
     }
 }
