@@ -10,7 +10,7 @@ namespace Project.Service.Models.GStar
     public class GetListofAutomationLeadGenerationItem
     {
 
-        [Required]
+        //[Required]
         public int ExId { get; set; }
 
         [Required]
@@ -18,7 +18,10 @@ namespace Project.Service.Models.GStar
 
         [Required]
         public int categoryid { get; set; }
-        
+
+        //[Required]
+        public string CIN { get; set; }
+
     }
 
 

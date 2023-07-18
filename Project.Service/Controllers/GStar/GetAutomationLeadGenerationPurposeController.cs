@@ -22,7 +22,7 @@ namespace Project.Service.Controllers.GStar
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.ExId != 0)
+            if (ula.ExId != 0 || ula.CIN != null)
             {
                 try
                 {

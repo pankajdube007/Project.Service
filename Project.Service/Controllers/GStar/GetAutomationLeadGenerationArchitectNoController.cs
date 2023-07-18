@@ -23,7 +23,7 @@ namespace Project.Service.Controllers.GStar
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.MobileNo != null)
+            if (ula.ExId != 0 || ula.CIN != null) // (ula.MobileNo != null)
             {
                 try
                 {

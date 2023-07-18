@@ -9,11 +9,15 @@ namespace Project.Service.Models.GStar
    
     public class GetListofAutomationLeadGenerationPurpose
     {
-        [Required]
+        //[Required]
         public int ExId { get; set; }
 
         [Required]
         public string ClientSecret { get; set; }
+
+        //[Required]
+        public string CIN { get; set; }
+        
     }
 
     public class GetListAutomationLeadGenerationPurposes

@@ -453,6 +453,8 @@
     <Compile Include="Controllers\GStar\AddTripController.cs" />
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryListController.cs" />
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryResponseController.cs" />
+    <Compile Include="Controllers\GStar\AutomationLeadGenerationCategoryController.cs" />
+    <Compile Include="Controllers\GStar\AutomationLeadGenerationItemController.cs" />
     <Compile Include="Controllers\GStar\DcrAddLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\DcrAddLocalConveyancenewController.cs" />
     <Compile Include="Controllers\GStar\DcrLocalConveyanceController.cs" />
@@ -485,7 +487,9 @@
     <Compile Include="Controllers\GStar\ExecWiseVendorReqitemListController.cs" />
     <Compile Include="Controllers\GStar\ExecWiseVendorReqListController.cs" />
     <Compile Include="Controllers\GStar\GetAreaMastController.cs" />
+    <Compile Include="Controllers\GStar\GetAutomationLeadGenerationArchitectNoController.cs" />
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationController.cs" />
+    <Compile Include="Controllers\GStar\GetAutomationLeadGenerationPurposeController.cs" />
     <Compile Include="Controllers\GStar\GetCityMastController.cs" />
     <Compile Include="Controllers\GStar\GetDealerContactExecutiveNewController.cs" />
     <Compile Include="Controllers\GStar\GetDisputeTypeController.cs" />
@@ -1009,9 +1013,13 @@
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
     <Compile Include="Models\GStar\ExecWiseVendorReqitemList.cs" />
     <Compile Include="Models\GStar\ExecWiseVendorReqList.cs" />
+    <Compile Include="Models\GStar\GetAutomationLeadGenerationCategory.cs" />
+    <Compile Include="Models\GStar\GetAutomationLeadGenerationItem.cs" />
+    <Compile Include="Models\GStar\GetAutomationLeadGenerationPurpose.cs" />
     <Compile Include="Models\GStar\GetDisputeType.cs" />
     <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
+    <Compile Include="Models\GStar\GetListAutomationLeadGenerationArchitectNo.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
     <Compile Include="Models\GStar\inspectionfileuplode.cs" />
     <Compile Include="Models\GStar\lastchecindetail.cs" />

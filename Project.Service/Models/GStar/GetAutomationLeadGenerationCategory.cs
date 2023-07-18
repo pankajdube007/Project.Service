@@ -11,12 +11,14 @@ namespace Project.Service.Models.GStar
     public class GetListofAutomationLeadGenerationCategory
     {
 
-        [Required]
+        //[Required]
         public int ExId { get; set; }
 
         [Required]
         public string ClientSecret { get; set; }
 
+        //[Required]
+        public string CIN { get; set; }
     }
 
 

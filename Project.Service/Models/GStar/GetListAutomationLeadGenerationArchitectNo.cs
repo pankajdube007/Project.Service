@@ -8,11 +8,17 @@ namespace Project.Service.Models.GStar
 {
     public class GetListofAutomationLeadGenerationArchitectNo
     {
+        //[Required]
+        public int ExId { get; set; }
+
         [Required]
         public string MobileNo { get; set; }
 
         [Required]
         public string ClientSecret { get; set; }
+
+        //[Required]
+        public string CIN { get; set; }
 
     }
 
