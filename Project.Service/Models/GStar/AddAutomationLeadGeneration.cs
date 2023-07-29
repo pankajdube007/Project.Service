@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Project.Service.Models.GParivar
+namespace Project.Service.Models.GStar
 {
     
     public class InsertAutomationLeadGeneration
@@ -11,17 +11,24 @@ namespace Project.Service.Models.GParivar
         public string Cin { get; set; }
         [Required]
         public string ClientSecret { get; set; }
+
+        [Required]
+        public string Purpose { get; set; }
         [Required]
         public string CustomerMobileNo { get; set; }
         [Required]
         public string CustomerName { get; set; }
+
         [Required]
-        public string Pincode { get; set; }
+        public string EmailID { get; set; }
         [Required]
         public string AddressLine1 { get; set; }
         [Required]
         public string AddressLine2 { get; set; }
 
+        [Required]
+        public string Pincode { get; set; }
+        
         [Required]
         public int StateID { get; set; }
         [Required]
@@ -30,22 +37,29 @@ namespace Project.Service.Models.GParivar
         public string City { get; set; }
         [Required]
         public string AutomationCategoryID { get; set; }
+        [Required]
+        public string ItemID { get; set; }
 
-        public string IsInvloveArchitect { get; set; }
+        public bool IsInvloveArchitect { get; set; }
+
+        public string ArchitectMobileNo { get; set; }
 
         public string ArchitectName { get; set; }
 
-        public string ArchitectMobileNo { get; set; }
-        [Required]
-        public string Remark { get; set; }
         [Required]
         public string Available_dt { get; set; }
 
         [Required]
         public string Available_time { get; set; }
         [Required]
-        public string CategoryType { get; set; }
+        public string Remark { get; set; }
+        //[Required]
+        //public string CategoryType { get; set; }
+        [Required]
+        public string Project_name { get; set; }
 
+        public string ArchitectID { get; set; }
+        
     }
 
     public class AddAutomationLeadGenerations

@@ -122,22 +122,22 @@ namespace Project.Service.Controllers.GStar
                                 Insertedoutstation = Convert.ToString(dr1["InsertedOutStation"].ToString()),
                                 Insertedfixamt = Convert.ToString(dr1["Insertedfixamt"].ToString()),
 
-                                //insertedtrainimg  = Convert.ToString(dr1["insertedtrainimg"].ToString()),
-                                //insertedmetroimg  = Convert.ToString(dr1["insertedmetroimg"].ToString()),
-                                //insertedrentalcarimg  = Convert.ToString(dr1["insertedrentalcarimg"].ToString()),
-                                //insertedtollparkingimg = Convert.ToString(dr1["insertedtollparkingimg"].ToString()),
-                                //insertedautoimg = Convert.ToString(dr1["insertedautoimg"].ToString()),
-                                //insertedbusimg  = Convert.ToString(dr1["insertedbusimg"].ToString()),
-                                //insertedoutstationimg = Convert.ToString(dr1["insertedoutstationimg"].ToString()),
-                                //Foodimg = Convert.ToString(dr1["Foodimg"].ToString())
-                                insertedtrainimg=string.IsNullOrEmpty(dr1["insertedtrainimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedtrainimg"]).ToString().TrimEnd(',')),
-                                insertedmetroimg = string.IsNullOrEmpty(dr1["insertedmetroimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedmetroimg"]).ToString().TrimEnd(',')),
-                                insertedrentalcarimg = string.IsNullOrEmpty(dr1["insertedrentalcarimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedrentalcarimg"]).ToString().TrimEnd(',')),
-                                insertedtollparkingimg = string.IsNullOrEmpty(dr1["insertedtollparkingimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedtollparkingimg"]).ToString().TrimEnd(',')),
-                                insertedautoimg = string.IsNullOrEmpty(dr1["insertedautoimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedautoimg"]).ToString().TrimEnd(',')),
-                                insertedbusimg = string.IsNullOrEmpty(dr1["insertedbusimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedbusimg"]).ToString().TrimEnd(',')),
-                                insertedoutstationimg = string.IsNullOrEmpty(dr1["insertedoutstationimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedoutstationimg"]).ToString().TrimEnd(',')),
-                                Foodimg = string.IsNullOrEmpty(dr1["Foodimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["Foodimg"]).ToString().TrimEnd(','))
+                                insertedtrainimg = Convert.ToString(dr1["insertedtrainimg"].ToString()),
+                                insertedmetroimg = Convert.ToString(dr1["insertedmetroimg"].ToString()),
+                                insertedrentalcarimg = Convert.ToString(dr1["insertedrentalcarimg"].ToString()),
+                                insertedtollparkingimg = Convert.ToString(dr1["insertedtollparkingimg"].ToString()),
+                                insertedautoimg = Convert.ToString(dr1["insertedautoimg"].ToString()),
+                                insertedbusimg = Convert.ToString(dr1["insertedbusimg"].ToString()),
+                                insertedoutstationimg = Convert.ToString(dr1["insertedoutstationimg"].ToString()),
+                                Foodimg = Convert.ToString(dr1["Foodimg"].ToString())
+                                //insertedtrainimg=string.IsNullOrEmpty(dr1["insertedtrainimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedtrainimg"]).ToString().TrimEnd(',')),
+                                //insertedmetroimg = string.IsNullOrEmpty(dr1["insertedmetroimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedmetroimg"]).ToString().TrimEnd(',')),
+                                //insertedrentalcarimg = string.IsNullOrEmpty(dr1["insertedrentalcarimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedrentalcarimg"]).ToString().TrimEnd(',')),
+                                //insertedtollparkingimg = string.IsNullOrEmpty(dr1["insertedtollparkingimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedtollparkingimg"]).ToString().TrimEnd(',')),
+                                //insertedautoimg = string.IsNullOrEmpty(dr1["insertedautoimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedautoimg"]).ToString().TrimEnd(',')),
+                                //insertedbusimg = string.IsNullOrEmpty(dr1["insertedbusimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedbusimg"]).ToString().TrimEnd(',')),
+                                //insertedoutstationimg = string.IsNullOrEmpty(dr1["insertedoutstationimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedoutstationimg"]).ToString().TrimEnd(',')),
+                                //Foodimg = string.IsNullOrEmpty(dr1["Foodimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["Foodimg"]).ToString().TrimEnd(','))
 
                             });
                         }

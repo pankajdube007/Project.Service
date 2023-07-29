@@ -29,7 +29,7 @@ namespace Project.Service.Models
         
         public string emailid { get; set; }
 
-        [Required]
+       
         public string pincode { get; set; }
 
 
@@ -37,7 +37,7 @@ namespace Project.Service.Models
         public int cityid { get; set; }
 
         public string Address { get; set; }
-        [Required]
+        
         public string companyname { get; set; }
         public string concernperson { get; set; }
         public string designation { get; set; }
@@ -45,7 +45,7 @@ namespace Project.Service.Models
         public string email { get; set; }
         [Required]
         public string pin { get; set; }
-        [Required]
+        
         public int city1 { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -61,10 +61,13 @@ namespace Project.Service.Models
         [Required]
         public DateTime followupdatetime { get; set; }
         public string followupremark { get; set; }
-        [Required]
+        
         public string itemid { get; set; }
         [Required]
         public int VisitorId { get; set; }
+
+        [Required]
+        public int Showroomid { get; set; }
     }
 
     public class AddVisitorDetails
