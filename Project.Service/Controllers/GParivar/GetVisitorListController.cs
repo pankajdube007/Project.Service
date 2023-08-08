@@ -14,7 +14,7 @@ namespace Project.Service.Controllers
 {
     public class GetVisitorListController : ApiController
     {
-      
+
         [HttpPost]
         [ValidateModel]
         [Route("api/getlistofvisitor")]
@@ -37,7 +37,7 @@ namespace Project.Service.Controllers
                         {
                             alldcr1.Add(new GetListofVisitorDetail
                             {
-                                visitorid= Convert.ToInt32(dr["slno"].ToString()),
+                                visitorid = Convert.ToInt32(dr["slno"].ToString()),
                                 ExId = Convert.ToInt32(dr["ExId"].ToString()),
                                 salesexnm = Convert.ToString(dr["salesexnm"].ToString()),
                                 tyepeofvisitor = Convert.ToInt32(dr["tyepeofvisitor"].ToString()),
@@ -78,7 +78,8 @@ namespace Project.Service.Controllers
                                 statename = Convert.ToString(dr["statename"].ToString()),
                                 companystateid = Convert.ToInt32(dr["companystateid"].ToString()),
                                 companystatename = Convert.ToString(dr["companystatename"].ToString()),
-
+                                ShowroomName = Convert.ToString(dr["sName"].ToString()),
+                                Showroomid = Convert.ToInt32(dr["showroomid1"])                                                              
 
                             });
                         }

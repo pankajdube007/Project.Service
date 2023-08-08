@@ -32,7 +32,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<GetAutomationLeadGenerationShowroomQuotationLists> alldcr = new List<GetAutomationLeadGenerationShowroomQuotationLists>();
                     List<GetAutomationLeadGenerationShowroomQuotationList> alldcr1 = new List<GetAutomationLeadGenerationShowroomQuotationList>();
-                    var dr = g1.return_dr("dbo.AutomationLeadGenerationShowroomQuotation_GParivar_Gstar_API");
+                    var dr = g1.return_dr("dbo.AutomationLeadGenerationShowroomQuotation_GParivar_Gstar_API '" + ula.SearchItem + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
@@ -42,7 +42,9 @@ namespace Project.Service.Controllers.GStar
                                 slno = Convert.ToString(dr["slno"].ToString()),
                                 ProductCode = Convert.ToString(dr["ProductCode"].ToString()),
                                 divisionnm = Convert.ToString(dr["divisionnm"].ToString()),
+                                divisionid = Convert.ToString(dr["divisionid"].ToString()),
                                 UnitName = Convert.ToString(dr["UnitName"].ToString()),
+                                unitid = Convert.ToString(dr["unitid"].ToString()),
                                 Rate = Convert.ToString(dr["Rate"].ToString()),
                             });
                         }

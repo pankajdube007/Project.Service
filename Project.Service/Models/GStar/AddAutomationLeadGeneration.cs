@@ -16,14 +16,20 @@ namespace Project.Service.Models.GStar
         public string Purpose { get; set; }
         [Required]
         public string CustomerMobileNo { get; set; }
+
+        //[Required]
+        //[RegularExpression("^[0-9]*$", ErrorMessage = "Customer MobileNo must contain only numeric digits.")]
+        //[StringLength(10, ErrorMessage = "Customer MobileNo must be up to 10 digits.")]
+        //public int CustomerMobileNo { get; set; }
+
         [Required]
         public string CustomerName { get; set; }
 
-        [Required]
+        //[Required]
         public string EmailID { get; set; }
         [Required]
         public string AddressLine1 { get; set; }
-        [Required]
+        //[Required]
         public string AddressLine2 { get; set; }
 
         [Required]
@@ -46,12 +52,14 @@ namespace Project.Service.Models.GStar
 
         public string ArchitectName { get; set; }
 
+        public string Architech_CompanyName { get; set; }
+
         [Required]
         public string Available_dt { get; set; }
 
         [Required]
         public string Available_time { get; set; }
-        [Required]
+        //[Required]
         public string Remark { get; set; }
         //[Required]
         //public string CategoryType { get; set; }

@@ -43,7 +43,7 @@ namespace Project.Service.Models
         public string designation { get; set; }
         public string contactno { get; set; }
         public string email { get; set; }
-        [Required]
+        
         public string pin { get; set; }
         
         public int city1 { get; set; }

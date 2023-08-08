@@ -19,9 +19,14 @@ namespace Project.Service.Models.GStar
         [Required]
         public string Project_name { get; set; }
 
-        //public string FromDate { get; set; }
+        [Required]
+        public string FromDate { get; set; }
 
-        //public string ToDate { get; set; }
+        [Required]
+        public string ToDate { get; set; }
+
+        public string SearchData { get; set; }
+        
     }
 
     public class GetAutomationLeadGenerationLists
@@ -35,12 +40,12 @@ namespace Project.Service.Models.GStar
     public class GetAutomationLeadGenerationList
     {
         public string SlNo { get; set; }
-        
         public string Reference_NO { get; set; }
         public string Cust_Name { get; set; }
         public string Cust_Mob_No { get; set; }
-        
         public string FullAddress { get; set; }
+        public string ApprovalStatus { get; set; }
+        public string RequestedDate { get; set; }
         
     }
 }

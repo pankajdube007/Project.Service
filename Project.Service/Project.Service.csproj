@@ -455,6 +455,7 @@
     <Compile Include="Controllers\GStar\AppExecutiveEnquiryResponseController.cs" />
     <Compile Include="Controllers\GStar\AutomationLeadGenerationCategoryController.cs" />
     <Compile Include="Controllers\GStar\AutomationLeadGenerationItemController.cs" />
+    <Compile Include="Controllers\GStar\AutomationLeadGenerationShowroomQuotationInsertController.cs" />
     <Compile Include="Controllers\GStar\AutomationLeadGenerationShowroomQuotationListController.cs" />
     <Compile Include="Controllers\GStar\AutomationLeadGenerationStatusUpdateController.cs" />
     <Compile Include="Controllers\GStar\DcrAddLocalConveyanceController.cs" />
@@ -957,6 +958,7 @@
     <Compile Include="Models\GStar\ActiveSchemeExecutive.cs" />
     <Compile Include="Models\GParivar\Addexechomelatlanaddress.cs" />
     <Compile Include="Models\GStar\AddAutomationLeadGeneration.cs" />
+    <Compile Include="Models\GStar\AddAutomationLeadGenerationShowroomQuotation.cs" />
     <Compile Include="Models\GStar\AddDcrLocalConveyanceList.cs" />
     <Compile Include="Models\GStar\AddDcrLocalConveyanceListnew.cs" />
     <Compile Include="Models\GStar\AddDetailsExecOrgVisit.cs" />

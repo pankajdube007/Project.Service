@@ -46,8 +46,9 @@ namespace Project.Service.Models.GStar
         public string Remark { get; set; }
         public string ApprovalStatus { get; set; }
         public string Involve_Architech { get; set; }
-        public string Architech_Name { get; set; }
         public string Architech_No { get; set; }
+        public string Architech_Name { get; set; }
+        public string Architech_CompanyName { get; set; }
         public string RequestDate { get; set; }
         public string Available_dt { get; set; }
         public string Available_time { get; set; }

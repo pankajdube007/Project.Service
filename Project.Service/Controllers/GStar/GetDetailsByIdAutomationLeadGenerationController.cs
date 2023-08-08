@@ -46,16 +46,15 @@ namespace Project.Service.Controllers.GStar
                                 Reference_NO = Convert.ToString(dr["Reference_NO"].ToString()),
                                 Cust_Name = Convert.ToString(dr["Cust_Name"].ToString()),
                                 Cust_Mob_No = Convert.ToString(dr["Cust_Mob_No"].ToString()),
-                                
                                 FullAddress = Convert.ToString(dr["FullAddress"].ToString()),
-
                                 ItemNames = Convert.ToString(dr["ItemNames"].ToString()),
                                 CategoryNames = Convert.ToString(dr["CategoryNames"].ToString()),
                                 Remark = Convert.ToString(dr["Remark"].ToString()),
                                 ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
                                 Involve_Architech = Convert.ToString(dr["Involve_Architech"].ToString()),
-                                Architech_Name = Convert.ToString(dr["Architech_Name"].ToString()),
                                 Architech_No = Convert.ToString(dr["Architech_No"].ToString()),
+                                Architech_Name = Convert.ToString(dr["Architech_Name"].ToString()),
+                                Architech_CompanyName = Convert.ToString(dr["Architech_CompanyName"].ToString()),
                                 RequestDate = Convert.ToString(dr["RequestDate"].ToString()),
                                 Available_dt = Convert.ToString(dr["Available_dt"].ToString()),
                                 Available_time = Convert.ToString(dr["Available_time"].ToString()),

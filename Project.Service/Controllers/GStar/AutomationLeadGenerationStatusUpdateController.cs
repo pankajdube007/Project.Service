@@ -36,7 +36,7 @@ namespace Project.Service.Controllers.GStar
                     {
                         alldcr1.Add(new AddAutomationLeadGenerationStatusUpdate
                         {
-                            output = "Data Sucessfully inserted"
+                            output = "Data Sucessfully Updated"
                         });
 
                         g2.close_connection();

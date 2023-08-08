@@ -14,7 +14,8 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ClientSecret { get; set; }
 
-        
+        public string SearchItem { get; set; }
+
     }
 
     public class GetAutomationLeadGenerationShowroomQuotationLists
@@ -30,7 +31,9 @@ namespace Project.Service.Models.GStar
         public string slno { get; set; }
         public string ProductCode { get; set; }
         public string divisionnm { get; set; }
+        public string divisionid { get; set; }
         public string UnitName { get; set; }
+        public string unitid { get; set; }
         public string Rate { get; set; }
 
     }

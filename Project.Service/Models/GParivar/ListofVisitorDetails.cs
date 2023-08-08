@@ -69,5 +69,10 @@ namespace Project.Service.Models
         public string statename { get; set; }
         public int companystateid { get; set; }
         public string companystatename { get; set; }
+
+        public int Showroomid { get; set; }
+        public string ShowroomName { get; set; }
+
+       
     }
 }

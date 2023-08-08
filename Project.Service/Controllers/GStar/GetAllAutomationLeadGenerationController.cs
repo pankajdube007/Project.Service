@@ -25,17 +25,14 @@ namespace Project.Service.Controllers.GStar
             Common cm = new Common();
             if (ula.CIN != null)
             {
-                //        [Required]
-                //public string FromDate { get; set; }
-                //[Required]
-                //public string ToDate { get; set; }// '" + ula.FromDate + "','" + ula.ToDate + "'
+                
                 try
                 {
                     string data1;
 
                     List<GetAutomationLeadGenerationLists> alldcr = new List<GetAutomationLeadGenerationLists>();
                     List<GetAutomationLeadGenerationList> alldcr1 = new List<GetAutomationLeadGenerationList>();
-                    var dr = g1.return_dr("dbo.GetAllAutomationLeadGeneration_GParivar_Gstar_API '" + ula.CIN + "', '" + ula.Project_name + "'");
+                    var dr = g1.return_dr("dbo.GetAllAutomationLeadGeneration_GParivar_Gstar_API '" + ula.CIN + "', '" + ula.Project_name + "','" + ula.FromDate + "','" + ula.ToDate + "','" + ula.SearchData + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
@@ -47,8 +44,8 @@ namespace Project.Service.Controllers.GStar
                                 Cust_Mob_No = Convert.ToString(dr["Cust_Mob_No"].ToString()),
                                 Cust_Name = Convert.ToString(dr["Cust_Name"].ToString()),
                                 FullAddress = Convert.ToString(dr["FullAddress"].ToString()),
-                                
-
+                                ApprovalStatus = Convert.ToString(dr["ApprovalStatus"].ToString()),
+                                RequestedDate = Convert.ToString(dr["RequestedDate"].ToString()),
                             });
                         }
                         g1.close_connection();
