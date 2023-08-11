@@ -44,7 +44,7 @@ namespace Project.Service.Controllers.GStar
                     alldcr1.Add(new GetAddAutomationLeadGenerationShowroomQuotationList
                     {
                         //type = dr.Rows[0]["type1"].ToString(),
-                        message = "Data Sucessfully inserted" // dr.Rows[0]["msg"].ToString().TrimEnd(','),
+                        output = "Data Sucessfully inserted" // dr.Rows[0]["msg"].ToString().TrimEnd(','),
                     });
 
                     if (dr.Rows.Count > 0)

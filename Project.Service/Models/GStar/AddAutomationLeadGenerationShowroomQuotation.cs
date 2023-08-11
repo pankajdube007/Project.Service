@@ -31,7 +31,7 @@ namespace Project.Service.Models.GStar
 
     public class GetAddAutomationLeadGenerationShowroomQuotationList
     {
-        public string message { get; set; }
+        public string output { get; set; }
     }
 
     //public class AddShowroomQuotationList
