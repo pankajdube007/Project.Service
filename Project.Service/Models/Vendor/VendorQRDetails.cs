@@ -458,7 +458,7 @@ public class GetQRData
     public string Type { get; set; }
     public string UserType { get; set; }
 
-    
+
 }
 
 
@@ -552,6 +552,9 @@ public class PostQRMapingDetails
     public string QCType { get; set; }
     public string QCRemark { get; set; }
     public string QCCheckedDate { get; set; }
+
+    public string UBranchID { get; set; }
+    public string UWarehouseID { get; set; }
 }
 
 

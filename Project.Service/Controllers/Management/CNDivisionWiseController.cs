@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
+using Project.Service.Models.Management;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -9,14 +10,14 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.Management
 {
-    public class ManagementTotalSaleController : ApiController
+    public class CNDivisionWiseController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetTotalSaleBranchWise")]
-        public HttpResponseMessage GetDetails(ListofManagementTotalSale ula)
+        [Route("api/geCNAdjustedManagement")]
+        public HttpResponseMessage GetDetails(ListCNDivisionWise ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -26,34 +27,26 @@ namespace Project.Service.Controllers
                 {
                     string data1;
 
-                    List<ManagementTotalSales> alldcr = new List<ManagementTotalSales>();
-                    List<ManagementTotalSale> alldcr1 = new List<ManagementTotalSale>();
+                    List<CNDivisionWises> alldcr = new List<CNDivisionWises>();
+                    List<CNDivisionWise> alldcr1 = new List<CNDivisionWise>();
 
-                    var dr = g1.return_dr("InvoiceReportManagementBranch '" + ula.FromDate + "','" + ula.ToDate + "','" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("Usp_CNadjustmentDetailsReport_App'" + ula.BranchId + "','" + ula.FromDate + "','"+ula.ToDate+"'");
 
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ManagementTotalSale
+                            alldcr1.Add(new CNDivisionWise
                             {
-                                branchid = Convert.ToString(dr["branchid"].ToString()),
-                                branchnm = Convert.ToString(dr["branchnm"].ToString()),
-                                wiringdevices = Convert.ToString(dr["wiring"].ToString()),
-                                lights = Convert.ToString(dr["lights"].ToString()),
-                                wireandcable = Convert.ToString(dr["wire"].ToString()),
-                                pipesandfittings = Convert.ToString(dr["pipes"].ToString()),
-                                mcbanddbs = Convert.ToString(dr["mcb"].ToString()),
-                                fan = Convert.ToString(dr["fan"].ToString()),
-                                Automation = Convert.ToString(dr["AU"].ToString()),
-                                healthcare = Convert.ToString(dr["HEALTHCARE"].ToString()),
-                                totalsale = Convert.ToString(dr["totalsale"].ToString()),
-                                branchcontribution = Convert.ToString(dr["branchcontribution"].ToString()),
-                                branchcontributionpercentage = Convert.ToString(dr["contribypercent"].ToString()),
+                                InvoiceType =dr["invoicetype"].ToString(),
+                                Division = dr["divisionnm"].ToString(),
+                                ActualCN = dr["ActualCn"].ToString(),
+                                CNAdjusted = dr["CNadjusted"].ToString(),
+                                Differnece = dr["DifferenceCN"].ToString()
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new ManagementTotalSales
+                        alldcr.Add(new CNDivisionWises
                         {
                             result = true,
                             message = string.Empty,
@@ -62,16 +55,14 @@ namespace Project.Service.Controllers
                         });
                         data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-
                         response.Content = new StringContent(data1, Encoding.UTF8, "application/json");
-
                         return response;
                     }
                     else
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "No Data Found"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

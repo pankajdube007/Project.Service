@@ -40,6 +40,7 @@ namespace Project.Service.Models
         public string pipesandfittings { get; set; }
         public string mcbanddbs { get; set; }
         public string fan { get; set; }
+        public string Automation { get; set; }
         public string healthcare { get; set; }
         public string totalsale { get; set; }
         public string branchcontribution { get; set; }

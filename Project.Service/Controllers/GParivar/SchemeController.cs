@@ -51,6 +51,14 @@ namespace Project.Service.Controllers
                     {
                         dr = g1.return_dr("allPartyWiseActiveSchemeGroupschemeApp '" + ula.CIN + "'");
                     }
+                    else if (ula.Type == 5)
+                    {
+                        dr = g1.return_dr("allPartyWiseActiveSUBCATEGORYWISEQTYSCHEMEschemeApp '" + ula.CIN + "'");
+                    }
+                    else if (ula.Type == 6)
+                    {
+                        dr = g1.return_dr("allPartyWiseActiveitemwiseamountperschemApp '" + ula.CIN + "'");
+                    }
 
                     if (dr.HasRows)
                     {

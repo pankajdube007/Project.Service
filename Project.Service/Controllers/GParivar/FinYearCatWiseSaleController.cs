@@ -1,59 +1,51 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Project.Service.Filters;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using Project.Service.Models.GParivar;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GParivar
 {
-    public class ManagementTotalSaleController : ApiController
+    public class FinYearCatWiseSaleController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetTotalSaleBranchWise")]
-        public HttpResponseMessage GetDetails(ListofManagementTotalSale ula)
+        [Route("api/getcatwisesale")]
+        public HttpResponseMessage GetDetails(ListofFinyearCatWiseSale ula)
         {
             DataConection g1 = new DataConection();
-            Common cm = new Common();
+            Common cm = new Common();            
             if (ula.CIN != "")
             {
                 try
                 {
                     string data1;
 
-                    List<ManagementTotalSales> alldcr = new List<ManagementTotalSales>();
-                    List<ManagementTotalSale> alldcr1 = new List<ManagementTotalSale>();
-
-                    var dr = g1.return_dr("InvoiceReportManagementBranch '" + ula.FromDate + "','" + ula.ToDate + "','" + ula.CIN + "','" + ula.Category + "'");
+                    List<FinyearCatWiseSalelists> alldcr = new List<FinyearCatWiseSalelists>();
+                    List<FinyearCatWiseSalelist> alldcr1 = new List<FinyearCatWiseSalelist>();                    
+                    var dr = g1.return_dr("getcatwisesale '" + ula.CIN + "','" + ula.Category + "','" + ula.Finyear + "','" + ula.Div + "'");
 
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ManagementTotalSale
+                            alldcr1.Add(new FinyearCatWiseSalelist
                             {
-                                branchid = Convert.ToString(dr["branchid"].ToString()),
-                                branchnm = Convert.ToString(dr["branchnm"].ToString()),
-                                wiringdevices = Convert.ToString(dr["wiring"].ToString()),
-                                lights = Convert.ToString(dr["lights"].ToString()),
-                                wireandcable = Convert.ToString(dr["wire"].ToString()),
-                                pipesandfittings = Convert.ToString(dr["pipes"].ToString()),
-                                mcbanddbs = Convert.ToString(dr["mcb"].ToString()),
-                                fan = Convert.ToString(dr["fan"].ToString()),
-                                Automation = Convert.ToString(dr["AU"].ToString()),
-                                healthcare = Convert.ToString(dr["HEALTHCARE"].ToString()),
-                                totalsale = Convert.ToString(dr["totalsale"].ToString()),
-                                branchcontribution = Convert.ToString(dr["branchcontribution"].ToString()),
-                                branchcontributionpercentage = Convert.ToString(dr["contribypercent"].ToString()),
+                                CatId = Convert.ToString(dr["categoryid"].ToString()),
+                                CatName = Convert.ToString(dr["categorynm"].ToString()),
+                                Amount = Convert.ToString(dr["amount"].ToString()),
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new ManagementTotalSales
+                        alldcr.Add(new FinyearCatWiseSalelists
                         {
                             result = true,
                             message = string.Empty,
@@ -71,7 +63,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data Found"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No Data"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
