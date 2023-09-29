@@ -179,7 +179,8 @@ namespace Project.Service.Controllers
                     showAnnouncements= Convert.ToBoolean(data.Rows[0]["showAnnouncements"]),
                     showMenu = Convert.ToBoolean(data.Rows[0]["showMenu"]),
                     showWorldcup= Convert.ToBoolean(data.Rows[0]["showWorldcup"]),
-                    useplacesapi = Convert.ToBoolean(data.Rows[0]["useplaceapi"])
+                    useplacesapi = Convert.ToBoolean(data.Rows[0]["useplaceapi"]),
+                    showLeadGenerationMenu = Convert.ToBoolean(data.Rows[0]["showLeadGenerationMenu"])
                 });
 
                 // g1.close_connection();

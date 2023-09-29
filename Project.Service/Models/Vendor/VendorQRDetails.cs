@@ -151,86 +151,96 @@ namespace Project.Service.Models
                     }
                 }
             }
+            string jsonstrings = "";
 
-            List<PostQRMapingDetailsResponse> objPostQRMapingDetailsResponseList = new List<PostQRMapingDetailsResponse>();
-            DataSet ds = new DataSet();
-            DataTable dtData = new DataTable();
-            if (objPostQRMapingData.objPostQRMapingDetails != null)
+            try
             {
-                dtData = ToDataTable(objPostQRMapingData.objPostQRMapingDetails);
-            }
-
-            if (dtData.Rows.Count > 0)
-            {
-                String strSessionID = "User" + VendorID.ToString() + DateTime.Now.ToString("ddMMMyyyyhhmmss");
-                DataColumn newColumn = new DataColumn("SessionID", typeof(System.String));
-                newColumn.DefaultValue = strSessionID.ToString().ToUpper();
-                dtData.Columns.Add(newColumn);
-
-                newColumn = new DataColumn("CreatedDate", typeof(System.DateTime));
-                newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
-                dtData.Columns.Add(newColumn);
-
-                newColumn = new DataColumn("VendorID", typeof(System.String));
-                newColumn.DefaultValue = VendorID.Trim();
-                dtData.Columns.Add(newColumn);
-
-                newColumn = new DataColumn("BranchID", typeof(System.String));
-                newColumn.DefaultValue = BranchID.Trim();
-                dtData.Columns.Add(newColumn);
-
-                DataConnectionTrans objDataAccess = new DataConnectionTrans();
-                String Data = objDataAccess.BulkInsert(dtData, "TempQRPostDetails");
-
-                objDataAccess = new DataConnectionTrans();
-                SqlParameter[] param = new SqlParameter[3];
-                param[0] = new SqlParameter("@VendorID", VendorID);
-                param[1] = new SqlParameter("@BranchID", BranchID);
-                param[2] = new SqlParameter("@SessionID", strSessionID.ToString().ToUpper());
-                ds = objDataAccess.FillDataSet("UpdateProductDetailsForScannerQRBulk", param);
-
-                if (ds.Tables[0].Rows.Count > 0)
+                List<PostQRMapingDetailsResponse> objPostQRMapingDetailsResponseList = new List<PostQRMapingDetailsResponse>();
+                DataSet ds = new DataSet();
+                DataTable dtData = new DataTable();
+                if (objPostQRMapingData.objPostQRMapingDetails != null)
                 {
-                    foreach (DataRow dr in dtData.Rows)
+                    dtData = ToDataTable(objPostQRMapingData.objPostQRMapingDetails);
+                }
+
+                if (dtData.Rows.Count > 0)
+                {
+                    String strSessionID = "User" + VendorID.ToString() + DateTime.Now.ToString("ddMMMyyyyhhmmss");
+                    DataColumn newColumn = new DataColumn("SessionID", typeof(System.String));
+                    newColumn.DefaultValue = strSessionID.ToString().ToUpper();
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("CreatedDate", typeof(System.DateTime));
+                    newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("VendorID", typeof(System.String));
+                    newColumn.DefaultValue = VendorID.Trim();
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("BranchID", typeof(System.String));
+                    newColumn.DefaultValue = BranchID.Trim();
+                    dtData.Columns.Add(newColumn);
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    String Data = objDataAccess.BulkInsert(dtData, "TempQRPostDetails");
+
+                    objDataAccess = new DataConnectionTrans();
+                    SqlParameter[] param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@VendorID", VendorID);
+                    param[1] = new SqlParameter("@BranchID", BranchID);
+                    param[2] = new SqlParameter("@SessionID", strSessionID.ToString().ToUpper());
+                    ds = objDataAccess.FillDataSet("UpdateProductDetailsForScannerQRBulk", param);
+
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        if (dr["InvPostType"].ToString().Trim().ToUpper() != "AUTO")
+                        foreach (DataRow dr in dtData.Rows)
                         {
-                            PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
-                            objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
-                            objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                            if (dr["InvPostType"].ToString().Trim().ToUpper() != "AUTO")
+                            {
+                                PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
+                                objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
+                                objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                            }
                         }
-                    }
 
-                    DataTable dtAutoQR = new DataTable();
-                    dtAutoQR = ds.Tables[1];
+                        DataTable dtAutoQR = new DataTable();
+                        dtAutoQR = ds.Tables[1];
 
-                    if (dtAutoQR.Rows.Count > 0)
-                    {
-                        foreach (DataRow dr in dtAutoQR.Rows)
+                        if (dtAutoQR.Rows.Count > 0)
                         {
-                            PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
-                            objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
-                            objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                            foreach (DataRow dr in dtAutoQR.Rows)
+                            {
+                                PostQRMapingDetailsResponse objPostQRMapingDetailsResponse = new PostQRMapingDetailsResponse();
+                                objPostQRMapingDetailsResponse.PQRCode = dr["PQRCode"].ToString().Trim();
+                                objPostQRMapingDetailsResponseList.Add(objPostQRMapingDetailsResponse);
+                            }
                         }
                     }
                 }
-            }
 
-            if (objPostQRMapingDetailsResponseList.Count > 0)
-            {
-                objPostQRMapingDataResponse.Code = "200";
-                objPostQRMapingDataResponse.Message = "Success";
-                objPostQRMapingDataResponse.objPostQRMapingDetailsResponse = objPostQRMapingDetailsResponseList;
+                if (objPostQRMapingDetailsResponseList.Count > 0)
+                {
+                    objPostQRMapingDataResponse.Code = "200";
+                    objPostQRMapingDataResponse.Message = "Success";
+                    objPostQRMapingDataResponse.objPostQRMapingDetailsResponse = objPostQRMapingDetailsResponseList;
+                }
+                else
+                {
+                    objPostQRMapingDataResponse.Code = "400";
+                    objPostQRMapingDataResponse.Message = "No Details Found";
+                    objPostQRMapingDataResponse.objPostQRMapingDetailsResponse = objPostQRMapingDetailsResponseList;
+                }
+
+
+                jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPostQRMapingDataResponse);
             }
-            else
+            catch (Exception ex)
             {
                 objPostQRMapingDataResponse.Code = "400";
-                objPostQRMapingDataResponse.Message = "No Details Found";
-                objPostQRMapingDataResponse.objPostQRMapingDetailsResponse = objPostQRMapingDetailsResponseList;
+                objPostQRMapingDataResponse.Message = ex.ToString();
+                jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPostQRMapingDataResponse);
             }
-
-
-            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPostQRMapingDataResponse);
 
             var resp = new HttpResponseMessage()
             {
@@ -421,6 +431,93 @@ namespace Project.Service.Models
         }
 
 
+        public HttpResponseMessage GETBagQRPrint(GetBagQRLabelData objGetBagQRLabelData)
+        {
+            ReportResponse objReportResponse = new ReportResponse();
+
+            Byte[] reportdata = null;
+
+            String Qty = "0";
+            String BagQR = "";
+            String ItemID = "";
+            String VendorID = "";
+
+            if (objGetBagQRLabelData.Qty != null)
+            {
+                if (objGetBagQRLabelData.Qty.ToString().Trim() != "")
+                {
+                    Qty = objGetBagQRLabelData.Qty.ToString().Trim();
+                }
+            }
+
+            if (objGetBagQRLabelData.QRCode != null)
+            {
+                if (objGetBagQRLabelData.QRCode.ToString().Trim() != "")
+                {
+                    BagQR = objGetBagQRLabelData.QRCode.ToString().Trim();
+                }
+            }
+
+            if (objGetBagQRLabelData.ProductID != null)
+            {
+                if (objGetBagQRLabelData.ProductID.ToString().Trim() != "")
+                {
+                    ItemID = objGetBagQRLabelData.ProductID.ToString().Trim();
+                }
+            }
+
+
+
+            if (objGetBagQRLabelData.VendorID != null)
+            {
+                if (objGetBagQRLabelData.VendorID.ToString().Trim() != "")
+                {
+                    VendorID = objGetBagQRLabelData.VendorID.ToString().Trim();
+                }
+            }
+
+            try
+            {
+                using (BagQRCodePrint report = new BagQRCodePrint())
+                {
+                    report.Parameters["parameter7"].Value = Qty;
+                    report.Parameters["parameter8"].Value = BagQR;
+                    report.Parameters["parameter9"].Value = ItemID;
+                    report.Parameters["parameter10"].Value = VendorID;
+                    report.CreateDocument();
+                    using (var ms = new MemoryStream())
+                    {
+                        var opts = new PdfExportOptions
+                        {
+                            ShowPrintDialogOnOpen = false
+                        };
+                        report.ExportToPdf(ms, opts);
+
+                        ms.Seek(0, SeekOrigin.Begin);
+                        reportdata = ms.ToArray();
+                    }
+                }
+                objReportResponse.Code = "200";
+                objReportResponse.Message = "Success";
+                objReportResponse.Report = reportdata;
+            }
+            catch (Exception ex)
+            {
+                objReportResponse.Code = "400";
+                objReportResponse.Message = "Error";
+                objReportResponse.Report = reportdata;
+            }
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objReportResponse);
+
+            var resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings)
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return resp;
+        }
+
 
         public DataTable ToDataTable<T>(List<T> items)
         {
@@ -468,6 +565,15 @@ public class GetCQRLabelData
     public string QRCode { get; set; }
     public string LabelQRCode { get; set; }
     public string PrintDimension { get; set; }
+}
+
+
+public class GetBagQRLabelData
+{
+    public string Qty { get; set; }
+    public string QRCode { get; set; }
+    public string ProductID { get; set; }
+    public string VendorID { get; set; }
 }
 
 
@@ -555,6 +661,10 @@ public class PostQRMapingDetails
 
     public string UBranchID { get; set; }
     public string UWarehouseID { get; set; }
+
+    public string TaskNo { get; set; }
+    public string TaskCDate { get; set; }
+    public string TaskEDate { get; set; }
 }
 
 

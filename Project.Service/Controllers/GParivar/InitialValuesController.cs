@@ -208,7 +208,9 @@ namespace Project.Service
                     MenInBlueSumPartyList= "getMenInBlueSumPartyList",
                     meninbluePriceList = "getmeninbluePriceList",
                    meninblueschememain = "getmeninblueschememain",
-                    partyWisemeninblueGiftAdd = "partyWisemeninblueGiftAdd"
+                    partyWisemeninblueGiftAdd = "partyWisemeninblueGiftAdd",
+                    dubaitourdata = "getdubaitourdata",
+                    DubaiTourData = "AddDubaiTourData"
 
                 });
 

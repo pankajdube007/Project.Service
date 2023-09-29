@@ -379,6 +379,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\General\WhatsappController.cs" />
+    <Compile Include="Controllers\GParivar\AddDubaiTourDataController.cs" />
     <Compile Include="Controllers\GParivar\AddRaiseTicketController.cs" />
     <Compile Include="Controllers\GParivar\BannerImgController.cs" />
     <Compile Include="Controllers\GParivar\ActiveDealerDeviceController.cs" />
@@ -404,6 +405,7 @@
     <Compile Include="Controllers\GParivar\FreepayBankDeactiveHistoryController.cs" />
     <Compile Include="Controllers\GParivar\GetCategoryMastController.cs" />
     <Compile Include="Controllers\GParivar\GetCFDetailsController.cs" />
+    <Compile Include="Controllers\GParivar\GetDataDubaiTourController.cs" />
     <Compile Include="Controllers\GParivar\GetDistrictMasterController.cs" />
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByCategoryAndNameorCodeController.cs" />
@@ -911,11 +913,13 @@
     <Compile Include="Controllers\Vendor\vendorWiseAllItemsappController.cs" />
     <Compile Include="Controllers\Vendor\WAPostQRMapingDetailsController.cs" />
     <Compile Include="Controllers\Vendor\WAQRSyncPostAPIUrlController.cs" />
+    <Compile Include="Controllers\Vendor\WAVendorBAGQRLabelController.cs" />
     <Compile Include="Controllers\Vendor\WAVendorCQRLabelController.cs" />
     <Compile Include="Controllers\Vendor\WAVendorQRController.cs" />
     <Compile Include="Models\General\Whatsapp.cs" />
     <Compile Include="Models\GParivar\ActiveDealerDevice.cs" />
     <Compile Include="Models\GParivar\ActiveDeviceLogout.cs" />
+    <Compile Include="Models\GParivar\AddDubaiTourData.cs" />
     <Compile Include="Models\GParivar\AddMenInBlueGift.cs" />
     <Compile Include="Models\GParivar\AddPlaceOrder.cs" />
     <Compile Include="Models\GParivar\AddPod.cs" />
@@ -924,6 +928,7 @@
     <Compile Include="Models\GParivar\FinyearCatWiseSalelist.cs" />
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\GetCFSInvoiceList.cs" />
+    <Compile Include="Models\GParivar\GetDataDubaiTour.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByCategoryAndNameorCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCodeDetailList.cs" />
@@ -1677,6 +1682,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\GParivar\WheelSpinsController.cs" />
     <Compile Include="Controllers\Vendor\VendorMastManagementController.cs" />
+    <Compile Include="Report\BagQRCodePrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\MasterCeilingFanTransparentPrint.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1722,6 +1730,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Report\BagQRCodePrint.resx">
+      <DependentUpon>BagQRCodePrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\MasterCeilingFanTransparentPrint.resx">
       <DependentUpon>MasterCeilingFanTransparentPrint.cs</DependentUpon>
     </EmbeddedResource>

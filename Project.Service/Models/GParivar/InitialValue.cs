@@ -179,6 +179,8 @@ namespace Project.Service.Models
         public string meninbluePriceList { get; set; }
         public string meninblueschememain { get; set; }
         public string partyWisemeninblueGiftAdd { get; set; }
+        public string dubaitourdata { get; set; }
+        public string DubaiTourData { get; set; }
         
     }
 }
