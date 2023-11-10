@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
                     List<DisAndDealerContactExs> alldcr = new List<DisAndDealerContactExs>();
                     List<DisAndDealerContactEx> alldcr1 = new List<DisAndDealerContactEx>();
                     List<DisAndDealerContactExFinal> DisAndDealerContactExFinal = new List<DisAndDealerContactExFinal>();
-                    var dr = g1.return_dt("AppcustomercontactEx " + ula.ExId + "," + Convert.ToBoolean(ula.Hierarchy) + "," + ula.index + "," + ula.Count);
+                    var dr = g1.return_dt("AppcustomercontactEx " + ula.ExId + "," + Convert.ToBoolean(ula.Hierarchy) + "," + ula.index + "," + ula.Count + ",'" +ula.SearchBy+ "'");
                     bool more = false;
                     if (dr.Rows.Count > 0)
                     {

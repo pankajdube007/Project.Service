@@ -19,6 +19,8 @@ namespace Project.Service.Models
 
         [Required]
         public int Count { get; set; }
+
+        public string SearchBy { get; set; }
     }
 
     public class DisAndDealerContactExs

@@ -442,6 +442,7 @@
     <Compile Include="Controllers\GStar\ActiveSchemeExecutiveController.cs" />
     <Compile Include="Controllers\GParivar\AddEnquiryController.cs" />
     <Compile Include="Controllers\GStar\AddExecCheckINCheckOutController.cs" />
+    <Compile Include="Controllers\GStar\AddExecDealerWiseItemIssueController.cs" />
     <Compile Include="Controllers\GStar\AddexeclatlanAddController.cs" />
     <Compile Include="Controllers\GStar\AddexeclatlanAddhomeController.cs" />
     <Compile Include="Controllers\GParivar\AddFanComboController.cs" />
@@ -474,6 +475,8 @@
     <Compile Include="Controllers\GStar\ExecFavItemController.cs" />
     <Compile Include="Controllers\GStar\ExecGCSSaleController.cs" />
     <Compile Include="Controllers\GStar\ExecGCSSalePastController.cs" />
+    <Compile Include="Controllers\GStar\ExecItemWiseIssueCountController.cs" />
+    <Compile Include="Controllers\GStar\ExecItemWiseIssueListController.cs" />
     <Compile Include="Controllers\GStar\ExecLatestLatLngController.cs" />
     <Compile Include="Controllers\GStar\ExecManagementController.cs" />
     <Compile Include="Controllers\GStar\ExecOrgVistListController.cs" />
@@ -481,6 +484,7 @@
     <Compile Include="Controllers\GStar\ExecSchemeWiseTargetController.cs" />
     <Compile Include="Controllers\GStar\ExecSchemeWiseTargetPastController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveDCRController.cs" />
+    <Compile Include="Controllers\GStar\ExecutiveDivisionWiseItemController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveLatLanAddListController.cs" />
     <Compile Include="Controllers\GStar\ExecutivePresentAbsentController.cs" />
     <Compile Include="Controllers\GStar\ExecutiveScheduleListController.cs" />
@@ -492,6 +496,8 @@
     <Compile Include="Controllers\GStar\ExecWisePartyWiseItemQtyController.cs" />
     <Compile Include="Controllers\GStar\ExecWiseVendorReqitemListController.cs" />
     <Compile Include="Controllers\GStar\ExecWiseVendorReqListController.cs" />
+    <Compile Include="Controllers\GStar\ExewiseitemwisepartywisesaleController.cs" />
+    <Compile Include="Controllers\GStar\ExewiseitemwisesaleController.cs" />
     <Compile Include="Controllers\GStar\GetAllAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\GetAreaMastController.cs" />
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationArchitectNoController.cs" />
@@ -505,6 +511,7 @@
     <Compile Include="Controllers\GStar\GetExecDistrictWiseRetdetailController.cs" />
     <Compile Include="Controllers\GStar\GetExecutiveWiseNewYearBonazaController.cs" />
     <Compile Include="Controllers\GStar\GetExecwiseshowroomController.cs" />
+    <Compile Include="Controllers\GStar\GetItemIssueController.cs" />
     <Compile Include="Controllers\GStar\GetListofCityController.cs" />
     <Compile Include="Controllers\GStar\GetListofTravelModeOfTransportController.cs" />
     <Compile Include="Controllers\GStar\GetListofTravelPurposeController.cs" />
@@ -512,6 +519,7 @@
     <Compile Include="Controllers\GStar\GetNukkadMeetRequestByIDController.cs" />
     <Compile Include="Controllers\GStar\GetpeechedekhoappController.cs" />
     <Compile Include="Controllers\GStar\GetpeechedekholightappController.cs" />
+    <Compile Include="Controllers\GStar\GetsalesHiearchyDataController.cs" />
     <Compile Include="Controllers\GStar\GetStateMastGstarController.cs" />
     <Compile Include="Controllers\GStar\GstInformationController.cs" />
     <Compile Include="Controllers\GStar\InsertAutomationLeadGenerationController.cs" />
@@ -1018,17 +1026,23 @@
     <Compile Include="Models\GParivar\BranshWiseNonMovementStockDetails.cs" />
     <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
     <Compile Include="Models\GStar\EmpAttDash.cs" />
+    <Compile Include="Models\GStar\ExecDealerWiseItemIssue.cs" />
     <Compile Include="Models\GStar\ExecDistrictWiseRetCn.cs" />
     <Compile Include="Models\GStar\ExecDistrictWiseRetdetail.cs" />
+    <Compile Include="Models\GStar\ExecItemWiseIssueCount.cs" />
+    <Compile Include="Models\GStar\ExecItemWiseIssueList.cs" />
     <Compile Include="Models\GStar\ExecPartyWiseComboCount.cs" />
     <Compile Include="Models\GStar\ExecSchemeWiseTarget.cs" />
     <Compile Include="Models\GStar\ExecSchemeWiseTargetPast.cs" />
+    <Compile Include="Models\GStar\ExecutiveDivisionWiseItem.cs" />
     <Compile Include="Models\GStar\executiveGscSale.cs" />
     <Compile Include="Models\GStar\executiveGscSalePast.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodCount.cs" />
     <Compile Include="Models\GStar\ExecutiveWisePodInvoiceList.cs" />
     <Compile Include="Models\GStar\ExecWiseVendorReqitemList.cs" />
     <Compile Include="Models\GStar\ExecWiseVendorReqList.cs" />
+    <Compile Include="Models\GStar\Exewiseitemwisepartywisesale.cs" />
+    <Compile Include="Models\GStar\Exewiseitemwisesale.cs" />
     <Compile Include="Models\GStar\GetAllListofAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\GetAutomationLeadGenerationCategory.cs" />
     <Compile Include="Models\GStar\GetAutomationLeadGenerationItem.cs" />
@@ -1036,9 +1050,11 @@
     <Compile Include="Models\GStar\GetDetialsByIDAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\GetDisputeType.cs" />
     <Compile Include="Models\GStar\GetExecutiveWiseNewYearBonaza.cs" />
+    <Compile Include="Models\GStar\GetItemIssue.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationArchitectNo.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationShowroomQuotation.cs" />
+    <Compile Include="Models\GStar\GetsalesHiearchyData.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
     <Compile Include="Models\GStar\inspectionfileuplode.cs" />
     <Compile Include="Models\GStar\lastchecindetail.cs" />
@@ -1692,6 +1708,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\PartyLedgerReportNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\QRCodeLabel.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

@@ -408,6 +408,30 @@ namespace Project.Service.Models
                         }
                     }
                 }
+                else if (PrintDimension == "23x23")
+                {
+                    using (QRCodeLabel report = new QRCodeLabel())
+                    {
+                        report.Parameters["parameter2"].Value = ProductID;
+                        report.Parameters["parameter3"].Value = QRCODE;
+                        report.Parameters["parameter4"].Value = LabelBarcode;
+                        report.CreateDocument();
+                        using (var ms = new MemoryStream())
+                        {
+                            var opts = new PdfExportOptions
+                            {
+                                ShowPrintDialogOnOpen = false
+                            };
+                            report.ExportToPdf(ms, opts);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+                            reportdata = ms.ToArray();
+                        }
+                    }
+                }
+
+
+
 
                 objReportResponse.Code = "200";
                 objReportResponse.Message = "Success";

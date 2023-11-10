@@ -9,45 +9,38 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using Project.Service.Models.GParivar;
+using Project.Service.Models.GStar;
 
-namespace Project.Service.Controllers.GParivar
+namespace Project.Service.Controllers.GStar
 {
-    public class AddDubaiTourDataController : ApiController
+    public class AddExecDealerWiseItemIssueController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/AddDubaiTourData")]
-        public HttpResponseMessage GetDetails(ListAddDubaiTourData ula)
+        [Route("api/ExecDealerWiseItemIssue")]
+        public HttpResponseMessage GetDetails(ExecDealerWiseItemIssueList ula)
         {
             DataConnectionTrans g2 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != "")
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<AddDubaiTourData> alldcr = new List<AddDubaiTourData>();
-                    List<AddDubaiTourDatas> alldcr1 = new List<AddDubaiTourDatas>();
-                    var dr = g2.return_dr("dbo.dubaitourdatainsertapp '" + ula.CIN + "'," + ula.GiftCount + ",'" + ula.CnAmount + "'");
-
-                    var msg = "Your request is submitted successfully. Please check G-Parivar for Credit Note.";
-
-                    if(ula.GiftCount>0)
-                    {
-                         msg = "Your request is submitted successfully. Please check Dhanbarse App to apply coupon.";
-                    }
+                    List<ExecDealerWiseItemIssue> alldcr = new List<ExecDealerWiseItemIssue>();
+                    List<ExecDealerWiseItemIssues> alldcr1 = new List<ExecDealerWiseItemIssues>();
+                    var dr = g2.return_dr("addExecDealerWiseItemIssue " + ula.ExId + "," + ula.ItemId + ",'" + ula.Cin + "'," + ula.Issutype + ",'"+ula.Remark+"'");
 
                     if (dr.HasRows)
                     {
-                        alldcr1.Add(new AddDubaiTourDatas
+                        alldcr1.Add(new ExecDealerWiseItemIssues
                         {
-                            output = msg
+                            output = "Data Sucessfully inserted"
                         });
 
                         g2.close_connection();
-                        alldcr.Add(new AddDubaiTourData
+                        alldcr.Add(new ExecDealerWiseItemIssue
                         {
                             result = true,
                             message = string.Empty,
@@ -65,7 +58,7 @@ namespace Project.Service.Controllers.GParivar
                     {
                         g2.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "lat lan Not Created!!!!!!!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

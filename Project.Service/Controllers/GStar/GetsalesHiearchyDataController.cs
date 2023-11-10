@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Project.Service.Filters;
+using Project.Service.Models.GStar;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
@@ -9,45 +10,42 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using Project.Service.Models.GParivar;
 
-namespace Project.Service.Controllers.GParivar
+namespace Project.Service.Controllers.GStar
 {
-    public class AddDubaiTourDataController : ApiController
+    public class GetsalesHiearchyDataController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/AddDubaiTourData")]
-        public HttpResponseMessage GetDetails(ListAddDubaiTourData ula)
+        [Route("api/GetsalesHiearchyData")]
+        public HttpResponseMessage GetDetails(GetsalesHiearchyDataList ula)
         {
-            DataConnectionTrans g2 = new DataConnectionTrans();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != "")
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
 
-                    List<AddDubaiTourData> alldcr = new List<AddDubaiTourData>();
-                    List<AddDubaiTourDatas> alldcr1 = new List<AddDubaiTourDatas>();
-                    var dr = g2.return_dr("dbo.dubaitourdatainsertapp '" + ula.CIN + "'," + ula.GiftCount + ",'" + ula.CnAmount + "'");
-
-                    var msg = "Your request is submitted successfully. Please check G-Parivar for Credit Note.";
-
-                    if(ula.GiftCount>0)
-                    {
-                         msg = "Your request is submitted successfully. Please check Dhanbarse App to apply coupon.";
-                    }
-
+                    List<GetsalesHiearchyData> alldcr = new List<GetsalesHiearchyData>();
+                    List<GetsalesHiearchyDatas> alldcr1 = new List<GetsalesHiearchyDatas>();
+                    var dr = g1.return_dr($"dbo.salesHiearchyData {ula.ExId}");
                     if (dr.HasRows)
                     {
-                        alldcr1.Add(new AddDubaiTourDatas
-                        {
-                            output = msg
-                        });
 
-                        g2.close_connection();
-                        alldcr.Add(new AddDubaiTourData
+                        while (dr.Read())
+                        {
+                            alldcr1.Add(new GetsalesHiearchyDatas
+                            {
+
+                                SlNo = Convert.ToString(dr["execid"].ToString()),
+                                ExecutiveName = Convert.ToString(dr["salesexnm"].ToString()),
+
+                            });
+                        }
+                        g1.close_connection();
+                        alldcr.Add(new GetsalesHiearchyData
                         {
                             result = true,
                             message = string.Empty,
@@ -63,9 +61,9 @@ namespace Project.Service.Controllers.GParivar
                     }
                     else
                     {
-                        g2.close_connection();
+                        g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available !!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
@@ -73,8 +71,7 @@ namespace Project.Service.Controllers.GParivar
                 catch (Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                    // response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
-                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!"), Encoding.UTF8, "application/json");
+                    response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
 
                     return response;
                 }
