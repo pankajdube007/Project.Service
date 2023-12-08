@@ -210,7 +210,8 @@ namespace Project.Service
                    meninblueschememain = "getmeninblueschememain",
                     partyWisemeninblueGiftAdd = "partyWisemeninblueGiftAdd",
                     dubaitourdata = "getdubaitourdata",
-                    DubaiTourData = "AddDubaiTourData"
+                    DubaiTourData = "AddDubaiTourData",
+                    NewYearDamakaOffer = "GetNewYearDamakaOffer"
 
                 });
 

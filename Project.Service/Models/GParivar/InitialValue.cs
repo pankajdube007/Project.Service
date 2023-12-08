@@ -181,6 +181,7 @@ namespace Project.Service.Models
         public string partyWisemeninblueGiftAdd { get; set; }
         public string dubaitourdata { get; set; }
         public string DubaiTourData { get; set; }
+        public string NewYearDamakaOffer { get; set; }
         
     }
 }

@@ -17,6 +17,9 @@ namespace Project.Service.Models
         [Required]
         public string Category { get; set; }
 
+        [Required]
+        public string ComboId { get; set; }
+
     }
 
     public class BranchWiseCombos
@@ -33,6 +36,8 @@ namespace Project.Service.Models
         public string branchname { get; set; }
         public string Count { get; set; }
         public string used { get; set; }
+
+        public string ComboIds { get; set; }
 
     }
 

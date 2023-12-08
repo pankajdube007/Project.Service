@@ -30,7 +30,7 @@ namespace Project.Service.Controllers.Management
                     List<partywisecomboids> alldcr = new List<partywisecomboids>();
                     List<partywisecomboid> alldcr1 = new List<partywisecomboid>();
 
-                    var dr = g1.return_dr("partywisecomboidcount '" + ula.partycin + "','" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("partywisecomboidcount '" + ula.partycin + "','" + ula.CIN + "','" + ula.Category + "',"+ula.ComboId);
 
                     if (dr.HasRows)
                     {
@@ -41,6 +41,7 @@ namespace Project.Service.Controllers.Management
                                 ComboName = Convert.ToString(dr["ComboName"].ToString()),
                                 NumberOfCombo = Convert.ToString(dr["NumberOfCombo"].ToString()),
                                 used = Convert.ToString(dr["used"].ToString()),
+                                ComboIds = Convert.ToString(dr["Comboid"].ToString()),
 
 
 

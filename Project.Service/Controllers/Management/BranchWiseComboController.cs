@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
                     List<BranchWiseCombos> alldcr = new List<BranchWiseCombos>();
                     List<BranchWiseCombo> alldcr1 = new List<BranchWiseCombo>();
 
-                    var dr = g1.return_dr("branchwisecombocntapp '" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("branchwisecombocntapp '" + ula.CIN + "','" + ula.Category + "',"+ula.ComboId);
 
                     if (dr.HasRows)
                     {
@@ -39,10 +39,10 @@ namespace Project.Service.Controllers
                             alldcr1.Add(new BranchWiseCombo
                             {
                                 branchname = Convert.ToString(dr["locnm"].ToString()),
-                                 branchid= Convert.ToString(dr["SlNo"].ToString()),
+                                branchid = Convert.ToString(dr["SlNo"].ToString()),
                                 Count = Convert.ToString(dr["cnt"].ToString()),
                                 used = Convert.ToString(dr["used"].ToString()),
-
+                                ComboIds = Convert.ToString(dr["Comboid"].ToString()),
                             });
                         }
                         g1.close_connection();

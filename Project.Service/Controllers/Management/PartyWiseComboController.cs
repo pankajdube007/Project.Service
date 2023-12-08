@@ -31,7 +31,7 @@ namespace Project.Service.Controllers
                     List<PartyWiseCombos> alldcr = new List<PartyWiseCombos>();
                     List<PartyWiseCombo> alldcr1 = new List<PartyWiseCombo>();
 
-                    var dr = g1.return_dr("partywisecombocountapp '" + ula.BranchId + "','" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("partywisecombocountapp '" + ula.BranchId + "','" + ula.CIN + "','" + ula.Category + "',"+ ula.ComboId);
 
                     if (dr.HasRows)
                     {
@@ -43,6 +43,7 @@ namespace Project.Service.Controllers
                                 Count = Convert.ToString(dr["cnt"].ToString()),
                                 used = Convert.ToString(dr["used"].ToString()),
                                 partycin = Convert.ToString(dr["partycin"].ToString()),
+                                ComboIds = Convert.ToString(dr["Comboid"].ToString()),
 
                             });
                         }

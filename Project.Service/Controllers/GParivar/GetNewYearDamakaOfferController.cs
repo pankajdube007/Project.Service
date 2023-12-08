@@ -48,6 +48,7 @@ namespace Project.Service.Controllers.GParivar
                                 NextReward = Convert.ToString(dr["Nextreward"].ToString()),
                                 Rewarding = Convert.ToString(dr["Rewarding"].ToString()),
                                 NextRewardImage = Convert.ToString(dr["NextRewardImage"].ToString()),
+                                PdfLink = Convert.ToString(dr["pdflink"].ToString()),
                             });
                         }
                         g1.close_connection();

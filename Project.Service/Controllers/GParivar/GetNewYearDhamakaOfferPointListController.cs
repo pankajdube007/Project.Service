@@ -1,50 +1,51 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Project.Service.Filters;
+using Project.Service.Models.GParivar;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GParivar
 {
-    public class ExecPartyWiseComboCountController : ApiController
+    public class GetNewYearDhamakaOfferPointListController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getexecPartywiesecombo")]
-        public HttpResponseMessage GetDetails(ListsPartyWiseCobmoCount ula)
+        [Route("api/GetNewYearDhamakaOfferPointList")]
+        public HttpResponseMessage GetDetails(GetNewYearDhamakaOfferPointList ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.ExId != 0)
+            if (ula.CIN != null)
             {
                 try
                 {
                     string data1;
 
-                    List<PartyWiseCobmoCounts> alldcr = new List<PartyWiseCobmoCounts>();
-                    List<PartyWiseCobmoCount> alldcr1 = new List<PartyWiseCobmoCount>();
-
-                    var dr = g1.return_dr("execPartywiesecombo " + ula.ExId + ","+ula.ComboId);
+                    List<GetNewYearDhamakaOfferPointListe> alldcr = new List<GetNewYearDhamakaOfferPointListe>();
+                    List<GetNewYearDhamakaOfferPointLists> alldcr1 = new List<GetNewYearDhamakaOfferPointLists>();
+                    var dr = g1.return_dr($"dbo.usp_saleQuantity  '{ula.CIN}' ");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PartyWiseCobmoCount
+                            alldcr1.Add(new GetNewYearDhamakaOfferPointLists
                             {
-                                Cin = Convert.ToString(dr["partycin"]),
-                                Name = Convert.ToString(dr["locnm"]),
-                                Count = Convert.ToString(dr["cnt"]),
-                                Used = Convert.ToString(dr["used"]),
-                               
+                                ItemName = Convert.ToString(dr["ProductCode1"].ToString()),
+                                InvoiceNo = Convert.ToString(dr["invoiceno"].ToString()),
+                                Quantity = Convert.ToString(dr["salequantity"].ToString()),
+                                Point = Convert.ToString(dr["SaleQuantityPoint"].ToString()),
+
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new PartyWiseCobmoCounts
+                        alldcr.Add(new GetNewYearDhamakaOfferPointListe
                         {
                             result = true,
                             message = string.Empty,
@@ -62,7 +63,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

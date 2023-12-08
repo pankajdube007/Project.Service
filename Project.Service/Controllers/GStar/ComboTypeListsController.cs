@@ -1,24 +1,26 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Project.Service.Filters;
+using Project.Service.Models.GStar;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
-    public class ExecPartyWiseComboCountController : ApiController
+    public class ComboTypeListsController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getexecPartywiesecombo")]
-        public HttpResponseMessage GetDetails(ListsPartyWiseCobmoCount ula)
+        [Route("api/ComboTypeListGstar")]
+        public HttpResponseMessage GetDetails(GetComboTypeLists ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
             if (ula.ExId != 0)
             {
@@ -26,25 +28,21 @@ namespace Project.Service.Controllers
                 {
                     string data1;
 
-                    List<PartyWiseCobmoCounts> alldcr = new List<PartyWiseCobmoCounts>();
-                    List<PartyWiseCobmoCount> alldcr1 = new List<PartyWiseCobmoCount>();
-
-                    var dr = g1.return_dr("execPartywiesecombo " + ula.ExId + ","+ula.ComboId);
+                    List<ComboTypeListse> alldcr = new List<ComboTypeListse>();
+                    List<ComboTypeLists> alldcr1 = new List<ComboTypeLists>();
+                    var dr = g1.return_dr("dbo.Getcomobolist");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PartyWiseCobmoCount
+                            alldcr1.Add(new ComboTypeLists
                             {
-                                Cin = Convert.ToString(dr["partycin"]),
-                                Name = Convert.ToString(dr["locnm"]),
-                                Count = Convert.ToString(dr["cnt"]),
-                                Used = Convert.ToString(dr["used"]),
-                               
+                                Slno = Convert.ToString(dr["slno"]),
+                                ComboName = Convert.ToString(dr["SchemeName"]),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new PartyWiseCobmoCounts
+                        alldcr.Add(new ComboTypeListse
                         {
                             result = true,
                             message = string.Empty,
@@ -62,7 +60,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

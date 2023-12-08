@@ -19,6 +19,9 @@ namespace Project.Service.Models
         [Required]
         public string BranchId { get; set; }
 
+        [Required]
+        public string ComboId { get; set; }
+
     }
 
     public class PartyWiseCombos
@@ -35,6 +38,7 @@ namespace Project.Service.Models
         public string Count { get; set; }
         public string used { get; set; }
         public string partycin { get; set; }
+        public string ComboIds { get; set; }
 
     }
 }

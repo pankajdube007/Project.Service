@@ -28,7 +28,7 @@ namespace Project.Service.Controllers
 
                     List<ComboClaims> alldcr = new List<ComboClaims>();
                     List<ComboClaim> alldcr1 = new List<ComboClaim>();
-                    var dr = g1.return_dr("getcomboclaimbycin '" + ula.CIN + "'");
+                    var dr = g1.return_dr("getcomboclaimbycin '" + ula.CIN + "',"+ula.ComboId);
                     if (dr.HasRows)
                     {
                         while (dr.Read())

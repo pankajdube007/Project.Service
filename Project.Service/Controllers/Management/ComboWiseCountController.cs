@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
                     List<ComboWiseCountLists> alldcr = new List<ComboWiseCountLists>();
                     List<ComboWiseCountList> alldcr1 = new List<ComboWiseCountList>();
 
-                    var dr = g1.return_dr("combowisecount '" + ula.CIN + "','" + ula.Category + "'");
+                    var dr = g1.return_dr("combowisecount '" + ula.CIN + "','" + ula.Category + "',"+ula.ComboId);
 
                     if (dr.HasRows)
                     {
@@ -41,6 +41,7 @@ namespace Project.Service.Controllers
                                 ComboName = Convert.ToString(dr["ComboName"].ToString()),
                                 NumberOfCombo = Convert.ToString(dr["NumberOfCombo"].ToString()),
                                 used = Convert.ToString(dr["used"].ToString()),
+                                ComboIds = Convert.ToString(dr["Comboid"].ToString()),
                             });
                         }
                         g1.close_connection();

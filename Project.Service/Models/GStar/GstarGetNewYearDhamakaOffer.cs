@@ -4,24 +4,24 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Project.Service.Models.GParivar
+namespace Project.Service.Models.GStar
 {
-    public class GetNewYearDamakaOfferList
+    public class GstarGetNewYearDhamakaOfferList
     {
         [Required]
-        public string ClientSecret { get; set; }
+        public int ExId { get; set; }
 
         [Required]
-        public string CIN { get; set; }
+        public string ClientSecret { get; set; }
     }
-    public class GetNewYearDamakaOffer
+    public class GstarGetNewYearDhamakaOffer
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GetNewYearDamakaOffers> data { get; set; }
+        public List<GstarGetNewYearDhamakaOffers> data { get; set; }
     }
-    public class GetNewYearDamakaOffers
+    public class GstarGetNewYearDhamakaOffers
     {
         public string CIN { get; set; }
         public string Name { get; set; }
@@ -43,6 +43,5 @@ namespace Project.Service.Models.GParivar
         public string NextRewardImage { get; set; }
 
         public string PdfLink { get; set; }
-
     }
 }

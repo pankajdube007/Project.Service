@@ -13,6 +13,9 @@ namespace Project.Service.Models
         [Required]
         public string ClientSecret { get; set; }
 
+        [Required]
+        public int ComboId { get; set; }
+
     }
 
     public class PartyWiseCobmoCounts

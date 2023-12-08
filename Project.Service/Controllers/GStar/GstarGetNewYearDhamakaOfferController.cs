@@ -1,24 +1,26 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Project.Service.Filters;
+using Project.Service.Models.GStar;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers
+namespace Project.Service.Controllers.GStar
 {
-    public class ExecPartyWiseComboCountController : ApiController
+    public class GstarGetNewYearDhamakaOfferController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/getexecPartywiesecombo")]
-        public HttpResponseMessage GetDetails(ListsPartyWiseCobmoCount ula)
+        [Route("api/GstarGetNewYearDhamakaOffer")]
+        public HttpResponseMessage GetDetails(GstarGetNewYearDhamakaOfferList ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
             if (ula.ExId != 0)
             {
@@ -26,25 +28,31 @@ namespace Project.Service.Controllers
                 {
                     string data1;
 
-                    List<PartyWiseCobmoCounts> alldcr = new List<PartyWiseCobmoCounts>();
-                    List<PartyWiseCobmoCount> alldcr1 = new List<PartyWiseCobmoCount>();
-
-                    var dr = g1.return_dr("execPartywiesecombo " + ula.ExId + ","+ula.ComboId);
+                    List<GstarGetNewYearDhamakaOffer> alldcr = new List<GstarGetNewYearDhamakaOffer>();
+                    List<GstarGetNewYearDhamakaOffers> alldcr1 = new List<GstarGetNewYearDhamakaOffers>();
+                    var dr = g1.return_dr($"dbo.usp_PartywiseitemWisepoinappstar {ula.ExId}");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PartyWiseCobmoCount
+                            alldcr1.Add(new GstarGetNewYearDhamakaOffers
                             {
-                                Cin = Convert.ToString(dr["partycin"]),
-                                Name = Convert.ToString(dr["locnm"]),
-                                Count = Convert.ToString(dr["cnt"]),
-                                Used = Convert.ToString(dr["used"]),
-                               
+                                CIN = Convert.ToString(dr["cin"].ToString()),
+                                Name = Convert.ToString(dr["displaynmwitharea"].ToString()),
+                                DivisionName = Convert.ToString(dr["Division"].ToString()),
+                                Sale = Convert.ToString(dr["salequantity"].ToString()),
+                                Point = Convert.ToString(dr["SaleQuantityPoint"].ToString()),
+                                TotalPoint = Convert.ToString(dr["totalpoint"].ToString()),
+                                Bonus = Convert.ToString(dr["bouns"].ToString()),
+                                Reward = Convert.ToString(dr["reward"].ToString()),
+                                NextReward = Convert.ToString(dr["Nextreward"].ToString()),
+                                Rewarding = Convert.ToString(dr["Rewarding"].ToString()),
+                                NextRewardImage = Convert.ToString(dr["NextRewardImage"].ToString()),
+                                PdfLink = Convert.ToString(dr["pdflink"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new PartyWiseCobmoCounts
+                        alldcr.Add(new GstarGetNewYearDhamakaOffer
                         {
                             result = true,
                             message = string.Empty,
@@ -62,7 +70,7 @@ namespace Project.Service.Controllers
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

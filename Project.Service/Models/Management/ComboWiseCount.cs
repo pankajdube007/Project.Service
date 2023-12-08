@@ -16,6 +16,9 @@ namespace Project.Service.Models
         [Required]
         public string Category { get; set; }
 
+        [Required]
+        public string ComboId { get; set; }
+
     }
 
     public class ComboWiseCountLists
@@ -31,6 +34,8 @@ namespace Project.Service.Models
         public string ComboName { get; set; }
         public string NumberOfCombo { get; set; }
         public string used { get; set; }
+
+        public string ComboIds { get; set; }
 
     }
 }

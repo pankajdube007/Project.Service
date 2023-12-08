@@ -411,6 +411,8 @@
     <Compile Include="Controllers\GParivar\GetItemDetailsByCategoryAndNameorCodeController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeDetailListController.cs" />
+    <Compile Include="Controllers\GParivar\GetNewYearDamakaOfferController.cs" />
+    <Compile Include="Controllers\GParivar\GetNewYearDhamakaOfferPointListController.cs" />
     <Compile Include="Controllers\GParivar\GetOrderCatItemDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetOrderDivisionAndCategoryController.cs" />
     <Compile Include="Controllers\GParivar\GetOrderItemCatPriceDetailsController.cs" />
@@ -521,6 +523,7 @@
     <Compile Include="Controllers\GStar\GetpeechedekholightappController.cs" />
     <Compile Include="Controllers\GStar\GetsalesHiearchyDataController.cs" />
     <Compile Include="Controllers\GStar\GetStateMastGstarController.cs" />
+    <Compile Include="Controllers\GStar\GstarGetNewYearDhamakaOfferController.cs" />
     <Compile Include="Controllers\GStar\GstInformationController.cs" />
     <Compile Include="Controllers\GStar\InsertAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\InsertExpenseLocalConveyDisputeController.cs" />
@@ -598,6 +601,7 @@
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
     <Compile Include="Controllers\Management\CNDivisionWiseController.cs" />
+    <Compile Include="Controllers\Management\ComboNameListController.cs" />
     <Compile Include="Controllers\Management\ComboWiseCountController.cs" />
     <Compile Include="Controllers\Management\DivisionBrachWiseSaleExpenseController.cs" />
     <Compile Include="Controllers\Management\GetGroupwisePassengerCountController.cs" />
@@ -940,6 +944,8 @@
     <Compile Include="Models\GParivar\GetItemDetailsByCategoryAndNameorCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCodeDetailList.cs" />
+    <Compile Include="Models\GParivar\GetNewYearDamakaOffer.cs" />
+    <Compile Include="Models\GParivar\GetNewYearDhamakaOfferPointList.cs" />
     <Compile Include="Models\GParivar\GetOrderCatItemDetails.cs" />
     <Compile Include="Models\GParivar\GetOrderItemCatPriceDetails.cs" />
     <Compile Include="Models\GParivar\GetOrderItemDetails.cs" />
@@ -1055,6 +1061,7 @@
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationArchitectNo.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationShowroomQuotation.cs" />
     <Compile Include="Models\GStar\GetsalesHiearchyData.cs" />
+    <Compile Include="Models\GStar\GstarGetNewYearDhamakaOffer.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
     <Compile Include="Models\GStar\inspectionfileuplode.cs" />
     <Compile Include="Models\GStar\lastchecindetail.cs" />
@@ -1121,6 +1128,7 @@
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
     <Compile Include="Models\Management\CNDivisionWise.cs" />
+    <Compile Include="Models\Management\ComboNameList.cs" />
     <Compile Include="Models\Management\ComboWiseCount.cs" />
     <Compile Include="Models\Management\DivisionBrachWiseSaleExpense.cs" />
     <Compile Include="Models\Management\GroupwisePassengerCount.cs" />

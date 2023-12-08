@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace Project.Service.Models.Management
 {
-    public class ListOfpartywisecomboid
+    public class ComboNameListe
     {
         [Required]
         public string ClientSecret { get; set; }
@@ -13,27 +16,17 @@ namespace Project.Service.Models.Management
 
         [Required]
         public string Category { get; set; }
-
-        [Required]
-        public int partycin { get; set; }
-
-        [Required]
-        public string ComboId { get; set; }
     }
-
-    public class partywisecomboids
+    public class ComboNameLists
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<partywisecomboid> data { get; set; }
+        public List<ComboNameList> data { get; set; }
     }
-    public class partywisecomboid
+    public class ComboNameList
     {
+        public string Slno { get; set; }
         public string ComboName { get; set; }
-        public string NumberOfCombo { get; set; }
-        public string used { get; set; }
-        public string ComboIds { get; set; }
-
     }
 }
