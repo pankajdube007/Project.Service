@@ -689,6 +689,8 @@ public class PostQRMapingDetails
     public string TaskNo { get; set; }
     public string TaskCDate { get; set; }
     public string TaskEDate { get; set; }
+    public string BOMID { get; set; }
+    public string BOMName { get; set; }
 }
 
 

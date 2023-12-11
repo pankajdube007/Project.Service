@@ -399,6 +399,7 @@
     <Compile Include="Controllers\GParivar\AppthirdpartypaymentController.cs" />
     <Compile Include="Controllers\GParivar\BonanzaPriceListController.cs" />
     <Compile Include="Controllers\GParivar\CFSInvoiceController.cs" />
+    <Compile Include="Controllers\GParivar\ComboTypeListController.cs" />
     <Compile Include="Controllers\GParivar\DeActivateAccountController.cs" />
     <Compile Include="Controllers\GParivar\FinYearCatWiseSaleController.cs" />
     <Compile Include="Controllers\GParivar\FreepayBankDeactivationController.cs" />
@@ -464,6 +465,7 @@
     <Compile Include="Controllers\GStar\AutomationLeadGenerationShowroomQuotationInsertController.cs" />
     <Compile Include="Controllers\GStar\AutomationLeadGenerationShowroomQuotationListController.cs" />
     <Compile Include="Controllers\GStar\AutomationLeadGenerationStatusUpdateController.cs" />
+    <Compile Include="Controllers\GStar\ComboTypeListsController.cs" />
     <Compile Include="Controllers\GStar\DcrAddLocalConveyanceController.cs" />
     <Compile Include="Controllers\GStar\DcrAddLocalConveyancenewController.cs" />
     <Compile Include="Controllers\GStar\DcrLocalConveyanceController.cs" />
@@ -937,6 +939,7 @@
     <Compile Include="Models\GParivar\AddPod.cs" />
     <Compile Include="Models\GParivar\AddRaiseTicket.cs" />
     <Compile Include="Models\GParivar\BonanzaPriceList.cs" />
+    <Compile Include="Models\GParivar\ComboTypeList.cs" />
     <Compile Include="Models\GParivar\FinyearCatWiseSalelist.cs" />
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\GetCFSInvoiceList.cs" />
@@ -1030,6 +1033,7 @@
     <Compile Include="Models\Branding\BrandingGetLastJobOfDesigner.cs" />
     <Compile Include="Models\GParivar\BranshWiseNonMovementStock.cs" />
     <Compile Include="Models\GParivar\BranshWiseNonMovementStockDetails.cs" />
+    <Compile Include="Models\GStar\ComboTypeLists.cs" />
     <Compile Include="Models\GStar\DealerContactExecutiveNew.cs" />
     <Compile Include="Models\GStar\EmpAttDash.cs" />
     <Compile Include="Models\GStar\ExecDealerWiseItemIssue.cs" />
