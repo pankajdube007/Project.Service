@@ -26,7 +26,7 @@ namespace Project.Service.Controllers
             var request = Request;
             var key = string.Empty;
             var data = string.Empty;
-            decimal distance = 0;
+           // decimal distance = 0;
             if (ula.userid != 0 && ula.slno != 0)
             {
                 try
@@ -50,42 +50,42 @@ namespace Project.Service.Controllers
                             if (!String.IsNullOrEmpty(dr3.Rows[0]["brpin"].ToString()) && !String.IsNullOrEmpty(dr3.Rows[0]["topin"].ToString()))
                             {
                               
-                                var dr10 = g2.return_dt("pintopindistancecheck '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "'");
+                                //var dr10 = g2.return_dt("pintopindistancecheck '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "'");
 
-                                if (dr10.Rows.Count > 0)
-                                {
-                                    distance = Convert.ToDecimal(dr10.Rows[0]["Distance"]);
-                                }
-                                else
-                                {
-                                    var baseurl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + dr3.Rows[0]["brpin"].ToString() + "+IN&destinations=" + dr3.Rows[0]["topin"].ToString() + " +IN&mode=driving&language=en-EN&sensor=false&key=AIzaSyCuYEQogqF3cTj_f8oj-eM3YabPaF57js4";
+                                //if (dr10.Rows.Count > 0)
+                                //{
+                                //    distance = Convert.ToDecimal(dr10.Rows[0]["Distance"]);
+                                //}
+                                //else
+                                //{
+                                //    var baseurl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + dr3.Rows[0]["brpin"].ToString() + "+IN&destinations=" + dr3.Rows[0]["topin"].ToString() + " +IN&mode=driving&language=en-EN&sensor=false&key=AIzaSyCuYEQogqF3cTj_f8oj-eM3YabPaF57js4";
 
-                                    RemoteStatus res;
-                                    using (var remoteClient = new RemoteClient())
-                                    {
-                                        res = remoteClient.GetAsync(url: baseurl).Result;
-                                    }
+                                //    RemoteStatus res;
+                                //    using (var remoteClient = new RemoteClient())
+                                //    {
+                                //        res = remoteClient.GetAsync(url: baseurl).Result;
+                                //    }
 
-                                    var json1 = JObject.Parse(res.Response);
+                                //    var json1 = JObject.Parse(res.Response);
 
 
-                                   // dynamic _output = JsonConvert.DeserializeObject(res.Response).ToString();
-                                    if (res.StatusCode == 200)
+                                //   // dynamic _output = JsonConvert.DeserializeObject(res.Response).ToString();
+                                //    if (res.StatusCode == 200)
 
-                                    {
-                                       // string jjj = json1.SelectToken("rows[0].elements[0].distance.text").ToString();
-                                      //  string jjjw = json1.SelectToken("rows[0].elements[0].distance.value").ToString();
-                                        string[] tokens = json1.SelectToken("rows[0].elements[0].distance.text").ToString().Split(' ');
-                                        distance = Convert.ToDecimal(tokens[0]);
+                                //    {
+                                //       // string jjj = json1.SelectToken("rows[0].elements[0].distance.text").ToString();
+                                //      //  string jjjw = json1.SelectToken("rows[0].elements[0].distance.value").ToString();
+                                //        string[] tokens = json1.SelectToken("rows[0].elements[0].distance.text").ToString().Split(' ');
+                                //        distance = Convert.ToDecimal(tokens[0]);
 
-                                        var dr9 = g2.return_dt("pintopindistanceInsert '" + dr3.Rows[0]["brpin"].ToString() +"','" + dr3.Rows[0]["topin"].ToString() + "','" + distance + "','km'");
-                                    }
+                                //        var dr9 = g2.return_dt("pintopindistanceInsert '" + dr3.Rows[0]["brpin"].ToString() +"','" + dr3.Rows[0]["topin"].ToString() + "','" + distance + "','km'");
+                                //    }
 
-                                }
+                                //}
 
                                
 
-                                if (!String.IsNullOrEmpty(dr3.Rows[0]["transporterid"].ToString()) && !String.IsNullOrEmpty(dr3.Rows[0]["transportername"].ToString()) && distance!=0)
+                                if (!String.IsNullOrEmpty(dr3.Rows[0]["transporterid"].ToString()) && !String.IsNullOrEmpty(dr3.Rows[0]["transportername"].ToString()) )
                                 {
                                     var dr4 = g2.return_dr("EwayBillDataChildbySlno " + ula.slno+","+ula.type);
                                     while (dr4.Read())
@@ -162,7 +162,8 @@ namespace Project.Service.Controllers
                                             transporterName = dr3.Rows[i]["transportername"].ToString(),
                                             transDocNo = "",
                                             transMode = "",
-                                            transDistance = distance.ToString(),
+                                               transDistance ="0",
+                                            //   transDistance = distance.ToString(),
                                             transDocDate = "",
                                             vehicleNo = "",
                                             vehicleType = "",
@@ -375,21 +376,21 @@ namespace Project.Service.Controllers
                       
                     }
 
-                    if(distance==0)
-                    {
-                        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Distance not available on Google portal, please update manually!!!!!"), Encoding.UTF8, "application/json");
+                    //if (distance == 0)
+                    //{
+                    //    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK);
+                    //    response.Content = new StringContent(cm.StatusTime(false, "Distance not available on Google portal, please update manually!!!!!"), Encoding.UTF8, "application/json");
 
-                        return response;
-                    }
-                    else
-                    {
+                    //    return response;
+                    //}
+                    //else
+                    //{
                         HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message.ToString()), Encoding.UTF8, "application/json");
 
                         return response;
-                    }
-                 
+                  //  }
+
                 }
             }
             else
