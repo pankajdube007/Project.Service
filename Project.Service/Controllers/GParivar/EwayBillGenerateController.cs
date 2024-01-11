@@ -26,7 +26,7 @@ namespace Project.Service.Controllers
             var request = Request;
             var key = string.Empty;
             var data = string.Empty;
-           // decimal distance = 0;
+            decimal distance = 0;
             if (ula.userid != 0 && ula.slno != 0)
             {
                 try
@@ -49,7 +49,18 @@ namespace Project.Service.Controllers
                         {
                             if (!String.IsNullOrEmpty(dr3.Rows[0]["brpin"].ToString()) && !String.IsNullOrEmpty(dr3.Rows[0]["topin"].ToString()))
                             {
-                              
+
+                                if (dr3.Rows[0]["brpin"].ToString() == dr3.Rows[0]["topin"].ToString())
+                                {
+
+                                    var dr10 = g2.return_dt("pintopindistancecheck '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "'");
+
+                                    if (dr10.Rows.Count > 0)
+                                    {
+                                        distance = Convert.ToDecimal(dr10.Rows[0]["Distance"]);
+                                    }
+                                }
+
                                 //var dr10 = g2.return_dt("pintopindistancecheck '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "'");
 
                                 //if (dr10.Rows.Count > 0)
@@ -83,7 +94,7 @@ namespace Project.Service.Controllers
 
                                 //}
 
-                               
+
 
                                 if (!String.IsNullOrEmpty(dr3.Rows[0]["transporterid"].ToString()) && !String.IsNullOrEmpty(dr3.Rows[0]["transportername"].ToString()) )
                                 {
@@ -162,8 +173,8 @@ namespace Project.Service.Controllers
                                             transporterName = dr3.Rows[i]["transportername"].ToString(),
                                             transDocNo = "",
                                             transMode = "",
-                                               transDistance ="0",
-                                            //   transDistance = distance.ToString(),
+                                             //  transDistance ="0",
+                                               transDistance = distance.ToString(),
                                             transDocDate = "",
                                             vehicleNo = "",
                                             vehicleType = "",
