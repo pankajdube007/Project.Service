@@ -53,33 +53,33 @@ namespace Project.Service.Controllers
                                 {
                                     distance = Convert.ToDecimal(dr10.Rows[0]["Distance"]);
                                 }
-                                else
-                                {
-                                    var baseurl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + dr3.Rows[0]["brpin"].ToString() + "+IN&destinations=" + dr3.Rows[0]["topin"].ToString() + " +IN&mode=driving&language=en-EN&sensor=false&key=AIzaSyCuYEQogqF3cTj_f8oj-eM3YabPaF57js4";
+                                //else
+                                //{
+                                //    var baseurl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + dr3.Rows[0]["brpin"].ToString() + "+IN&destinations=" + dr3.Rows[0]["topin"].ToString() + " +IN&mode=driving&language=en-EN&sensor=false&key=AIzaSyCuYEQogqF3cTj_f8oj-eM3YabPaF57js4";
 
-                                    RemoteStatus res;
-                                    using (var remoteClient = new RemoteClient())
-                                    {
-                                        res = remoteClient.GetAsync(url: baseurl).Result;
-                                    }
+                                //    RemoteStatus res;
+                                //    using (var remoteClient = new RemoteClient())
+                                //    {
+                                //        res = remoteClient.GetAsync(url: baseurl).Result;
+                                //    }
 
-                                    var json1 = JObject.Parse(res.Response);
+                                //    var json1 = JObject.Parse(res.Response);
 
-                                    // dynamic _output = JsonConvert.DeserializeObject(res.Response).ToString();
-                                    if (res.StatusCode == 200)
+                                //    // dynamic _output = JsonConvert.DeserializeObject(res.Response).ToString();
+                                //    if (res.StatusCode == 200)
 
-                                    {
-                                        // string jjj = json1.SelectToken("rows[0].elements[0].distance.text").ToString();
-                                        //  string jjjw = json1.SelectToken("rows[0].elements[0].distance.value").ToString();
-                                        string[] tokens = json1.SelectToken("rows[0].elements[0].distance.text").ToString().Split(' ');
-                                        distance = Convert.ToDecimal(tokens[0]);
+                                //    {
+                                //        // string jjj = json1.SelectToken("rows[0].elements[0].distance.text").ToString();
+                                //        //  string jjjw = json1.SelectToken("rows[0].elements[0].distance.value").ToString();
+                                //        string[] tokens = json1.SelectToken("rows[0].elements[0].distance.text").ToString().Split(' ');
+                                //        distance = Convert.ToDecimal(tokens[0]);
 
-                                        var dr9 = g2.return_dt("pintopindistanceInsert '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "','" + distance + "','km'");
-                                    }
+                                //        var dr9 = g2.return_dt("pintopindistanceInsert '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "','" + distance + "','km'");
+                                //    }
 
-                                }
+                                //}
 
-                                if (!String.IsNullOrEmpty(ula.vehicleNo) && !String.IsNullOrEmpty(ula.vehicleType) && distance != 0)
+                                if (!String.IsNullOrEmpty(ula.vehicleNo) && !String.IsNullOrEmpty(ula.vehicleType) )
                                 {
                                     var dr4 = g2.return_dr("EwayBillDataChildbySlno " + ula.slno+"," + ula.type);
                                     while (dr4.Read())
@@ -241,7 +241,7 @@ namespace Project.Service.Controllers
                                             streamWriter.Write(json);
                                             streamWriter.Flush();
                                             streamWriter.Close();
-                                            var dr99 = g2.return_dr("InsertEwayInput " + ula.slno + ",'" + json.ToString() + "'");
+                                            var dr99 = g2.return_dr("InsertEwayInput '" + ula.slno + "','" + json.ToString() + "',1");
                                         }
                                       //  System.Net.HttpWebResponse response1 = null;
 

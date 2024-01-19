@@ -34,9 +34,9 @@ namespace Project.Service.Controllers
                     if (key != "")
                     {
 
-                        body.EwbNo = ula.ewaybillno;
+                        body.EwbNo = ula.ewaybillno.Replace(" ", "");
                         body.VehicleNo = ula.vehicleno;
-                        body.FromPlace = ula.fromplace;
+                        body.FromPlace = ula.fromplace.Replace('-', ' ');
                         body.FromState = ula.fromstate;
                         body.ReasonCode = ula.resoncode;
                         body.ReasonRem = ula.reasonrem;
@@ -79,6 +79,7 @@ namespace Project.Service.Controllers
                                 streamWriter.Write(json);
                                 streamWriter.Flush();
                                 streamWriter.Close();
+                                var dr99 = g2.return_dr("InsertEwayInput '" + ula.ewaybillno + "','" + json.ToString() + "',2");
                             }
 
                             System.Net.HttpWebResponse response1 = (System.Net.HttpWebResponse)request1.GetResponse();

@@ -50,8 +50,8 @@ namespace Project.Service.Controllers
                             if (!String.IsNullOrEmpty(dr3.Rows[0]["brpin"].ToString()) && !String.IsNullOrEmpty(dr3.Rows[0]["topin"].ToString()))
                             {
 
-                                if (dr3.Rows[0]["brpin"].ToString() == dr3.Rows[0]["topin"].ToString())
-                                {
+                                //if (dr3.Rows[0]["brpin"].ToString() == dr3.Rows[0]["topin"].ToString())
+                                //{
 
                                     var dr10 = g2.return_dt("pintopindistancecheck '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "'");
 
@@ -59,7 +59,7 @@ namespace Project.Service.Controllers
                                     {
                                         distance = Convert.ToDecimal(dr10.Rows[0]["Distance"]);
                                     }
-                                }
+                                //}
 
                                 //var dr10 = g2.return_dt("pintopindistancecheck '" + dr3.Rows[0]["brpin"].ToString() + "','" + dr3.Rows[0]["topin"].ToString() + "'");
 
@@ -259,7 +259,7 @@ namespace Project.Service.Controllers
                                             streamWriter.Write(json);
                                             streamWriter.Flush();
                                             streamWriter.Close();
-                                            var dr99 = g2.return_dr("InsertEwayInput " + ula.slno + ",'" + json.ToString() + "'");
+                                            var dr99 = g2.return_dr("InsertEwayInput '" + ula.slno + "','" + json.ToString()  +"',1");
                                         }
 
 
