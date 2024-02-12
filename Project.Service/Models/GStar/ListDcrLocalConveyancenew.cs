@@ -65,6 +65,7 @@ namespace Project.Service.Models
         public string AutoLimit { get; set; }
         public string RentalLimit { get; set; }
         public string TrvlLimit { get; set; }
+        public string OtherLimit { get; set; }
         public string CarRate { get; set; }
         public string BikeRate { get; set; }
         public string SameDaykm { get; set; }
@@ -76,12 +77,16 @@ namespace Project.Service.Models
         public string AutoUsed { get; set; }
         public string RentalUsed { get; set; }
         public string trvlUsed { get; set; }
+
+        public string OtherUsed { get; set; }
         public string TrainBalance { get; set; }
         public string MetroBalance { get; set; }
         public string TollBalance { get; set; }
         public string BusBalance { get; set; }
         public string AutoBalance { get; set; }
         public string RentalBalance { get; set; }
+
+        public string OtherBalance { get; set; }
         public string balancekm { get; set; }
         public string slno { get; set; }
         public string InsertedOdoMtr { get; set; }
@@ -94,6 +99,9 @@ namespace Project.Service.Models
         public string Insertedauto { get; set; }
         public string Insertedtollparking { get; set; }
         public string insertedRemark { get; set; }
+        public string insertedOther { get; set; }
+
+
         public string isapprove { get; set; }
 
         public string localfood { get; set; }
@@ -113,6 +121,7 @@ namespace Project.Service.Models
         public string insertedautoimg { get; set; }
         public string insertedbusimg { get; set; }
         public string insertedoutstationimg { get; set; }
+        public string insertedotherimg { get; set; }
         public string Foodimg { get; set; }
     }
 }

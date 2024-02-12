@@ -84,6 +84,8 @@ namespace Project.Service.Models
         public string busimg { get; set; }
         public string outstationimg { get; set; }
         public string Foodimg { get; set; }
+        public string Otherimg { get; set; }
+        public string other { get; set; }
 
 
 

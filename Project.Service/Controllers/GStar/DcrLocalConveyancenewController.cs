@@ -22,7 +22,7 @@ namespace Project.Service.Controllers.GStar
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            GoldMedia _goldMedia = new GoldMedia();
+            //GoldMedia _goldMedia = new GoldMedia();
             if (ula.ExId != 0)
             {
                 try
@@ -42,7 +42,7 @@ namespace Project.Service.Controllers.GStar
 
                     if (dr.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
+                        //string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr.Read())
                         {
                             alldcr1.Add(new GetDcrLocalConveyanceListnew
@@ -61,7 +61,7 @@ namespace Project.Service.Controllers.GStar
 
                     if (dr1.HasRows)
                     {
-                        string baseurl = _goldMedia.MapPathToPublicUrl("");
+                        //string baseurl = _goldMedia.MapPathToPublicUrl("");
                         while (dr1.Read())
                         {
                             alldcr2.Add(new GetexeccheckinoutlistdtwisesumListnew
@@ -77,6 +77,7 @@ namespace Project.Service.Controllers.GStar
                                 AutoLimit = Convert.ToString(dr1["AutoLimit"].ToString()),
                                 RentalLimit = Convert.ToString(dr1["RentalLimit"].ToString()),
                                 TrvlLimit = Convert.ToString(dr1["TrvlLimit"].ToString()),
+                                OtherLimit = Convert.ToString(dr1["Otherlimit"].ToString()),
                                 CarRate = Convert.ToString(dr1["CarRate"].ToString()),
                                 BikeRate = Convert.ToString(dr1["BikeRate"].ToString()),
                                 SameDaykm = Convert.ToString(dr1["SameDaykm"].ToString()),
@@ -88,12 +89,14 @@ namespace Project.Service.Controllers.GStar
                                 AutoUsed = Convert.ToString(dr1["AutoUsed"].ToString()),
                                 RentalUsed = Convert.ToString(dr1["RentalUsed"].ToString()),
                                 trvlUsed = Convert.ToString(dr1["trvlUsed"].ToString()),
+                                OtherUsed = Convert.ToString(dr1["Otherused"].ToString()),
                                 TrainBalance = Convert.ToString(dr1["TrainBalance"].ToString()),
                                 MetroBalance = Convert.ToString(dr1["MetroBalance"].ToString()),
                                 TollBalance = Convert.ToString(dr1["TollBalance"].ToString()),
                                 BusBalance = Convert.ToString(dr1["BusBalance"].ToString()),
                                 AutoBalance = Convert.ToString(dr1["AutoBalance"].ToString()),
                                 RentalBalance = Convert.ToString(dr1["RentalBalance"].ToString()),
+                                OtherBalance = Convert.ToString(dr1["Otherbalance"].ToString()),
                                 balancekm = Convert.ToString(dr1["balancekm"].ToString()),
                                 slno = Convert.ToString(dr1["slno"].ToString()),
 
@@ -121,6 +124,7 @@ namespace Project.Service.Controllers.GStar
                                 Insertedfood = Convert.ToString(dr1["insertedfood"].ToString()),
                                 Insertedoutstation = Convert.ToString(dr1["InsertedOutStation"].ToString()),
                                 Insertedfixamt = Convert.ToString(dr1["Insertedfixamt"].ToString()),
+                                insertedOther = Convert.ToString(dr1["Insertedother"].ToString()),
 
                                 insertedtrainimg = Convert.ToString(dr1["insertedtrainimg"].ToString()),
                                 insertedmetroimg = Convert.ToString(dr1["insertedmetroimg"].ToString()),
@@ -129,6 +133,7 @@ namespace Project.Service.Controllers.GStar
                                 insertedautoimg = Convert.ToString(dr1["insertedautoimg"].ToString()),
                                 insertedbusimg = Convert.ToString(dr1["insertedbusimg"].ToString()),
                                 insertedoutstationimg = Convert.ToString(dr1["insertedoutstationimg"].ToString()),
+                                insertedotherimg = Convert.ToString(dr1["insertedotherimg"].ToString()),
                                 Foodimg = Convert.ToString(dr1["Foodimg"].ToString())
                                 //insertedtrainimg=string.IsNullOrEmpty(dr1["insertedtrainimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedtrainimg"]).ToString().TrimEnd(',')),
                                 //insertedmetroimg = string.IsNullOrEmpty(dr1["insertedmetroimg"].ToString().TrimEnd(',')) ? string.Empty : (baseurl + "inspectionimg/" + Convert.ToString(dr1["insertedmetroimg"]).ToString().TrimEnd(',')),
