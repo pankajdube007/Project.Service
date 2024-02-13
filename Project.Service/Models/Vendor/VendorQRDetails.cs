@@ -567,6 +567,103 @@ namespace Project.Service.Models
 
             return dataTable;
         }
+
+        public HttpResponseMessage WAPostMarryQRDetails(QRUnMarryDetails objQRUnMarryDetails)
+        {
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objQRUnMarryDetails);
+
+            GetQRDataResponse objGetQRDataResponse = new GetQRDataResponse();
+
+            DataSet ds = new DataSet();
+
+            String Type = "";
+            String OldQRCode = "";
+            String NewQRCode = "";
+
+            if (objQRUnMarryDetails != null)
+            {
+                if (objQRUnMarryDetails.Type != null)
+                {
+                    if (objQRUnMarryDetails.Type.ToString().Trim() != null)
+                    {
+                        Type = objQRUnMarryDetails.Type.ToString().Trim();
+                    }
+                }
+            }
+
+            if (objQRUnMarryDetails != null)
+            {
+                if (objQRUnMarryDetails.OldQRCode != null)
+                {
+                    if (objQRUnMarryDetails.OldQRCode.ToString().Trim() != null)
+                    {
+                        OldQRCode = objQRUnMarryDetails.OldQRCode.ToString().Trim();
+                    }
+                }
+            }
+
+
+            if (objQRUnMarryDetails != null)
+            {
+                if (objQRUnMarryDetails.NewQRCode != null)
+                {
+                    if (objQRUnMarryDetails.NewQRCode.ToString().Trim() != null)
+                    {
+                        NewQRCode = objQRUnMarryDetails.NewQRCode.ToString().Trim();
+                    }
+                }
+            }
+
+            if (Type.Trim() != "" && OldQRCode.Trim() != "" && NewQRCode.Trim() != "")
+            {
+                try
+                {
+
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    SqlParameter[] param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@Type", Type);
+                    param[1] = new SqlParameter("@OldQRCode", OldQRCode);
+                    param[2] = new SqlParameter("@NewQRCode", NewQRCode);
+                    ds = objDataAccess.FillDataSet("UpdateProductDetailsForScannerQRMarryUnmarry", param);
+
+
+                 
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                if (ds.Tables.Count > 0)
+                {
+                    objGetQRDataResponse.Code = "200";
+                    objGetQRDataResponse.Message = "Success";
+                    objGetQRDataResponse.dsData = ds;
+                }
+                else
+                {
+                    objGetQRDataResponse.Code = "400";
+                    objGetQRDataResponse.Message = "No Details Found";
+                    objGetQRDataResponse.dsData = ds;
+                }
+            }
+            else
+            {
+                objGetQRDataResponse.Code = "400";
+                objGetQRDataResponse.Message = "No Details Found";
+                objGetQRDataResponse.dsData = ds;
+            }
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objGetQRDataResponse);
+
+            var resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return resp;
+        }
     }
 
 }
@@ -706,4 +803,11 @@ public class PostQRMapingDataResponse
 public class PostQRMapingDetailsResponse
 {
     public string PQRCode { get; set; }
+}
+
+public class QRUnMarryDetails
+{
+    public string Type { get; set; }
+    public string OldQRCode { get; set; }
+    public string NewQRCode { get; set; }
 }
