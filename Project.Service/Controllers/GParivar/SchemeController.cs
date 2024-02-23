@@ -59,6 +59,10 @@ namespace Project.Service.Controllers
                     {
                         dr = g1.return_dr("allPartyWiseActiveitemwiseamountperschemApp '" + ula.CIN + "'");
                     }
+                    else if (ula.Type == 7)
+                    {
+                        dr = g1.return_dr("allPartyWiseActiveSpecialschemeApp '" + ula.CIN + "'");
+                    }
 
                     if (dr.HasRows)
                     {

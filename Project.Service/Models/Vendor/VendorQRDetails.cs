@@ -386,6 +386,50 @@ namespace Project.Service.Models
                         }
                     }
                 }
+                else if (PrintDimension.Trim() == "125x75 NEW")
+                {
+                    using (MasterCeilingFanEANPrint report = new MasterCeilingFanEANPrint())
+                    {
+                        report.Parameters["parameter1"].Value = "Mfg at: Bldg. No. 2,Shripal Industrial Estate,Valliv Road,Vasai East, Palghar 401208,Maharashtra,India";
+                        report.Parameters["parameter2"].Value = ProductID;
+                        report.Parameters["parameter3"].Value = QRCODE;
+                        report.Parameters["parameter4"].Value = LabelBarcode;
+                        report.CreateDocument();
+                        using (var ms = new MemoryStream())
+                        {
+                            var opts = new PdfExportOptions
+                            {
+                                ShowPrintDialogOnOpen = false
+                            };
+                            report.ExportToPdf(ms, opts);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+                            reportdata = ms.ToArray();
+                        }
+                    }
+                }
+                else if (PrintDimension.Trim() == "125x75 EAN")
+                {
+                    using (MasterCeilingFanEANPrint report = new MasterCeilingFanEANPrint())
+                    {
+                        report.Parameters["parameter1"].Value = "Mfg at: Bldg. No. 2,Shripal Industrial Estate,Valliv Road,Vasai East, Palghar 401208,Maharashtra,India";
+                        report.Parameters["parameter2"].Value = ProductID;
+                        report.Parameters["parameter3"].Value = QRCODE;
+                        report.Parameters["parameter4"].Value = LabelBarcode;
+                        report.CreateDocument();
+                        using (var ms = new MemoryStream())
+                        {
+                            var opts = new PdfExportOptions
+                            {
+                                ShowPrintDialogOnOpen = false
+                            };
+                            report.ExportToPdf(ms, opts);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+                            reportdata = ms.ToArray();
+                        }
+                    }
+                }
                 else if (PrintDimension == "75x125")
                 {
                     using (MasterFanTransparent report = new MasterFanTransparent())

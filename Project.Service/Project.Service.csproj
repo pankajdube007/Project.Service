@@ -420,8 +420,10 @@
     <Compile Include="Controllers\GParivar\GetOrderItemDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetpartyidpeechedekhoappController.cs" />
     <Compile Include="Controllers\GParivar\GetpartyidpeechedekholightappController.cs" />
+    <Compile Include="Controllers\GParivar\GetPointSchemeHeadGParivarController.cs" />
     <Compile Include="Controllers\GParivar\GetRaiseTicketDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetStateMastController.cs" />
+    <Compile Include="Controllers\GParivar\GiftPointSchemNameController.cs" />
     <Compile Include="Controllers\GParivar\ItemDetailsByCategoryAndNameOrCodeController.cs" />
     <Compile Include="Controllers\GParivar\MenInBlueHeadController.cs" />
     <Compile Include="Controllers\GParivar\MenInBluePriceController.cs" />
@@ -523,6 +525,8 @@
     <Compile Include="Controllers\GStar\GetNukkadMeetRequestByIDController.cs" />
     <Compile Include="Controllers\GStar\GetpeechedekhoappController.cs" />
     <Compile Include="Controllers\GStar\GetpeechedekholightappController.cs" />
+    <Compile Include="Controllers\GStar\GetPointSchemeGStarController.cs" />
+    <Compile Include="Controllers\GStar\GetPointSchemeNameController.cs" />
     <Compile Include="Controllers\GStar\GetsalesHiearchyDataController.cs" />
     <Compile Include="Controllers\GStar\GetStateMastGstarController.cs" />
     <Compile Include="Controllers\GStar\GstarGetNewYearDhamakaOfferController.cs" />
@@ -925,6 +929,7 @@
     <Compile Include="Controllers\GParivar\VisitorController.cs" />
     <Compile Include="Controllers\GParivar\VisitorDivisionController.cs" />
     <Compile Include="Controllers\Vendor\vendorWiseAllItemsappController.cs" />
+    <Compile Include="Controllers\Vendor\WAPostMarryQRDetailsController.cs" />
     <Compile Include="Controllers\Vendor\WAPostQRMapingDetailsController.cs" />
     <Compile Include="Controllers\Vendor\WAQRSyncPostAPIUrlController.cs" />
     <Compile Include="Controllers\Vendor\WAVendorBAGQRLabelController.cs" />
@@ -952,7 +957,9 @@
     <Compile Include="Models\GParivar\GetOrderCatItemDetails.cs" />
     <Compile Include="Models\GParivar\GetOrderItemCatPriceDetails.cs" />
     <Compile Include="Models\GParivar\GetOrderItemDetails.cs" />
+    <Compile Include="Models\GParivar\GetPointSchemeHeadGParivar.cs" />
     <Compile Include="Models\GParivar\GetRaiseTicketDetails.cs" />
+    <Compile Include="Models\GParivar\GiftPointSchemName.cs" />
     <Compile Include="Models\GParivar\InvoicePod.cs" />
     <Compile Include="Models\GParivar\ItemDetailsByCategoryAndNameOrCode.cs" />
     <Compile Include="Models\GParivar\ListCategoryMast.cs" />
@@ -1064,6 +1071,8 @@
     <Compile Include="Models\GStar\GetListAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationArchitectNo.cs" />
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationShowroomQuotation.cs" />
+    <Compile Include="Models\GStar\GetPointSchemeGStar.cs" />
+    <Compile Include="Models\GStar\GetPointSchemeName.cs" />
     <Compile Include="Models\GStar\GetsalesHiearchyData.cs" />
     <Compile Include="Models\GStar\GstarGetNewYearDhamakaOffer.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
@@ -1713,6 +1722,9 @@
     <Compile Include="Report\BagQRCodePrint.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\MasterCeilingFanEANPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\MasterCeilingFanTransparentPrint.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1763,6 +1775,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Report\BagQRCodePrint.resx">
       <DependentUpon>BagQRCodePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\MasterCeilingFanEANPrint.resx">
+      <DependentUpon>MasterCeilingFanEANPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\MasterCeilingFanTransparentPrint.resx">
       <DependentUpon>MasterCeilingFanTransparentPrint.cs</DependentUpon>
