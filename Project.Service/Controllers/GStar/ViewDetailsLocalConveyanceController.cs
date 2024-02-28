@@ -50,7 +50,13 @@ namespace Project.Service.Controllers.GStar
                                 autoApp = Convert.ToString(dr["autoApp"].ToString()),
                                 tollApp = Convert.ToString(dr["tollApp"].ToString()),
                                 AppRemark = Convert.ToString(dr["AppRemark"].ToString()),
-                                    
+                                OtherApp = Convert.ToString(dr["otherApp"].ToString()),
+                                Samedayapp = Convert.ToString(dr["samedayapr"].ToString()),
+                                Fixamtapp = Convert.ToString(dr["fixamtapp"].ToString()),
+                                Outstationapp = Convert.ToString(dr["outstationapp"].ToString()),
+                                Foodapp = Convert.ToString(dr["foodapp"].ToString()),
+
+
                             });
                         }
                         g1.close_connection();

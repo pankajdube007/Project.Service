@@ -39,6 +39,13 @@ namespace Project.Service.Models.GStar
         public string autoApp { get; set; }
         public string tollApp { get; set; }
         public string AppRemark { get; set; }
-        
+        public string OtherApp { get; set; }
+
+        public string Samedayapp { get; set; }
+        public string Fixamtapp { get; set; }
+
+        public string Outstationapp { get; set; }
+
+        public string Foodapp { get; set; }
     }
 }

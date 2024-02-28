@@ -13,6 +13,14 @@ namespace Project.Service.Models
 
         [Required]
         public int Type { get; set; }
+
+       
+        public int Execid { get; set; }
+
+       
+        public int Apptype { get; set; }
+
+
     }
 
     public class Schemes
