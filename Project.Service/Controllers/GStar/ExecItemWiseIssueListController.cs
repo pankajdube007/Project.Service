@@ -42,7 +42,7 @@ namespace Project.Service.Controllers.GStar
                                 PartyName = Convert.ToString(dr["partynm"].ToString()),
                                 IssueName = Convert.ToString(dr["issunm"].ToString()),
                                 Date = Convert.ToString(dr["createdt"].ToString()),
-                               
+                                Remark = Convert.ToString(dr["Remark"].ToString()),
 
 
                             });

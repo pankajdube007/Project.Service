@@ -32,5 +32,6 @@ namespace Project.Service.Models.GStar
         public string PartyName { get; set; }
         public string IssueName { get; set; }
         public string Date { get; set; }
+        public string Remark { get; set; }
     }
 }

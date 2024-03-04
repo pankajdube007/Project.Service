@@ -85,5 +85,7 @@ namespace Project.Service.Models
         public string Lat { get; set; }
 
         public string Long { get; set; }
+
+        public string Address { get; set; }
     }
 }

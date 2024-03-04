@@ -37,7 +37,7 @@ namespace Project.Service.Controllers
                         string name = Convert.ToString(dt.Rows[0]["dealnm"]);
                         string stat = Convert.ToString(dt.Rows[0]["stat"]);
                         int row = g2.ExecDB("exec App_dcrlogindetladd '" + ar.CIN + "','" + name + "','" + ar.Deviceid + "','" + ar.DeviceType + "','" +
-                            ar.AppVerion + "','" + ar.OsVersion + "','" + ar.Pushwooshid + "','" + stat + "','" + true + "','" + ar.IP + "','" + ar.Lat + "','" + ar.Long + "','" + ar.Category + "','"+ar.ModalType+"'");
+                            ar.AppVerion + "','" + ar.OsVersion + "','" + ar.Pushwooshid + "','" + stat + "','" + true + "','" + ar.IP + "','" + ar.Lat + "','" + ar.Long + "','" + ar.Category + "','"+ar.ModalType+"','"+ar.Address+"'");
                         if (row > 0)
                         {
                             var dt1 = g2.return_dt("exec App_dcrlogindetlshow '" + ar.CIN + "','" + ar.Category + "'");

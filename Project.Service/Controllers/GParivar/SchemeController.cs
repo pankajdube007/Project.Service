@@ -37,11 +37,11 @@ namespace Project.Service.Controllers
 
                     if (ula.Type == 1)
                     {
-                        dr = g1.return_dr("allPartyWiseActiveSchemeRegularschemeApp '" + ula.CIN + "',"+ ula.Execid +","+ ula.Apptype+"");
+                        dr = g1.return_dr("allPartyWiseActiveSchemeRegularschemeApp '" + ula.CIN + "',"+ula.Execid+","+ula.Apptype);
                     }
                     else if (ula.Type == 2)
                     {
-                        dr = g1.return_dr("allPartyWiseActiveSchemeQuantityschemeApp '" + ula.CIN + "',"+ula.Execid+","+ula.Apptype);
+                        dr = g1.return_dr("allPartyWiseActiveSchemeQuantityschemeApp '" + ula.CIN + "'," + ula.Execid + "," + ula.Apptype);
                     }
                     else if (ula.Type == 3)
                     {
@@ -58,10 +58,6 @@ namespace Project.Service.Controllers
                     else if (ula.Type == 6)
                     {
                         dr = g1.return_dr("allPartyWiseActiveitemwiseamountperschemApp '" + ula.CIN + "'," + ula.Execid + "," + ula.Apptype);
-                    }
-                    else if (ula.Type == 7)
-                    {
-                        dr = g1.return_dr("allPartyWiseActiveSpecialschemeApp '" + ula.CIN + "'," + ula.Execid + "," + ula.Apptype);
                     }
 
                     if (dr.HasRows)
