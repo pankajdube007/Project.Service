@@ -13,6 +13,9 @@ namespace Project.Service.Models
 
         [Required]
         public string FinYear { get; set; }
+
+        
+        public string exid { get; set; }
     }
 
     public class SalesSummarys

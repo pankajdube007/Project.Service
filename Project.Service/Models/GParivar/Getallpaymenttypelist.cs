@@ -26,6 +26,7 @@ namespace Project.Service.Models
 
        
         public int ExecId { get; set; }
+        public string Type { get; set; }
 
     }
 

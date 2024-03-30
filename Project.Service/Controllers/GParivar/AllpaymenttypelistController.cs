@@ -73,11 +73,11 @@ namespace Project.Service.Controllers
                     if(ula.ExecId==0)
                     {
 
-                         dr = g1.return_dt("apppartyalltypeamountdetailslist '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + "");
+                         dr = g1.return_dt("apppartyalltypeamountdetailslist '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + ",'"+ula.Type+"'");
                     }
                     else
                     {
-                         dr = g1.return_dt("apppartyalltypeamountdetailslistgstar '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + ",'"+ula.ExecId+"'");
+                         dr = g1.return_dt("apppartyalltypeamountdetailslistgstar '" + ula.CIN + "','" + ula.sdate + "','" + ula.edate + "'," + ula.Index + "," + ula.Count + ",'"+ula.ExecId+"','"+ula.Type+"'");
 
                     }
 

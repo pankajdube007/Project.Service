@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DevExpress.CodeParser;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
 using Project.Service.Models;
@@ -30,7 +31,7 @@ namespace Project.Service.Controllers
                 List<SalesSummary> alldcr1 = new List<SalesSummary>();
                 List<SalesSummaryDetails> SalesSummaryDetails = new List<SalesSummaryDetails>();
                 List<StarRewardurls> StarRewardurls = new List<StarRewardurls>();
-                var dr = g1.return_dt("App_SaleSummary '" + ula.CIN + "','" + ula.FinYear + "'");
+                var dr = g1.return_dt("App_SaleSummary '" + ula.CIN + "','" + ula.FinYear + "',"+ ula.exid);
 
                 if (dr.Rows.Count > 0)
                 {

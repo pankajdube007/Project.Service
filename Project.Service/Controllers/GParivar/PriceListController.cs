@@ -30,7 +30,7 @@ namespace Project.Service.Controllers
                     List<PriceListss> alldcr = new List<PriceListss>();
                     List<PriceLists> alldcr1 = new List<PriceLists>();
                     List<PriceListFinal> PriceListFinal = new List<PriceListFinal>();
-                    var dr = g1.return_dt("App_PriceList " + ula.index + "," + ula.Count);
+                    var dr = g1.return_dt("App_PriceList " + ula.index + "," + ula.Count + ",'"+ula.CIN+"'");
 
                     bool more = false;
 
