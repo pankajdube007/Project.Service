@@ -29,7 +29,8 @@ namespace Project.Service.Models
             {
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    smtpClient.Credentials = new System.Net.NetworkCredential("software.support@goldmedalindia.com", "8108572544");
+                    var Status = "0";
+                    smtpClient.Credentials = new System.Net.NetworkCredential("software.support@goldmedalindia.com", "tcte sedc hfvs ezxa");
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtpClient.EnableSsl = true;
                     using (MailMessage mail = new MailMessage())
@@ -40,7 +41,34 @@ namespace Project.Service.Models
                         mail.Priority = MailPriority.High;
                         mail.Body = emailbody;
                         mail.Subject = emailsubject;
-                        smtpClient.Send(mail);
+                        //smtpClient.Send(mail);
+                        try
+                        {
+                            smtpClient.Send(mail);
+                            Status = "1";
+                        }
+                        catch (Exception ex1)
+                        {
+                            ex1.Message.ToString();
+                            Status = "0";
+                        }
+                        if (Status == "0")
+                        {
+                            smtpClient.Credentials = new System.Net.NetworkCredential("error.goldmedal@gmail.com", "cjlk spfs jkdw qdqm");
+                            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            smtpClient.EnableSsl = true;
+
+                            try
+                            {
+                                smtpClient.Send(mail);
+                                Status = "1";
+                            }
+                            catch (Exception ex2)
+                            {
+                                ex2.Message.ToString();
+                            }
+                        }
+
                     }
                 }
             }
