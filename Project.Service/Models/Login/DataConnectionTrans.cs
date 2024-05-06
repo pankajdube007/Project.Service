@@ -309,16 +309,13 @@ namespace Project.Service.Models
             try
             {
                 open_connection();
-                sqlBulkCopy.DestinationTableName = strTableName;
-                try
+                using (SqlBulkCopy sqlbc = new SqlBulkCopy(sql))
                 {
-                    sqlBulkCopy.WriteToServer(dtBulk);
+                    sqlbc.DestinationTableName = strTableName;
+                    sqlbc.WriteToServer(dtBulk);
                     retValue = "True";
                 }
-                catch (Exception ex)
-                {
-                    retValue = "False";
-                }
+                close_connection();
             }
             catch (Exception ex)
             {

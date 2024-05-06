@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Project.Service.Filters;
-using Project.Service.Models;
 using Project.Service.Models.GStar;
+using Project.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,38 +13,39 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GStar
 {
-    public class AutomationLeadGenerationCategoryController : ApiController
+    public class GetAutomationLeadGenerationOtherController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetAutomationLeadGenerationCategory")]
-        public HttpResponseMessage GetDetails(GetListofAutomationLeadGenerationCategory ula)
+        [Route("api/GetAutomationLeadGenerationOther")]
+        public HttpResponseMessage GetDetails(GetAutomationLeadGenerationOther ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.ExId != 0 || ula.CIN != null)
+            if (ula.ExId != 0 || ula.CIN != null) // (ula.MobileNo != null)
             {
                 try
                 {
                     string data1;
 
-                    List<GetListAutomationLeadGenerationCategorys> alldcr = new List<GetListAutomationLeadGenerationCategorys>();
-                    List<GetListAutomationLeadGenerationCategory> alldcr1 = new List<GetListAutomationLeadGenerationCategory>();
-                    var dr = g1.return_dr($"AutomationCategoryMast_API  {ula.DivisionId} ");
+                    List<GetListAutomationLeadGenerationOthers> alldcr = new List<GetListAutomationLeadGenerationOthers>();
+                    List<GetListAutomationLeadGenerationOther> alldcr1 = new List<GetListAutomationLeadGenerationOther>();
+                    var dr = g1.return_dr("dbo.GetAutomationLeadGenerationother_API '" + ula.MobileNo + "'");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetListAutomationLeadGenerationCategory
+                            alldcr1.Add(new GetListAutomationLeadGenerationOther
                             {
-                                SlNo = Convert.ToString(dr["SlNo"].ToString()),
-                                categorynm = Convert.ToString(dr["categorynm"].ToString()),
-                                
+                                slno = Convert.ToString(dr["slno"].ToString()),
+                                OtherNo = Convert.ToString(dr["other_No"].ToString()),
+                                Other_Name = Convert.ToString(dr["other_Name"].ToString()),
+                                compname = Convert.ToString(dr["compname"].ToString()),
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetListAutomationLeadGenerationCategorys
+                        alldcr.Add(new GetListAutomationLeadGenerationOthers
                         {
                             result = true,
                             message = string.Empty,

@@ -6,38 +6,36 @@ using System.Web;
 
 namespace Project.Service.Models.GStar
 {
-   
-
-    public class GetListofAutomationLeadGenerationCategory
+    public class GetAutomationLeadGenerationOther
     {
-
         //[Required]
         public int ExId { get; set; }
+
+        [Required]
+        public string MobileNo { get; set; }
 
         [Required]
         public string ClientSecret { get; set; }
 
         //[Required]
         public string CIN { get; set; }
-
-        [Required]
-        public string DivisionId { get; set; }
     }
 
-
-
-    public class GetListAutomationLeadGenerationCategorys
+    public class GetListAutomationLeadGenerationOthers
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GetListAutomationLeadGenerationCategory> data { get; set; }
+        public List<GetListAutomationLeadGenerationOther> data { get; set; }
     }
 
-    public class GetListAutomationLeadGenerationCategory
+    public class GetListAutomationLeadGenerationOther
     {
-        public string SlNo { get; set; }
-        public string categorynm { get; set; }
-        
+        public string slno { get; set; }
+        public string OtherNo { get; set; }
+        public string Other_Name { get; set; }
+        public string compname { get; set; }
+
     }
+
 }

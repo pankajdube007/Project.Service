@@ -33,7 +33,10 @@ namespace Project.Service.Controllers.GStar
                     List<AddAutomationLeadGeneration> alldcr1 = new List<AddAutomationLeadGeneration>();
                     //AutomationLeadGenerationAdd_GParivar_Gstar_API_New
                     //AutomationLeadGenerationAdd_GParivar_Gstar_API_New_Updated
-                    var result = g2.ExecDB("dbo.AutomationLeadGenerationAdd_GParivar_Gstar_API_New_Updated '" + ula.Cin + "','" + ula.Purpose + "','" + ula.CustomerMobileNo + "','" + ula.CustomerName + "','" + ula.EmailID + "','" + ula.AddressLine1 + "','" + ula.AddressLine2 + "'," + ula.Pincode + ",'" + ula.StateID + "','" + ula.DistrictID + "','" + ula.City + "','" + ula.AutomationCategoryID + "','" + ula.ItemID + "','" + ula.IsInvloveArchitect + "','" + ula.ArchitectMobileNo + "', '" + ula.ArchitectName + "','" + ula.Architech_CompanyName + "', '" + ula.Available_dt + "','" + ula.Available_time + "','" + ula.Remark + "','" + ula.Project_name + "','" + ula.ArchitectID + "'");
+                    var result = g2.ExecDB("dbo.AutomationLeadGenerationAdd_GParivar_Gstar_API_New_Updated '" + ula.Cin + "','" + ula.Purpose + "','" + ula.CustomerMobileNo + "','" + ula.CustomerName + "','" + ula.EmailID + "','" + ula.AddressLine1 + "','" + ula.AddressLine2 + "'," + ula.Pincode + ",'" + ula.StateID + "','" + ula.DistrictID + "','" + ula.City + "','" + ula.AutomationCategoryID + "','" + ula.ItemID + "','" + ula.IsInvloveArchitect + "','" + ula.ArchitectMobileNo + "', '" + ula.ArchitectName + "','" + ula.Architech_CompanyName + "', '" + ula.Available_dt + "','" + ula.Available_time + "','" + ula.Remark + "','" + ula.Project_name + "','" + ula.ArchitectID  +"','" +
+                        ula.BuilderMobileNo+"','"+ula.BuilderName+"','"+ula.Builder_CompanyName+"','"+ula.BuilderID+"','"+
+                        ula.ElectricalMobileNo + "','" + ula.ElectricalName + "','" + ula.Electrical_CompanyName + "','" + ula.ElectricalID + "','" +
+                        ula.OtherMobileNo + "','" + ula.OtherName + "','" + ula.Other_CompanyName + "','" + ula.OtherID+"'");
 
                     switch (result)
                     {

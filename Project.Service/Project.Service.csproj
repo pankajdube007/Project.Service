@@ -574,6 +574,7 @@
     <Compile Include="Controllers\IT\ITLoginListController.cs" />
     <Compile Include="Controllers\IT\SetApprovalChangeWeeklyOffController.cs" />
     <Compile Include="Controllers\IT\SetApprovalWeeklyOffController.cs" />
+    <Compile Include="Controllers\Login\ValidationOthersqrController.cs" />
     <Compile Include="Controllers\Management\agenetlistformanagementController.cs" />
     <Compile Include="Controllers\Management\AgentWisePartySecureAmtController.cs" />
     <Compile Include="Controllers\Management\AgentWiseSecureAmtController.cs" />

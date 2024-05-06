@@ -67,7 +67,33 @@ namespace Project.Service.Models.GStar
         public string Project_name { get; set; }
 
         public string ArchitectID { get; set; }
-        
+
+
+        public string BuilderMobileNo { get; set; }
+
+        public string BuilderName { get; set; }
+
+        public string Builder_CompanyName { get; set; }
+
+        public string BuilderID { get; set; }
+
+        public string ElectricalMobileNo { get; set; }
+
+        public string ElectricalName { get; set; }
+
+        public string Electrical_CompanyName { get; set; }
+
+        public string ElectricalID { get; set; }
+
+        public string OtherMobileNo { get; set; }
+
+        public string OtherName { get; set; }
+
+        public string Other_CompanyName { get; set; }
+
+        public string OtherID { get; set; }
+
+
     }
 
     public class AddAutomationLeadGenerations
