@@ -33,34 +33,41 @@ namespace Project.Service.Controllers.GStar
                     List<AddExecTravelExpDetailsLists> alldcr = new List<AddExecTravelExpDetailsLists>();
                     List<AddExecTravelExpDetailsList> alldcr1 = new List<AddExecTravelExpDetailsList>();
                     string uploadImage = string.Empty;
-                    
-                    if (ula.ImgBill != "") uploadImage = GetImage(ula.ImgBill, 1);
-                   
-     var dr = g2.return_dr("dbo.AddExecutiveTravelExpenses '" +
-                        ula.ExId                 + "','" +
-                        ula.ExpenseNo            + "','" +
-                        ula.TravelDate           + "','" +
-                        ula.BillNo               + "','" +
-                        ula.TravelReqid          + "','" + 
-                        ula.MerchantCategoryid   + "','" + 
-                        ula.MerchantTypeid       + "','" + 
-                        ula.GSTIN                + "','" +
-                        ula.GSTType              + "','" +
-                        ula.TaxPer               + "','" + 
-                        ula.Cost                 + "','" +
-                        ula.CGSTamt              + "','" + 
-                        ula.SGSTamt              + "','" + 
-                        ula.IGSTamt              + "','" + 
-                        ula.CGSTper              + "','" +
-                        ula.SGSTper              + "','" + 
-                        ula.IGSTper              + "','" + 
-                        ula.RoundOff             + "','" + 
-                        ula.TotalAmt             + "','" +
-                        ula.Description          + "','" +
-                        uploadImage              + "','" + 
-                        ula.EmpIds               + "','" + 
-                        ula.PaidBy               + "','" +
-                        ula.MonthlyReport        + "'"   );
+
+                    if (ula.ImgBill != "abc")
+                    {
+                        uploadImage = GetImage(ula.ImgBill, 1);
+                    }
+                    else
+                    {
+                        uploadImage = "abc";
+                    }
+
+                    var dr = g2.return_dr("dbo.AddExecutiveTravelExpenses '" +
+                                       ula.ExId + "','" +
+                                       ula.ExpenseNo + "','" +
+                                       ula.TravelDate + "','" +
+                                       ula.BillNo + "','" +
+                                       ula.TravelReqid + "','" +
+                                       ula.MerchantCategoryid + "','" +
+                                       ula.MerchantTypeid + "','" +
+                                       ula.GSTIN + "','" +
+                                       ula.GSTType + "','" +
+                                       ula.TaxPer + "','" +
+                                       ula.Cost + "','" +
+                                       ula.CGSTamt + "','" +
+                                       ula.SGSTamt + "','" +
+                                       ula.IGSTamt + "','" +
+                                       ula.CGSTper + "','" +
+                                       ula.SGSTper + "','" +
+                                       ula.IGSTper + "','" +
+                                       ula.RoundOff + "','" +
+                                       ula.TotalAmt + "','" +
+                                       ula.Description + "','" +
+                                       uploadImage + "','" +
+                                       ula.EmpIds + "','" +
+                                       ula.PaidBy + "','" +
+                                       ula.MonthlyReport + "'");
 
                     if (dr.HasRows)
                     {
@@ -68,7 +75,7 @@ namespace Project.Service.Controllers.GStar
                         {
                             output = "Data Sucessfully inserted"
                         });
-                        
+
                         g2.close_connection();
                         alldcr.Add(new AddExecTravelExpDetailsLists
                         {

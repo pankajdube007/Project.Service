@@ -507,7 +507,10 @@
     <Compile Include="Controllers\GStar\GetAllAutomationLeadGenerationController.cs" />
     <Compile Include="Controllers\GStar\GetAreaMastController.cs" />
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationArchitectNoController.cs" />
+    <Compile Include="Controllers\GStar\GetAutomationLeadGenerationBuilderNoController.cs" />
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationController.cs" />
+    <Compile Include="Controllers\GStar\GetAutomationLeadGenerationElectricalNoController.cs" />
+    <Compile Include="Controllers\GStar\GetAutomationLeadGenerationOtherController.cs" />
     <Compile Include="Controllers\GStar\GetAutomationLeadGenerationPurposeController.cs" />
     <Compile Include="Controllers\GStar\GetCityMastController.cs" />
     <Compile Include="Controllers\GStar\GetDealerContactExecutiveNewController.cs" />
@@ -1062,8 +1065,11 @@
     <Compile Include="Models\GStar\Exewiseitemwisepartywisesale.cs" />
     <Compile Include="Models\GStar\Exewiseitemwisesale.cs" />
     <Compile Include="Models\GStar\GetAllListofAutomationLeadGeneration.cs" />
+    <Compile Include="Models\GStar\GetAutomationLeadGenerationBuilderNo.cs" />
     <Compile Include="Models\GStar\GetAutomationLeadGenerationCategory.cs" />
+    <Compile Include="Models\GStar\GetAutomationLeadGenerationElectricalNo.cs" />
     <Compile Include="Models\GStar\GetAutomationLeadGenerationItem.cs" />
+    <Compile Include="Models\GStar\GetAutomationLeadGenerationOther.cs" />
     <Compile Include="Models\GStar\GetAutomationLeadGenerationPurpose.cs" />
     <Compile Include="Models\GStar\GetDetialsByIDAutomationLeadGeneration.cs" />
     <Compile Include="Models\GStar\GetDisputeType.cs" />
