@@ -55,5 +55,23 @@ namespace Project.Service.Models.GStar
         public string QuotationNo { get; set; }
         public string SalesExName { get; set; }
         public string EmpCode { get; set; }
+        public string Division { get; set; }
+
+        public string Involve_Builder { get; set; }
+        public string Builder_No { get; set; }
+        public string Builder_Name { get; set; }
+
+        public string Involve_Other { get; set; }
+        public string Other_No { get; set; }
+        public string Other_Name { get; set; }
+
+        public string Involve_Electric { get; set; }
+        public string Electric_No { get; set; }
+        public string Electric_Name { get; set; }
+
+        public string Lat { get; set; }
+        public string Long { get; set; }
+        public string ImageName { get; set; }
+
     }
 }

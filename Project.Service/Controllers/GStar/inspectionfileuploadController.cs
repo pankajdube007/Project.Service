@@ -100,6 +100,10 @@ namespace Project.Service.Controllers
             {
                 uniquefoldernm = "addmerchantpdf";
             }
+            else if (folderCreation == 5)
+            {
+                uniquefoldernm = "leadapp";
+            }
 
 
             if (!string.IsNullOrEmpty(img))

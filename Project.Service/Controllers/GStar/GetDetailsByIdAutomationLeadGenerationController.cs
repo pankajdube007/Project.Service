@@ -25,10 +25,7 @@ namespace Project.Service.Controllers.GStar
             Common cm = new Common();
             if (ula.CIN != null)
             {
-                //        [Required]
-                //public string FromDate { get; set; }
-                //[Required]
-                //public string ToDate { get; set; }// '" + ula.FromDate + "','" + ula.ToDate + "'
+              
                 try
                 {
                     string data1;
@@ -61,7 +58,19 @@ namespace Project.Service.Controllers.GStar
                                 QuotationNo = Convert.ToString(dr["QuotationNo"].ToString()),
                                 SalesExName = Convert.ToString(dr["SalesExName"].ToString()),
                                 EmpCode = Convert.ToString(dr["EmpCode"].ToString()),
-                                
+                                Division = Convert.ToString(dr["divisionnm"].ToString()),
+                                Involve_Builder = Convert.ToString(dr["isbuilderinvolved"].ToString()),
+                                Builder_Name = Convert.ToString(dr["buildername"].ToString()),
+                                Builder_No = Convert.ToString(dr["buildermobile"].ToString()),
+                                Involve_Electric = Convert.ToString(dr["iselectricinvolved"].ToString()),
+                                Electric_Name = Convert.ToString(dr["electricname"].ToString()),
+                                Electric_No = Convert.ToString(dr["electricmobile"].ToString()),
+                                Involve_Other = Convert.ToString(dr["isOthervolved"].ToString()),
+                                Other_Name = Convert.ToString(dr["Othername"].ToString()),
+                                Other_No = Convert.ToString(dr["Othermobile"].ToString()),
+                                Lat = Convert.ToString(dr["Lat"].ToString()),
+                                Long = Convert.ToString(dr["Long"].ToString()),
+                                ImageName = Convert.ToString(dr["ImageName"].ToString()),
                             });
                         }
                         g1.close_connection();

@@ -60,12 +60,12 @@ namespace Project.Service.Controllers
                                 ErrorEmailid = "pankaj.goldmedalindia@gmail.com";
 
 
-                                if (cm.ValidateEmail(Emailid) == true)
-                                {
-                                    string Subject = "Goldmedal Mobile Application OTP";
-                                    string body = "Your Request No is:" + RequestNo + " and OTP is:" + otp + " OTP Validate for 5 Minutes Only. Team Goldmedal";
-                                    g2.sendmail(Emailid, body, Subject, "GoldMedal", "File");
-                                }
+                                //if (cm.ValidateEmail(Emailid) == true)
+                                //{
+                                //    string Subject = "Goldmedal Mobile Application OTP";
+                                //    string body = "Your Request No is:" + RequestNo + " and OTP is:" + otp + " OTP Validate for 5 Minutes Only. Team Goldmedal";
+                                //    g2.sendmail(Emailid, body, Subject, "GoldMedal", "File");
+                                //}
 
                                 if (cm.ValidateMobile(Mobileno) == true)
                                 {
