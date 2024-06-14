@@ -230,6 +230,10 @@
     <Reference Include="Renci.SshNet, Version=2016.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.0.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Goldmedal\Desktop\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SharpMt940Lib.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpMt940Lib.Core.1.0.2\lib\net461\SharpMt940Lib.Core.dll</HintPath>
     </Reference>
@@ -530,6 +534,7 @@
     <Compile Include="Controllers\GStar\GetpeechedekholightappController.cs" />
     <Compile Include="Controllers\GStar\GetPointSchemeGStarController.cs" />
     <Compile Include="Controllers\GStar\GetPointSchemeNameController.cs" />
+    <Compile Include="Controllers\GStar\GETQRCodeDetailsForStatusController.cs" />
     <Compile Include="Controllers\GStar\GetsalesHiearchyDataController.cs" />
     <Compile Include="Controllers\GStar\GetStateMastGstarController.cs" />
     <Compile Include="Controllers\GStar\GstarGetNewYearDhamakaOfferController.cs" />
@@ -545,6 +550,7 @@
     <Compile Include="Controllers\GStar\MediaListController.cs" />
     <Compile Include="Controllers\GStar\MenInBlueSumExecController.cs" />
     <Compile Include="Controllers\GStar\MerchantListController.cs" />
+    <Compile Include="Controllers\GStar\NetLandDivisionController.cs" />
     <Compile Include="Controllers\GStar\NewArrivalDetailsController.cs" />
     <Compile Include="Controllers\GStar\NewArrivalListDataController.cs" />
     <Compile Include="Controllers\GStar\NukkadMeetAddGuestController.cs" />
@@ -1090,6 +1096,7 @@
     <Compile Include="Models\GStar\GetListAutomationLeadGenerationShowroomQuotation.cs" />
     <Compile Include="Models\GStar\GetPointSchemeGStar.cs" />
     <Compile Include="Models\GStar\GetPointSchemeName.cs" />
+    <Compile Include="Models\GStar\GETQRCodeDetailsForStatus.cs" />
     <Compile Include="Models\GStar\GetsalesHiearchyData.cs" />
     <Compile Include="Models\GStar\GstarGetNewYearDhamakaOffer.cs" />
     <Compile Include="Models\GStar\InsertExpenseLocalConveyDispute.cs" />
@@ -1119,6 +1126,7 @@
     <Compile Include="Models\GStar\MediaDetails.cs" />
     <Compile Include="Models\GStar\MediaList.cs" />
     <Compile Include="Models\GStar\MenInBlueSumExecList.cs" />
+    <Compile Include="Models\GStar\NetLandDivision.cs" />
     <Compile Include="Models\GStar\NewArrivalDetails.cs" />
     <Compile Include="Models\GStar\NewArrivalListData.cs" />
     <Compile Include="Models\GStar\NukkadMeetAddGuest.cs" />
@@ -1818,6 +1826,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\" />
     <Folder Include="Views\WAVendorCQRLabel\" />
   </ItemGroup>
   <PropertyGroup>

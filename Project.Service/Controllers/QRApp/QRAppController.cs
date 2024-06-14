@@ -183,6 +183,65 @@ namespace Project.Service.Controllers.QRApp
             Response = objQRAppDetails.PostDCData(objPostDCDetailslst);
             return Response;
         }
+
+
+
+
+        [Route("dcwarehouse")]
+        [HttpPost]
+        public HttpResponseMessage GetDCWarehouseDetails(GetPartyDetails objGetPartyDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetDCWarehouseDetails(objGetPartyDetails);
+            return Response;
+        }
+
+
+
+        [Route("dcparty")]
+        [HttpPost]
+        public HttpResponseMessage GetDCPartyDetails(GetPartyDetails objGetPartyDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetDCPartyDetails(objGetPartyDetails);
+            return Response;
+        }
+
+
+        [Route("dcdivision")]
+        [HttpPost]
+        public HttpResponseMessage GetDCDivisionDetails(GetPartyDetails objGetPartyDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetDCDivisionDetails(objGetPartyDetails);
+            return Response;
+        }
+
+
+        [Route("dcitemlist")]
+        [HttpPost]
+        public HttpResponseMessage GetDCItemDetails(DCItemRequest objDCItemRequest)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetDCItemDetails(objDCItemRequest);
+            return Response;
+        }
+
+        [Route("dcpost")]
+        [HttpPost]
+        public HttpResponseMessage PostDCCreateData(PostDCCreateDetailslst objPostDCCreateDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostDCCreateData(objPostDCCreateDetailslst);
+            return Response;
+        }
+
+
     }
 
 }

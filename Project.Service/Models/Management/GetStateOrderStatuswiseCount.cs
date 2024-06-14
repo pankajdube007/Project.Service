@@ -43,7 +43,8 @@ namespace Project.Service.Models.Management
         public string ThirtyOneToFortyFiveOrderCount { get; set; }
         public string FortySixToSixtyOrderCount { get; set; }
         public string SixtyOneTo120DaysOrderCount { get; set; }
-        public string MoreThan120DaysOrderCount { get; set; }
+        public string OneTwentyOneTo365DaysOrderCount { get; set; }
+        public string MoreThan365DaysOrderCount { get; set; }
     }
 
 }

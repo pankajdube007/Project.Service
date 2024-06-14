@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
-using Project.Service.Models.Management;
 using Project.Service.Models;
+using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,49 +11,47 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.Management
+namespace Project.Service.Controllers.GStar
 {
-    public class GetStateStatusWiseOrderController : ApiController
+    public class GETQRCodeDetailsForStatusController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetStateStatusWise")]
-        public HttpResponseMessage GetDetails(ListGetStateStatusWiseOrder ula)
+        [Route("api/GETQRCodeDetailsForStatus")]
+        public HttpResponseMessage GetDetails(GETQRCodeDetailsForStatus ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != null)
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
-
-                    List<GetStateStatusWiseOrders> alldcr = new List<GetStateStatusWiseOrders>();
-                    List<GetStateStatusWiseOrder> alldcr1 = new List<GetStateStatusWiseOrder>();
-                    var dr = g1.return_dr($"usp_GetStateStatusWiseOrderDetails_API  {ula.StatusId} , '{ula.PivotHeader}' , {ula.StateId} , {ula.UserCategoryID} , '{ula.Category}' ");
+                    List<GETQRCodeDetailsForStatusLists> alldcr = new List<GETQRCodeDetailsForStatusLists>();
+                    List<GETQRCodeDetailsForStatusList> alldcr1 = new List<GETQRCodeDetailsForStatusList>();
+                    var dr = g1.return_dr("GETQRCodeDetailsForStatus '" + ula.QRCODE+"'");
                     if (dr.HasRows)
                     {
+
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetStateStatusWiseOrder
+                            alldcr1.Add(new GETQRCodeDetailsForStatusList
                             {
-                                OrderNumber = Convert.ToString(dr["OrderNumber"]),
-                                UserName = Convert.ToString(dr["UserName"]),
-                                MobileNo = Convert.ToString(dr["MobileNo"]),
-                                CatgeoryName = Convert.ToString(dr["CatgeoryName"]),
-                                OrderDate = Convert.ToString(dr["OrderDate"]),
-                                OrderApprovalDate = Convert.ToString(dr["OrderApprovalDate"]),
-                                OrderQuantity = Convert.ToString(dr["OrderQuantity"]),
-                                OrderPendingDays = Convert.ToString(dr["OrderPendingDays"]),
-                                OrderStatus = Convert.ToString(dr["OrderStatus"]),
-                                ProductName = Convert.ToString(dr["ProductName"]),
-                                ProductImage = Convert.ToString(dr["ProductImage"]),
-                                StateName = Convert.ToString(dr["StateName"]),
+                                QRType = Convert.ToString(dr["QRType"].ToString()),
+                                QRCode = Convert.ToString(dr["QRCode"].ToString()),
+                                IBranch = Convert.ToString(dr["IBranch"].ToString()),
+                                CBranch = Convert.ToString(dr["CBranch"].ToString()),
+                                ProductName = Convert.ToString(dr["ProductName"].ToString()),
+                                DCID = Convert.ToString(dr["DCID"].ToString()),
+                                POMappedDate = Convert.ToString(dr["POMappedDate"].ToString()),
+                                DCNo = Convert.ToString(dr["DCNo"].ToString()),
+                                DCDate = Convert.ToString(dr["DCDate"].ToString()),
+                                DCPartyName = Convert.ToString(dr["DCPartyName"].ToString()),
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetStateStatusWiseOrders
+                        alldcr.Add(new GETQRCodeDetailsForStatusLists
                         {
                             result = true,
                             message = string.Empty,
@@ -71,10 +69,11 @@ namespace Project.Service.Controllers.Management
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available !!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
+
                 }
                 catch (Exception ex)
                 {

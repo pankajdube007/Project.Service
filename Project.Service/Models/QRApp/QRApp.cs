@@ -6,21 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Net.Http;
-
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Project.Service.Filters;
-using Project.Service.Models;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Web.Http;
-using System.Web.Script.Serialization;
-
-
+using System.Globalization;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
+using RestSharp;
 
 namespace Project.Service.Models.QRApp
 {
@@ -672,4 +662,484 @@ namespace Project.Service.Models.QRApp
     {
         public string qrcode { get; set; }
     }
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// START CREATE DC DATA
+    /// </summary>
+
+
+    public class GetDCDetail
+    {
+        public String partyid { get; set; }
+    }
+
+
+
+    public class DCItemRequest
+    {
+
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public String partycat { get; set; }
+        public String divisionid { get; set; }
+        public String socategory { get; set; }
+        public String customerid { get; set; }
+        public String gsr { get; set; }
+        public String quotation { get; set; }
+
+    }
+
+
+
+
+    public class DCItemList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public DCItemDetailData data { get; set; }
+    }
+
+
+    public class DCItemDetailData
+    {
+        public string responsemesg { get; set; }
+        public List<ItemDetailData> data { get; set; }
+    }
+
+    public class ItemDetailData
+    {
+        public string slno { get; set; }
+        public string itemname { get; set; }
+        public string icode { get; set; }
+        public string poqty { get; set; }
+        public string stockqty { get; set; }
+    }
+
+
+
+    public class PageDetailsDCList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<PageDetailDCData> data { get; set; }
+    }
+
+
+    public class PageDetailDCData
+    {
+        public string slno { get; set; }
+        public string name { get; set; }
+        public string cinnum { get; set; }
+        public string typecat { get; set; }
+        public string cdname { get; set; }
+        public string dealertype { get; set; }
+    }
+
+    public class DivisionDCList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<DivisionDCData> data { get; set; }
+    }
+
+
+    public class DivisionDCData
+    {
+        public string slno { get; set; }
+        public string divisioncode { get; set; }
+        public string divisionnm { get; set; }
+        public string printnm { get; set; }
+
+    }
+
+
+
+
+    public class WarehouseData
+    {
+        public string slno { get; set; }
+        public string text { get; set; }
+
+    }
+
+
+    public class WarehouseDataList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<WarehouseData> data { get; set; }
+    }
+
+
+
+    public class DCCreateList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<DCResponse> data { get; set; }
+    }
+
+
+
+    public class DCResponse
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
+        public string Code { get; set; }
+    }
+
+    public class TaxTypeResponse
+    {
+        public String Type { get; set; }
+        public String SourceState { get; set; }
+        public String SourceCountry { get; set; }
+        public String DispatchState { get; set; }
+        public String DispatchCountry { get; set; }
+        public String CST { get; set; }
+    }
+
+
+
+    public class PostDCCreateDetailslst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public String partycatid { get; set; }
+        public String divisionid { get; set; }
+        public String socategory { get; set; }
+        public String partyid { get; set; }
+        public String gsr { get; set; }
+        public String quotation { get; set; }
+        public String remarks { get; set; }
+        public String checkedby { get; set; }
+        public List<PostDCCreateDetails> data { get; set; }
+    }
+
+    public class PostDCCreateDetails
+    {
+        public String productid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
+
+
+
+
+
+    /// <summary>
+    /// END CREATE DC DATA
+    /// </summary>
+
+
+
+
+    public class Sapapi
+    {
+        DataConnectionTrans g1 = new DataConnectionTrans();
+        int rows = 0;
+
+
+        #region create-goods-receipt-stock-transfer
+        public string GoodsReceiptStockTransfer(int ReceiptId, string UniqueKey, bool IsReversal, string FormType, string TableName, int UserId, String BranchType, String ColumnName)
+        {
+            var StatusCode = "";
+            var message = "";
+            var rowcount = "";
+            String Validate = ConfigurationManager.AppSettings["SAPBLOCKSTOCKALLOW"].ToString().Trim().ToUpper();
+            if (Validate == "YES")
+            {
+                if (BranchType.Trim() == "1" || BranchType.Trim() == "0")
+                {
+
+                    try
+                    {
+                        var result = AccessTokan();
+                        RestClient client = new RestClient(new Uri(ConfigurationManager.AppSettings["SAP-Url"]) + "erp-to-sap/create-goods-receipt-stock-transfer");
+                        client.Timeout = -1;
+                        var request = new RestRequest(Method.POST);
+                        request.AddHeader("authorization", "Bearer " + result);
+                        request.AddHeader("Content-Type", "application/json");
+                        request.AddJsonBody(new { ReceiptId = ReceiptId, UniqueKey = UniqueKey, IsReversal = IsReversal, TableName = FormType, UserId = UserId });
+                        IRestResponse response = client.Execute(request);
+                        Root myClass = new RestSharp.Deserializers.JsonDeserializer().Deserialize<Root>(response);
+
+                        if (myClass.StatusCode == 200 && myClass.Data.Count > 0)
+                        {
+                            g1 = new DataConnectionTrans();
+                            rows = g1.ExecDB("updatepurchaseinapihit " + ReceiptId + ",'" + FormType + "' ");
+                            StatusCode = "200"; //myClass.Data[0].StatusCode.ToString();
+                            message = myClass.Data[0].StatusMessage.ToString();
+                            rowcount = myClass.Data.Count.ToString();
+                        }
+                        else
+                        {
+                            message = myClass.Errors[0].ErrorMsg.ToString();
+                            StatusCode = myClass.Errors[0].ErrorCode.ToString();
+                            rowcount = myClass.Data.Count.ToString();
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        StatusCode = "-1";
+                        message = ex.Message.ToString();
+                    }
+                }
+                else
+                {
+                    String RequestURL = ConfigurationManager.AppSettings["SAP-Url"].ToString().Trim() + "erp-to-sap/create-goods-receipt-stock-transfer";
+                    String RequestData = "{\"ReceiptId\" = \"" + ReceiptId + "\", \"UniqueKey\" = \"" + UniqueKey + "\",\"IsReversal\" = \"" + IsReversal + "\",\"TableName\" = \"" + FormType + "\", \"UserId\" = \"" + UserId + "\"}";
+
+                    InsertAutoAPIHitDelayMode(RequestURL, RequestData, UserId.ToString().Trim(), TableName, ReceiptId.ToString().Trim(), ColumnName);
+
+                    rows = g1.ExecDB("updatepurchaseinapihit " + ReceiptId + ",'" + FormType + "' ");
+
+                    StatusCode = "200";
+                    message = "Success";
+                    rowcount = "1";
+                }
+
+            }
+            else
+            {
+                StatusCode = "200";
+                message = "Success";
+                rowcount = "1";
+            }
+
+            return StatusCode + "~" + message + "~" + rowcount;
+
+        }
+        #endregion
+
+        #region AccessTokan
+        public string AccessTokan()
+        {
+
+
+            RestClient client = new RestClient(new Uri(ConfigurationManager.AppSettings["SAP-Url"]) + "api/login");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("username", ConfigurationManager.AppSettings["SAP-username"]);
+            request.AddParameter("password", ConfigurationManager.AppSettings["SAP-password"]);
+            request.AddParameter("client_id", ConfigurationManager.AppSettings["SAP-client_id"]);
+            request.AddParameter("client_secret", ConfigurationManager.AppSettings["SAP-client_secret"]);
+            request.AddParameter("grant_type", "password");
+            IRestResponse response = client.Execute(request);
+
+
+            var status = response.ResponseStatus;
+            var statusCode = response.StatusCode;
+            var content = response.Content;
+            if (status.ToString() == "Completed" && statusCode.ToString() == "OK")
+            {
+                accesstotanoutput _uData = JsonConvert.DeserializeObject<accesstotanoutput>(response.Content);
+
+                return _uData.access_token.ToString();
+            }
+            else
+            {
+                return "";
+
+            }
+
+
+
+        }
+        #endregion AccessTokan
+
+        public bool InsertAutoAPIHitDelayMode(String RequestURL, String RequestData, String UserID, String TableName, String TableSlno, String ColumnName)
+        {
+            bool data = false;
+            DataConnectionTrans g1 = new DataConnectionTrans();
+           
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            SqlParameter[] param = new SqlParameter[6];
+            param[0] = new SqlParameter("@RequestURI", RequestURL.Trim());
+            param[1] = new SqlParameter("@RequestData", RequestData.Trim());
+            param[2] = new SqlParameter("@SysUser", UserID.Trim());
+            param[3] = new SqlParameter("@TableName", TableName.Trim());
+            param[4] = new SqlParameter("@TableSlNo", TableSlno.Trim());
+            param[5] = new SqlParameter("@ColumnName", ColumnName.Trim());
+            ds = g1.FillDataSet("Usp_InsertGenerateRequestForSAP", param);
+            dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                data = true;
+            }
+            return data;
+        }
+
+
+        public String ValidateLockDateResult(String Slno, String Module, String Date, String DateFormat)
+        {
+            String result = "";
+
+            DataTable dtValidate = new DataTable();
+
+            if (Date != "")
+            {
+                if (DateFormat == "1")
+                {
+                    Date = DateTime.ParseExact(Date, "dd/MM/yy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "2")
+                {
+                    Date = DateTime.ParseExact(Date, "MM/dd/yy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "3")
+                {
+                    Date = DateTime.ParseExact(Date, "dd-MM-yy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "4")
+                {
+                    Date = DateTime.ParseExact(Date, "MM-dd-yy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "5")
+                {
+                    Date = DateTime.ParseExact(Date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "6")
+                {
+                    Date = DateTime.ParseExact(Date, "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "7")
+                {
+                    Date = DateTime.ParseExact(Date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+                else if (DateFormat == "8")
+                {
+                    Date = DateTime.ParseExact(Date, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None).ToString("dd-MMM-yyyy");
+                }
+            }
+
+
+            if (Slno.Trim() == "0")
+            {
+                dtValidate = g1.return_dt("exec usp_DateLockCheck '" + Module + "','" + Date + "' ");
+            }
+            else
+            {
+                dtValidate = g1.return_dt("exec usp_DateLockCheckEdit '" + Module + "','" + Slno + "' ");
+            }
+
+            if (dtValidate.Rows.Count > 0)
+            {
+                result = dtValidate.Rows[0]["Result"].ToString().Trim();
+
+            }
+            else
+            {
+                result = "1";
+            }
+            return result;
+        }
+
+
+    }
+
+    public class AutoNoGen
+    {
+        private readonly string finYear = string.Empty;
+        DataConnectionTrans g1 = new DataConnectionTrans();
+        public AutoNoGen()
+        {
+            finYear = ConfigurationManager.AppSettings["finYear"];
+        }
+        public string[] GetAutoNo(int moduleID, int branchID)
+        {
+            var Str = "123456789";
+            string[] rtnStr = null;
+            var result = GetAutoNoTable(moduleID, branchID);
+            if (result.Rows.Count > 0)
+            {
+                rtnStr = new string[5];
+                var val = Convert.ToString(result.Rows[0]["code"]);
+                var digit = Convert.ToInt32(result.Rows[0]["digit"]);
+                rtnStr[0] = val + "/" + finYear + "/";
+                rtnStr[1] = Convert.ToString(rtnStr[0].Length);
+                rtnStr[2] = digit.ToString();
+                rtnStr[3] = val + "/" + finYear + "/" + Str.Substring(0, digit);
+                rtnStr[4] = Convert.ToString(rtnStr[3].Length);
+            }
+            return rtnStr;
+        }
+
+        public void GetIlligalUser()
+        {
+            var datetime1 = DateTime.Now.ToString();
+            g1.ExecDB("exec IlligalUserAdd '" + HttpContext.Current.Request.Cookies["uid"].Value + "','" + HttpContext.Current.Request.Cookies["brnchname"].Value + "','" + datetime1 + "','" + HttpContext.Current.Request.Url.ToString() + "'," + HttpContext.Current.Request.Cookies["logno"].Value + "");
+            g1.ExecDB("exec IlligalUserStatus " + HttpContext.Current.Request.Cookies["uid"].Value);
+
+        }
+        private DataTable GetAutoNoTable(int moduleID, int branchID)
+        {
+            var dt = g1.return_dt(string.Format("exec GetAutoNoByIDs {0},{1}", moduleID, branchID));
+            return dt;
+        }
+    }
+
+
+
+
+    public class ValidateLockDate
+    {
+        public String Value { get; set; }
+    }
+    class accesstotanoutput
+    {
+        public string access_token { get; set; }
+        public string token_type { get; set; }
+        public string expires_in { get; set; }
+        public string refresh_token { get; set; }
+    }
+
+    public class Error
+    {
+        public int ErrorCode { get; set; }
+        public string ErrorMsg { get; set; }
+        public string Parameter { get; set; }
+        public string HelpUrl { get; set; }
+    }
+
+    public class Success
+    {
+        public int StatusCode { get; set; }
+        public string StatusMessage { get; set; }
+        public string TokenKey { get; set; }
+    }
+
+    public class Root
+    {
+        public string Version { get; set; }
+        public int StatusCode { get; set; }
+        public string StatusCodeMessage { get; set; }
+        public string Timestamp { get; set; }
+        public int Size { get; set; }
+        public List<Success> Data { get; set; }
+        public List<Error> Errors { get; set; }
+    }
+
+
+
+
+
+
 }

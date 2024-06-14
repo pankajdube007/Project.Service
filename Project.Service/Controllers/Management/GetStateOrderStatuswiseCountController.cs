@@ -47,7 +47,8 @@ namespace Project.Service.Controllers.Management
                                 ThirtyOneToFortyFiveOrderCount = Convert.ToString(dr["ThirtyOneToFortyFiveOrderCount"]),
                                 FortySixToSixtyOrderCount = Convert.ToString(dr["FortySixToSixtyOrderCount"]),
                                 SixtyOneTo120DaysOrderCount = Convert.ToString(dr["SixtyOneTo120DaysOrderCount"]),
-                                MoreThan120DaysOrderCount = Convert.ToString(dr["MoreThan120DaysOrderCount"]),
+                                OneTwentyOneTo365DaysOrderCount = Convert.ToString(dr["OneTwentyOneTo365DaysOrderCount"]),
+                                MoreThan365DaysOrderCount = Convert.ToString(dr["MoreThan365DaysOrderCount"]),
 
                             });
                         }

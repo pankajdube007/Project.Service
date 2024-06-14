@@ -48,5 +48,6 @@ namespace Project.Service.Models.Management
         public string OrderStatus { get; set; }
         public string ProductName { get; set; }
         public string ProductImage { get; set; }
+        public string StateName { get; set; }
     }
 }

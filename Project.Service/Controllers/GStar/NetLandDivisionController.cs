@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Project.Service.Filters;
-using Project.Service.Models.Management;
 using Project.Service.Models;
+using Project.Service.Models.GStar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,49 +11,39 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Project.Service.Controllers.Management
+namespace Project.Service.Controllers.GStar
 {
-    public class GetStateStatusWiseOrderController : ApiController
+    public class NetLandDivisionController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetStateStatusWise")]
-        public HttpResponseMessage GetDetails(ListGetStateStatusWiseOrder ula)
+        [Route("api/netlanddivision")]
+        public HttpResponseMessage GetDetails(NetLandDivision ula)
         {
-            DataConection g1 = new DataConection();
+            DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
-            if (ula.CIN != null)
+            if (ula.ExId != 0)
             {
                 try
                 {
                     string data1;
-
-                    List<GetStateStatusWiseOrders> alldcr = new List<GetStateStatusWiseOrders>();
-                    List<GetStateStatusWiseOrder> alldcr1 = new List<GetStateStatusWiseOrder>();
-                    var dr = g1.return_dr($"usp_GetStateStatusWiseOrderDetails_API  {ula.StatusId} , '{ula.PivotHeader}' , {ula.StateId} , {ula.UserCategoryID} , '{ula.Category}' ");
+                    List<NetLandDivisionLists> alldcr = new List<NetLandDivisionLists>();
+                    List<NetLandDivisionList> alldcr1 = new List<NetLandDivisionList>();
+                    var dr = g1.return_dr("NetLandDivision "+ula.ExId);
                     if (dr.HasRows)
                     {
+
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GetStateStatusWiseOrder
+                            alldcr1.Add(new NetLandDivisionList
                             {
-                                OrderNumber = Convert.ToString(dr["OrderNumber"]),
-                                UserName = Convert.ToString(dr["UserName"]),
-                                MobileNo = Convert.ToString(dr["MobileNo"]),
-                                CatgeoryName = Convert.ToString(dr["CatgeoryName"]),
-                                OrderDate = Convert.ToString(dr["OrderDate"]),
-                                OrderApprovalDate = Convert.ToString(dr["OrderApprovalDate"]),
-                                OrderQuantity = Convert.ToString(dr["OrderQuantity"]),
-                                OrderPendingDays = Convert.ToString(dr["OrderPendingDays"]),
-                                OrderStatus = Convert.ToString(dr["OrderStatus"]),
-                                ProductName = Convert.ToString(dr["ProductName"]),
-                                ProductImage = Convert.ToString(dr["ProductImage"]),
-                                StateName = Convert.ToString(dr["StateName"]),
+                                Slno = Convert.ToInt32(dr["SlNo"].ToString()),
+                                divisioncode = Convert.ToString(dr["divisioncode"].ToString()),
 
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GetStateStatusWiseOrders
+                        alldcr.Add(new NetLandDivisionLists
                         {
                             result = true,
                             message = string.Empty,
@@ -71,12 +61,13 @@ namespace Project.Service.Controllers.Management
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(true, "No  Data available !!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }
+
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                     response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, try again later!!!!!!!!" + ex.Message), Encoding.UTF8, "application/json");
