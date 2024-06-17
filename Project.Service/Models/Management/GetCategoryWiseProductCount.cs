@@ -16,6 +16,7 @@ namespace Project.Service.Models.Management
 
         [Required]
         public string Category { get; set; }
+        public int UserCategoryID { get; set; }
     }
     public class GetCategoryWiseProductCounts
     {
@@ -27,6 +28,8 @@ namespace Project.Service.Models.Management
     public class GetCategoryWiseProductCount
     {
         public string ProductCategory { get; set; }
+        public string ProductCategoryID { get; set; }
         public string ProductCount { get; set; }
+        public string UserCategoryID { get; set; }
     }
 }

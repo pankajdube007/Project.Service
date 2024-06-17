@@ -18,13 +18,10 @@ namespace Project.Service.Models.Management
         public string Category { get; set; }
 
         [Required]
-        public int Slno { get; set; }
+        public int ProductId { get; set; }
 
-        [Required]
-        public int Usercat { get; set; }
-
-        [Required]
-        public int UserId { get; set; }
+        public int UserCategoryID { get; set; }
+     
     }
     public class GetProductDetailsLists
     {
@@ -35,7 +32,7 @@ namespace Project.Service.Models.Management
     }
     public class GetProductDetails
     {
-        public string SLno { get; set; }
+        public string ProductID { get; set; }
         public string Name { get; set; }
         public string Sku { get; set; }
         public string ManufaturerPartNumber { get; set; }
@@ -47,5 +44,6 @@ namespace Project.Service.Models.Management
         public string ShortDescription { get; set; }
         public string ProductPic { get; set; }
         public string Points { get; set; }
+        public string UserCategoryID { get; set; }
     }
 }

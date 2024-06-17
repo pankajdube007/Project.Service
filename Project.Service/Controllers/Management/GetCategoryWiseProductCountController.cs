@@ -30,7 +30,7 @@ namespace Project.Service.Controllers.Management
 
                     List<GetCategoryWiseProductCounts> alldcr = new List<GetCategoryWiseProductCounts>();
                     List<GetCategoryWiseProductCount> alldcr1 = new List<GetCategoryWiseProductCount>();
-                    var dr = g1.return_dr($"usp_GetCategoryWiseProductCount_API  '{ula.Category}' ");
+                    var dr = g1.return_dr($"usp_GetCategoryWiseProductCount_API  '{ula.Category}' , {ula.UserCategoryID} ");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
@@ -39,6 +39,8 @@ namespace Project.Service.Controllers.Management
                             {
                                 ProductCategory = Convert.ToString(dr["ProductCategory"]),
                                 ProductCount = Convert.ToString(dr["ProductCount"]),
+                                ProductCategoryID = Convert.ToString(dr["ProductCategoryID"]),
+                                UserCategoryID = Convert.ToString(dr["UserCategoryID"]),
 
                             });
                         }

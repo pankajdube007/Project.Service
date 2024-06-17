@@ -30,14 +30,14 @@ namespace Project.Service.Controllers.Management
 
                     List<GetProductDetailsLists> alldcr = new List<GetProductDetailsLists>();
                     List<GetProductDetails> alldcr1 = new List<GetProductDetails>();
-                    var dr = g1.return_dr($"usp_GetProductDetails_API  {ula.Slno}, {ula.Usercat} ,{ula.UserId} , '{ula.Category}' ");
+                    var dr = g1.return_dr($"usp_GetProductDetails_API  {ula.ProductId}, {ula.UserCategoryID} , '{ula.Category}' ");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
                             alldcr1.Add(new GetProductDetails
                             {
-                                SLno = Convert.ToString(dr["SlNo"]),
+                                ProductID = Convert.ToString(dr["ProductID"]),
                                 Name = Convert.ToString(dr["Name"]),
                                 Sku = Convert.ToString(dr["Sku"]),
                                 ManufaturerPartNumber = Convert.ToString(dr["ManufaturerPartNumber"]),
@@ -49,6 +49,7 @@ namespace Project.Service.Controllers.Management
                                 ShortDescription = Convert.ToString(dr["ShortDescription"]),
                                 ProductPic = Convert.ToString(dr["ProductPic"]),
                                 Points = Convert.ToString(dr["Points"]),
+                                UserCategoryID = Convert.ToString(dr["UserCategoryID"]),
 
                             });
                         }

@@ -35,6 +35,17 @@ namespace Project.Service.Models.QRApp
         public String branchid { get; set; }
     }
 
+    public class GetGRINUserDetails
+    {
+        public String userid { get; set; }
+    }
+
+    public class GetGRINDetails
+    {
+        public String branchid { get; set; }
+        public String partyid { get; set; }
+    }
+
 
     public class GetPurInDetails
     {
@@ -141,6 +152,29 @@ namespace Project.Service.Models.QRApp
 
         public String poid { get; set; }
         public String podid { get; set; }
+        public String productid { get; set; }
+        public String binid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
+
+
+
+    public class PostGRNINDetailslst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public List<PostGRNINDetails> data { get; set; }
+    }
+
+    public class PostGRNINDetails
+    {
+
+        public String poid { get; set; }
+        public String podid { get; set; }
+        public String dcdid { get; set; }
         public String productid { get; set; }
         public String binid { get; set; }
         public String qrcode { get; set; }
@@ -564,9 +598,13 @@ namespace Project.Service.Models.QRApp
         public string productname { get; set; }
         public string branchid { get; set; }
         public string warehouseid { get; set; }
+        public string dcid { get; set; }
+        public string dcdid { get; set; }
+        public string autoqrqty { get; set; }
 
     }
 
+   
 
     public class QRDetailDataList
     {

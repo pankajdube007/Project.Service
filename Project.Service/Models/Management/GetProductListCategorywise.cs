@@ -16,18 +16,15 @@ namespace Project.Service.Models.Management
 
         [Required]
         public string Category { get; set; }
-        [Required]
-        public int Usercat { get; set; }
+
+        public int UserCategoryID { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public int ProductCategoryID { get; set; }
 
-        [Required]
-        public string Productname { get; set; }
-        [Required]
-        public int ProductCat { get; set; }
         [Required]
         public int index { get; set; }
+
         [Required]
         public int Count { get; set; }
 
@@ -41,7 +38,7 @@ namespace Project.Service.Models.Management
     }
     public class GetProductListCategorywise
     {
-        public string SlNo { get; set; }
+        public string ProductID { get; set; }
         public string Name { get; set; }
         public string Points { get; set; }
         public string ProductCategoryId { get; set; }
@@ -51,5 +48,6 @@ namespace Project.Service.Models.Management
         public string ShortDescription { get; set; }
         public string ProductPic { get; set; }
         public string TotalCount { get; set; }
+        public string UserCategoryID { get; set; }
     }
 }

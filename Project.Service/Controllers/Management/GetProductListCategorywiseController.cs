@@ -30,14 +30,14 @@ namespace Project.Service.Controllers.Management
 
                     List<GetProductListCategorywises> alldcr = new List<GetProductListCategorywises>();
                     List<GetProductListCategorywise> alldcr1 = new List<GetProductListCategorywise>();
-                    var dr = g1.return_dr($"usp_GetProductListCategorywise_API  {ula.UserId}, {ula.Usercat} ,'{ula.Productname}' , {ula.ProductCat} ,{ula.index} , {ula.Count} ,  '{ula.Category}' ");
+                    var dr = g1.return_dr($"usp_GetProductListCategorywise_API  {ula.UserCategoryID}, {ula.ProductCategoryID} , {ula.index} , {ula.Count} ,  '{ula.Category}' ");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
                             alldcr1.Add(new GetProductListCategorywise
                             {
-                                SlNo = Convert.ToString(dr["SlNo"]),
+                                ProductID = Convert.ToString(dr["ProductID"]),
                                 Name = Convert.ToString(dr["Name"]),
                                 Points = Convert.ToString(dr["Points"]),
                                 ProductCategoryId = Convert.ToString(dr["ProductCategoryId"]),
@@ -47,6 +47,7 @@ namespace Project.Service.Controllers.Management
                                 ShortDescription = Convert.ToString(dr["ShortDescription"]),
                                 ProductPic = Convert.ToString(dr["ProductPic"]),
                                 TotalCount = Convert.ToString(dr["TotalCount"]),
+                                UserCategoryID = Convert.ToString(dr["UserCategoryID"]),
 
                             });
                         }

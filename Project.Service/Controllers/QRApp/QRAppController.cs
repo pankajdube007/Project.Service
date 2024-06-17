@@ -119,6 +119,31 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
+        [Route("grnbranch")]
+        [HttpPost]
+        public HttpResponseMessage GetGRNINBranchDetails(GetGRINUserDetails objGetGRINUserDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetGRNINBranchDetails(objGetGRINUserDetails);
+            return Response;
+        }
+
+
+        [Route("grndetails")]
+        [HttpPost]
+        public HttpResponseMessage GetGRNInDetails(GetGRINDetails objGetGRINDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetGRNInDetails(objGetGRINDetails);
+            return Response;
+        }
+
+
+       
+
+
 
         [Route("searchdetails")]
         [HttpPost]
@@ -185,6 +210,15 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
+        [Route("postgrnin")]
+        [HttpPost]
+        public HttpResponseMessage PostGRNInData(PostGRNINDetailslst objPostGRNINDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostGRNInData(objPostGRNINDetailslst);
+            return Response;
+        }
 
 
         [Route("dcwarehouse")]
