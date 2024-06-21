@@ -106,6 +106,7 @@ namespace Project.Service.Models.QRApp
         public String type { get; set; }
         public String qrcode { get; set; }
         public String vendorid { get; set; }
+        public String partyid { get; set; }
         public String warehouseid { get; set; }
         public String productid { get; set; }
         public String userid { get; set; }
@@ -873,6 +874,93 @@ namespace Project.Service.Models.QRApp
         public String qrtype { get; set; }
         public String qrqty { get; set; }
     }
+
+
+
+    public class STFRefnoRequest
+    {
+        public String type { get; set; }
+        public String branch { get; set; }
+
+    }
+
+    public class PageDetailSTFData
+    {
+        public String slno { get; set; }
+        public String text { get; set; }
+    }
+
+    public class PageDetailsSTFList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<PageDetailSTFData> data { get; set; }
+    }
+
+
+    public class PostSTDetailslst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public List<PostSTDetails> data { get; set; }
+    }
+
+    public class PostSTDetails
+    {
+
+        public String stid { get; set; }
+        public String stdid { get; set; }
+        public String sttype { get; set; }
+        public String productid { get; set; }
+        public String binid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
+
+    public class PostSLRDetailslst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public List<PostSLRDetails> data { get; set; }
+    }
+
+    public class PostSLRDetails
+    {
+
+        public String slrid { get; set; }
+        public String slrdid { get; set; }
+        public String productid { get; set; }
+        public String binid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
+
+    public class PostPIRDetailslst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public List<PostPIRDetails> data { get; set; }
+    }
+
+    public class PostPIRDetails
+    {
+        public String repid { get; set; }
+        public String repdid { get; set; }
+        public String productid { get; set; }
+        public String binid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
+
+
+
 
 
 

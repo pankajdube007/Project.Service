@@ -1018,7 +1018,7 @@ namespace Project.Service.Models.QRApp
                 DataTable dtVendor = new DataTable();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    dtVendor = ds.Tables[0];
+                    dtVendor = ds.Tables[1];
                 }
 
                 if (dtVendor.Rows.Count > 0)
@@ -1283,17 +1283,17 @@ namespace Project.Service.Models.QRApp
                     SqlParameter[] param = new SqlParameter[1];
                     param[0] = new SqlParameter("@poid", ReferenceID);
                     ds = objDataAccess.FillDataSet("GetGRNInChildQRDatascan", param);
-                    DataTable dtDCDetails = new DataTable();
+                    DataTable dtGRNINDetails = new DataTable();
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        dtDCDetails = ds.Tables[0];
+                        dtGRNINDetails = ds.Tables[0];
                     }
 
 
-                    if (dtDCDetails.Rows.Count > 0)
+                    if (dtGRNINDetails.Rows.Count > 0)
                     {
                         List<SearchDetailData> objSearchDetailDatalst = new List<SearchDetailData>();
-                        foreach (DataRow dr in dtDCDetails.Rows)
+                        foreach (DataRow dr in dtGRNINDetails.Rows)
                         {
                             SearchDetailData objSearchDetailData = new SearchDetailData();
                             objSearchDetailData.headid = dr["poid"].ToString().Trim();
@@ -1311,6 +1311,142 @@ namespace Project.Service.Models.QRApp
                             objSearchDetailData.dcdid = dr["dcchildid"].ToString().Trim();
                             objSearchDetailData.autoqrqty = dr["AutoQRQty"].ToString().Trim();
 
+                            objSearchDetailDatalst.Add(objSearchDetailData);
+                        }
+
+                        objPageDetailsList.data = objSearchDetailDatalst;
+                        code = "200";
+                        mesg = "Success";
+
+                    }
+                    else
+                    {
+                        code = "400";
+                        mesg = "Search details not found";
+                    }
+                }
+                else if (Type.ToUpper() == "WTW" || Type.ToUpper() == "WTR" || Type.ToUpper() == "RTW" || Type.ToUpper() == "RTR" || Type.ToUpper() == "IN" || Type.ToUpper() == "OUT")
+                {
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    DataSet ds = new DataSet();
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@Type", Type);
+                    param[1] = new SqlParameter("@Slno", ReferenceID);
+                    ds = objDataAccess.FillDataSet("GetSTFChildQRDatascan", param);
+                    DataTable dtGRNINDetails = new DataTable();
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        dtGRNINDetails = ds.Tables[0];
+                    }
+
+
+                    if (dtGRNINDetails.Rows.Count > 0)
+                    {
+                        List<SearchDetailData> objSearchDetailDatalst = new List<SearchDetailData>();
+                        foreach (DataRow dr in dtGRNINDetails.Rows)
+                        {
+                            SearchDetailData objSearchDetailData = new SearchDetailData();
+                            objSearchDetailData.headid = dr["headid"].ToString().Trim();
+                            objSearchDetailData.childid = dr["childid"].ToString().Trim();
+                            objSearchDetailData.productid = dr["itemid"].ToString().Trim();
+                            objSearchDetailData.productqty = dr["itemqty"].ToString().Trim();
+                            objSearchDetailData.qrqty = dr["QRQty"].ToString().Trim();
+                            objSearchDetailData.partialout = Convert.ToBoolean(dr["PartialOut"].ToString().Trim());
+                            objSearchDetailData.productcode = dr["ProductCode"].ToString().Trim();
+                            objSearchDetailData.productname = dr["ProductCode1"].ToString().Trim();
+                            objSearchDetailData.branchid = dr["BranchID"].ToString().Trim();
+                            objSearchDetailData.warehouseid = dr["WarehouseID"].ToString().Trim();
+                            objSearchDetailDatalst.Add(objSearchDetailData);
+                        }
+
+                        objPageDetailsList.data = objSearchDetailDatalst;
+                        code = "200";
+                        mesg = "Success";
+
+                    }
+                    else
+                    {
+                        code = "400";
+                        mesg = "Search details not found";
+                    }
+                }
+                else if (Type.ToUpper() == "PIR")
+                {
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    DataSet ds = new DataSet();
+                    SqlParameter[] param = new SqlParameter[1];
+                    param[0] = new SqlParameter("@Slno", ReferenceID);
+                    ds = objDataAccess.FillDataSet("GetPIRChildQRDatascan", param);
+                    DataTable dtGRNINDetails = new DataTable();
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        dtGRNINDetails = ds.Tables[0];
+                    }
+
+
+                    if (dtGRNINDetails.Rows.Count > 0)
+                    {
+                        List<SearchDetailData> objSearchDetailDatalst = new List<SearchDetailData>();
+                        foreach (DataRow dr in dtGRNINDetails.Rows)
+                        {
+                            SearchDetailData objSearchDetailData = new SearchDetailData();
+                            objSearchDetailData.headid = dr["headid"].ToString().Trim();
+                            objSearchDetailData.childid = dr["childid"].ToString().Trim();
+                            objSearchDetailData.productid = dr["itemid"].ToString().Trim();
+                            objSearchDetailData.productqty = dr["itemqty"].ToString().Trim();
+                            objSearchDetailData.qrqty = dr["QRQty"].ToString().Trim();
+                            objSearchDetailData.partialout = Convert.ToBoolean(dr["PartialOut"].ToString().Trim());
+                            objSearchDetailData.productcode = dr["ProductCode"].ToString().Trim();
+                            objSearchDetailData.productname = dr["ProductCode1"].ToString().Trim();
+                            objSearchDetailData.branchid = dr["BranchID"].ToString().Trim();
+                            objSearchDetailData.warehouseid = dr["WarehouseID"].ToString().Trim();
+                            objSearchDetailDatalst.Add(objSearchDetailData);
+                        }
+
+                        objPageDetailsList.data = objSearchDetailDatalst;
+                        code = "200";
+                        mesg = "Success";
+
+                    }
+                    else
+                    {
+                        code = "400";
+                        mesg = "Search details not found";
+                    }
+                }
+                else if (Type.ToUpper() == "SLR")
+                {
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    DataSet ds = new DataSet();
+                    SqlParameter[] param = new SqlParameter[1];
+                    param[0] = new SqlParameter("@Slno", ReferenceID);
+                    ds = objDataAccess.FillDataSet("GetSLRChildQRDatascan", param);
+                    DataTable dtGRNINDetails = new DataTable();
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        dtGRNINDetails = ds.Tables[0];
+                    }
+
+
+                    if (dtGRNINDetails.Rows.Count > 0)
+                    {
+                        List<SearchDetailData> objSearchDetailDatalst = new List<SearchDetailData>();
+                        foreach (DataRow dr in dtGRNINDetails.Rows)
+                        {
+                            SearchDetailData objSearchDetailData = new SearchDetailData();
+                            objSearchDetailData.headid = dr["headid"].ToString().Trim();
+                            objSearchDetailData.childid = dr["childid"].ToString().Trim();
+                            objSearchDetailData.productid = dr["itemid"].ToString().Trim();
+                            objSearchDetailData.productqty = dr["itemqty"].ToString().Trim();
+                            objSearchDetailData.qrqty = dr["QRQty"].ToString().Trim();
+                            objSearchDetailData.partialout = Convert.ToBoolean(dr["PartialOut"].ToString().Trim());
+                            objSearchDetailData.productcode = dr["ProductCode"].ToString().Trim();
+                            objSearchDetailData.productname = dr["ProductCode1"].ToString().Trim();
+                            objSearchDetailData.branchid = dr["BranchID"].ToString().Trim();
+                            objSearchDetailData.warehouseid = dr["WarehouseID"].ToString().Trim();
                             objSearchDetailDatalst.Add(objSearchDetailData);
                         }
 
@@ -1391,6 +1527,17 @@ namespace Project.Service.Models.QRApp
                 String ProductID = objQRDetails.productid.Trim();
                 String UserID = objQRDetails.userid.Trim();
 
+                String PartyID = "0";
+                if (objQRDetails.partyid != null)
+                {
+                    if (objQRDetails.partyid != "")
+                    {
+                        PartyID = objQRDetails.partyid.Trim();
+                    }
+                }
+                 
+                
+
                 if (ProductID == "")
                 {
                     ProductID = "0";
@@ -1433,7 +1580,6 @@ namespace Project.Service.Models.QRApp
                             }
                         }
                     }
-
 
 
                     if (Type.ToUpper() == "PURIN")
@@ -1617,7 +1763,262 @@ namespace Project.Service.Models.QRApp
                         param[4] = new SqlParameter("@POID", "0");
                         param[5] = new SqlParameter("@WareHouseID", WarehouseID);
                         param[6] = new SqlParameter("@DCID", "0");
+                        param[7] = new SqlParameter("@UserorPartyID", PartyID.Trim());
+                        ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
+                        DataTable dtQRDetails = new DataTable();
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            dtQRDetails = ds.Tables[0];
+                        }
+
+
+
+                        if (dtQRDetails.Rows.Count > 0)
+                        {
+                            List<QRDetailData> objQRDetailDatalst = new List<QRDetailData>();
+                            foreach (DataRow dr in dtQRDetails.Rows)
+                            {
+                                QRDetailData objQRDetailData = new QRDetailData();
+                                objQRDetailData.qrtype = dr["QRType"].ToString().Trim();
+                                objQRDetailData.vendorid = dr["VendorID"].ToString().Trim();
+                                objQRDetailData.qrcode = dr["QRCode"].ToString().Trim();
+                                objQRDetailData.productid = dr["ProductID"].ToString().Trim();
+                                objQRDetailData.productqty = dr["ProductQty"].ToString().Trim();
+                                objQRDetailData.pqr = dr["PQR"].ToString().Trim();
+                                objQRDetailData.iqr = dr["IQR"].ToString().Trim();
+                                objQRDetailData.oqr = dr["OQR"].ToString().Trim();
+                                objQRDetailData.cqr = dr["CQR"].ToString().Trim();
+                                objQRDetailData.poid = dr["POID"].ToString().Trim();
+                                objQRDetailData.isinnerproductsame = dr["IsInnerProductSame"].ToString().Trim();
+                                objQRDetailData.productinnerqty = dr["ProductInnerQty"].ToString().Trim();
+                                objQRDetailDatalst.Add(objQRDetailData);
+                            }
+                            objQRDetailDataList.data = objQRDetailDatalst;
+                            code = "200";
+                            mesg = "Success";
+                        }
+                        else
+                        {
+                            String Mesg = "";
+
+                            objDataAccess = new DataConnectionTrans();
+                            ds = new DataSet();
+                            param = new SqlParameter[8];
+                            param[0] = new SqlParameter("@VendorID", "0");
+                            param[1] = new SqlParameter("@ProductID", "0");
+                            param[2] = new SqlParameter("@QRCODE", QRCode);
+                            param[3] = new SqlParameter("@Type", "STATUS");
+                            param[4] = new SqlParameter("@POID", "0");
+                            param[5] = new SqlParameter("@WareHouseID", "0");
+                            param[6] = new SqlParameter("@DCID", "0");
+                            param[7] = new SqlParameter("@UserorPartyID", "0");
+                            ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
+                            DataTable dtQRStatusDetails = new DataTable();
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                dtQRStatusDetails = ds.Tables[0];
+                            }
+
+
+
+
+                            if (dtQRStatusDetails.Rows.Count > 0)
+                            {
+                                Mesg = "QR Code already added in stock current status is " + dtQRStatusDetails.Rows[0]["Status"].ToString();
+                            }
+                            else
+                            {
+                                Mesg = "Please scan valid QR Code or QR Code not found in Database. please contact Administrator";
+                            }
+
+                            code = "400";
+                            mesg = Mesg;
+                        }
+                    }
+                    else if (Type.ToUpper() == "WTW" || Type.ToUpper() == "WTR" || Type.ToUpper() == "RTW" || Type.ToUpper() == "RTR" || Type.ToUpper() == "IN" || Type.ToUpper() == "OUT")
+                    {
+
+                        DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                        DataSet ds = new DataSet();
+                        SqlParameter[] param = new SqlParameter[8];
+                        param[0] = new SqlParameter("@VendorID", "0");
+                        param[1] = new SqlParameter("@ProductID", ProductID);
+                        param[2] = new SqlParameter("@QRCODE", QRCode);
+                        param[3] = new SqlParameter("@Type", "STF");
+                        param[4] = new SqlParameter("@POID", "0");
+                        param[5] = new SqlParameter("@WareHouseID", WarehouseID);
+                        param[6] = new SqlParameter("@DCID", "0");
                         param[7] = new SqlParameter("@UserorPartyID", VendorID.Trim());
+                        ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
+                        DataTable dtQRDetails = new DataTable();
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            dtQRDetails = ds.Tables[0];
+                        }
+
+
+
+                        if (dtQRDetails.Rows.Count > 0)
+                        {
+                            List<QRDetailData> objQRDetailDatalst = new List<QRDetailData>();
+                            foreach (DataRow dr in dtQRDetails.Rows)
+                            {
+                                QRDetailData objQRDetailData = new QRDetailData();
+                                objQRDetailData.qrtype = dr["QRType"].ToString().Trim();
+                                objQRDetailData.vendorid = dr["VendorID"].ToString().Trim();
+                                objQRDetailData.qrcode = dr["QRCode"].ToString().Trim();
+                                objQRDetailData.productid = dr["ProductID"].ToString().Trim();
+                                objQRDetailData.productqty = dr["ProductQty"].ToString().Trim();
+                                objQRDetailData.pqr = dr["PQR"].ToString().Trim();
+                                objQRDetailData.iqr = dr["IQR"].ToString().Trim();
+                                objQRDetailData.oqr = dr["OQR"].ToString().Trim();
+                                objQRDetailData.cqr = dr["CQR"].ToString().Trim();
+                                objQRDetailData.poid = dr["POID"].ToString().Trim();
+                                objQRDetailData.isinnerproductsame = dr["IsInnerProductSame"].ToString().Trim();
+                                objQRDetailData.productinnerqty = dr["ProductInnerQty"].ToString().Trim();
+                                objQRDetailDatalst.Add(objQRDetailData);
+                            }
+                            objQRDetailDataList.data = objQRDetailDatalst;
+                            code = "200";
+                            mesg = "Success";
+                        }
+                        else
+                        {
+                            String Mesg = "";
+
+                            objDataAccess = new DataConnectionTrans();
+                            ds = new DataSet();
+                            param = new SqlParameter[8];
+                            param[0] = new SqlParameter("@VendorID", "0");
+                            param[1] = new SqlParameter("@ProductID", "0");
+                            param[2] = new SqlParameter("@QRCODE", QRCode);
+                            param[3] = new SqlParameter("@Type", "STATUS");
+                            param[4] = new SqlParameter("@POID", "0");
+                            param[5] = new SqlParameter("@WareHouseID", "0");
+                            param[6] = new SqlParameter("@DCID", "0");
+                            param[7] = new SqlParameter("@UserorPartyID", "0");
+                            ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
+                            DataTable dtQRStatusDetails = new DataTable();
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                dtQRStatusDetails = ds.Tables[0];
+                            }
+
+
+
+
+                            if (dtQRStatusDetails.Rows.Count > 0)
+                            {
+                                Mesg = "QR Code already added in stock current status is " + dtQRStatusDetails.Rows[0]["Status"].ToString();
+                            }
+                            else
+                            {
+                                Mesg = "Please scan valid QR Code or QR Code not found in Database. please contact Administrator";
+                            }
+
+                            code = "400";
+                            mesg = Mesg;
+                        }
+                    }
+                    else if (Type.ToUpper() == "PIR")
+                    {
+
+                        DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                        DataSet ds = new DataSet();
+                        SqlParameter[] param = new SqlParameter[8];
+                        param[0] = new SqlParameter("@VendorID", "0");
+                        param[1] = new SqlParameter("@ProductID", ProductID);
+                        param[2] = new SqlParameter("@QRCODE", QRCode);
+                        param[3] = new SqlParameter("@Type", "STF");
+                        param[4] = new SqlParameter("@POID", "0");
+                        param[5] = new SqlParameter("@WareHouseID", WarehouseID);
+                        param[6] = new SqlParameter("@DCID", "0");
+                        param[7] = new SqlParameter("@UserorPartyID", UserID.Trim());
+                        ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
+                        DataTable dtQRDetails = new DataTable();
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            dtQRDetails = ds.Tables[0];
+                        }
+
+
+
+                        if (dtQRDetails.Rows.Count > 0)
+                        {
+                            List<QRDetailData> objQRDetailDatalst = new List<QRDetailData>();
+                            foreach (DataRow dr in dtQRDetails.Rows)
+                            {
+                                QRDetailData objQRDetailData = new QRDetailData();
+                                objQRDetailData.qrtype = dr["QRType"].ToString().Trim();
+                                objQRDetailData.vendorid = dr["VendorID"].ToString().Trim();
+                                objQRDetailData.qrcode = dr["QRCode"].ToString().Trim();
+                                objQRDetailData.productid = dr["ProductID"].ToString().Trim();
+                                objQRDetailData.productqty = dr["ProductQty"].ToString().Trim();
+                                objQRDetailData.pqr = dr["PQR"].ToString().Trim();
+                                objQRDetailData.iqr = dr["IQR"].ToString().Trim();
+                                objQRDetailData.oqr = dr["OQR"].ToString().Trim();
+                                objQRDetailData.cqr = dr["CQR"].ToString().Trim();
+                                objQRDetailData.poid = dr["POID"].ToString().Trim();
+                                objQRDetailData.isinnerproductsame = dr["IsInnerProductSame"].ToString().Trim();
+                                objQRDetailData.productinnerqty = dr["ProductInnerQty"].ToString().Trim();
+                                objQRDetailDatalst.Add(objQRDetailData);
+                            }
+                            objQRDetailDataList.data = objQRDetailDatalst;
+                            code = "200";
+                            mesg = "Success";
+                        }
+                        else
+                        {
+                            String Mesg = "";
+
+                            objDataAccess = new DataConnectionTrans();
+                            ds = new DataSet();
+                            param = new SqlParameter[8];
+                            param[0] = new SqlParameter("@VendorID", "0");
+                            param[1] = new SqlParameter("@ProductID", "0");
+                            param[2] = new SqlParameter("@QRCODE", QRCode);
+                            param[3] = new SqlParameter("@Type", "STATUS");
+                            param[4] = new SqlParameter("@POID", "0");
+                            param[5] = new SqlParameter("@WareHouseID", "0");
+                            param[6] = new SqlParameter("@DCID", "0");
+                            param[7] = new SqlParameter("@UserorPartyID", "0");
+                            ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
+                            DataTable dtQRStatusDetails = new DataTable();
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                dtQRStatusDetails = ds.Tables[0];
+                            }
+
+
+
+
+                            if (dtQRStatusDetails.Rows.Count > 0)
+                            {
+                                Mesg = "QR Code already added in stock current status is " + dtQRStatusDetails.Rows[0]["Status"].ToString();
+                            }
+                            else
+                            {
+                                Mesg = "Please scan valid QR Code or QR Code not found in Database. please contact Administrator";
+                            }
+
+                            code = "400";
+                            mesg = Mesg;
+                        }
+                    }
+                    else if (Type.ToUpper() == "SLR")
+                    {
+
+                        DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                        DataSet ds = new DataSet();
+                        SqlParameter[] param = new SqlParameter[8];
+                        param[0] = new SqlParameter("@VendorID", "0");
+                        param[1] = new SqlParameter("@ProductID", ProductID);
+                        param[2] = new SqlParameter("@QRCODE", QRCode);
+                        param[3] = new SqlParameter("@Type", "SLR");
+                        param[4] = new SqlParameter("@POID", "0");
+                        param[5] = new SqlParameter("@WareHouseID", WarehouseID);
+                        param[6] = new SqlParameter("@DCID", "0");
+                        param[7] = new SqlParameter("@UserorPartyID", PartyID.Trim());
                         ds = objDataAccess.FillDataSet("GETQRCodeDetailsProductIDWise", param);
                         DataTable dtQRDetails = new DataTable();
                         if (ds.Tables[0].Rows.Count > 0)
@@ -1943,6 +2344,527 @@ namespace Project.Service.Models.QRApp
 
             return resp;
         }
+
+        public HttpResponseMessage GetSTFTypeDetails(GetGRINUserDetails objGetGRINDetails)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objGetGRINDetails);
+
+            String code = "";
+            String mesg = "";
+
+            PageDetailsSTFList objPageDetailsList = new PageDetailsSTFList();
+
+            try
+            {
+                DataTable dtType = new DataTable();
+
+                DataSet ds = new DataSet();
+
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+
+                ds = objDataAccess.FillDataSet("GetSTFTypeData");
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtType = ds.Tables[0];
+                }
+
+                if (dtType.Rows.Count > 0)
+                {
+                    List<PageDetailSTFData> objPageDetailDatalst = new List<PageDetailSTFData>();
+                    foreach (DataRow dr in dtType.Rows)
+                    {
+                        PageDetailSTFData objPageDetailData = new PageDetailSTFData();
+                        objPageDetailData.slno = dr["slno"].ToString().Trim();
+                        objPageDetailData.text = dr["text"].ToString().Trim();
+
+                        objPageDetailDatalst.Add(objPageDetailData);
+                    }
+
+                    objPageDetailsList.data = objPageDetailDatalst;
+                    code = "200";
+                    mesg = "Success";
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Type Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+            if (code == "200")
+            {
+                objPageDetailsList.result = true;
+                objPageDetailsList.message = "Success";
+            }
+            else
+            {
+                objPageDetailsList.result = false;
+                objPageDetailsList.message = mesg;
+            }
+            objPageDetailsList.servertime = DateTime.Now;
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPageDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "STFTypeDetails", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return resp;
+        }
+
+        public HttpResponseMessage GetSTFRefno(STFRefnoRequest objSTFRefnoData)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objSTFRefnoData);
+
+            String code = "";
+            String mesg = "";
+
+            PageDetailsSTFList objPageDetailsList = new PageDetailsSTFList();
+
+            try
+            {
+                string Type = objSTFRefnoData.type.Trim();
+                string BranchID = objSTFRefnoData.branch.Trim();
+
+                DataTable dtRefno = new DataTable();
+                DataSet ds = new DataSet();
+
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                SqlParameter[] param = new SqlParameter[2];
+                param[0] = new SqlParameter("@Type", Type);
+                param[1] = new SqlParameter("@branchid", BranchID);
+
+                ds = objDataAccess.FillDataSet("GetSTFByTypeForQRData", param);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtRefno = ds.Tables[0];
+                }
+
+                if (dtRefno.Rows.Count > 0)
+                {
+                    List<PageDetailSTFData> objPageDetailDatalst = new List<PageDetailSTFData>();
+                    foreach (DataRow dr in dtRefno.Rows)
+                    {
+                        PageDetailSTFData objPageDetailData = new PageDetailSTFData();
+                        objPageDetailData.slno = dr["SlNo"].ToString().Trim();
+                        objPageDetailData.text = dr["referenceno"].ToString().Trim();
+
+                        objPageDetailDatalst.Add(objPageDetailData);
+                    }
+
+                    objPageDetailsList.data = objPageDetailDatalst;
+                    code = "200";
+                    mesg = "Success";
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Reference Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+            if (code == "200")
+            {
+                objPageDetailsList.result = true;
+                objPageDetailsList.message = "Success";
+            }
+            else
+            {
+                objPageDetailsList.result = false;
+                objPageDetailsList.message = mesg;
+            }
+            objPageDetailsList.servertime = DateTime.Now;
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPageDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "STFReferenceNoDetails", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return resp;
+        }
+
+        public HttpResponseMessage GetSLRParty(GetPartyDetails objGetPartyDetails)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objGetPartyDetails);
+
+            String code = "";
+            String mesg = "";
+
+            PageDetailsList objPageDetailsList = new PageDetailsList();
+
+            try
+            {
+                string branch = objGetPartyDetails.branchid.Trim();
+                DataTable dtParty = new DataTable();
+                DataSet ds = new DataSet();
+
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@branchid", branch);
+
+                ds = objDataAccess.FillDataSet("getpartyforSalesreturnForQRScan", param);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtParty = ds.Tables[0];
+                }
+
+                if (dtParty.Rows.Count > 0)
+                {
+                    List<PageDetailData> objPageDetailDatalst = new List<PageDetailData>();
+                    foreach (DataRow dr in dtParty.Rows)
+                    {
+                        PageDetailData objPageDetailData = new PageDetailData();
+                        objPageDetailData.slno = dr["slno"].ToString().Trim();
+                        objPageDetailData.text = dr["cdname"].ToString().Trim();
+                        objPageDetailData.typecat = dr["typecat"].ToString().Trim();
+
+                        objPageDetailDatalst.Add(objPageDetailData);
+                    }
+
+                    objPageDetailsList.data = objPageDetailDatalst;
+                    code = "200";
+                    mesg = "Success";
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Party Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+            if (code == "200")
+            {
+                objPageDetailsList.result = true;
+                objPageDetailsList.message = "Success";
+            }
+            else
+            {
+                objPageDetailsList.result = false;
+                objPageDetailsList.message = mesg;
+            }
+            objPageDetailsList.servertime = DateTime.Now;
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPageDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "SLRPartyDetails", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return resp;
+        }
+
+        public HttpResponseMessage GetSLRRefNo(GetDCDetails objGetDCDetails)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objGetDCDetails);
+
+            String code = "";
+            String mesg = "";
+
+            PageDetailsList objPageDetailsList = new PageDetailsList();
+
+            try
+            {
+                string typeofparty = objGetDCDetails.catid.Trim();
+                string partyid = objGetDCDetails.partyid.Trim();
+
+                DataTable dtRefNo = new DataTable();
+                DataSet ds = new DataSet();
+
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                SqlParameter[] param = new SqlParameter[2];
+                param[0] = new SqlParameter("@typeofparty", typeofparty);
+                param[1] = new SqlParameter("@partyid", partyid);
+
+                ds = objDataAccess.FillDataSet("GetSalReturnByPartyForQRData", param);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtRefNo = ds.Tables[0];
+                }
+
+
+                if (dtRefNo.Rows.Count > 0)
+                {
+                    List<PageDetailData> objPageDetailDatalst = new List<PageDetailData>();
+                    foreach (DataRow dr in dtRefNo.Rows)
+                    {
+                        PageDetailData objPageDetailData = new PageDetailData();
+                        objPageDetailData.slno = dr["SlNo"].ToString().Trim();
+                        objPageDetailData.text = dr["referenceno"].ToString().Trim();
+                        objPageDetailData.typecat = "0";
+                        objPageDetailDatalst.Add(objPageDetailData);
+                    }
+
+                    objPageDetailsList.data = objPageDetailDatalst;
+                    code = "200";
+                    mesg = "Success";
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Reference Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+            if (code == "200")
+            {
+                objPageDetailsList.result = true;
+                objPageDetailsList.message = "Success";
+            }
+            else
+            {
+                objPageDetailsList.result = false;
+                objPageDetailsList.message = mesg;
+            }
+            objPageDetailsList.servertime = DateTime.Now;
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPageDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "SLRPartyDetails", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return resp;
+        }
+
+        public HttpResponseMessage GetPIRParty(GetPartyDetails objGetPartyDetails)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objGetPartyDetails);
+
+            String code = "";
+            String mesg = "";
+
+            PageDetailsList objPageDetailsList = new PageDetailsList();
+
+            try
+            {
+                string branch = objGetPartyDetails.branchid.Trim();
+                DataTable dtParty = new DataTable();
+                DataSet ds = new DataSet();
+
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@branchid", branch);
+
+                ds = objDataAccess.FillDataSet("getpartyforpurchasereturnForQRScan", param);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtParty = ds.Tables[0];
+                }
+
+                if (dtParty.Rows.Count > 0)
+                {
+                    List<PageDetailData> objPageDetailDatalst = new List<PageDetailData>();
+                    foreach (DataRow dr in dtParty.Rows)
+                    {
+                        PageDetailData objPageDetailData = new PageDetailData();
+                        objPageDetailData.slno = dr["slno"].ToString().Trim();
+                        objPageDetailData.text = dr["cdname"].ToString().Trim();
+                        objPageDetailData.typecat = dr["typecat"].ToString().Trim();
+                        objPageDetailDatalst.Add(objPageDetailData);
+                    }
+
+                    objPageDetailsList.data = objPageDetailDatalst;
+                    code = "200";
+                    mesg = "Success";
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Party Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+            if (code == "200")
+            {
+                objPageDetailsList.result = true;
+                objPageDetailsList.message = "Success";
+            }
+            else
+            {
+                objPageDetailsList.result = false;
+                objPageDetailsList.message = mesg;
+            }
+            objPageDetailsList.servertime = DateTime.Now;
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPageDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "PIRPartyDetails", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return resp;
+        }
+
+        public HttpResponseMessage GetPIRRefNo(GetDCDetails objGetDCDetails)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objGetDCDetails);
+
+            String code = "";
+            String mesg = "";
+
+            PageDetailsList objPageDetailsList = new PageDetailsList();
+
+            try
+            {
+                string typeofparty = objGetDCDetails.catid.Trim();
+                string partyid = objGetDCDetails.partyid.Trim();
+
+                DataTable dtRefNo = new DataTable();
+                DataSet ds = new DataSet();
+
+                DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                SqlParameter[] param = new SqlParameter[2];
+                param[0] = new SqlParameter("@typeofparty", typeofparty);
+                param[1] = new SqlParameter("@partyid", partyid);
+
+                ds = objDataAccess.FillDataSet("GetPurReturnByPartyForQRData", param);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtRefNo = ds.Tables[0];
+                }
+
+
+                if (dtRefNo.Rows.Count > 0)
+                {
+                    List<PageDetailData> objPageDetailDatalst = new List<PageDetailData>();
+                    foreach (DataRow dr in dtRefNo.Rows)
+                    {
+                        PageDetailData objPageDetailData = new PageDetailData();
+                        objPageDetailData.slno = dr["SlNo"].ToString().Trim();
+                        objPageDetailData.text = dr["referenceno"].ToString().Trim();
+                        objPageDetailData.typecat = "0";
+                        objPageDetailDatalst.Add(objPageDetailData);
+                    }
+
+                    objPageDetailsList.data = objPageDetailDatalst;
+                    code = "200";
+                    mesg = "Success";
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Reference Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+            if (code == "200")
+            {
+                objPageDetailsList.result = true;
+                objPageDetailsList.message = "Success";
+            }
+            else
+            {
+                objPageDetailsList.result = false;
+                objPageDetailsList.message = mesg;
+            }
+            objPageDetailsList.servertime = DateTime.Now;
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPageDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "PIRPartyDetails", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return resp;
+        }
+
 
         public HttpResponseMessage PostWarehouseData(PostWarehouseDetailslst objPostWarehouseDetailslst)
         {
@@ -2439,6 +3361,390 @@ namespace Project.Service.Models.QRApp
 
             string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objQRPostDetailsList);
             objlogDetails.TraceService(LogJsonString, jsonstrings, "PostGRNInData", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+
+
+            return resp;
+        }
+
+        public HttpResponseMessage PostSTData(PostSTDetailslst objPostSTDetailslst)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objPostSTDetailslst);
+
+            String code = "";
+            String mesg = "";
+
+            QRPostDetailsList objQRPostDetailsList = new QRPostDetailsList();
+
+            try
+            {
+                DataSet ds = new DataSet();
+                DataTable dtData = new DataTable();
+                if (objPostSTDetailslst.data != null)
+                {
+                    String BranchID = objPostSTDetailslst.branchid.Trim();
+                    String WarehouseID = objPostSTDetailslst.warehouseid.Trim();
+                    String UserID = objPostSTDetailslst.userid.Trim();
+
+                    dtData = ToDataTable(objPostSTDetailslst.data, BranchID, WarehouseID, UserID);
+                }
+
+                if (dtData.Rows.Count > 0)
+                {
+                    String BranchID = objPostSTDetailslst.branchid.Trim();
+                    String WarehouseID = objPostSTDetailslst.warehouseid.Trim();
+                    String UserID = objPostSTDetailslst.userid.Trim();
+
+
+                    String strSessionID = "STF|" + UserID + "|" + BranchID.ToString() + "|" + WarehouseID.ToString() + DateTime.Now.ToString("ddMMMyyyyhhmmss");
+
+                    DataColumn newColumn = new DataColumn("SessionID", typeof(System.String));
+                    newColumn.DefaultValue = strSessionID.ToString().ToUpper();
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("CreatedDate", typeof(System.DateTime));
+                    newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+                    dtData.Columns.Add(newColumn);
+
+
+
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    String Data = objDataAccess.BulkInsert(dtData, "TempSTQRPostDetails");
+
+                    DataSet dsData = new DataSet();
+                    objDataAccess = new DataConnectionTrans();
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@SESSIONID", strSessionID.ToString().ToUpper());
+                    param[1] = new SqlParameter("@UserID", UserID.Trim());
+                    dsData = objDataAccess.FillDataSet("UpdateSTQRPostDetailsBulkData", param);
+                    DataTable dtQRDetails = new DataTable();
+                    if (dsData.Tables[0].Rows.Count > 0)
+                    {
+                        dtQRDetails = dsData.Tables[0];
+                    }
+
+
+
+                    if (dtQRDetails.Rows.Count > 0)
+                    {
+                        List<QRPostDetails> objQRPostDetailslst = new List<QRPostDetails>();
+                        foreach (DataRow dr in dtQRDetails.Rows)
+                        {
+                            QRPostDetails objQRPostDetails = new QRPostDetails();
+                            objQRPostDetails.qrcode = dr["QRCode"].ToString().Trim();
+                            objQRPostDetailslst.Add(objQRPostDetails);
+                        }
+
+                        objQRPostDetailsList.data = objQRPostDetailslst;
+                        code = "200";
+                        mesg = "Success";
+                    }
+                    else
+                    {
+                        code = "400";
+                        mesg = "No Data Found";
+                    }
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Request Data Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+
+
+            if (code == "200")
+            {
+                objQRPostDetailsList.result = true;
+                objQRPostDetailsList.message = "Success";
+            }
+            else
+            {
+                objQRPostDetailsList.result = false;
+                objQRPostDetailsList.message = mesg;
+            }
+            objQRPostDetailsList.servertime = DateTime.Now;
+
+
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objQRPostDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "PostSTFData", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+
+
+            return resp;
+        }
+
+        public HttpResponseMessage PostPIRData(PostPIRDetailslst objPostSTDetailslst)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objPostSTDetailslst);
+
+            String code = "";
+            String mesg = "";
+
+            QRPostDetailsList objQRPostDetailsList = new QRPostDetailsList();
+
+            try
+            {
+                DataSet ds = new DataSet();
+                DataTable dtData = new DataTable();
+                if (objPostSTDetailslst.data != null)
+                {
+                    String BranchID = objPostSTDetailslst.branchid.Trim();
+                    String WarehouseID = objPostSTDetailslst.warehouseid.Trim();
+                    String UserID = objPostSTDetailslst.userid.Trim();
+
+                    dtData = ToDataTable(objPostSTDetailslst.data, BranchID, WarehouseID, UserID);
+                }
+
+                if (dtData.Rows.Count > 0)
+                {
+                    String BranchID = objPostSTDetailslst.branchid.Trim();
+                    String WarehouseID = objPostSTDetailslst.warehouseid.Trim();
+                    String UserID = objPostSTDetailslst.userid.Trim();
+
+
+                    String strSessionID = "PIR|" + UserID + "|" + BranchID.ToString() + "|" + WarehouseID.ToString() + DateTime.Now.ToString("ddMMMyyyyhhmmss");
+
+                    DataColumn newColumn = new DataColumn("SessionID", typeof(System.String));
+                    newColumn.DefaultValue = strSessionID.ToString().ToUpper();
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("CreatedDate", typeof(System.DateTime));
+                    newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+                    dtData.Columns.Add(newColumn);
+
+
+
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    String Data = objDataAccess.BulkInsert(dtData, "TempPIRQRPostDetails");
+
+                    DataSet dsData = new DataSet();
+                    objDataAccess = new DataConnectionTrans();
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@SESSIONID", strSessionID.ToString().ToUpper());
+                    param[1] = new SqlParameter("@UserID", UserID.Trim());
+                    dsData = objDataAccess.FillDataSet("UpdatePIRQRPostDetailsBulkData", param);
+                    DataTable dtQRDetails = new DataTable();
+                    if (dsData.Tables[0].Rows.Count > 0)
+                    {
+                        dtQRDetails = dsData.Tables[0];
+                    }
+
+
+
+                    if (dtQRDetails.Rows.Count > 0)
+                    {
+                        List<QRPostDetails> objQRPostDetailslst = new List<QRPostDetails>();
+                        foreach (DataRow dr in dtQRDetails.Rows)
+                        {
+                            QRPostDetails objQRPostDetails = new QRPostDetails();
+                            objQRPostDetails.qrcode = dr["QRCode"].ToString().Trim();
+                            objQRPostDetailslst.Add(objQRPostDetails);
+                        }
+
+                        objQRPostDetailsList.data = objQRPostDetailslst;
+                        code = "200";
+                        mesg = "Success";
+                    }
+                    else
+                    {
+                        code = "400";
+                        mesg = "No Data Found";
+                    }
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Request Data Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+
+
+            if (code == "200")
+            {
+                objQRPostDetailsList.result = true;
+                objQRPostDetailsList.message = "Success";
+            }
+            else
+            {
+                objQRPostDetailsList.result = false;
+                objQRPostDetailsList.message = mesg;
+            }
+            objQRPostDetailsList.servertime = DateTime.Now;
+
+
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objQRPostDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "PostPIRData", "0");
+
+
+            var resp = new HttpResponseMessage();
+
+
+            resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings),
+                StatusCode = HttpStatusCode.OK,
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+
+
+            return resp;
+        }
+
+        public HttpResponseMessage PostSLRData(PostSLRDetailslst objPostSTDetailslst)
+        {
+            LogDetails objlogDetails = new LogDetails();
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objPostSTDetailslst);
+
+            String code = "";
+            String mesg = "";
+
+            QRPostDetailsList objQRPostDetailsList = new QRPostDetailsList();
+
+            try
+            {
+                DataSet ds = new DataSet();
+                DataTable dtData = new DataTable();
+                if (objPostSTDetailslst.data != null)
+                {
+                    String BranchID = objPostSTDetailslst.branchid.Trim();
+                    String WarehouseID = objPostSTDetailslst.warehouseid.Trim();
+                    String UserID = objPostSTDetailslst.userid.Trim();
+
+                    dtData = ToDataTable(objPostSTDetailslst.data, BranchID, WarehouseID, UserID);
+                }
+
+                if (dtData.Rows.Count > 0)
+                {
+                    String BranchID = objPostSTDetailslst.branchid.Trim();
+                    String WarehouseID = objPostSTDetailslst.warehouseid.Trim();
+                    String UserID = objPostSTDetailslst.userid.Trim();
+
+
+                    String strSessionID = "SLR|" + UserID + "|" + BranchID.ToString() + "|" + WarehouseID.ToString() + DateTime.Now.ToString("ddMMMyyyyhhmmss");
+
+                    DataColumn newColumn = new DataColumn("SessionID", typeof(System.String));
+                    newColumn.DefaultValue = strSessionID.ToString().ToUpper();
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("CreatedDate", typeof(System.DateTime));
+                    newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+                    dtData.Columns.Add(newColumn);
+
+
+
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    String Data = objDataAccess.BulkInsert(dtData, "TempSLRQRPostDetails");
+
+                    DataSet dsData = new DataSet();
+                    objDataAccess = new DataConnectionTrans();
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@SESSIONID", strSessionID.ToString().ToUpper());
+                    param[1] = new SqlParameter("@UserID", UserID.Trim());
+                    dsData = objDataAccess.FillDataSet("UpdateSLRQRPostDetailsBulkData", param);
+                    DataTable dtQRDetails = new DataTable();
+                    if (dsData.Tables[0].Rows.Count > 0)
+                    {
+                        dtQRDetails = dsData.Tables[0];
+                    }
+
+
+
+                    if (dtQRDetails.Rows.Count > 0)
+                    {
+                        List<QRPostDetails> objQRPostDetailslst = new List<QRPostDetails>();
+                        foreach (DataRow dr in dtQRDetails.Rows)
+                        {
+                            QRPostDetails objQRPostDetails = new QRPostDetails();
+                            objQRPostDetails.qrcode = dr["QRCode"].ToString().Trim();
+                            objQRPostDetailslst.Add(objQRPostDetails);
+                        }
+
+                        objQRPostDetailsList.data = objQRPostDetailslst;
+                        code = "200";
+                        mesg = "Success";
+                    }
+                    else
+                    {
+                        code = "400";
+                        mesg = "No Data Found";
+                    }
+                }
+                else
+                {
+                    code = "400";
+                    mesg = "Request Data Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                code = "400";
+                mesg = ex.Message.ToString();
+            }
+
+
+
+            if (code == "200")
+            {
+                objQRPostDetailsList.result = true;
+                objQRPostDetailsList.message = "Success";
+            }
+            else
+            {
+                objQRPostDetailsList.result = false;
+                objQRPostDetailsList.message = mesg;
+            }
+            objQRPostDetailsList.servertime = DateTime.Now;
+
+
+
+            string jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objQRPostDetailsList);
+            objlogDetails.TraceService(LogJsonString, jsonstrings, "PostSLRData", "0");
 
 
             var resp = new HttpResponseMessage();

@@ -141,7 +141,96 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
-       
+        [Route("stocktransfertype")]
+        [HttpPost]
+        public HttpResponseMessage GetSTFTypeDetails(GetGRINUserDetails objGetGRINUserDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetSTFTypeDetails(objGetGRINUserDetails);
+            return Response;
+        }
+
+        [Route("stocktransferrefno")]
+        [HttpPost]
+        public HttpResponseMessage GetSTFRefNo(STFRefnoRequest objSTFRefnoData)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetSTFRefno(objSTFRefnoData);
+            return Response;
+        }
+
+        [Route("salesreturnparty")]
+        [HttpPost]
+        public HttpResponseMessage GetSLRParty(GetPartyDetails objGetPartyDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetSLRParty(objGetPartyDetails);
+            return Response;
+        }
+
+        [Route("salesresturnrefno")]
+        [HttpPost]
+        public HttpResponseMessage GetSLRRefNo(GetDCDetails objGetDCDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetSLRRefNo(objGetDCDetails);
+            return Response;
+        }
+
+        [Route("purchasereturnparty")]
+        [HttpPost]
+        public HttpResponseMessage GetPIRParty(GetPartyDetails objGetPartyDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetPIRParty(objGetPartyDetails);
+            return Response;
+        }
+
+        [Route("purchasereturnrefno")]
+        [HttpPost]
+        public HttpResponseMessage GetPIRRefNo(GetDCDetails objGetDCDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetPIRRefNo(objGetDCDetails);
+            return Response;
+        }
+
+
+        [Route("stocktransferpost")]
+        [HttpPost]
+        public HttpResponseMessage PostSTData(PostSTDetailslst objPostSTDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostSTData(objPostSTDetailslst);
+            return Response;
+        }
+
+        [Route("purchasereturnpost")]
+        [HttpPost]
+        public HttpResponseMessage PostPIRData(PostPIRDetailslst objPostPIRDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostPIRData(objPostPIRDetailslst);
+            return Response;
+        }
+
+        [Route("salesresturnpost")]
+        [HttpPost]
+        public HttpResponseMessage PostSLRData(PostSLRDetailslst objPostSLRDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostSLRData(objPostSLRDetailslst);
+            return Response;
+        }
 
 
 
@@ -219,6 +308,16 @@ namespace Project.Service.Controllers.QRApp
             Response = objQRAppDetails.PostGRNInData(objPostGRNINDetailslst);
             return Response;
         }
+
+
+
+
+
+
+
+
+
+
 
 
         [Route("dcwarehouse")]
