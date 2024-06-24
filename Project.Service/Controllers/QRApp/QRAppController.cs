@@ -108,7 +108,7 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
-        [Route("bin")]
+        [Route("wbin")]
         [HttpPost]
         public HttpResponseMessage GetBinDetails(GetBinDetails objGetBinDetails)
         {

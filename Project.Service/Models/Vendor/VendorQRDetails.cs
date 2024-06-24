@@ -250,6 +250,100 @@ namespace Project.Service.Models
             return resp;
         }
 
+
+        public HttpResponseMessage FANQRDetails(FANQRData objFANQRData)
+        {
+            String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objFANQRData);
+
+            FANQRMapingDataResponse objPostQRMapingDataResponse = new FANQRMapingDataResponse();
+
+            String VendorID = "0";
+            if (objFANQRData != null)
+            {
+                if (objFANQRData.VendorID != null)
+                {
+                    if (objFANQRData.VendorID.ToString().Trim() != null)
+                    {
+                        VendorID = objFANQRData.VendorID.ToString().Trim();
+                    }
+                }
+            }
+
+            string jsonstrings = "";
+
+            try
+            {
+                List<FANQRMapingDetailsResponse> objFANQRMapingDetailsResponselst = new List<FANQRMapingDetailsResponse>();
+                DataSet ds = new DataSet();
+                DataTable dtData = new DataTable();
+                if (objFANQRData.objFANQRDatagDetails != null)
+                {
+                    dtData = ToDataTable(objFANQRData.objFANQRDatagDetails);
+                }
+                if (dtData.Rows.Count > 0)
+                {
+                    String strSessionID = "User" + VendorID.ToString() + DateTime.Now.ToString("ddMMMyyyyhhmmss");
+                    DataColumn newColumn = new DataColumn("SessionID", typeof(System.String));
+                    newColumn.DefaultValue = strSessionID.ToString().ToUpper();
+                    dtData.Columns.Add(newColumn);
+
+
+                    DataConnectionTrans objDataAccess = new DataConnectionTrans();
+                    String Data = objDataAccess.BulkInsert(dtData, "TempFANQRPostDetails");
+
+                    objDataAccess = new DataConnectionTrans();
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@VendorID", VendorID);
+                    param[1] = new SqlParameter("@SessionID", strSessionID.ToString().ToUpper());
+                    ds = objDataAccess.FillDataSet("UpdateFANProductCRQRBulk", param);
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        DataTable dtQRDetails = new DataTable();
+                        dtQRDetails = ds.Tables[0];
+
+                        foreach (DataRow dr in dtQRDetails.Rows)
+                        {
+                            FANQRMapingDetailsResponse objFANQRMapingDetailsResponse = new FANQRMapingDetailsResponse();
+                            objFANQRMapingDetailsResponse.QRCode = dr["QRCode"].ToString().Trim();
+                            objFANQRMapingDetailsResponse.CreatedDate = dr["CreatedDate"].ToString().Trim();
+                            objFANQRMapingDetailsResponselst.Add(objFANQRMapingDetailsResponse);
+                        }
+                    }
+                }
+
+                if (objFANQRMapingDetailsResponselst.Count > 0)
+                {
+                    objPostQRMapingDataResponse.Code = "200";
+                    objPostQRMapingDataResponse.Message = "Success";
+                    objPostQRMapingDataResponse.objFANQRMapingDetailsResponse = objFANQRMapingDetailsResponselst;
+                }
+                else
+                {
+                    objPostQRMapingDataResponse.Code = "400";
+                    objPostQRMapingDataResponse.Message = "No Details Found";
+                    objPostQRMapingDataResponse.objFANQRMapingDetailsResponse = objFANQRMapingDetailsResponselst;
+                }
+
+
+
+                jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPostQRMapingDataResponse);
+            }
+            catch (Exception ex)
+            {
+                objPostQRMapingDataResponse.Code = "400";
+                objPostQRMapingDataResponse.Message = ex.ToString();
+                jsonstrings = Newtonsoft.Json.JsonConvert.SerializeObject(objPostQRMapingDataResponse);
+            }
+
+            var resp = new HttpResponseMessage()
+            {
+                Content = new StringContent(jsonstrings)
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return resp;
+        }
+
         public HttpResponseMessage QRSyncPostAPIUrl(List<QRSyncUpdateData> objQRSyncUpdateDataList)
         {
             String LogJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(objQRSyncUpdateDataList);
@@ -762,6 +856,39 @@ public class GetQRDataResponse
     public string Message { get; set; }
     public DataSet dsData { get; set; }
 }
+
+public class FANQRData
+{
+    public string VendorID { get; set; }
+    public List<FANQRDatagDetails> objFANQRDatagDetails { get; set; }
+}
+
+
+
+public class FANQRDatagDetails
+{
+
+    public string QRCode { get; set; }
+    public string CreatedDate { get; set; }
+}
+
+
+
+
+public class FANQRMapingDataResponse
+{
+    public string Code { get; set; }
+    public string Message { get; set; }
+    public List<FANQRMapingDetailsResponse> objFANQRMapingDetailsResponse { get; set; }
+}
+
+
+public class FANQRMapingDetailsResponse
+{
+    public string QRCode { get; set; }
+    public string CreatedDate { get; set; }
+}
+
 
 
 public class PostQRMapingData

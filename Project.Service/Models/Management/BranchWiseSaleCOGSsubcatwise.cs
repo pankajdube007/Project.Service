@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Project.Service.Models.Management
 {
-    public class BranchWiseSaleCOGS
+    public class BranchWiseSaleCOGSsubcatwise
     {
         [Required]
         public string ClientSecret { get; set; }
@@ -24,21 +24,27 @@ namespace Project.Service.Models.Management
         public string todate { get; set; }
 
         [Required]
-        public int branchid { get; set; }
+        public int Branchid { get; set; }
 
+        [Required]
+        public int categoryid { get; set; }
     }
-    public class BranchWiseSaleCOGSLists
+
+    public class BranchWiseSaleCOGSsubcatwiseLists
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<BranchWiseSaleCOGSList> data { get; set; }
+        public List<BranchWiseSaleCOGSsubcatwiseList> data { get; set; }
     }
-    public class BranchWiseSaleCOGSList
-    {
-        public string DivisioName { get; set; }
 
-        public string Sale { get; set; }
+    public class BranchWiseSaleCOGSsubcatwiseList
+    {
+        public string Rangenm { get; set; }
+
+        public string subcatid { get; set; }
+
+        public string sale { get; set; }
 
         public string SaleMep { get; set; }
 
@@ -47,8 +53,6 @@ namespace Project.Service.Models.Management
         public string cnamt { get; set; }
 
         public string Profit { get; set; }
-
-        public string DivId { get; set; }
 
     }
 }

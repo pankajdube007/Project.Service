@@ -19,5 +19,16 @@ namespace Project.Service.Controllers.Vendor
             Response = objVendorQRDetails.PostQRMapingDetails(objPostQRMapingData);
             return Response;
         }
+
+
+        [HttpPost]
+        [Route("api/WAPostQRFANDetails")]
+        public HttpResponseMessage WAFANQRDetails(FANQRData objFANQRData)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            VendorQRDetails objVendorQRDetails = new VendorQRDetails();
+            Response = objVendorQRDetails.FANQRDetails(objFANQRData);
+            return Response;
+        }
     }
 }

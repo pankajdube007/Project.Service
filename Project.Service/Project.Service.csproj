@@ -615,6 +615,10 @@
     <Compile Include="Controllers\GParivar\BranshWiseNonMovementStockDetailsController.cs" />
     <Compile Include="Controllers\Management\BlockedPartyController.cs" />
     <Compile Include="Controllers\Management\BranchWiseComboController.cs" />
+    <Compile Include="Controllers\Management\BranchWiseSaleCOGScatwiseController.cs" />
+    <Compile Include="Controllers\Management\BranchWiseSaleCOGSController.cs" />
+    <Compile Include="Controllers\Management\BranchWiseSaleCOGSsubcatwiseController.cs" />
+    <Compile Include="Controllers\Management\BranchWiseSaleCOGSsubitemwiseController.cs" />
     <Compile Include="Controllers\Management\CategoryCostingController.cs" />
     <Compile Include="Controllers\Management\ChangePasswordController.cs" />
     <Compile Include="Controllers\Management\CNDivisionWiseController.cs" />
@@ -1164,6 +1168,10 @@
     <Compile Include="Models\IT\ListSetWeeklyOff.cs" />
     <Compile Include="Models\Management\agenetlistformanagement.cs" />
     <Compile Include="Models\Management\BranchWiseCombo.cs" />
+    <Compile Include="Models\Management\BranchWiseSaleCOGS.cs" />
+    <Compile Include="Models\Management\BranchWiseSaleCOGScatwise.cs" />
+    <Compile Include="Models\Management\BranchWiseSaleCOGSsubcatwise.cs" />
+    <Compile Include="Models\Management\BranchWiseSaleCOGSsubitemwise.cs" />
     <Compile Include="Models\Management\CategoryCosting.cs" />
     <Compile Include="Models\Management\ChangePassword.cs" />
     <Compile Include="Models\Management\CNDivisionWise.cs" />

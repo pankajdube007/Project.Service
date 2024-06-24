@@ -11,14 +11,15 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
+
 namespace Project.Service.Controllers.Management
 {
-    public class BranchWiseSaleCOGSController : ApiController
+    public class BranchWiseSaleCOGSsubcatwiseController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/BranchWiseSaleCOGS")]
-        public HttpResponseMessage GetDetails(BranchWiseSaleCOGS ula)
+        [Route("api/BranchWiseSaleCOGSsubcatwise")]
+        public HttpResponseMessage GetDetails(BranchWiseSaleCOGSsubcatwise ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -28,29 +29,29 @@ namespace Project.Service.Controllers.Management
                 {
                     string data1;
 
-                    List<BranchWiseSaleCOGSLists> alldcr = new List<BranchWiseSaleCOGSLists>();
-                    List<BranchWiseSaleCOGSList> alldcr1 = new List<BranchWiseSaleCOGSList>();
+                    List<BranchWiseSaleCOGSsubcatwiseLists> alldcr = new List<BranchWiseSaleCOGSsubcatwiseLists>();
+                    List<BranchWiseSaleCOGSsubcatwiseList> alldcr1 = new List<BranchWiseSaleCOGSsubcatwiseList>();
 
-                    var dr = g1.return_dr("BranchWiseSaleCOGS '" + ula.fromdate + "','" + ula.todate + "'," + ula.branchid + ",'" + ula.Category + "','" + ula.CIN + "'");
+                    var dr = g1.return_dr("BranchWiseSaleCOGSsubcatwise '" + ula.fromdate + "','" + ula.todate + "'," + ula.Branchid +","+ula.categoryid +",'" + ula.Category + "','" + ula.CIN + "'");
 
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new BranchWiseSaleCOGSList
+                            alldcr1.Add(new BranchWiseSaleCOGSsubcatwiseList
                             {
 
-                                DivisioName = Convert.ToString(dr["divisionnm"].ToString()),
-                                Sale = Convert.ToString(dr["sale"].ToString()),
+                                Rangenm = Convert.ToString(dr["rangenm"].ToString()),
+                                subcatid = Convert.ToString(dr["subcatid"].ToString()),
+                                sale = Convert.ToString(dr["sale"].ToString()),
                                 SaleMep = Convert.ToString(dr["salemep"].ToString()),
                                 Rtn = Convert.ToString(dr["rtn"].ToString()),
                                 cnamt = Convert.ToString(dr["cnamt"].ToString()),
                                 Profit = Convert.ToString(dr["Profit"].ToString()),
-                                DivId = Convert.ToString(dr["divid"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new BranchWiseSaleCOGSLists
+                        alldcr.Add(new BranchWiseSaleCOGSsubcatwiseLists
                         {
                             result = true,
                             message = string.Empty,
@@ -87,6 +88,5 @@ namespace Project.Service.Controllers.Management
                 return response;
             }
         }
-
     }
 }
