@@ -306,6 +306,7 @@ namespace Project.Service.Models
                         {
                             FANQRMapingDetailsResponse objFANQRMapingDetailsResponse = new FANQRMapingDetailsResponse();
                             objFANQRMapingDetailsResponse.QRCode = dr["QRCode"].ToString().Trim();
+                            objFANQRMapingDetailsResponse.CouponCode = dr["CouponCode"].ToString().Trim();
                             objFANQRMapingDetailsResponse.CreatedDate = dr["CreatedDate"].ToString().Trim();
                             objFANQRMapingDetailsResponselst.Add(objFANQRMapingDetailsResponse);
                         }
@@ -886,6 +887,7 @@ public class FANQRMapingDataResponse
 public class FANQRMapingDetailsResponse
 {
     public string QRCode { get; set; }
+    public string CouponCode { get; set; }
     public string CreatedDate { get; set; }
 }
 
