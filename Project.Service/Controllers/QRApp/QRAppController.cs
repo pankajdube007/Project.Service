@@ -141,6 +141,44 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
+
+
+        [Route("invoicebranch")]
+        [HttpPost]
+        public HttpResponseMessage GetInvoiceBranchDetails(GetGRINUserDetails objGetGRINUserDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetInvoiceBranchDetails(objGetGRINUserDetails);
+            return Response;
+        }
+
+
+        [Route("invoicedetails")]
+        [HttpPost]
+        public HttpResponseMessage GetInvoiceDetails(GetGRINDetails objGetGRINDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetInvoiceDetails(objGetGRINDetails);
+            return Response;
+        }
+
+
+
+        [Route("postinvoice")]
+        [HttpPost]
+        public HttpResponseMessage PostInvoiceData(PostGRNINDetailslst objPostGRNINDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostInvoiceData(objPostGRNINDetailslst);
+            return Response;
+        }
+
+
+
+
         [Route("stocktransfertype")]
         [HttpPost]
         public HttpResponseMessage GetSTFTypeDetails(GetGRINUserDetails objGetGRINUserDetails)
