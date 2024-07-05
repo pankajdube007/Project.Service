@@ -13,12 +13,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.GParivar
 {
-    public class GiftPointSchemNameController : ApiController
+    public class AppdealerStockAvailibilityController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/GetGiftPointScheme")]
-        public HttpResponseMessage GetDetails(GiftPointSchemNameList ula)
+        [Route("api/AppdealerStockAvailibility")]
+        public HttpResponseMessage GetDetails(AppdealerStockAvailibility ula)
         {
             DataConnectionTrans g1 = new DataConnectionTrans();
             Common cm = new Common();
@@ -28,22 +28,22 @@ namespace Project.Service.Controllers.GParivar
                 {
                     string data1;
 
-                    List<GiftPointSchemNames> alldcr = new List<GiftPointSchemNames>();
-                    List<GiftPointSchemName> alldcr1 = new List<GiftPointSchemName>();
-                    var dr = g1.return_dr($"dbo.GetpointSchemeGparivar '{ula.CIN}' ");
+                    List<AppdealerStockAvailibilityLists> alldcr = new List<AppdealerStockAvailibilityLists>();
+                    List<AppdealerStockAvailibilityList> alldcr1 = new List<AppdealerStockAvailibilityList>();
+                    var dr = g1.return_dr($"dbo.AppdealerStockAvailibility '{ula.CIN}',{ula.Qty},{ula.ItemID} ");
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new GiftPointSchemName
+                            alldcr1.Add(new AppdealerStockAvailibilityList
                             {
-                                Slno = Convert.ToString(dr["slno"].ToString()),
-                                SchemeName = Convert.ToString(dr["SchemeName"].ToString()),
-                                IsGiftSelected= Convert.ToString(dr["isgiftselection"].ToString())
+                                TotalQty = Convert.ToString(dr["totalqty"].ToString()),
+                                Locnm = Convert.ToString(dr["locnm"].ToString()),
+                                Stock = Convert.ToString(dr["stock"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new GiftPointSchemNames
+                        alldcr.Add(new AppdealerStockAvailibilityLists
                         {
                             result = true,
                             message = string.Empty,

@@ -6,25 +6,32 @@ using System.Web;
 
 namespace Project.Service.Models.GParivar
 {
-    public class GiftPointSchemNameList
+    public class PointSchemeGiftListForSelection
     {
+        [Required]
+        public string CIN { get; set; }
+
         [Required]
         public string ClientSecret { get; set; }
 
         [Required]
-        public string CIN { get; set; }
+
+        public int SchemeID { get; set; }
     }
-    public class GiftPointSchemNames
+
+    public class PointSchemeGiftListForSelectionLists
     {
         public bool result { get; set; }
         public string message { get; set; }
         public string servertime { get; set; }
-        public List<GiftPointSchemName> data { get; set; }
+        public List<PointSchemeGiftListForSelectionList> data { get; set; }
     }
-    public class GiftPointSchemName
+
+    public class PointSchemeGiftListForSelectionList
     {
         public string Slno { get; set; }
-        public string SchemeName { get; set; }
-        public string IsGiftSelected { get; set; }
+        public string GroupID { get; set; }
+        public string Points { get; set; }
+        public string Gift { get; set; }
     }
 }
