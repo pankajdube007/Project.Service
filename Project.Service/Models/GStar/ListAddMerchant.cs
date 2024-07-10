@@ -45,7 +45,6 @@ namespace Project.Service.Models.GStar
         [Required]
         public string ConcernedPerson { get; set; }
 
-        [Required]
         public string email { get; set; }
 
         [Required]
