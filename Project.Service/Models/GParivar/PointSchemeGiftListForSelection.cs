@@ -33,5 +33,9 @@ namespace Project.Service.Models.GParivar
         public string GroupID { get; set; }
         public string Points { get; set; }
         public string Gift { get; set; }
+        public string Address { get; set; }
+        public string GiftImg { get; set; }
+        public string CNValue { get; set; }
+
     }
 }

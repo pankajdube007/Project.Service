@@ -40,7 +40,11 @@ namespace Project.Service.Controllers.GParivar
                                 Slno = Convert.ToString(dr["slno"].ToString()),
                                 GroupID = Convert.ToString(dr["groupid"].ToString()),
                                 Points = Convert.ToString(dr["point"].ToString()),
-                                Gift = Convert.ToString(dr["gift"].ToString())
+                                Gift = Convert.ToString(dr["gift"].ToString()),
+                                Address = Convert.ToString(dr["address"].ToString()),
+                                GiftImg = Convert.ToString(dr["img"].ToString()),
+                                CNValue = Convert.ToString(dr["CNValue"].ToString()),
+
                             });
                         }
                         g1.close_connection();
