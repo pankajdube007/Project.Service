@@ -702,7 +702,40 @@ namespace Project.Service.Models.QRApp
         public string qrcode { get; set; }
     }
 
+    public class GetQRDetails
+    {
+        public String qr { get; set; }
+    }
 
+    public class QRStatusDetailsList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public QRStatusDetailData data { get; set; }
+    }
+
+
+    public class QRStatusDetailData
+    {
+        public string qrtype { get; set; }
+        public string qrcode { get; set; }
+        public string inwarehouse { get; set; }
+        public string currentwarehouse { get; set; }
+        public string status { get; set; }
+        public string reportingstatus { get; set; }
+        public string productname { get; set; }
+        public List<QRStatusRDetailData> qrdata { get; set; }
+    }
+
+
+
+    public class QRStatusRDetailData
+    {
+        public string remarks { get; set; }
+        public string warehousename { get; set; }
+        public string createddate { get; set; }
+    }
 
 
 

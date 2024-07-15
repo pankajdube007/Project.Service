@@ -1,55 +1,84 @@
 ﻿using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Project.Service.Filters;
-using Project.Service.Models.GParivar;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using Project.Service.Models.GParivar;
 
 namespace Project.Service.Controllers.GParivar
 {
-    public class PointSchemeGiftListForSelectionController : ApiController
+    public class getDivisionWiseYSAFinYearController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/PointSchemeGiftListForSelection")]
-        public HttpResponseMessage GetDetails(PointSchemeGiftListForSelection ula)
+        [Route("api/getDivisionWiseYSAFinYear")]
+        public HttpResponseMessage GetDetails(getDivisionWiseYSAFinYear ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
             if (ula.CIN != null)
             {
                 try
                 {
                     string data1;
+                    decimal total = 0;
 
-                    List<PointSchemeGiftListForSelectionLists> alldcr = new List<PointSchemeGiftListForSelectionLists>();
-                    List<PointSchemeGiftListForSelectionList> alldcr1 = new List<PointSchemeGiftListForSelectionList>();
-                    var dr = g1.return_dr($"dbo.getgiftlistforselectionpointscheme '{ula.CIN}',{ula.SchemeID} ");
+                    List<DivisionWiseYsasFinYear> alldcr = new List<DivisionWiseYsasFinYear>();
+                    List<DivisionWiseYsaFinYear> alldcr1 = new List<DivisionWiseYsaFinYear>();
+                    List<DivisionWiseDetailsFinYear> DivisionWiseDetails = new List<DivisionWiseDetailsFinYear>();
+                    List<DivisionWiseTotalFinYear> DivisionWiseTotal = new List<DivisionWiseTotalFinYear>();
+
+                    var dr = (SqlDataReader)null;
+                    if (ula.ExecId == 0)
+                    {
+                        dr = g1.return_dr("App_divisionwisesalefinyear  '" + ula.CIN + "'," + ula.divisionid+",'"+ula.FinYear+"'");
+
+                    }
+                    else
+                    {
+                        dr = g1.return_dr("App_divisionwisesalegstarfinyear  '" + ula.CIN + "'," + ula.divisionid + "," + ula.ExecId + ",'"+ula.FinYear+"'");
+
+                    }
+
+
+
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PointSchemeGiftListForSelectionList
+                            DivisionWiseDetails.Add(new DivisionWiseDetailsFinYear
                             {
-                                Slno = Convert.ToString(dr["slno"].ToString()),
-                                GroupID = Convert.ToString(dr["groupid"].ToString()),
-                                Points = Convert.ToString(dr["point"].ToString()),
-                                Gift = Convert.ToString(dr["gift"].ToString()),
-                                Address = Convert.ToString(dr["address"].ToString()),
-                                GiftImg = Convert.ToString(dr["img"].ToString()),
-                                CNValue = Convert.ToString(dr["CNValue"].ToString()),
-                                IsSelected = Convert.ToString(dr["isselected"].ToString()),
-                                SelectedQty = Convert.ToString(dr["selectedqty"].ToString())
+                                categorynm = dr["categorynm"].ToString(),
+                                sale = dr["sale"].ToString(),
+                                categoryid = dr["categoryid"].ToString(),
+                                divisionid = dr["divisionid"].ToString()
                             });
+
+                            total = total + Convert.ToDecimal(dr["sale"].ToString());
                         }
+
+
+
+                        DivisionWiseTotal.Add(new DivisionWiseTotalFinYear
+                        {
+                            TotalSale = total.ToString()
+                        });
+
+                        alldcr1.Add(new DivisionWiseYsaFinYear
+                        {
+                            DivisionWiseSale = DivisionWiseDetails,
+                            DivisionWiseSaleTotal = DivisionWiseTotal
+                        });
+
                         g1.close_connection();
-                        alldcr.Add(new PointSchemeGiftListForSelectionLists
+                        alldcr.Add(new DivisionWiseYsasFinYear
                         {
                             result = true,
                             message = string.Empty,

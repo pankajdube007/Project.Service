@@ -350,6 +350,28 @@ namespace Project.Service.Controllers.QRApp
 
 
 
+        [Route("poststockmatch")]
+        [HttpPost]
+        public HttpResponseMessage PostStockMatchData(PostWarehouseDetailslst objPostWarehouseDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostStockMatchData(objPostWarehouseDetailslst);
+            return Response;
+        }
+
+
+        [Route("qrstatus")]
+        [HttpPost]
+        public HttpResponseMessage GetQRStatus(GetQRDetails objGetQRDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetQRStatus(objGetQRDetails);
+            return Response;
+        }
+
+
 
 
 

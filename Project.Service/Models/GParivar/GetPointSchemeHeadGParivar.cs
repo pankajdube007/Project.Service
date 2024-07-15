@@ -31,7 +31,9 @@ namespace Project.Service.Models.GParivar
         public string GiftImg { get; set; }
         public string NextGiftImg { get; set; }
         public string PdfLink { get; set; }
-
+        public string FinalPoint { get; set; }
+        public string GiftPoint { get; set; }
+        public string  NextGiftPoint { get; set; }
         public List<GetPointSchemeHeadGParivarListes> Details { get; set; }
     }
     public class GetPointSchemeHeadGParivarListes

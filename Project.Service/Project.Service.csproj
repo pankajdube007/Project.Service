@@ -413,10 +413,12 @@
     <Compile Include="Controllers\GParivar\GetCFDetailsController.cs" />
     <Compile Include="Controllers\GParivar\GetDataDubaiTourController.cs" />
     <Compile Include="Controllers\GParivar\GetDistrictMasterController.cs" />
+    <Compile Include="Controllers\GParivar\getDivisionWiseYSAFinYearController.cs" />
     <Compile Include="Controllers\GParivar\getinvoicepodController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByCategoryAndNameorCodeController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeController.cs" />
     <Compile Include="Controllers\GParivar\GetItemDetailsByItemCodeDetailListController.cs" />
+    <Compile Include="Controllers\GParivar\getLastYearSalesFinYearController.cs" />
     <Compile Include="Controllers\GParivar\GetNewYearDamakaOfferController.cs" />
     <Compile Include="Controllers\GParivar\GetNewYearDhamakaOfferPointListController.cs" />
     <Compile Include="Controllers\GParivar\GetOrderCatItemDetailsController.cs" />
@@ -984,9 +986,11 @@
     <Compile Include="Models\GParivar\FreepayBankDeactivation.cs" />
     <Compile Include="Models\GParivar\GetCFSInvoiceList.cs" />
     <Compile Include="Models\GParivar\GetDataDubaiTour.cs" />
+    <Compile Include="Models\GParivar\getDivisionWiseYSAFinYear.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByCategoryAndNameorCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCode.cs" />
     <Compile Include="Models\GParivar\GetItemDetailsByItemCodeDetailList.cs" />
+    <Compile Include="Models\GParivar\getLastYearSalesFinYear.cs" />
     <Compile Include="Models\GParivar\GetNewYearDamakaOffer.cs" />
     <Compile Include="Models\GParivar\GetNewYearDhamakaOfferPointList.cs" />
     <Compile Include="Models\GParivar\GetOrderCatItemDetails.cs" />

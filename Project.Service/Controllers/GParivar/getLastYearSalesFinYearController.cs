@@ -1,26 +1,27 @@
 ﻿using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Project.Service.Filters;
-using Project.Service.Models.GParivar;
 using Project.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using Project.Service.Models.GParivar;
 
 namespace Project.Service.Controllers.GParivar
 {
-    public class PointSchemeGiftListForSelectionController : ApiController
+    public class getLastYearSalesFinYearController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/PointSchemeGiftListForSelection")]
-        public HttpResponseMessage GetDetails(PointSchemeGiftListForSelection ula)
+        [Route("api/getLastYearSalesFinYear")]
+        public HttpResponseMessage GetDetails(getLastYearSalesFinYear ula)
         {
-            DataConnectionTrans g1 = new DataConnectionTrans();
+            DataConection g1 = new DataConection();
             Common cm = new Common();
             if (ula.CIN != null)
             {
@@ -28,28 +29,38 @@ namespace Project.Service.Controllers.GParivar
                 {
                     string data1;
 
-                    List<PointSchemeGiftListForSelectionLists> alldcr = new List<PointSchemeGiftListForSelectionLists>();
-                    List<PointSchemeGiftListForSelectionList> alldcr1 = new List<PointSchemeGiftListForSelectionList>();
-                    var dr = g1.return_dr($"dbo.getgiftlistforselectionpointscheme '{ula.CIN}',{ula.SchemeID} ");
+                    List<getLastYearSalesFinYearss> alldcr = new List<getLastYearSalesFinYearss>();
+                    List<getLastYearSalesFinYears> alldcr1 = new List<getLastYearSalesFinYears>();
+
+                    var dr = (SqlDataReader)null;
+                    if (ula.ExecId == 0)
+                    {
+                        dr = g1.return_dr("App_dealerlstyearsalefinyear '" + ula.CIN + "','" + ula.FinYear + "'");
+
+                    }
+                    else
+                    {
+                        dr = g1.return_dr("App_dealerlstyearsaleGstarfinyear '" + ula.CIN + "','" + ula.ExecId + "','"+ ula.FinYear+"'");
+
+                    }
+
+
+
+
+
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new PointSchemeGiftListForSelectionList
+                            alldcr1.Add(new getLastYearSalesFinYears
                             {
-                                Slno = Convert.ToString(dr["slno"].ToString()),
-                                GroupID = Convert.ToString(dr["groupid"].ToString()),
-                                Points = Convert.ToString(dr["point"].ToString()),
-                                Gift = Convert.ToString(dr["gift"].ToString()),
-                                Address = Convert.ToString(dr["address"].ToString()),
-                                GiftImg = Convert.ToString(dr["img"].ToString()),
-                                CNValue = Convert.ToString(dr["CNValue"].ToString()),
-                                IsSelected = Convert.ToString(dr["isselected"].ToString()),
-                                SelectedQty = Convert.ToString(dr["selectedqty"].ToString())
+                                lstyearsale = Convert.ToString(dr["lstyrsale"].ToString()),
+                                curyearsale = Convert.ToString(dr["curyrsale"].ToString()),
                             });
                         }
+
                         g1.close_connection();
-                        alldcr.Add(new PointSchemeGiftListForSelectionLists
+                        alldcr.Add(new getLastYearSalesFinYearss
                         {
                             result = true,
                             message = string.Empty,

@@ -73,6 +73,9 @@ namespace Project.Service.Controllers.GParivar
                                     GiftImg = Convert.ToString(dr1["giftimg"]).ToString(),
                                     NextGiftImg = Convert.ToString(dr1["nextgiftimg"]).ToString(),
                                     PdfLink = Convert.ToString(dr1["pdflink"]).ToString(),
+                                    FinalPoint = Convert.ToString(dr1["finalpoint"]).ToString(),
+                                    GiftPoint = Convert.ToString(dr1["GiftPoint"]).ToString(),
+                                    NextGiftPoint = Convert.ToString(dr1["NextGiftPoint"]).ToString(),
 
                                 });
                             }

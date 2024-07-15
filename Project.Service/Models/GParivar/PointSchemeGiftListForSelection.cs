@@ -36,6 +36,8 @@ namespace Project.Service.Models.GParivar
         public string Address { get; set; }
         public string GiftImg { get; set; }
         public string CNValue { get; set; }
+        public string IsSelected { get; set; }
+        public string SelectedQty { get; set; }
 
     }
 }
