@@ -102,7 +102,7 @@ namespace Project.Service.Controllers.GParivar
                     {
                         g1.close_connection();
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Something is wrong, Data not Inserted"), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "Oops!Data not Found"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

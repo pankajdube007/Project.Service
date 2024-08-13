@@ -39,7 +39,9 @@ namespace Project.Service.Controllers.GParivar
                             {
                                 Slno = Convert.ToString(dr["slno"].ToString()),
                                 SchemeName = Convert.ToString(dr["SchemeName"].ToString()),
-                                IsGiftSelected= Convert.ToString(dr["isgiftselection"].ToString())
+                                IsGiftSelected= Convert.ToString(dr["isgiftselection"].ToString()),
+                                ShowSubmitButton= Convert.ToBoolean(dr["issubmitbtn"])
+
                             });
                         }
                         g1.close_connection();

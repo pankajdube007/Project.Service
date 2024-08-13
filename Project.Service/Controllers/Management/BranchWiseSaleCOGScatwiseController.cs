@@ -47,6 +47,7 @@ namespace Project.Service.Controllers.Management
                                 rtn = Convert.ToString(dr["rtn"].ToString()),
                                 cnamt = Convert.ToString(dr["cnamt"].ToString()),
                                 Profit = Convert.ToString(dr["Profit"].ToString()),
+                                DnAmount = Convert.ToString(dr["dnamt"].ToString()),
                             });
                         }
                         g1.close_connection();

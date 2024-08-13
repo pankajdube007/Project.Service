@@ -77,7 +77,7 @@ namespace Project.Service.Controllers.GParivar
                             alldcr.Add(new PartyWisePointSchemeGiftAddLists
                             {
                                 result = true,
-                                message = "Something is wrong",
+                                message = "Selected Point is More than the point win  ",
                                 servertime = DateTime.Now.ToString(),
                                 data = alldcr1,
                             });
@@ -95,7 +95,7 @@ namespace Project.Service.Controllers.GParivar
                             alldcr.Add(new PartyWisePointSchemeGiftAddLists
                             {
                                 result = false,
-                                message = "",
+                                message = "Something is Wrong",
                                 servertime = DateTime.Now.ToString(),
                                 data = alldcr1,
                             });

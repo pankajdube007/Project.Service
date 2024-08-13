@@ -26,5 +26,7 @@ namespace Project.Service.Models.GParivar
         public string Slno { get; set; }
         public string SchemeName { get; set; }
         public string IsGiftSelected { get; set; }
+
+        public Boolean ShowSubmitButton { get; set; }
     }
 }

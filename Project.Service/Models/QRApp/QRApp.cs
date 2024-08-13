@@ -63,6 +63,8 @@ namespace Project.Service.Models.QRApp
     {
         public String partyid { get; set; }
         public String catid { get; set; }
+        public String branchid { get; set; }
+
     }
 
 
@@ -117,6 +119,8 @@ namespace Project.Service.Models.QRApp
         public String branchid { get; set; }
         public String warehouseid { get; set; }
         public String productid { get; set; }
+        public String type { get; set; }
+
     }
 
 
@@ -137,6 +141,7 @@ namespace Project.Service.Models.QRApp
         public String qrcode { get; set; }
         public String qrtype { get; set; }
         public String qrqty { get; set; }
+        public String type { get; set; }
     }
 
 
@@ -248,7 +253,7 @@ namespace Project.Service.Models.QRApp
     {
         public string ValidateAsync(UserInputs userLogin)
         {
-            
+
             String ResponseData = "";
 
             try
@@ -257,7 +262,7 @@ namespace Project.Service.Models.QRApp
                 var dt = g2.return_dt("exec validuserotherQR '" + userLogin.usernm + "','" + userLogin.pwd + "',''");
                 if (dt.Rows.Count > 0)
                 {
-                   
+
                     int uid = Convert.ToInt32(dt.Rows[0]["SlNo"]);
                     string lognm = Convert.ToString(dt.Rows[0]["usernm"]);
                     string name = Convert.ToString(dt.Rows[0]["name"]);
@@ -270,7 +275,7 @@ namespace Project.Service.Models.QRApp
                         {
                             List<ValidationOther.UserInfoOther> user = new List<ValidationOther.UserInfoOther>();
                             Authen auth = new Authen();
-                            
+
                             string EncryptionKey = auth.EncryptionKey;
                             var secret = auth.EncryptString(EncryptionKey, Convert.ToString(dt1.Rows[0]["uniquekey"].ToString()));
                             user.Add(new ValidationOther.UserInfoOther
@@ -335,7 +340,7 @@ namespace Project.Service.Models.QRApp
                     objCommonReturnData.result = false;
                     objCommonReturnData.servertime = DateTime.Now.ToString();
                     objCommonReturnDatalst.Add(objCommonReturnData);
-                    
+
 
                     ResponseData = JsonConvert.SerializeObject(objCommonReturnDatalst, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                     g2.close_connection();
@@ -352,13 +357,13 @@ namespace Project.Service.Models.QRApp
                 objCommonReturnDatalst.Add(objCommonReturnData);
 
                 ResponseData = JsonConvert.SerializeObject(objCommonReturnDatalst, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-             
+
                 return ResponseData;
             }
-          
+
         }
 
-      
+
 
         public string ValidateVendorAsync(UserInputs userLogin)
         {
@@ -427,7 +432,7 @@ namespace Project.Service.Models.QRApp
                                 },
                             });
                             ResponseData = JsonConvert.SerializeObject(user, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-                           
+
 
                             return ResponseData;
                         }
@@ -494,13 +499,13 @@ namespace Project.Service.Models.QRApp
 
                 return ResponseData;
             }
-            
+
         }
 
     }
 
 
-   
+
 
     public class CommonReturnData
     {
@@ -520,7 +525,7 @@ namespace Project.Service.Models.QRApp
     {
         public void TraceService(String Requests, String Response, String APIName, String OrderID)
         {
-           
+
         }
     }
 
@@ -605,7 +610,7 @@ namespace Project.Service.Models.QRApp
 
     }
 
-   
+
 
     public class QRDetailDataList
     {
@@ -646,6 +651,7 @@ namespace Project.Service.Models.QRApp
 
     public class LoginResponse
     {
+        public string type { get; set; }
         public string code { get; set; }
         public string mesg { get; set; }
         public string userid { get; set; }
@@ -712,7 +718,8 @@ namespace Project.Service.Models.QRApp
         public bool result { get; set; }
         public String message { get; set; }
         public DateTime servertime { get; set; }
-        public QRStatusDetailData data { get; set; }
+        public List<QRStatusDetailData> data { get; set; }
+
     }
 
 
@@ -737,6 +744,71 @@ namespace Project.Service.Models.QRApp
         public string createddate { get; set; }
     }
 
+
+
+    public class GetVendorInvoice
+    {
+        public String vendorid { get; set; }
+    }
+
+
+    public class GetVendorInvoiceDetails
+    {
+        public String vendorid { get; set; }
+        public String refno { get; set; }
+    }
+
+
+
+    public class GetVendorQrDetails
+    {
+        public String vendorid { get; set; }
+        public String qrcode { get; set; }
+        public String refno { get; set; }
+    }
+
+
+
+
+    public class PostVendorInvoiceDetailsList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<PostVendorInvoiceDetails> data { get; set; }
+    }
+
+
+    public class PostVendorInvoiceDetails
+    {
+        public string QRCode { get; set; }
+        public string QRQty { get; set; }
+        public string QRType { get; set; }
+        public string RefInvoice { get; set; }
+        public string ProductID { get; set; }
+        public string ProductCode1 { get; set; }
+        public string ProductCode { get; set; }
+
+    }
+
+
+    public class PostVendorQRDetailslst
+    {
+        public String vendorid { get; set; }
+        public String refno { get; set; }
+        public String type { get; set; }
+        public List<PostVendorQRDetails> data { get; set; }
+    }
+
+
+
+    public class PostVendorQRDetails
+    {
+        public String productid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
 
 
 
@@ -1127,7 +1199,7 @@ namespace Project.Service.Models.QRApp
         {
             bool data = false;
             DataConnectionTrans g1 = new DataConnectionTrans();
-           
+
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             SqlParameter[] param = new SqlParameter[6];

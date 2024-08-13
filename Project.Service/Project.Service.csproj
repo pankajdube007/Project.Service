@@ -901,9 +901,6 @@
     <Compile Include="Controllers\GParivar\submitGroupTODController.cs" />
     <Compile Include="Controllers\GParivar\SupplierMastManagementController.cs" />
     <Compile Include="Controllers\GParivar\SupplierPurchaseAndLedgerController.cs" />
-    <Compile Include="Controllers\GParivar\TargetSchemeController.cs" />
-    <Compile Include="Controllers\GParivar\TeamController.cs" />
-    <Compile Include="Controllers\GParivar\TeamImageController.cs" />
     <Compile Include="Controllers\GStar\testExecutivePresentAbsentController.cs" />
     <Compile Include="Controllers\GParivar\ThirdPartyAgingController.cs" />
     <Compile Include="Controllers\GParivar\ThirdPartyPurOrderStatusController.cs" />

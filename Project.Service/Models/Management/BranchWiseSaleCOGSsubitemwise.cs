@@ -51,6 +51,7 @@ namespace Project.Service.Models.Management
         public string cnamt { get; set; }
 
         public string Profit { get; set; }
+        public string DnAmount { get; set; }
 
 
     }

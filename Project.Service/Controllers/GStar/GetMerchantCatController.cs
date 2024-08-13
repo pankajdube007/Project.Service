@@ -31,7 +31,7 @@ namespace Project.Service.Controllers.GStar
 
                     List<GetmerchantCatLists> alldcr = new List<GetmerchantCatLists>();
                     List<GetmerchantCatList> alldcr1 = new List<GetmerchantCatList>();
-                    var dr = g1.return_dr("dbo.GetmerchantCatListnew '" + ula.ExId + "', '" + ula.slno + "'");
+                    var dr = g1.return_dr("dbo.GetmerchantCatListnew '" + ula.ExId + "', " + ula.slno + ",'"+ula.Date+"',"+ula.Trvlid);
                     if (dr.HasRows)
                     {
                         string baseurl = _goldMedia.MapPathToPublicUrl("");

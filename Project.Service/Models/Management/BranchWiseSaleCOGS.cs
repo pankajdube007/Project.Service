@@ -26,6 +26,7 @@ namespace Project.Service.Models.Management
         [Required]
         public int branchid { get; set; }
 
+
     }
     public class BranchWiseSaleCOGSLists
     {
@@ -49,6 +50,7 @@ namespace Project.Service.Models.Management
         public string Profit { get; set; }
 
         public string DivId { get; set; }
+        public string DnAmount { get; set; }
 
     }
 }

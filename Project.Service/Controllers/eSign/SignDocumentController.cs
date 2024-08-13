@@ -57,7 +57,7 @@ namespace Project.Service.Controllers.eSign
                 // TODO: Any further validation
                 try
                 {
-                    var dt = g1.return_dt("getSaleLedgerBalance_Esign '"+ signLedgerInputModel.CIN + "','"+ signLedgerInputModel.FromDate+"','"+ signLedgerInputModel.ToDate+"'");
+                    var dt = g1.return_dt("getSaleLedgerBalance_Esign '" + signLedgerInputModel.CIN + "','" + signLedgerInputModel.FromDate + "','" + signLedgerInputModel.ToDate + "'");
 
                     List<SignLedgerOutputModelLINK> alldcr = new List<SignLedgerOutputModelLINK>();
                     List<SignLedgerOutputModel> result = new List<SignLedgerOutputModel>();
@@ -78,13 +78,13 @@ namespace Project.Service.Controllers.eSign
 
 
                     alldcr.Add(new SignLedgerOutputModelLINK
-                    { 
-                        link= _link,
-                        amount= _amount,
+                    {
+                        link = _link,
+                        amount = _amount,
                         IsExists = _isExist
                     });
 
-                    
+
                     result.Add(new SignLedgerOutputModel
                     {
                         result = true,
@@ -125,7 +125,7 @@ namespace Project.Service.Controllers.eSign
             string data1 = string.Empty;
             var cm = new Common();
             var g1 = new DataConnectionTrans();
-            if (signLedgerReportInputModel.CIN!="")
+            if (signLedgerReportInputModel.CIN != "")
             {
                 // TODO: Any further validation
                 try
@@ -138,7 +138,7 @@ namespace Project.Service.Controllers.eSign
                     List<SignLedgerReportOutputModel> result = new List<SignLedgerReportOutputModel>();
 
 
-                    var dr = g1.return_dt("esignledgerreport '" + signLedgerReportInputModel.CIN+"'");
+                    var dr = g1.return_dt("esignledgerreport '" + signLedgerReportInputModel.CIN + "'");
 
                     var dr1 = g1.return_dt("esignledgerActive '" + signLedgerReportInputModel.CIN + "'");
 
@@ -157,20 +157,20 @@ namespace Project.Service.Controllers.eSign
 
 
 
-                    if (dr.Rows.Count>0)
+                    if (dr.Rows.Count > 0)
 
                     {
-                      
+
 
                         for (int i = 0; i < dr.Rows.Count; i++)
-                       
+
                         {
                             alldcr1.Add(new SignLedgerReport
                             {
-                                year=dr.Rows[i]["year"].ToString(),
-                                quater= dr.Rows[i]["quater"].ToString(),
-                                amount= dr.Rows[i]["amount"].ToString(),
-                                link= dr.Rows[i]["link"].ToString(),
+                                year = dr.Rows[i]["year"].ToString(),
+                                quater = dr.Rows[i]["quater"].ToString(),
+                                amount = dr.Rows[i]["amount"].ToString(),
+                                link = dr.Rows[i]["link"].ToString(),
 
                             });
 
@@ -178,8 +178,8 @@ namespace Project.Service.Controllers.eSign
 
                         data.Add(new SignLedgerReportData
                         {
-                            signdata=alldcr1,
-                            status=status
+                            signdata = alldcr1,
+                            status = status
                         });
 
                         result.Add(new SignLedgerReportOutputModel
@@ -202,7 +202,7 @@ namespace Project.Service.Controllers.eSign
                     else
                     {
 
-                     
+
                         data.Add(new SignLedgerReportData
                         {
                             signdata = alldcr1,
@@ -227,7 +227,7 @@ namespace Project.Service.Controllers.eSign
                         return response;
                     }
 
-                
+
                 }
                 catch (Exception ex)
                 {
@@ -251,14 +251,35 @@ namespace Project.Service.Controllers.eSign
         public HttpResponseMessage MakePayloadToSignDocument(SignDocumentInputModel signDocumentInputModel)
         {
             var blobFilePath = string.Empty;
-            var blobFileName = $"PartyLedger_{signDocumentInputModel.CIN}_{DateTime.Now:dd_MMM_yyy_hh_mm_ss_fff}.pdf";
+
             var cm = new Common();
+
+            //if (blobFileName == "")
+            //{
+            //    HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+            //    response4.Content = new StringContent(cm.StatusTime(false, "File Not Found !!!!!!!!"), Encoding.UTF8, "application/json");
+
+            //    return response4;
+            //}
+
+
+
             if (DateTime.TryParse(signDocumentInputModel.FromDate, out DateTime fromDate)
                 && DateTime.TryParse(signDocumentInputModel.ToDate, out DateTime toDate))
+
+            //signDocumentInputModel.FromDate = "2024-04-01";
+            //string fromDate = signDocumentInputModel.FromDate;
+
+            //signDocumentInputModel.ToDate = "2024-06-30";
+            //string toDate = signDocumentInputModel.ToDate;
+
+            //if (signDocumentInputModel.CIN != "")
             {
                 // TODO: Any further validation
                 try
                 {
+                    var blobFileName = $"PartyLedger_{signDocumentInputModel.CIN}_{DateTime.Now:dd_MMM_yyy_hh_mm_ss_fff}.pdf";
+
                     var g1 = new DataConnectionTrans();
 
                     var BLOB_DIRECTORY_NAME =
@@ -267,6 +288,8 @@ namespace Project.Service.Controllers.eSign
                     using (PartyLedgerReportNew report = new PartyLedgerReportNew())
                     {
                         report.Parameters["parameter3"].Value = signDocumentInputModel.CIN;
+                        //report.Parameters["parameter4"].Value = signDocumentInputModel.FromDate;
+                        //report.Parameters["parameter5"].Value = signDocumentInputModel.ToDate;
                         report.Parameters["parameter4"].Value = $"{fromDate:MM/dd/yyyy}";
                         report.Parameters["parameter5"].Value = $"{toDate:MM/dd/yyyy}";
 
@@ -278,13 +301,14 @@ namespace Project.Service.Controllers.eSign
                     if (!string.IsNullOrWhiteSpace(blobFilePath))
                     {
                         var ledgerTable = g1.return_dt(
-                            $"exec SavePartyLedgerInfoForSign '{signDocumentInputModel.CIN}','{blobFilePath}','{fromDate:yyyy-MM-dd}','{toDate:yyyy-MM-dd}'");
+                             $"exec SavePartyLedgerInfoForSign '{signDocumentInputModel.CIN}','{blobFilePath}','{fromDate:yyyy-MM-dd}','{toDate:yyyy-MM-dd}'");
+                        //$"exec SavePartyLedgerInfoForSign '{signDocumentInputModel.CIN}','{blobFilePath}','{signDocumentInputModel.FromDate:yyyy-MM-dd}','{signDocumentInputModel.ToDate:yyyy-MM-dd}'");
                         if (ledgerTable.Rows.Count > 0)
                         {
                             var firstName = ledgerTable.Rows[0]["FirstName"].ToString();
                             var lastName = ledgerTable.Rows[0]["LastName"].ToString();
-                            var mobileNumber = ledgerTable.Rows[0]["MobileNumber"].ToString();
-                            var email = ledgerTable.Rows[0]["Email"].ToString();
+                            var mobileNumber = "7208301119"; // ledgerTable.Rows[0]["MobileNumber"].ToString();
+                            var email = "chetan.goldmedalindia@gmail.com"; // ledgerTable.Rows[0]["Email"].ToString();
                             var requestId = ledgerTable.Rows[0]["RequestId"].ToString();
 
                             var documents = new Models.Manch.Document
@@ -371,6 +395,23 @@ namespace Project.Service.Controllers.eSign
                                 }
                             }
                         }
+                        else
+                        {
+                            HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+                            response1.Content = new StringContent(cm.StatusTime(false, "ledger table have no value"), Encoding.UTF8,
+                                "application/json");
+
+                            return response1;
+                        }
+                    }
+
+                    else
+                    {
+                        HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+                        response1.Content = new StringContent(cm.StatusTime(false, "Blob Error"), Encoding.UTF8,
+                            "application/json");
+
+                        return response1;
                     }
                 }
                 catch (Exception ex)
@@ -381,12 +422,16 @@ namespace Project.Service.Controllers.eSign
                     return response;
                 }
             }
+            else
+            {
+                HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
+                response1.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8,
+                    "application/json");
 
-            HttpResponseMessage response1 = Request.CreateResponse(HttpStatusCode.OK);
-            response1.Content = new StringContent(cm.StatusTime(false, "No Data available"), Encoding.UTF8,
-                "application/json");
+                return response1;
 
-            return response1;
+            }
+
         }
 
         [HttpPost]
@@ -419,27 +464,31 @@ namespace Project.Service.Controllers.eSign
                             client.DefaultRequestHeaders.Add("REQUEST-ID", statusAckInputModel.RequestId);
                             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                     
+
 
                             using (var response = client.GetAsync($"{_baseUrl}/api/transactions/{transactionId}/status").Result)
                             {
-                              
+
                                 using (var stream = response.Content.ReadAsStreamAsync().Result)
                                 {
-                                    
+
                                     if (response.IsSuccessStatusCode)
                                     {
-                                    
 
                                         var manchTransactionResponse =
-                                            DeserializeJsonFromStream<TransactionStatus>(stream);
+                                             DeserializeJsonFromStream<TransactionStatus>(stream);
 
                                         if (manchTransactionResponse.responseCode == "1" &&
                                             manchTransactionResponse.requestId == statusAckInputModel.RequestId)
                                         {
+
+                                            var NewDocID = g1.reterive_val(
+                                                              $"exec UpdateNewDocumentidForSign '{statusAckInputModel.RequestId}'," +
+                                                              $"'{manchTransactionResponse.data.documents[0].documentURL}'");
+
                                             var token1 = GenerateHMACSHA256(statusAckInputModel.RequestId);
 
-                                   
+
                                             //Download and save document
                                             using (var client1 = new HttpClient())
                                             {
@@ -450,74 +499,93 @@ namespace Project.Service.Controllers.eSign
 
                                                 //using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{manchTransactionResponse.data.documents[0].documentStorageId}/content").Result)
 
+                                                //if (client1.GetAsync($"{_baseUrl}/api/documents/{documentId}/content").Result.IsSuccessStatusCode)
+                                                //{
+                                                // var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result;
+                                                //  var ms2 = client1.GetStreamAsync($"{documentLink}/sign-url").Result
 
-
-                                                if (client1.GetAsync($"{_baseUrl}/api/documents/{documentId}/content").Result.IsSuccessStatusCode)
-                                                 {
-                                                    // var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result;
-                                                  //  var ms2 = client1.GetStreamAsync($"{documentLink}/sign-url").Result
-
-                                                    using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{documentId}/content").Result)
+                                                using (var ms = client1.GetStreamAsync($"{_baseUrl}/api/documents/{NewDocID}/content").Result)
+                                                {
                                                     {
-                                                        var ttt = DeserializeJsonFromStream<eSigned>(client1.GetAsync($"{documentLink}/sign-url").Result.Content.ReadAsStreamAsync().Result);
+                                                        var msD = DeserializeJsonFromStream<eSigned>(client1.GetAsync($"{documentLink}/sign-url").Result.Content.ReadAsStreamAsync().Result);
 
-                                                        var saveoutput = g1.return_dt($"exec updatePartyLedgerInfoForSignOutput '{statusAckInputModel.CIN}','{statusAckInputModel.RequestId}','{ttt.requestId+","+ttt.responseCode + "," + ttt.data.signedurl}'");
+                                                        //var saveoutput = g1.return_dt($"exec updatePartyLedgerInfoForSignOutput '{statusAckInputModel.CIN}','{statusAckInputModel.RequestId}','{ttt.requestId+","+ttt.responseCode + "," + ttt.data.signedurl}'");
+                                                        var saveoutput = g1.return_dt($"exec updatePartyLedgerInfoForSignOutput '{statusAckInputModel.CIN}','{statusAckInputModel.RequestId}','{ msD.data.signURL}'");
                                                         //TODO: Upload to blob
                                                         var BLOB_DIRECTORY_NAME =
                                                         $"{string.Format(FILE_DIRECTORY_NAME, statusAckInputModel.CIN, DateTime.Now.ToString("dd-mm-yyyy"))}/signed";
 
-                                                    var _goldMedia = new GoldMedia();
-                                                    Dictionary<bool, string> retStr;
+                                                        var _goldMedia = new GoldMedia();
+                                                        Dictionary<bool, string> retStr;
 
-                                                    retStr = _goldMedia.GoldMediaUpload(manchTransactionResponse.data.documents[0].documentType + DateTime.Now.ToString("HHmmss"), BLOB_DIRECTORY_NAME, string.Empty, ms,
-                                                        "application/pdf", false);
-                                                    if (retStr.Keys.FirstOrDefault())
-                                                    {
-                                                        var filename = _goldMedia.MapPathToPublicUrl(retStr.Values.FirstOrDefault());
-
-       
-
-
-
-
-                                                            var result = g1.ExecDB(
-                                                        $"exec UpdateStatusPartyLedgerInfoForSign '{statusAckInputModel.RequestId}'," +
-                                                        $"'{manchTransactionResponse.data.transactionState}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].documentURL}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].commonName}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].title}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].yob}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].signerInfo[0].gender}'," +
-                                                        $"'{manchTransactionResponse.data.documents[0].signed}'," +
-                                                        $"'{filename}'");
-
-                                                        //Send the document link to app as response
-
-                                                        string data1;
-                                                        List<ManchResponseToClientApps> alldcr = new List<ManchResponseToClientApps>();
-                                                        List<ManchResponseToClientApp> alldcr1 = new List<ManchResponseToClientApp>();
-
-                                                        alldcr1.Add(new ManchResponseToClientApp
+                                                        retStr = _goldMedia.GoldMediaUpload(manchTransactionResponse.data.documents[0].documentType + DateTime.Now.ToString("HHmmss"), BLOB_DIRECTORY_NAME, string.Empty, ms,
+                                                            "application/pdf", false);
+                                                        if (retStr.Keys.FirstOrDefault())
                                                         {
-                                                            hashToken = token,
-                                                            requestId = statusAckInputModel.RequestId,
-                                                            documentLink = filename
-                                                        });
+                                                            var filename = _goldMedia.MapPathToPublicUrl(retStr.Values.FirstOrDefault());
 
-                                                        alldcr.Add(new ManchResponseToClientApps
-                                                        {
-                                                            result = true,
-                                                            message = string.Empty,
-                                                            servertime = DateTime.Now.ToString(),
-                                                            data = alldcr1,
-                                                        });
-                                                        data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-                                                        HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.OK);
+                                                            var result = 0;
 
-                                                        response2.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+                                                            if (manchTransactionResponse.data.documents[0].signerInfo.Count > 0)
 
-                                                        return response2;
-                                                    }
+                                                            {
+                                                                result = g1.ExecDB(
+                                                           $"exec UpdateStatusPartyLedgerInfoForSign '{statusAckInputModel.RequestId}'," +
+                                                           $"'{manchTransactionResponse.data.transactionState}'," +
+                                                           $"'{manchTransactionResponse.data.documents[0].documentURL}'," +
+
+
+                                                                   $"'{manchTransactionResponse.data.documents[0].signerInfo[0].commonName}'," +
+                                                                   $"'{manchTransactionResponse.data.documents[0].signerInfo[0].title}'," +
+                                                                   $"'{manchTransactionResponse.data.documents[0].signerInfo[0].yob}'," +
+                                                                   $"'{manchTransactionResponse.data.documents[0].signerInfo[0].gender}'," +
+
+                                                           $"'{manchTransactionResponse.data.documents[0].signed}'," +
+                                                           $"'{filename}'");
+                                                            }
+                                                            else
+                                                            {
+                                                                result = g1.ExecDB(
+                                                           $"exec UpdateStatusPartyLedgerInfoForSign '{statusAckInputModel.RequestId}'," +
+                                                           $"'{manchTransactionResponse.data.transactionState}'," +
+                                                           $"'{manchTransactionResponse.data.documents[0].documentURL}'," + "'','','',''," +
+
+                                                           //$"'{manchTransactionResponse.data.documents[0].signerInfo[0].commonName}'," + 
+                                                           //$"'{manchTransactionResponse.data.documents[0].signerInfo[0].title}'," +
+                                                           //$"'{manchTransactionResponse.data.documents[0].signerInfo[0].yob}'," +
+                                                           //$"'{manchTransactionResponse.data.documents[0].signerInfo[0].gender}'," +
+
+                                                           $"'{manchTransactionResponse.data.documents[0].signed}'," +
+                                                           $"'{filename}'");
+                                                            }
+
+                                                            //Send the document link to app as response
+
+                                                            string data1;
+                                                            List<ManchResponseToClientApps> alldcr = new List<ManchResponseToClientApps>();
+                                                            List<ManchResponseToClientApp> alldcr1 = new List<ManchResponseToClientApp>();
+
+                                                            alldcr1.Add(new ManchResponseToClientApp
+                                                            {
+                                                                hashToken = token,
+                                                                requestId = statusAckInputModel.RequestId,
+                                                                documentLink = filename
+                                                            });
+
+                                                            alldcr.Add(new ManchResponseToClientApps
+                                                            {
+                                                                result = true,
+                                                                message = string.Empty,
+                                                                servertime = DateTime.Now.ToString(),
+                                                                data = alldcr1,
+                                                            });
+                                                            data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                                                            HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.OK);
+
+                                                            response2.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                                                            return response2;
+                                                        }
                                                         else
                                                         {
                                                             HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
@@ -527,14 +595,15 @@ namespace Project.Service.Controllers.eSign
                                                         }
                                                     }
                                                 }
+                                                //}
 
-                                                else
-                                                {
-                                                    HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
-                                                    response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong or duplicate Request!!!!!"), Encoding.UTF8, "application/json");
+                                                //else
+                                                //{
+                                                //    HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+                                                //    response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong or duplicate Request!!!!!"), Encoding.UTF8, "application/json");
 
-                                                    return response4;
-                                                }
+                                                //    return response4;
+                                                //}
 
                                             }
                                         }
@@ -542,7 +611,7 @@ namespace Project.Service.Controllers.eSign
                                         else
                                         {
                                             HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
-                                            response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!" ), Encoding.UTF8, "application/json");
+                                            response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"), Encoding.UTF8, "application/json");
 
                                             return response4;
                                         }
@@ -551,7 +620,7 @@ namespace Project.Service.Controllers.eSign
                                     else
                                     {
                                         HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
-                                        response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"+ response.IsSuccessStatusCode.ToString()), Encoding.UTF8, "application/json");
+                                        response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!" + response.IsSuccessStatusCode.ToString()), Encoding.UTF8, "application/json");
 
                                         return response4;
                                     }
@@ -567,12 +636,12 @@ namespace Project.Service.Controllers.eSign
                             }
                         }
                         //
-                        
+
                     }
                     else
                     {
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Not a Valid Transaction!!!!!" ), Encoding.UTF8, "application/json");
+                        response.Content = new StringContent(cm.StatusTime(false, "Oops! Not a Valid Transaction!!!!!"), Encoding.UTF8, "application/json");
 
                         return response;
                     }

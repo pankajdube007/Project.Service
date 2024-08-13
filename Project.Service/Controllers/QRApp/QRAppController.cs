@@ -372,6 +372,60 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
+        [Route("getvendorinvoice")]
+        [HttpPost]
+        public HttpResponseMessage GetVendorInvoice(GetVendorInvoice objGetVendorInvoice)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetVendorInvoice(objGetVendorInvoice);
+            return Response;
+        }
+
+
+        [Route("createvendorinvoice")]
+        [HttpPost]
+        public HttpResponseMessage CreateVendorInvoice(GetVendorInvoice objGetVendorInvoice)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.CreateVendorInvoice(objGetVendorInvoice);
+            return Response;
+        }
+
+
+        [Route("vendorinvoicedetails")]
+        [HttpPost]
+        public HttpResponseMessage GetVendorInvoiceDetails(GetVendorInvoiceDetails objGetVendorInvoiceDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetVendorInvoiceDetails(objGetVendorInvoiceDetails);
+            return Response;
+        }
+
+
+        [Route("vendorqrdetails")]
+        [HttpPost]
+        public HttpResponseMessage GetVendorQRDetails(GetVendorQrDetails objGetVendorQrDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetVendorQRDetails(objGetVendorQrDetails);
+            return Response;
+        }
+
+        [Route("postvendorinvoice")]
+        [HttpPost]
+        public HttpResponseMessage PostVendorQRDetails(PostVendorQRDetailslst objPostVendorQRDetailslst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostVendorQRDetails(objPostVendorQRDetailslst);
+            return Response;
+        }
+
+
 
 
 

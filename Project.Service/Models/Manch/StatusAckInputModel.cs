@@ -68,6 +68,10 @@ namespace Project.Service.Models.Manch.Status
     }
     public class Data1
     {
-        public string signedurl { get; set; }
+        
+            public string signURL { get; set; }
+        public string espName { get; set; }
+        
+        //public string signedurl { get; set; }
     }
 }

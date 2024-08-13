@@ -17,6 +17,11 @@ namespace Project.Service.Models.GStar
         [Required]
         public int slno { get; set; }
         
+        
+        public string Date { get; set; } 
+        
+        
+        public int Trvlid { get; set; }
 
         [Required]
         public string ClientSecret { get; set; }
