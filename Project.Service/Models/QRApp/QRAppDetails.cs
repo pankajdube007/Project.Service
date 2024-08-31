@@ -4856,7 +4856,7 @@ namespace Project.Service.Models.QRApp
                 else
                 {
                     code = "400";
-                    mesg = "Refrence Not Found";
+                    mesg = "QR Not Found";
                 }
 
             }
@@ -4932,6 +4932,14 @@ namespace Project.Service.Models.QRApp
 
                     newColumn = new DataColumn("CreatedDate", typeof(System.DateTime));
                     newColumn.DefaultValue = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("Refno", typeof(System.String));
+                    newColumn.DefaultValue = Refno.ToString().ToUpper();
+                    dtData.Columns.Add(newColumn);
+
+                    newColumn = new DataColumn("VendorID", typeof(System.String));
+                    newColumn.DefaultValue = VendorID.ToString().ToUpper();
                     dtData.Columns.Add(newColumn);
 
 
@@ -5018,7 +5026,6 @@ namespace Project.Service.Models.QRApp
 
             return resp;
         }
-
 
 
 
