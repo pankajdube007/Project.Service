@@ -639,6 +639,7 @@
     <Compile Include="Controllers\Management\ComboNameListController.cs" />
     <Compile Include="Controllers\Management\ComboWiseCountController.cs" />
     <Compile Include="Controllers\Management\DivisionBrachWiseSaleExpenseController.cs" />
+    <Compile Include="Controllers\Management\ExecCostingController.cs" />
     <Compile Include="Controllers\Management\GetCategoryWiseProductCountController.cs" />
     <Compile Include="Controllers\Management\GetGroupwisePassengerCountController.cs" />
     <Compile Include="Controllers\Management\GetHotelRoomwWisePassengerListController.cs" />
@@ -1203,6 +1204,7 @@
     <Compile Include="Models\Management\ComboNameList.cs" />
     <Compile Include="Models\Management\ComboWiseCount.cs" />
     <Compile Include="Models\Management\DivisionBrachWiseSaleExpense.cs" />
+    <Compile Include="Models\Management\ExecCosting.cs" />
     <Compile Include="Models\Management\GetCategoryWiseProductCount.cs" />
     <Compile Include="Models\Management\GetOrderStatus.cs" />
     <Compile Include="Models\Management\GetProductDetails.cs" />

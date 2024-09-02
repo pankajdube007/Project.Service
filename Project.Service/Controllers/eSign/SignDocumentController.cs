@@ -565,26 +565,41 @@ namespace Project.Service.Controllers.eSign
                                                             List<ManchResponseToClientApps> alldcr = new List<ManchResponseToClientApps>();
                                                             List<ManchResponseToClientApp> alldcr1 = new List<ManchResponseToClientApp>();
 
-                                                            alldcr1.Add(new ManchResponseToClientApp
+
+                                                            var AadharNoMatch = g1.return_dt($"exec GetAadharNoOutput '{statusAckInputModel.CIN}'");
+                                                            string aadharNo = AadharNoMatch.Rows[0]["AadharCardNoFourDigit"].ToString();
+
+                                                            if (manchTransactionResponse.data.documents[0].signerInfo[0].title.ToString() == aadharNo.ToString())
                                                             {
-                                                                hashToken = token,
-                                                                requestId = statusAckInputModel.RequestId,
-                                                                documentLink = filename
-                                                            });
+                                                                alldcr1.Add(new ManchResponseToClientApp
+                                                                {
+                                                                    hashToken = token,
+                                                                    requestId = statusAckInputModel.RequestId,
+                                                                    documentLink = filename
+                                                                });
 
-                                                            alldcr.Add(new ManchResponseToClientApps
+                                                                alldcr.Add(new ManchResponseToClientApps
+                                                                {
+                                                                    result = true,
+                                                                    message = string.Empty,
+                                                                    servertime = DateTime.Now.ToString(),
+                                                                    data = alldcr1,
+                                                                });
+                                                                data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                                                                HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.OK);
+
+                                                                response2.Content = new StringContent(data1, Encoding.UTF8, "application/json");
+
+                                                                return response2;
+
+                                                            }
+                                                            else
                                                             {
-                                                                result = true,
-                                                                message = string.Empty,
-                                                                servertime = DateTime.Now.ToString(),
-                                                                data = alldcr1,
-                                                            });
-                                                            data1 = JsonConvert.SerializeObject(alldcr, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-                                                            HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.OK);
+                                                                HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
+                                                                response4.Content = new StringContent(cm.StatusTime(false, "Invalid Aadhar Card!!!!!"), Encoding.UTF8, "application/json");
 
-                                                            response2.Content = new StringContent(data1, Encoding.UTF8, "application/json");
-
-                                                            return response2;
+                                                                return response;
+                                                            }
                                                         }
                                                         else
                                                         {
