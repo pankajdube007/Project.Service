@@ -49,7 +49,8 @@ namespace Project.Service.Controllers.Management
                                 lastYrSalesingle_Own = Convert.ToString(dr["lastYrSalesingle"].ToString()),
                                 TillDateSalesingle_Own = Convert.ToString(dr["TillDateSalesingle"].ToString()),
                                 costper = string.IsNullOrEmpty(dr["costper"]?.ToString()) ? "0" : dr["costper"].ToString(),
-                                LastUpdate= Convert.ToDateTime(dr["lastupdate"]).ToString("dd-MM-yyyy")
+                                LastUpdate= Convert.ToDateTime(dr["lastupdate"]).ToString("dd-MM-yyyy"),
+                                Costperhy = string.IsNullOrEmpty(dr["costperhy"]?.ToString()) ? "0" : dr["costperhy"].ToString(),
                             });
                         }
                         g1.close_connection();

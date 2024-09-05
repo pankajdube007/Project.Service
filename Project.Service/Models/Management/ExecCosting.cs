@@ -43,6 +43,7 @@ namespace Project.Service.Models.Management
         public string TillDateSalesingle_Own { get; set; }
         public string costper { get; set; }
         public string LastUpdate  { get; set; }
+        public string Costperhy { get; set; }
 
     }
 }
