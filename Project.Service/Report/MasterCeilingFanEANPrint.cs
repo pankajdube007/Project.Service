@@ -4,26 +4,45 @@ using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 
-/// <summary>
-/// Summary description for LabelPrint2
-/// </summary>
 public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
 {
     private DevExpress.XtraReports.UI.DetailBand Detail;
     private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
     private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
-    private XRPanel xrPanel1;
     private DevExpress.XtraReports.Parameters.Parameter parameter1;
     private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
     private FormattingRule formattingRule1;
     private DevExpress.XtraReports.Parameters.Parameter parameter2;
     private DevExpress.XtraReports.Parameters.Parameter parameter3;
-    private XRLabel xrLabel9;
-    private XRLabel xrLabel15;
-    private XRLabel xrLabel14;
-    private XRLabel xrLabel1;
-    private XRLabel xrLabel5;
+    private DevExpress.XtraReports.Parameters.Parameter parameter4;
+    private DevExpress.XtraReports.Parameters.Parameter parameter5;
+    private XRPanel xrPanel1;
+    private XRLabel xrLabel16;
+    private XRBarCode xrBarCode2;
+    private XRLabel xrLabel11;
+    private XRLabel xrLabel7;
+    private XRLabel xrLabel22;
     private XRPanel xrPanel3;
+    private XRLabel xrLabel9;
+    private XRTable xrTable4;
+    private XRTableRow xrTableRow4;
+    private XRTableCell xrTableCell11;
+    private XRLabel xrLabel15;
+    private XRLabel xrLabel19;
+    private XRTableCell xrTableCell12;
+    private XRLabel xrLabel14;
+    private XRTable xrTable3;
+    private XRTableRow xrTableRow3;
+    private XRTableCell xrTableCell9;
+    private XRLabel xrLabel4;
+    private XRTableCell xrTableCell10;
+    private XRLabel xrLabel8;
+    private XRTable xrTable2;
+    private XRTableRow xrTableRow2;
+    private XRTableCell xrTableCell7;
+    private XRLabel xrLabel18;
+    private XRTableCell xrTableCell8;
+    private XRLabel xrLabel1;
     private XRTable xrTable1;
     private XRTableRow xrTableRow1;
     private XRTableCell xrTableCell1;
@@ -33,33 +52,13 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
     private XRTableCell xrTableCell5;
     private XRLabel xrLabel10;
     private XRTableCell xrTableCell4;
+    private XRLabel xrLabel5;
     private XRLabel xrLabel12;
     private XRTableCell xrTableCell3;
-    private XRLabel xrLabel13;
     private XRLabel xrLabel17;
-    private XRTable xrTable3;
-    private XRTableRow xrTableRow3;
-    private XRTableCell xrTableCell9;
-    private XRTableCell xrTableCell10;
-    private XRTable xrTable2;
-    private XRTableRow xrTableRow2;
-    private XRTableCell xrTableCell7;
-    private XRTableCell xrTableCell8;
-    private XRLabel xrLabel18;
-    private XRTable xrTable4;
-    private XRTableRow xrTableRow4;
-    private XRTableCell xrTableCell11;
-    private XRLabel xrLabel19;
-    private XRTableCell xrTableCell12;
-    private XRLabel xrLabel4;
-    private XRLabel xrLabel8;
-    private DevExpress.XtraReports.Parameters.Parameter parameter4;
-    private DevExpress.XtraReports.Parameters.Parameter parameter5;
-    private XRLabel xrLabel22;
-    private XRLabel xrLabel7;
-    private XRLabel xrLabel11;
-    private XRBarCode xrBarCode2;
-    private XRLabel xrLabel16;
+    private XRLabel xrLabel13;
+    private XRBarCode xrBarCode1;
+    private XRLabel xrLabel3;
 
     /// <summary>
     /// Required designer variable.
@@ -96,6 +95,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraPrinting.BarCode.EAN13Generator eaN13Generator1 = new DevExpress.XtraPrinting.BarCode.EAN13Generator();
             DevExpress.XtraPrinting.BarCode.QRCodeGenerator qrCodeGenerator1 = new DevExpress.XtraPrinting.BarCode.QRCodeGenerator();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
@@ -103,6 +103,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrBarCode1 = new DevExpress.XtraReports.UI.XRBarCode();
             this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrBarCode2 = new DevExpress.XtraReports.UI.XRBarCode();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
@@ -116,6 +117,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel19 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -183,6 +185,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrPanel1.BorderWidth = 0F;
             this.xrPanel1.CanGrow = false;
             this.xrPanel1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrBarCode1,
             this.xrLabel16,
             this.xrBarCode2,
             this.xrLabel11,
@@ -199,19 +202,42 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrPanel1.StylePriority.UseBorderWidth = false;
             this.xrPanel1.StylePriority.UsePadding = false;
             // 
+            // xrBarCode1
+            // 
+            this.xrBarCode1.AutoModule = true;
+            this.xrBarCode1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrBarCode1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Eancode")});
+            this.xrBarCode1.Dpi = 254F;
+            this.xrBarCode1.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrBarCode1.ForeColor = System.Drawing.Color.Black;
+            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(38.99361F, 11.16667F);
+            this.xrBarCode1.Module = 5.08F;
+            this.xrBarCode1.Name = "xrBarCode1";
+            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.xrBarCode1.SizeF = new System.Drawing.SizeF(400F, 160F);
+            this.xrBarCode1.StylePriority.UseBorders = false;
+            this.xrBarCode1.StylePriority.UseFont = false;
+            this.xrBarCode1.StylePriority.UseForeColor = false;
+            this.xrBarCode1.StylePriority.UsePadding = false;
+            this.xrBarCode1.StylePriority.UseTextAlignment = false;
+            this.xrBarCode1.Symbology = eaN13Generator1;
+            this.xrBarCode1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomJustify;
+            this.xrBarCode1.Visible = false;
+            // 
             // xrLabel16
             // 
             this.xrLabel16.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.itemnm")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.itemnm")});
             this.xrLabel16.Dpi = 254F;
             this.xrLabel16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.xrLabel16.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(38.99361F, 118.9375F);
+            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(38.99361F, 171.1667F);
             this.xrLabel16.Multiline = true;
             this.xrLabel16.Name = "xrLabel16";
             this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel16.SizeF = new System.Drawing.SizeF(413.992F, 79.47577F);
+            this.xrLabel16.SizeF = new System.Drawing.SizeF(619.4468F, 34.24661F);
             this.xrLabel16.StylePriority.UseBorders = false;
             this.xrLabel16.StylePriority.UseFont = false;
             this.xrLabel16.StylePriority.UseForeColor = false;
@@ -223,7 +249,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrBarCode2.AutoModule = true;
             this.xrBarCode2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrBarCode2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.Content")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Content")});
             this.xrBarCode2.Dpi = 254F;
             this.xrBarCode2.Font = new System.Drawing.Font("Arial", 8F);
             this.xrBarCode2.ForeColor = System.Drawing.Color.Black;
@@ -246,7 +272,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.Barcode")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Barcode")});
             this.xrLabel11.Dpi = 254F;
             this.xrLabel11.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Bold);
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(970.7654F, 171.6042F);
@@ -263,7 +289,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel7.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.Content1")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Content1")});
             this.xrLabel7.Dpi = 254F;
             this.xrLabel7.Font = new System.Drawing.Font("Arial", 7F);
             this.xrLabel7.ForeColor = System.Drawing.Color.Black;
@@ -280,15 +306,15 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel22.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.LabelBarcode")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.LabelBarcode")});
             this.xrLabel22.Dpi = 254F;
             this.xrLabel22.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel22.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(721.6764F, 25F);
+            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(732.2598F, 111.6595F);
             this.xrLabel22.Multiline = true;
             this.xrLabel22.Name = "xrLabel22";
             this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel22.SizeF = new System.Drawing.SizeF(299.6725F, 132.0209F);
+            this.xrLabel22.SizeF = new System.Drawing.SizeF(289.0891F, 37.94469F);
             this.xrLabel22.StylePriority.UseBorders = false;
             this.xrLabel22.StylePriority.UseFont = false;
             this.xrLabel22.StylePriority.UseForeColor = false;
@@ -315,7 +341,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel9.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.colornm")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.colornm")});
             this.xrLabel9.Dpi = 254F;
             this.xrLabel9.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel9.ForeColor = System.Drawing.Color.Black;
@@ -335,7 +361,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrTable4.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrTable4.Dpi = 254F;
             this.xrTable4.Font = new System.Drawing.Font("Arial", 8F);
-            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(782.5794F, 75.03941F);
+            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(782.5794F, 69.03941F);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow4});
@@ -364,14 +390,14 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrTableCell11.Name = "xrTableCell11";
             this.xrTableCell11.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrTableCell11.Text = "xrTableCell11";
-            this.xrTableCell11.Weight = 1.3213608065732281D;
+            this.xrTableCell11.Weight = 1.2568185837975856D;
             // 
             // xrLabel15
             // 
             this.xrLabel15.BorderColor = System.Drawing.Color.Black;
             this.xrLabel15.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel15.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.MFDate")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.MFDate")});
             this.xrLabel15.Dpi = 254F;
             this.xrLabel15.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.xrLabel15.ForeColor = System.Drawing.Color.Black;
@@ -393,7 +419,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrLabel19.Dpi = 254F;
             this.xrLabel19.Font = new System.Drawing.Font("Arial", 7F);
             this.xrLabel19.ForeColor = System.Drawing.Color.Transparent;
-            this.xrLabel19.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5.520752F);
+            this.xrLabel19.LocationFloat = new DevExpress.Utils.PointFloat(0F, 2.520752F);
             this.xrLabel19.Multiline = true;
             this.xrLabel19.Name = "xrLabel19";
             this.xrLabel19.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
@@ -407,6 +433,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrTableCell12.Borders = DevExpress.XtraPrinting.BorderSide.Left;
             this.xrTableCell12.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel3,
             this.xrLabel14});
             this.xrTableCell12.Dpi = 254F;
             this.xrTableCell12.Multiline = true;
@@ -414,26 +441,41 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.xrTableCell12.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrTableCell12.StylePriority.UseBorders = false;
             this.xrTableCell12.Text = "xrTableCell12";
-            this.xrTableCell12.Weight = 1.165645289793235D;
+            this.xrTableCell12.Weight = 1.2301875125688775D;
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrLabel3.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.LabelMRP")});
+            this.xrLabel3.Dpi = 254F;
+            this.xrLabel3.Font = new System.Drawing.Font("Arial", 7.5F, System.Drawing.FontStyle.Bold);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(191.2978F, 25.98209F);
+            this.xrLabel3.StylePriority.UseBorders = false;
+            this.xrLabel3.StylePriority.UseFont = false;
             // 
             // xrLabel14
             // 
             this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.Price")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Price")});
             this.xrLabel14.Dpi = 254F;
-            this.xrLabel14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel14.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel14.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(31F, 32.00003F);
+            this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(0F, 31.05765F);
             this.xrLabel14.Multiline = true;
             this.xrLabel14.Name = "xrLabel14";
             this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel14.SizeF = new System.Drawing.SizeF(142.8175F, 61.41653F);
+            this.xrLabel14.SizeF = new System.Drawing.SizeF(191.2977F, 33.35886F);
             this.xrLabel14.StylePriority.UseBorders = false;
             this.xrLabel14.StylePriority.UseFont = false;
             this.xrLabel14.StylePriority.UseForeColor = false;
             this.xrLabel14.StylePriority.UseTextAlignment = false;
-            this.xrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrTable3
             // 
@@ -470,7 +512,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel4.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.sweep")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.sweep")});
             this.xrLabel4.Dpi = 254F;
             this.xrLabel4.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(55.08338F, 18.36002F);
@@ -496,7 +538,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel8.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.Voltage")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Voltage")});
             this.xrLabel8.Dpi = 254F;
             this.xrLabel8.Font = new System.Drawing.Font("Arial", 7F);
             this.xrLabel8.ForeColor = System.Drawing.Color.Transparent;
@@ -544,15 +586,15 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel18.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel18.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.itemcode")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.itemcode")});
             this.xrLabel18.Dpi = 254F;
             this.xrLabel18.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.xrLabel18.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel18.LocationFloat = new DevExpress.Utils.PointFloat(55.08338F, 3.051758E-05F);
+            this.xrLabel18.LocationFloat = new DevExpress.Utils.PointFloat(52.22906F, 0F);
             this.xrLabel18.Multiline = true;
             this.xrLabel18.Name = "xrLabel18";
             this.xrLabel18.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel18.SizeF = new System.Drawing.SizeF(189.2143F, 53.41656F);
+            this.xrLabel18.SizeF = new System.Drawing.SizeF(192.0686F, 53.41656F);
             this.xrLabel18.StylePriority.UseBorders = false;
             this.xrLabel18.StylePriority.UseFont = false;
             this.xrLabel18.StylePriority.UseForeColor = false;
@@ -572,7 +614,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.prntnm2")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.prntnm2")});
             this.xrLabel1.Dpi = 254F;
             this.xrLabel1.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.xrLabel1.ForeColor = System.Drawing.Color.Black;
@@ -712,7 +754,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.xrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI.Qty")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "getMasterBarcodePrintNewForAPI_New.Qty")});
             this.xrLabel5.Dpi = 254F;
             this.xrLabel5.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.xrLabel5.ForeColor = System.Drawing.Color.Black;
@@ -833,7 +875,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             // 
             this.sqlDataSource1.ConnectionName = "myconread";
             this.sqlDataSource1.Name = "sqlDataSource1";
-            storedProcQuery1.Name = "getMasterBarcodePrintNewForAPI";
+            storedProcQuery1.Name = "getMasterBarcodePrintNewForAPI_New";
             queryParameter1.Name = "@ProductID";
             queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
             queryParameter1.Value = new DevExpress.DataAccess.Expression("[Parameters.parameter2]", typeof(long));
@@ -846,7 +888,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             storedProcQuery1.Parameters.Add(queryParameter1);
             storedProcQuery1.Parameters.Add(queryParameter2);
             storedProcQuery1.Parameters.Add(queryParameter3);
-            storedProcQuery1.StoredProcName = "getMasterBarcodePrintNewForAPI";
+            storedProcQuery1.StoredProcName = "getMasterBarcodePrintNewForAPI_New";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
             // 
@@ -869,7 +911,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
             this.BottomMargin});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
-            this.DataMember = "getMasterBarcodePrintNewForAPI";
+            this.DataMember = "getMasterBarcodePrintNewForAPI_New";
             this.DataSource = this.sqlDataSource1;
             this.Dpi = 254F;
             this.Font = new System.Drawing.Font("Times New Roman", 8F);
@@ -899,3 +941,7 @@ public class MasterCeilingFanEANPrint : DevExpress.XtraReports.UI.XtraReport
 
     #endregion
 }
+
+
+
+

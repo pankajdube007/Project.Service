@@ -47,11 +47,20 @@ namespace Project.Service.Models.QRApp
     }
 
 
+    public class ReleaseDetails
+    {
+        public String id { get; set; }
+        public String type { get; set; }
+        public String pagetype { get; set; }
+        public String DeviceId { get; set; }
+    }
+
     public class GetPurInDetails
     {
         public String vendorid { get; set; }
+        public String branchid { get; set; }
+        public String DeviceId { get; set; }
     }
-
 
     public class GetPartyDetails
     {
@@ -64,7 +73,6 @@ namespace Project.Service.Models.QRApp
         public String partyid { get; set; }
         public String catid { get; set; }
         public String branchid { get; set; }
-
     }
 
 
@@ -93,6 +101,7 @@ namespace Project.Service.Models.QRApp
     {
         public String branchid { get; set; }
         public String warehouseid { get; set; }
+        public String bintype { get; set; }
     }
 
 
@@ -120,7 +129,32 @@ namespace Project.Service.Models.QRApp
         public String warehouseid { get; set; }
         public String productid { get; set; }
         public String type { get; set; }
+    }
 
+
+    public class PalletOutRequest
+    {
+        public String pagetype { get; set; }
+        public String headslno { get; set; }
+        public String childslno { get; set; }
+        public String palletid { get; set; }
+    }
+
+    public class PalletOutDetailsList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<PalletOutDetails> data { get; set; }
+    }
+
+
+    public class PalletOutDetails
+    {
+        public string palletid { get; set; }
+        public string palletname { get; set; }
+        public string qty { get; set; }
+        public string stype { get; set; }
     }
 
 
@@ -130,6 +164,7 @@ namespace Project.Service.Models.QRApp
         public String userid { get; set; }
         public String branchid { get; set; }
         public String warehouseid { get; set; }
+        public String DeviceId { get; set; }
         public List<PostWarehouseDetails> data { get; set; }
     }
 
@@ -142,6 +177,8 @@ namespace Project.Service.Models.QRApp
         public String qrtype { get; set; }
         public String qrqty { get; set; }
         public String type { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
     }
 
 
@@ -150,6 +187,7 @@ namespace Project.Service.Models.QRApp
         public String userid { get; set; }
         public String branchid { get; set; }
         public String warehouseid { get; set; }
+        public String DeviceId { get; set; }
         public List<PostPurchaseINDetails> data { get; set; }
     }
 
@@ -163,6 +201,8 @@ namespace Project.Service.Models.QRApp
         public String qrcode { get; set; }
         public String qrtype { get; set; }
         public String qrqty { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
     }
 
 
@@ -172,6 +212,7 @@ namespace Project.Service.Models.QRApp
         public String userid { get; set; }
         public String branchid { get; set; }
         public String warehouseid { get; set; }
+        public String DeviceId { get; set; }
         public List<PostGRNINDetails> data { get; set; }
     }
 
@@ -186,7 +227,60 @@ namespace Project.Service.Models.QRApp
         public String qrcode { get; set; }
         public String qrtype { get; set; }
         public String qrqty { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
     }
+
+    public class PostSLRDetailslst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public String DeviceId { get; set; }
+        public List<PostSLRDetails> data { get; set; }
+    }
+
+    public class PostSLRDetails
+    {
+
+        public String slrid { get; set; }
+        public String slrdid { get; set; }
+        public String productid { get; set; }
+        public String binid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
+    }
+
+
+
+    public class PostBinTransferlst
+    {
+        public String userid { get; set; }
+        public String branchid { get; set; }
+        public String warehouseid { get; set; }
+        public String frombinid { get; set; }
+        public String tobinid { get; set; }
+        public String DeviceId { get; set; }
+        public String ttype { get; set; }
+        public List<PostBinTransferDetails> data { get; set; }
+    }
+
+    public class PostBinTransferDetails
+    {
+
+        public String productid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+        public String manualqty { get; set; }
+    }
+
+
+
+
 
 
     public class PostDCDetailslst
@@ -206,6 +300,9 @@ namespace Project.Service.Models.QRApp
         public String qrcode { get; set; }
         public String qrtype { get; set; }
         public String qrqty { get; set; }
+        public String binid { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
     }
 
 
@@ -607,6 +704,9 @@ namespace Project.Service.Models.QRApp
         public string dcid { get; set; }
         public string dcdid { get; set; }
         public string autoqrqty { get; set; }
+        public string palletids { get; set; }
+        public string palletqty { get; set; }
+        public string manualqty { get; set; }
 
     }
 
@@ -635,9 +735,37 @@ namespace Project.Service.Models.QRApp
         public string poid { get; set; }
         public string isinnerproductsame { get; set; }
         public string productinnerqty { get; set; }
-
+        public string wbinid { get; set; }
     }
 
+
+    public class QRDetailBinDataList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<QRDetailBinData> data { get; set; }
+    }
+
+
+    public class QRDetailBinData
+    {
+        public string qrtype { get; set; }
+        public string vendorid { get; set; }
+        public string qrcode { get; set; }
+        public string productid { get; set; }
+        public string productqty { get; set; }
+        public string pqr { get; set; }
+        public string iqr { get; set; }
+        public string oqr { get; set; }
+        public string cqr { get; set; }
+        public string poid { get; set; }
+        public string isinnerproductsame { get; set; }
+        public string productinnerqty { get; set; }
+        public string wbinid { get; set; }
+        public string productcode { get; set; }
+        public string productname { get; set; }
+    }
 
 
     public class LoginUserResponse
@@ -651,6 +779,7 @@ namespace Project.Service.Models.QRApp
 
     public class LoginResponse
     {
+
         public string type { get; set; }
         public string code { get; set; }
         public string mesg { get; set; }
@@ -708,107 +837,8 @@ namespace Project.Service.Models.QRApp
         public string qrcode { get; set; }
     }
 
-    public class GetQRDetails
-    {
-        public String qr { get; set; }
-    }
-
-    public class QRStatusDetailsList
-    {
-        public bool result { get; set; }
-        public String message { get; set; }
-        public DateTime servertime { get; set; }
-        public List<QRStatusDetailData> data { get; set; }
-
-    }
 
 
-    public class QRStatusDetailData
-    {
-        public string qrtype { get; set; }
-        public string qrcode { get; set; }
-        public string inwarehouse { get; set; }
-        public string currentwarehouse { get; set; }
-        public string status { get; set; }
-        public string reportingstatus { get; set; }
-        public string productname { get; set; }
-        public List<QRStatusRDetailData> qrdata { get; set; }
-    }
-
-
-
-    public class QRStatusRDetailData
-    {
-        public string remarks { get; set; }
-        public string warehousename { get; set; }
-        public string createddate { get; set; }
-    }
-
-
-
-    public class GetVendorInvoice
-    {
-        public String vendorid { get; set; }
-    }
-
-
-    public class GetVendorInvoiceDetails
-    {
-        public String vendorid { get; set; }
-        public String refno { get; set; }
-    }
-
-
-
-    public class GetVendorQrDetails
-    {
-        public String vendorid { get; set; }
-        public String qrcode { get; set; }
-        public String refno { get; set; }
-    }
-
-
-
-
-    public class PostVendorInvoiceDetailsList
-    {
-        public bool result { get; set; }
-        public String message { get; set; }
-        public DateTime servertime { get; set; }
-        public List<PostVendorInvoiceDetails> data { get; set; }
-    }
-
-
-    public class PostVendorInvoiceDetails
-    {
-        public string QRCode { get; set; }
-        public string QRQty { get; set; }
-        public string QRType { get; set; }
-        public string RefInvoice { get; set; }
-        public string ProductID { get; set; }
-        public string ProductCode1 { get; set; }
-        public string ProductCode { get; set; }
-
-    }
-
-
-    public class PostVendorQRDetailslst
-    {
-        public String vendorid { get; set; }
-        public String refno { get; set; }
-        public String type { get; set; }
-        public List<PostVendorQRDetails> data { get; set; }
-    }
-
-
-
-    public class PostVendorQRDetails
-    {
-        public String productid { get; set; }
-        public String qrcode { get; set; }
-        public String qrtype { get; set; }
-        public String qrqty { get; set; }
-    }
 
 
 
@@ -1023,27 +1053,11 @@ namespace Project.Service.Models.QRApp
         public String qrcode { get; set; }
         public String qrtype { get; set; }
         public String qrqty { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
     }
 
-    public class PostSLRDetailslst
-    {
-        public String userid { get; set; }
-        public String branchid { get; set; }
-        public String warehouseid { get; set; }
-        public List<PostSLRDetails> data { get; set; }
-    }
 
-    public class PostSLRDetails
-    {
-
-        public String slrid { get; set; }
-        public String slrdid { get; set; }
-        public String productid { get; set; }
-        public String binid { get; set; }
-        public String qrcode { get; set; }
-        public String qrtype { get; set; }
-        public String qrqty { get; set; }
-    }
 
     public class PostPIRDetailslst
     {
@@ -1062,11 +1076,116 @@ namespace Project.Service.Models.QRApp
         public String qrcode { get; set; }
         public String qrtype { get; set; }
         public String qrqty { get; set; }
+        public String bintype { get; set; }
+        public String manualqty { get; set; }
+    }
+
+
+
+    public class GetQRDetails
+    {
+        public String qr { get; set; }
+    }
+
+    public class QRStatusDetailsList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<QRStatusDetailData> data { get; set; }
+
+    }
+
+
+    public class QRStatusDetailData
+    {
+        public string qrtype { get; set; }
+        public string qrcode { get; set; }
+        public string inwarehouse { get; set; }
+        public string currentwarehouse { get; set; }
+        public string status { get; set; }
+        public string reportingstatus { get; set; }
+        public string productname { get; set; }
+        public List<QRStatusRDetailData> qrdata { get; set; }
+    }
+
+
+
+    public class QRStatusRDetailData
+    {
+        public string remarks { get; set; }
+        public string warehousename { get; set; }
+        public string createddate { get; set; }
     }
 
 
 
 
+
+
+    public class GetVendorInvoice
+    {
+        public String vendorid { get; set; }
+    }
+
+
+    public class GetVendorInvoiceDetails
+    {
+        public String vendorid { get; set; }
+        public String refno { get; set; }
+    }
+
+
+
+    public class GetVendorQrDetails
+    {
+        public String vendorid { get; set; }
+        public String qrcode { get; set; }
+        public String refno { get; set; }
+    }
+
+
+
+
+    public class PostVendorInvoiceDetailsList
+    {
+        public bool result { get; set; }
+        public String message { get; set; }
+        public DateTime servertime { get; set; }
+        public List<PostVendorInvoiceDetails> data { get; set; }
+    }
+
+
+    public class PostVendorInvoiceDetails
+    {
+        public string QRCode { get; set; }
+        public string QRQty { get; set; }
+        public string QRType { get; set; }
+        public string RefInvoice { get; set; }
+        public string ProductID { get; set; }
+        public string ProductCode1 { get; set; }
+        public string ProductCode { get; set; }
+
+    }
+
+
+    public class PostVendorQRDetailslst
+    {
+        public String vendorid { get; set; }
+        public String refno { get; set; }
+        public String type { get; set; }
+        public List<PostVendorQRDetails> data { get; set; }
+    }
+
+
+
+    public class PostVendorQRDetails
+    {
+        public String productid { get; set; }
+        public String qrcode { get; set; }
+        public String qrtype { get; set; }
+        public String qrqty { get; set; }
+    }
 
 
 

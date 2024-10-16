@@ -40,7 +40,7 @@ namespace Project.Service.Controllers.GStar
                     //if (ula.gstcertificate != "") uploadPDF = GetImage(ula.gstcertificate, 1);
                     //if (ula.bankdetails != "") uploadPDF1 = GetImage(ula.bankdetails, 1);
 
-                    var dr = g1.return_dt("AddMerchantApp'" + ula.suppliername + "','" + ula.gstno + "','" + ula.addline1 + "','" + ula.addline2 + "','" + ula.cityid + "','" + ula.areaid + "','" + ula.stateid + "','" + ula.countryid + "','" + ula.pinno + "','" + ula.ConcernedPerson + "','" + ula.email + "','" + ula.mobile + "','" + ula.merchanttype + "','" + ula.gstcertificate + "','" + ula.bankdetails + "'");
+                    var dr = g1.return_dt("AddMerchantApp'" + ula.suppliername + "','" + ula.gstno + "','" + ula.addline1 + "','" + ula.addline2 + "','" + ula.cityid + "','" + ula.areaid + "','" + ula.stateid + "','" + ula.countryid + "','" + ula.pinno + "','" + ula.ConcernedPerson + "','" + ula.email + "','" + ula.mobile + "','" + ula.merchanttype + "','" + ula.gstcertificate + "','" + ula.bankdetails + "',"+ula.ExId);
                     if (dr.Rows.Count > 0)
                     {
                         if (Convert.ToInt32(dr.Rows[0]["RES"]) == 2)

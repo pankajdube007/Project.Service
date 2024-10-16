@@ -28,6 +28,12 @@ namespace Project.Service.Models.Management
     public class ExecCostingList
     {
         public string SalesExName { get; set; }
+        
+        public int execid { get; set; }
+
+        public string designation { get; set; }
+
+        public string Contact { get; set; }
 
         public string Division { get; set; }
 
@@ -44,6 +50,7 @@ namespace Project.Service.Models.Management
         public string costper { get; set; }
         public string LastUpdate  { get; set; }
         public string Costperhy { get; set; }
+       
 
     }
 }

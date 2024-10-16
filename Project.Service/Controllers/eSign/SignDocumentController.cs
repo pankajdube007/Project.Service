@@ -598,7 +598,7 @@ namespace Project.Service.Controllers.eSign
                                                                 HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
                                                                 response4.Content = new StringContent(cm.StatusTime(false, "Invalid Aadhar Card!!!!!"), Encoding.UTF8, "application/json");
 
-                                                                return response;
+                                                                return response4;
                                                             }
                                                         }
                                                         else
@@ -606,7 +606,7 @@ namespace Project.Service.Controllers.eSign
                                                             HttpResponseMessage response4 = Request.CreateResponse(HttpStatusCode.OK);
                                                             response4.Content = new StringContent(cm.StatusTime(false, "Oops! Somthing went wrong!!!!!"), Encoding.UTF8, "application/json");
 
-                                                            return response;
+                                                            return response4;
                                                         }
                                                     }
                                                 }

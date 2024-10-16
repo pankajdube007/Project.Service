@@ -13,12 +13,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.Management
 {
-    public class ExecCostingController : ApiController
+    public class ExecHierarchyWiseExeNameController : ApiController
     {
         [HttpPost]
         [ValidateModel]
-        [Route("api/ExecCosting")]
-        public HttpResponseMessage GetDetails(ExecCosting ula)
+        [Route("api/ExecWiseExecName")]
+        public HttpResponseMessage GetDetails(ExecHierarchyWiseExeName ula)
         {
             DataConection g1 = new DataConection();
             Common cm = new Common();
@@ -28,36 +28,23 @@ namespace Project.Service.Controllers.Management
                 {
                     string data1;
 
-                    List<ExecCostingLists> alldcr = new List<ExecCostingLists>();
-                    List<ExecCostingList> alldcr1 = new List<ExecCostingList>();
-                    
-                    var dr = g1.return_dr("GetExecCosting " + ula.branchid + " ,'" + ula.Category + "','" + ula.CIN + "'");
+                    List<ExecHierarchyWiseExeNameLists> alldcr = new List<ExecHierarchyWiseExeNameLists>();
+                    List<ExecHierarchyWiseExeNameList> alldcr1 = new List<ExecHierarchyWiseExeNameList>();
+
+                    var dr = g1.return_dr($"exechyexecname {ula.ExecId} , '{ula.Category}'");
 
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            alldcr1.Add(new ExecCostingList
+                            alldcr1.Add(new ExecHierarchyWiseExeNameList
                             {
-
-                                SalesExName = Convert.ToString(dr["salesexnm"].ToString()),
-                                execid = Convert.ToInt32(dr["execid"].ToString()),
-                                designation = Convert.ToString(dr["designation"].ToString()),
-                                Contact = Convert.ToString(dr["contact"].ToString()),
-                                Division = Convert.ToString(dr["divinm"].ToString()),
-                                Joindt = Convert.ToDateTime(dr["joindt"]).ToString("dd-MM-yyyy"),
-                                BranchName = Convert.ToString(dr["branchname"].ToString()),
-                                lastyearsale_Hierarchy = Convert.ToString(dr["lastYrSale"].ToString()),
-                                TillTillDateSale_Hierarchy = Convert.ToString(dr["TillDateSale"].ToString()),
-                                lastYrSalesingle_Own = Convert.ToString(dr["lastYrSalesingle"].ToString()),
-                                TillDateSalesingle_Own = Convert.ToString(dr["TillDateSalesingle"].ToString()),
-                                costper = string.IsNullOrEmpty(dr["costper"]?.ToString()) ? "0" : dr["costper"].ToString(),
-                                LastUpdate= Convert.ToDateTime(dr["lastupdate"]).ToString("dd-MM-yyyy"),
-                                Costperhy = string.IsNullOrEmpty(dr["costperhy"]?.ToString()) ? "0" : dr["costperhy"].ToString(),
+                                ExecId = Convert.ToString(dr["execid"].ToString()),
+                                Name = Convert.ToString(dr["name"].ToString()),
                             });
                         }
                         g1.close_connection();
-                        alldcr.Add(new ExecCostingLists
+                        alldcr.Add(new ExecHierarchyWiseExeNameLists
                         {
                             result = true,
                             message = string.Empty,
@@ -94,6 +81,5 @@ namespace Project.Service.Controllers.Management
                 return response;
             }
         }
-
     }
 }

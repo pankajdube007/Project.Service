@@ -9,12 +9,12 @@ using System.Web.Http;
 
 namespace Project.Service.Controllers.QRApp
 {
-    
+
 
     [RoutePrefix("api/qrapp")]
     public class QRAppController : ApiController
     {
-        
+
         [Route("login")]
         [HttpPost]
         public HttpResponseMessage LoginValidate(LoginValidate objLoginValidate)
@@ -142,7 +142,6 @@ namespace Project.Service.Controllers.QRApp
 
 
 
-
         [Route("invoicebranch")]
         [HttpPost]
         public HttpResponseMessage GetInvoiceBranchDetails(GetGRINUserDetails objGetGRINUserDetails)
@@ -165,7 +164,6 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
-
         [Route("postinvoice")]
         [HttpPost]
         public HttpResponseMessage PostInvoiceData(PostGRNINDetailslst objPostGRNINDetailslst)
@@ -175,8 +173,6 @@ namespace Project.Service.Controllers.QRApp
             Response = objQRAppDetails.PostInvoiceData(objPostGRNINDetailslst);
             return Response;
         }
-
-
 
 
         [Route("stocktransfertype")]
@@ -293,6 +289,28 @@ namespace Project.Service.Controllers.QRApp
             return Response;
         }
 
+        [Route("qrdatabintransfer")]
+        [HttpPost]
+        public HttpResponseMessage QRBINDetails(QRDetails objQRDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.QRBINDetails(objQRDetails);
+            return Response;
+        }
+
+
+        [Route("palletdetails")]
+        [HttpPost]
+        public HttpResponseMessage GetOutPalletDetails(PalletOutRequest objPalletOutRequest)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.GetOutPalletDetails(objPalletOutRequest);
+            return Response;
+        }
+
+
 
         [Route("stock")]
         [HttpPost]
@@ -303,6 +321,29 @@ namespace Project.Service.Controllers.QRApp
             Response = objQRAppDetails.GetStockDetails(objStockDetails);
             return Response;
         }
+
+
+        [Route("releaserestrictpurindevice")]
+        [HttpPost]
+        public HttpResponseMessage ReleaseRestrictDevicePurchaseIn(ReleaseDetails objReleaseDetails)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.ReleaseRestrictDevicePurchaseIn(objReleaseDetails);
+            return Response;
+        }
+
+
+        [Route("postbintransfer")]
+        [HttpPost]
+        public HttpResponseMessage PostBinTransferData(PostBinTransferlst objPostBinTransferlst)
+        {
+            HttpResponseMessage Response = new HttpResponseMessage();
+            QRAppDetails objQRAppDetails = new QRAppDetails();
+            Response = objQRAppDetails.PostBinTransferData(objPostBinTransferlst);
+            return Response;
+        }
+
 
 
         [Route("postwarehouse")]
@@ -348,8 +389,6 @@ namespace Project.Service.Controllers.QRApp
         }
 
 
-
-
         [Route("poststockmatch")]
         [HttpPost]
         public HttpResponseMessage PostStockMatchData(PostWarehouseDetailslst objPostWarehouseDetailslst)
@@ -370,6 +409,9 @@ namespace Project.Service.Controllers.QRApp
             Response = objQRAppDetails.GetQRStatus(objGetQRDetails);
             return Response;
         }
+
+
+
 
 
         [Route("getvendorinvoice")]
@@ -424,6 +466,7 @@ namespace Project.Service.Controllers.QRApp
             Response = objQRAppDetails.PostVendorQRDetails(objPostVendorQRDetailslst);
             return Response;
         }
+
 
 
 
